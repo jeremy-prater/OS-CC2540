@@ -1,0 +1,531 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.30.1.41636 for 8051             02/Jun/2014  17:47:52 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Components\hal\tar #
+#                          get\CC2540EB\hal_flash.c                           #
+#    Command line       =  -f "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\config\buildComponents.cfg"    #
+#                          (-DBROADCASTER_CFG=0x01 -DOBSERVER_CFG=0x02        #
+#                          -DPERIPHERAL_CFG=0x04 -DCENTRAL_CFG=0x08           #
+#                          -DADV_NCONN_CFG=0x01 -DADV_CONN_CFG=0x02           #
+#                          -DSCAN_CFG=0x04 -DINIT_CFG=0x08                    #
+#                          -DADV_CFG=ADV_NCONN_CFG+ADV_CONN_CFG               #
+#                          -DLINK_CFG=ADV_CONN_CFG+INIT_CFG                   #
+#                          -DFULL_CFG=INIT_CFG+SCAN_CFG+ADV_NCONN_CFG+ADV_CON #
+#                          N_CFG) -f "c:\Users\Administrator\Documents\Dropbo #
+#                          x\Fish Brain\HM-10 Hack\HM-10                      #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\buildConf #
+#                          ig.cfg" (-DHOST_CONFIG=PERIPHERAL_CFG+CENTRAL_CFG  #
+#                          -DGAP_PRIVACY_RECONNECT)                           #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Components\hal\tar #
+#                          get\CC2540EB\hal_flash.c" -D INT_HEAP_LEN=2700 -D  #
+#                          HALNODEBUG -D OSAL_CBTIMER_NUM_TASKS=1 -D          #
+#                          POWER_SAVING -D HAL_AES_DMA=TRUE -D HAL_DMA=TRUE   #
+#                          -D HAL_UART=TRUE -D HAL_UART_DMA=0 -D              #
+#                          HAL_UART_ISR=0 -D HAL_UART_SPI=2 -D                #
+#                          HAL_SPI_QUEUED_TX=TRUE -D HAL_KEY=FALSE -D         #
+#                          HAL_LCD=FALSE -D HAL_LED=FALSE -D                  #
+#                          GATT_DB_OFF_CHIP -D GAP_BOND_MGR -lCN              #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -lA                 #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -o                  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\" -e --debug           #
+#                          --core=plain --dptr=16,1 --data_model=large        #
+#                          --code_model=banked --calling_convention=xdata_ree #
+#                          ntrant --place_constants=data_rom                  #
+#                          --nr_virtual_regs 8 -I "c:\Users\Administrator\Doc #
+#                          uments\Dropbox\Fish Brain\HM-10 Hack\HM-10         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\com #
+#                          mon\" -I "c:\Users\Administrator\Documents\Dropbox #
+#                          \Fish Brain\HM-10 Hack\HM-10                       #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\hal\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\hal\target\CC #
+#                          2540EB\" -I "c:\Users\Administrator\Documents\Drop #
+#                          box\Fish Brain\HM-10 Hack\HM-10                    #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\osal\include\" -I                    #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\services\sadd #
+#                          r\" -I "c:\Users\Administrator\Documents\Dropbox\F #
+#                          ish Brain\HM-10 Hack\HM-10                         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\controlle #
+#                          r\phy\" -I "c:\Users\Administrator\Documents\Dropb #
+#                          ox\Fish Brain\HM-10 Hack\HM-10                     #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\controller\include\" -I          #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\hci\" -I  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\host\"    #
+#                          -I "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\cc2540\" -I             #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\npi\npi_np\" -I         #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Include\" -I                   #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Profiles\Roles\" -I            #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\source\" -Ohz                     #
+#    List file          =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\hal_flash.lst         #
+#    Object file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\hal_flash.r51          #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Components\hal\target\CC2540EB\hal_flash.c
+      1          /**************************************************************************************************
+      2            Filename:       _hal_flash.c
+      3            Revised:        $Date: 2010-07-06 15:24:36 -0700 (Tue, 06 Jul 2010) $
+      4            Revision:       $Revision: 22897 $
+      5          
+      6            Description: This file contains the interface to the H/W Flash driver.
+      7          
+      8          
+      9            Copyright 2006-2010 Texas Instruments Incorporated. All rights reserved.
+     10          
+     11            IMPORTANT: Your use of this Software is limited to those specific rights
+     12            granted under the terms of a software license agreement between the user
+     13            who downloaded the software, his/her employer (which must be your employer)
+     14            and Texas Instruments Incorporated (the "License").  You may not use this
+     15            Software unless you agree to abide by the terms of the License. The License
+     16            limits your use, and you acknowledge, that the Software may not be modified,
+     17            copied or distributed unless embedded on a Texas Instruments microcontroller
+     18            or used solely and exclusively in conjunction with a Texas Instruments radio
+     19            frequency transceiver, which is integrated into your product.  Other than for
+     20            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     21            works of, modify, distribute, perform, display or sell this Software and/or
+     22            its documentation for any purpose.
+     23          
+     24            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     25            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     26            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     27            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     28            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     29            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     30            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     31            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     32            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     33            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     34            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     35          
+     36            Should you have any questions regarding your right to use this Software,
+     37            contact Texas Instruments Incorporated at www.TI.com.
+     38          **************************************************************************************************/
+     39          
+     40          /* ------------------------------------------------------------------------------------------------
+     41           *                                          Includes
+     42           * ------------------------------------------------------------------------------------------------
+     43           */
+     44          
+     45          #include "hal_board_cfg.h"
+
+   \                                 In  segment SFR_AN, at 0xa8
+   \   union <unnamed> volatile __sfr _A_IEN0
+   \                     _A_IEN0:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xc7
+   \   unsigned char volatile __sfr MEMCTR
+   \                     MEMCTR:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xd1
+   \   unsigned char volatile __sfr DMAIRQ
+   \                     DMAIRQ:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xd6
+   \   unsigned char volatile __sfr DMAARM
+   \                     DMAARM:
+   \   000000                DS 1
+     46          #include "hal_dma.h"
+     47          #include "hal_flash.h"
+     48          #include "hal_types.h"
+     49          
+     50          /**************************************************************************************************
+     51           * @fn          HalFlashRead
+     52           *
+     53           * @brief       This function reads 'cnt' bytes from the internal flash.
+     54           *
+     55           * input parameters
+     56           *
+     57           * @param       pg - A valid flash page number.
+     58           * @param       offset - A valid offset into the page.
+     59           * @param       buf - A valid buffer space at least as big as the 'cnt' parameter.
+     60           * @param       cnt - A valid number of bytes to read.
+     61           *
+     62           * output parameters
+     63           *
+     64           * None.
+     65           *
+     66           * @return      None.
+     67           **************************************************************************************************
+     68           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     69          void HalFlashRead(uint8 pg, uint16 offset, uint8 *buf, uint16 cnt)
+   \                     HalFlashRead:
+     70          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000   74F5         MOV     A,#-0xb
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 11
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FE           MOV     R6,A
+     71            // Calculate the offset into the containing flash bank as it gets mapped into XDATA.
+     72            uint8 *ptr = (uint8 *)(offset + HAL_FLASH_PAGE_MAP) +
+     73                         ((pg % HAL_FLASH_PAGE_PER_BANK) * HAL_FLASH_PAGE_SIZE);
+   \   000007   740F         MOV     A,#0xf
+   \   000009   5E           ANL     A,R6
+   \   00000A   F5..         MOV     ?V0,A
+   \   00000C   75..00       MOV     ?V1,#0x0
+   \   00000F   740B         MOV     A,#0xb
+   \   000011   78..         MOV     R0,#?V0
+   \   000013   12....       LCALL   ?S_SHL
+   \   000016   EA           MOV     A,R2
+   \   000017   2400         ADD     A,#0x0
+   \   000019   F8           MOV     R0,A
+   \   00001A   EB           MOV     A,R3
+   \   00001B   3480         ADDC    A,#-0x80
+   \   00001D   F9           MOV     R1,A
+   \   00001E   E8           MOV     A,R0
+   \   00001F   2400         ADD     A,#0x0
+   \   000021   E9           MOV     A,R1
+   \   000022   35..         ADDC    A,?V1
+   \   000024   F9           MOV     R1,A
+     74            uint8 memctr = MEMCTR;  // Save to restore.
+   \   000025   E5C7         MOV     A,0xc7
+   \   000027   F5..         MOV     ?V2,A
+     75          
+     76          #if !defined HAL_OAD_BOOT_CODE
+     77            halIntState_t is;
+     78          #endif
+     79          
+     80            pg /= HAL_FLASH_PAGE_PER_BANK;  // Calculate the flash bank from the flash page.
+     81          
+     82          #if !defined HAL_OAD_BOOT_CODE
+     83            HAL_ENTER_CRITICAL_SECTION(is);
+   \   000029   A2AF         MOV     C,0xa8.7
+   \   00002B   E4           CLR     A
+   \   00002C   33           RLC     A
+   \   00002D   FF           MOV     R7,A
+   \   00002E   C2AF         CLR     0xa8.7
+     84          #endif
+     85          
+     86            // Calculate and map the containing flash bank into XDATA.
+     87            MEMCTR = (MEMCTR & 0xF8) | pg;
+   \   000030   EE           MOV     A,R6
+   \   000031   C4           SWAP    A
+   \   000032   540F         ANL     A,#0xf
+   \   000034   FA           MOV     R2,A
+   \   000035   E5C7         MOV     A,0xc7
+   \   000037   54F8         ANL     A,#0xf8
+   \   000039   4A           ORL     A,R2
+   \   00003A   F5C7         MOV     0xc7,A
+   \   00003C   740B         MOV     A,#0xb
+   \   00003E   12....       LCALL   ?XSTACK_DISP0_8
+   \   000041   E0           MOVX    A,@DPTR
+   \   000042   FA           MOV     R2,A
+   \   000043   A3           INC     DPTR
+   \   000044   E0           MOVX    A,@DPTR
+   \   000045   FB           MOV     R3,A
+   \   000046   801C         SJMP    ??HalFlashRead_0
+     88          
+     89            while (cnt--)
+     90            {
+     91              *buf++ = *ptr++;
+   \                     ??HalFlashRead_1:
+   \   000048   8882         MOV     DPL,R0
+   \   00004A   8983         MOV     DPH,R1
+   \   00004C   E0           MOVX    A,@DPTR
+   \   00004D   8C82         MOV     DPL,R4
+   \   00004F   8D83         MOV     DPH,R5
+   \   000051   F0           MOVX    @DPTR,A
+   \   000052   8882         MOV     DPL,R0
+   \   000054   8983         MOV     DPH,R1
+   \   000056   A3           INC     DPTR
+   \   000057   A882         MOV     R0,DPL
+   \   000059   A983         MOV     R1,DPH
+   \   00005B   8C82         MOV     DPL,R4
+   \   00005D   8D83         MOV     DPH,R5
+   \   00005F   A3           INC     DPTR
+   \   000060   AC82         MOV     R4,DPL
+   \   000062   AD83         MOV     R5,DPH
+     92            }
+   \                     ??HalFlashRead_0:
+   \   000064   8A..         MOV     ?V0,R2
+   \   000066   8B..         MOV     ?V1,R3
+   \   000068   E5..         MOV     A,?V0
+   \   00006A   24FF         ADD     A,#-0x1
+   \   00006C   1A           DEC     R2
+   \   00006D   E5..         MOV     A,?V1
+   \   00006F   34FF         ADDC    A,#-0x1
+   \   000071   FB           MOV     R3,A
+   \   000072   E5..         MOV     A,?V0
+   \   000074   45..         ORL     A,?V1
+   \   000076   70D0         JNZ     ??HalFlashRead_1
+     93          
+     94            MEMCTR = memctr;
+   \   000078   85..C7       MOV     0xc7,?V2
+     95          
+     96          #if !defined HAL_OAD_BOOT_CODE
+     97            HAL_EXIT_CRITICAL_SECTION(is);
+   \   00007B   EF           MOV     A,R7
+   \   00007C   A2E0         MOV     C,0xE0 /* A   */.0
+   \   00007E   92AF         MOV     0xa8.7,C
+     98          #endif
+     99          }
+   \   000080   7F03         MOV     R7,#0x3
+   \   000082   02....       LJMP    ?BANKED_LEAVE_XDATA
+   \   000085                REQUIRE MEMCTR
+   \   000085                REQUIRE _A_IEN0
+    100          
+    101          /**************************************************************************************************
+    102           * @fn          HalFlashWrite
+    103           *
+    104           * @brief       This function writes 'cnt' bytes to the internal flash.
+    105           *
+    106           * input parameters
+    107           *
+    108           * @param       addr - Valid HAL flash write address: actual addr / 4 and quad-aligned.
+    109           * @param       buf - Valid buffer space at least as big as 'cnt' X 4.
+    110           * @param       cnt - Number of 4-byte blocks to write.
+    111           *
+    112           * output parameters
+    113           *
+    114           * None.
+    115           *
+    116           * @return      None.
+    117           **************************************************************************************************
+    118           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    119          void HalFlashWrite(uint16 addr, uint8 *buf, uint16 cnt)
+   \                     HalFlashWrite:
+    120          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+    121          #if (defined HAL_DMA) && (HAL_DMA == TRUE)
+    122            halDMADesc_t *ch = HAL_NV_DMA_GET_DESC();
+    123          
+    124            HAL_DMA_SET_SOURCE(ch, buf);
+   \   000005   ED           MOV     A,R5
+   \   000006   90....       MOV     DPTR,#dmaCh0
+   \   000009   F0           MOVX    @DPTR,A
+   \   00000A   EC           MOV     A,R4
+   \   00000B   A3           INC     DPTR
+   \   00000C   F0           MOVX    @DPTR,A
+    125            HAL_DMA_SET_DEST(ch, &FWDATA);
+   \   00000D   A3           INC     DPTR
+   \   00000E   7462         MOV     A,#0x62
+   \   000010   F0           MOVX    @DPTR,A
+   \   000011   A3           INC     DPTR
+   \   000012   7473         MOV     A,#0x73
+   \   000014   F0           MOVX    @DPTR,A
+    126            HAL_DMA_SET_VLEN(ch, HAL_DMA_VLEN_USE_LEN);
+   \   000015   A3           INC     DPTR
+   \   000016   E0           MOVX    A,@DPTR
+   \   000017   541F         ANL     A,#0x1f
+   \   000019   F0           MOVX    @DPTR,A
+   \   00001A   740A         MOV     A,#0xa
+   \   00001C   12....       LCALL   ?XSTACK_DISP0_8
+   \   00001F   E0           MOVX    A,@DPTR
+   \   000020   F5..         MOV     ?V0,A
+   \   000022   A3           INC     DPTR
+   \   000023   E0           MOVX    A,@DPTR
+   \   000024   F5..         MOV     ?V1,A
+    127            HAL_DMA_SET_LEN(ch, (cnt * HAL_FLASH_WORD_SIZE));
+   \   000026   E5..         MOV     A,?V0
+   \   000028   33           RLC     A
+   \   000029   33           RLC     A
+   \   00002A   54FC         ANL     A,#0xfc
+   \   00002C   90....       MOV     DPTR,#dmaCh0 + 5
+   \   00002F   F0           MOVX    @DPTR,A
+   \   000030   7406         MOV     A,#0x6
+   \   000032   78..         MOV     R0,#?V0
+   \   000034   12....       LCALL   ?US_SHR
+   \   000037   E5..         MOV     A,?V0
+   \   000039   90....       MOV     DPTR,#dmaCh0 + 4
+   \   00003C   F0           MOVX    @DPTR,A
+    128            HAL_DMA_SET_WORD_SIZE(ch, HAL_DMA_WORDSIZE_BYTE);
+    129            HAL_DMA_SET_TRIG_MODE(ch, HAL_DMA_TMODE_SINGLE);
+    130            HAL_DMA_SET_TRIG_SRC(ch, HAL_DMA_TRIG_FLASH);
+   \   00003D   90....       MOV     DPTR,#dmaCh0 + 6
+   \   000040   7412         MOV     A,#0x12
+   \   000042   F0           MOVX    @DPTR,A
+    131            HAL_DMA_SET_SRC_INC(ch, HAL_DMA_SRCINC_1);
+    132            HAL_DMA_SET_DST_INC(ch, HAL_DMA_DSTINC_0);
+    133            // The DMA is to be polled and shall not issue an IRQ upon completion.
+    134            HAL_DMA_SET_IRQ(ch, HAL_DMA_IRQMASK_DISABLE);
+    135            HAL_DMA_SET_M8( ch, HAL_DMA_M8_USE_8_BITS);
+    136            HAL_DMA_SET_PRIORITY(ch, HAL_DMA_PRI_HIGH);
+   \   000043   A3           INC     DPTR
+   \   000044   7442         MOV     A,#0x42
+   \   000046   F0           MOVX    @DPTR,A
+    137            HAL_DMA_CLEAR_IRQ(HAL_NV_DMA_CH);
+   \   000047   53D1FE       ANL     0xd1,#0xfe
+    138            HAL_DMA_ARM_CH(HAL_NV_DMA_CH);
+   \   00004A   75D601       MOV     0xd6,#0x1
+    139          
+    140            FADDRL = (uint8)addr;
+   \   00004D   EA           MOV     A,R2
+   \   00004E   906271       MOV     DPTR,#0x6271
+   \   000051   F0           MOVX    @DPTR,A
+    141            FADDRH = (uint8)(addr >> 8);
+   \   000052   EB           MOV     A,R3
+   \   000053   A3           INC     DPTR
+   \   000054   F0           MOVX    @DPTR,A
+    142            FCTL |= 0x02;         // Trigger the DMA writes.
+   \   000055   906270       MOV     DPTR,#0x6270
+   \   000058   E0           MOVX    A,@DPTR
+   \   000059   D2E1         SETB    0xE0 /* A   */.1
+   \   00005B   F0           MOVX    @DPTR,A
+    143            while (FCTL & 0x80);  // Wait until writing is done.
+   \                     ??HalFlashWrite_0:
+   \   00005C   E0           MOVX    A,@DPTR
+   \   00005D   A2E7         MOV     C,0xE0 /* A   */.7
+   \   00005F   40FB         JC      ??HalFlashWrite_0
+    144          #endif
+    145          }
+   \   000061   7F02         MOV     R7,#0x2
+   \   000063   02....       LJMP    ?BANKED_LEAVE_XDATA
+   \   000066                REQUIRE DMAIRQ
+   \   000066                REQUIRE DMAARM
+    146          
+    147          /**************************************************************************************************
+    148           * @fn          HalFlashErase
+    149           *
+    150           * @brief       This function erases the specified page of the internal flash.
+    151           *
+    152           * input parameters
+    153           *
+    154           * @param       pg - A valid flash page number to erase.
+    155           *
+    156           * output parameters
+    157           *
+    158           * None.
+    159           *
+    160           * @return      None.
+    161           **************************************************************************************************
+    162           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    163          void HalFlashErase(uint8 pg)
+   \                     HalFlashErase:
+    164          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    165            FADDRH = pg * (HAL_FLASH_PAGE_SIZE / HAL_FLASH_WORD_SIZE / 256);
+   \   000004   E9           MOV     A,R1
+   \   000005   C3           CLR     C
+   \   000006   33           RLC     A
+   \   000007   906272       MOV     DPTR,#0x6272
+   \   00000A   F0           MOVX    @DPTR,A
+    166            FCTL |= 0x01;
+   \   00000B   906270       MOV     DPTR,#0x6270
+   \   00000E   E0           MOVX    A,@DPTR
+   \   00000F   D2E0         SETB    0xE0 /* A   */.0
+   \   000011   F0           MOVX    @DPTR,A
+    167          }
+   \   000012   D083         POP     DPH
+   \   000014   D082         POP     DPL
+   \   000016   02....       LJMP    ?BRET
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??HalFlashRead?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    HalFlashRead
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??HalFlashWrite?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    HalFlashWrite
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??HalFlashErase?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    HalFlashErase
+    168          
+    169          /**************************************************************************************************
+    170          */
+
+   Maximum stack usage in bytes:
+
+   ISTACK XSTACK Function
+   ------ ------ --------
+      2      0   HalFlashErase
+      1     13   HalFlashRead
+      0     12   HalFlashWrite
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       6  ??HalFlashErase?relay
+       6  ??HalFlashRead?relay
+       6  ??HalFlashWrite?relay
+       1  DMAARM
+       1  DMAIRQ
+      25  HalFlashErase
+     133  HalFlashRead
+     102  HalFlashWrite
+       1  MEMCTR
+       1  _A_IEN0
+
+ 
+ 260 bytes in segment BANKED_CODE
+  18 bytes in segment BANK_RELAYS
+   4 bytes in segment SFR_AN
+ 
+ 278 bytes of CODE memory
+   0 bytes of DATA memory (+ 4 bytes shared)
+
+Errors: none
+Warnings: none

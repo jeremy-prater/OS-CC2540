@@ -1,0 +1,892 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.30.1.41636 for 8051             02/Jun/2014  17:47:56 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Components\hal\tar #
+#                          get\CC2540EB\hal_aes.c                             #
+#    Command line       =  -f "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\config\buildComponents.cfg"    #
+#                          (-DBROADCASTER_CFG=0x01 -DOBSERVER_CFG=0x02        #
+#                          -DPERIPHERAL_CFG=0x04 -DCENTRAL_CFG=0x08           #
+#                          -DADV_NCONN_CFG=0x01 -DADV_CONN_CFG=0x02           #
+#                          -DSCAN_CFG=0x04 -DINIT_CFG=0x08                    #
+#                          -DADV_CFG=ADV_NCONN_CFG+ADV_CONN_CFG               #
+#                          -DLINK_CFG=ADV_CONN_CFG+INIT_CFG                   #
+#                          -DFULL_CFG=INIT_CFG+SCAN_CFG+ADV_NCONN_CFG+ADV_CON #
+#                          N_CFG) -f "c:\Users\Administrator\Documents\Dropbo #
+#                          x\Fish Brain\HM-10 Hack\HM-10                      #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\buildConf #
+#                          ig.cfg" (-DHOST_CONFIG=PERIPHERAL_CFG+CENTRAL_CFG  #
+#                          -DGAP_PRIVACY_RECONNECT)                           #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Components\hal\tar #
+#                          get\CC2540EB\hal_aes.c" -D INT_HEAP_LEN=2700 -D    #
+#                          HALNODEBUG -D OSAL_CBTIMER_NUM_TASKS=1 -D          #
+#                          POWER_SAVING -D HAL_AES_DMA=TRUE -D HAL_DMA=TRUE   #
+#                          -D HAL_UART=TRUE -D HAL_UART_DMA=0 -D              #
+#                          HAL_UART_ISR=0 -D HAL_UART_SPI=2 -D                #
+#                          HAL_SPI_QUEUED_TX=TRUE -D HAL_KEY=FALSE -D         #
+#                          HAL_LCD=FALSE -D HAL_LED=FALSE -D                  #
+#                          GATT_DB_OFF_CHIP -D GAP_BOND_MGR -lCN              #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -lA                 #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -o                  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\" -e --debug           #
+#                          --core=plain --dptr=16,1 --data_model=large        #
+#                          --code_model=banked --calling_convention=xdata_ree #
+#                          ntrant --place_constants=data_rom                  #
+#                          --nr_virtual_regs 8 -I "c:\Users\Administrator\Doc #
+#                          uments\Dropbox\Fish Brain\HM-10 Hack\HM-10         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\com #
+#                          mon\" -I "c:\Users\Administrator\Documents\Dropbox #
+#                          \Fish Brain\HM-10 Hack\HM-10                       #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\hal\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\hal\target\CC #
+#                          2540EB\" -I "c:\Users\Administrator\Documents\Drop #
+#                          box\Fish Brain\HM-10 Hack\HM-10                    #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\osal\include\" -I                    #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\services\sadd #
+#                          r\" -I "c:\Users\Administrator\Documents\Dropbox\F #
+#                          ish Brain\HM-10 Hack\HM-10                         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\controlle #
+#                          r\phy\" -I "c:\Users\Administrator\Documents\Dropb #
+#                          ox\Fish Brain\HM-10 Hack\HM-10                     #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\controller\include\" -I          #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\hci\" -I  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\host\"    #
+#                          -I "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\cc2540\" -I             #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\npi\npi_np\" -I         #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Include\" -I                   #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Profiles\Roles\" -I            #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\source\" -Ohz                     #
+#    List file          =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\hal_aes.lst           #
+#    Object file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\hal_aes.r51            #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Components\hal\target\CC2540EB\hal_aes.c
+      1          /**************************************************************************************************
+      2            Filename:       hal_aes.c
+      3            Revised:        $Date: 2009-10-29 16:57:32 -0700 (Thu, 29 Oct 2009) $
+      4            Revision:       $Revision: 21020 $
+      5          
+      6            Description:    Support for Hardware AES encryption.
+      7          
+      8            Copyright 2007-2009 Texas Instruments Incorporated. All rights reserved.
+      9          
+     10            IMPORTANT: Your use of this Software is limited to those specific rights
+     11            granted under the terms of a software license agreement between the user
+     12            who downloaded the software, his/her employer (which must be your employer)
+     13            and Texas Instruments Incorporated (the "License").  You may not use this
+     14            Software unless you agree to abide by the terms of the License. The License
+     15            limits your use, and you acknowledge, that the Software may not be modified,
+     16            copied or distributed unless embedded on a Texas Instruments microcontroller
+     17            or used solely and exclusively in conjunction with a Texas Instruments radio
+     18            frequency transceiver, which is integrated into your product.  Other than for
+     19            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     20            works of, modify, distribute, perform, display or sell this Software and/or
+     21            its documentation for any purpose.
+     22          
+     23            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     24            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     25            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     26            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     27            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     28            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     29            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     30            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     31            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     32            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     33            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     34          
+     35            Should you have any questions regarding your right to use this Software,
+     36            contact Texas Instruments Incorporated at www.TI.com.
+     37          **************************************************************************************************/
+     38          
+     39          /******************************************************************************
+     40           * INCLUDES
+     41           */
+     42          #include "osal.h"
+     43          #include "hal_aes.h"
+     44          #include "hal_dma.h"
+
+   \                                 In  segment SFR_AN, at 0xb3
+   \   unsigned char volatile __sfr ENCCS
+   \                     ENCCS:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xd1
+   \   unsigned char volatile __sfr DMAIRQ
+   \                     DMAIRQ:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xd6
+   \   unsigned char volatile __sfr DMAARM
+   \                     DMAARM:
+   \   000000                DS 1
+     45          
+     46          /******************************************************************************
+     47           * MACROS
+     48           */
+     49          
+     50          /******************************************************************************
+     51           * CONSTANTS
+     52           */
+     53          
+     54          /******************************************************************************
+     55           * TYPEDEFS
+     56           */
+     57          
+     58          /******************************************************************************
+     59           * LOCAL VARIABLES
+     60           */
+     61          
+     62          /******************************************************************************
+     63           * GLOBAL VARIABLES
+     64           */
+     65          
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     66          void (*pSspAesEncrypt)( uint8 *, uint8 * ) = (void*)NULL;
+   \                     pSspAesEncrypt:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+     67          
+     68          /******************************************************************************
+     69           * FUNCTION PROTOTYPES
+     70           */
+     71          void aesDmaInit( void );
+     72          
+     73          #if ((defined HAL_DMA) && (HAL_DMA == TRUE))
+     74          /******************************************************************************
+     75           * @fn      aesDmaInit
+     76           *
+     77           * @brief   Initilize DMA for AES engine
+     78           *
+     79           * input parameters
+     80           *
+     81           * @param   None
+     82           *
+     83           * @return  None
+     84           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     85          void aesDmaInit( void )
+   \                     aesDmaInit:
+     86          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+     87            halDMADesc_t *ch;
+     88          
+     89            /* Fill in DMA channel 1 descriptor and define it as input */
+     90            ch = HAL_DMA_GET_DESC1234( HAL_DMA_AES_IN );
+     91            HAL_DMA_SET_DEST( ch, HAL_AES_IN_ADDR );              /* Input of the AES module */
+   \   000004   90....       MOV     DPTR,#dmaCh1234 + 2
+   \   000007   7470         MOV     A,#0x70
+   \   000009   F0           MOVX    @DPTR,A
+   \   00000A   A3           INC     DPTR
+   \   00000B   74B1         MOV     A,#-0x4f
+   \   00000D   F0           MOVX    @DPTR,A
+     92            HAL_DMA_SET_VLEN( ch, HAL_DMA_VLEN_USE_LEN );         /* Using the length field */
+   \   00000E   A3           INC     DPTR
+   \   00000F   E0           MOVX    A,@DPTR
+   \   000010   541F         ANL     A,#0x1f
+   \   000012   F0           MOVX    @DPTR,A
+     93            HAL_DMA_SET_WORD_SIZE( ch, HAL_DMA_WORDSIZE_BYTE );   /* One byte is transferred each time */
+     94            HAL_DMA_SET_TRIG_MODE( ch, HAL_DMA_TMODE_SINGLE );    /* A single byte is transferred each time */
+     95            HAL_DMA_SET_TRIG_SRC( ch, HAL_DMA_TRIG_ENC_DW );      /* Setting the AES module to generate the DMA trigger */
+   \   000013   90....       MOV     DPTR,#dmaCh1234 + 6
+   \   000016   741D         MOV     A,#0x1d
+   \   000018   F0           MOVX    @DPTR,A
+     96            HAL_DMA_SET_SRC_INC( ch, HAL_DMA_SRCINC_1 );          /* The address for data fetch is incremented by 1 byte */
+     97            HAL_DMA_SET_DST_INC( ch, HAL_DMA_DSTINC_0 );          /* The destination address is constant */
+     98            HAL_DMA_SET_IRQ( ch, HAL_DMA_IRQMASK_DISABLE );       /* The DMA complete interrupt flag is not set at completion */
+     99            HAL_DMA_SET_M8( ch, HAL_DMA_M8_USE_8_BITS );          /* Transferring all 8 bits in each byte */
+    100            HAL_DMA_SET_PRIORITY( ch, HAL_DMA_PRI_HIGH );         /* DMA has priority */
+   \   000019   A3           INC     DPTR
+   \   00001A   7442         MOV     A,#0x42
+   \   00001C   F0           MOVX    @DPTR,A
+    101          
+    102            /* Fill in DMA channel 2 descriptor and define it as output */
+    103            ch = HAL_DMA_GET_DESC1234( HAL_DMA_AES_OUT );
+    104            HAL_DMA_SET_SOURCE( ch, HAL_AES_OUT_ADDR );           /* Start address of the segment */
+   \   00001D   A3           INC     DPTR
+   \   00001E   7470         MOV     A,#0x70
+   \   000020   F0           MOVX    @DPTR,A
+   \   000021   A3           INC     DPTR
+   \   000022   74B2         MOV     A,#-0x4e
+   \   000024   F0           MOVX    @DPTR,A
+    105            HAL_DMA_SET_VLEN( ch, HAL_DMA_VLEN_USE_LEN );         /* Using the length field */
+   \   000025   90....       MOV     DPTR,#dmaCh1234 + 12
+   \   000028   E0           MOVX    A,@DPTR
+   \   000029   541F         ANL     A,#0x1f
+   \   00002B   F0           MOVX    @DPTR,A
+    106            HAL_DMA_SET_WORD_SIZE( ch, HAL_DMA_WORDSIZE_BYTE );   /* One byte is transferred each time */
+    107            HAL_DMA_SET_TRIG_MODE( ch, HAL_DMA_TMODE_SINGLE );    /* A single byte is transferred each time */
+    108            HAL_DMA_SET_TRIG_SRC( ch, HAL_DMA_TRIG_ENC_UP );      /* Setting the AES module to generate the DMA trigger */
+   \   00002C   90....       MOV     DPTR,#dmaCh1234 + 14
+   \   00002F   741E         MOV     A,#0x1e
+   \   000031   F0           MOVX    @DPTR,A
+    109            HAL_DMA_SET_SRC_INC( ch, HAL_DMA_SRCINC_0 );          /* The address for data fetch is constant */
+    110            HAL_DMA_SET_DST_INC( ch, HAL_DMA_DSTINC_1 );          /* The destination address is incremented by 1 byte */
+    111            HAL_DMA_SET_IRQ( ch, HAL_DMA_IRQMASK_DISABLE );       /* The DMA complete interrupt flag is not set at completion */
+    112            HAL_DMA_SET_M8( ch, HAL_DMA_M8_USE_8_BITS );          /* Transferring all 8 bits in each byte */
+    113            HAL_DMA_SET_PRIORITY( ch, HAL_DMA_PRI_HIGH );         /* DMA has priority */
+   \   000032   A3           INC     DPTR
+   \   000033   7412         MOV     A,#0x12
+   \   000035   F0           MOVX    @DPTR,A
+    114          }
+   \   000036   80..         SJMP    ?Subroutine0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   D083         POP     DPH
+   \   000002   D082         POP     DPL
+   \   000004   02....       LJMP    ?BRET
+    115          #endif
+    116          
+    117          #if (!defined HAL_AES_DMA) || (HAL_AES_DMA == FALSE)
+    118          /******************************************************************************
+    119           * @fn      AesLoadBlock
+    120           *
+    121           * @brief   Write a block to AES engine
+    122           *
+    123           * input parameters
+    124           *
+    125           * @param   ptr  - Pointer to date to be written.
+    126           *
+    127           * @return  None
+    128           */
+    129          void AesLoadBlock( uint8 *ptr )
+    130          {
+    131            uint8 i;
+    132          
+    133            /* Kick it off */
+    134            AES_START();
+    135          
+    136            /* Copy block to encryption input register */
+    137            for (i = 0; i < STATE_BLENGTH; i++)
+    138            {
+    139              ENCDI = *ptr++;
+    140            }
+    141          }
+    142          
+    143          /******************************************************************************
+    144           * @fn      AesStartBlock
+    145           *
+    146           * @brief   Write and read a block to and from the AES engine
+    147           *
+    148           * input parameters
+    149           *
+    150           * @param   out  - Pointer to result to be read.
+    151           *          in   - pointer to data to be written.
+    152           *
+    153           * @return  None
+    154           */
+    155          void AesStartBlock( uint8 *out, uint8 *in )
+    156          {
+    157            uint8 i;
+    158          
+    159            /* Kick it off */
+    160            AES_START();
+    161          
+    162            /* Copy data to encryption input register */
+    163            for (i = 0; i < STATE_BLENGTH; i++)
+    164            {
+    165              ENCDI = *in++;
+    166            }
+    167          
+    168            /* Delay is required for non-DMA AES */
+    169            HAL_AES_DELAY();
+    170          
+    171            /* Copy encryption output register to out */
+    172            for (i = 0; i < STATE_BLENGTH; i++)
+    173            {
+    174              *out++ = ENCDO;
+    175            }
+    176          }
+    177          
+    178          /******************************************************************************
+    179           * @fn      AesStartShortBlock
+    180           *
+    181           * @brief   Write and read a block to and from the AES engine. When using CFB,
+    182           *          OFB, and CTR mode, the 128 bits blocks are divided into four 32 bit
+    183           *          blocks.
+    184           *
+    185           * input parameters
+    186           *
+    187           * @param   out  - Pointer to result to be read.
+    188           *          in   - pointer to data to be written.
+    189           *
+    190           * @return  None
+    191           */
+    192          void AesStartShortBlock( uint8 *out, uint8 *in )
+    193          {
+    194            uint8 i, j;
+    195          
+    196            AES_START();
+    197            for (i = 0; i < 4; i++)
+    198            {
+    199              /* Copy in block to encryption input register */
+    200              for (j = 0; j < 4; j++)
+    201              {
+    202                ENCDI = *in++;
+    203              }
+    204          
+    205              /* Delay is required for non-DMA AES */
+    206              HAL_AES_DELAY();
+    207          
+    208              /* Copy encryptioon output register to out block */
+    209              for (j = 0; j < 4; j++)
+    210              {
+    211                *out++ = ENCDO;
+    212              }
+    213            }
+    214          }
+    215          #endif
+    216          
+    217          /******************************************************************************
+    218           * @fn      AesLoadIV
+    219           *
+    220           * @brief   Writes IV into the CC2540
+    221           *
+    222           * input parameters
+    223           *
+    224           * @param   IV  - Pointer to IV.
+    225           *
+    226           * @return  None
+    227           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    228          void AesLoadIV( uint8 *IV )
+   \                     AesLoadIV:
+    229          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    230          #if (defined HAL_AES_DMA) && (HAL_AES_DMA == TRUE)
+    231            halDMADesc_t *ch = HAL_DMA_GET_DESC1234( HAL_DMA_AES_IN );
+    232          
+    233            /* Modify descriptors for channel 1 */
+    234            HAL_DMA_SET_SOURCE( ch, IV );
+   \   000004   12....       LCALL   ?Subroutine1 & 0xFFFF
+    235            HAL_DMA_SET_LEN( ch, STATE_BLENGTH );
+    236          
+    237            /* Arm DMA channel 1 */
+    238            HAL_DMA_CLEAR_IRQ( HAL_DMA_AES_IN );
+    239            HAL_DMA_ARM_CH( HAL_DMA_AES_IN );
+    240            do {
+    241              asm("NOP");
+   \                     ??CrossCallReturnLabel_0:
+   \   000007   00           NOP
+    242            } while (!HAL_DMA_CH_ARMED(HAL_DMA_AES_IN));
+   \   000008   E5D6         MOV     A,0xd6
+   \   00000A   A2E1         MOV     C,0xE0 /* A   */.1
+   \   00000C   50F9         JNC     ??CrossCallReturnLabel_0
+    243          
+    244            /* Set AES mode */
+    245            AES_SET_ENCR_DECR_KEY_IV( AES_LOAD_IV );
+   \   00000E   E5B3         MOV     A,0xb3
+   \   000010   54F8         ANL     A,#0xf8
+   \   000012   4406         ORL     A,#0x6
+   \   000014   F5B3         MOV     0xb3,A
+    246          
+    247            /* Kick it off, block until AES is ready */
+    248            AES_START();
+   \   000016   43B301       ORL     0xb3,#0x1
+    249            while( !(ENCCS & 0x08) );
+   \                     ??AesLoadIV_0:
+   \   000019   E5B3         MOV     A,0xb3
+   \   00001B   A2E3         MOV     C,0xE0 /* A   */.3
+   \   00001D   50FA         JNC     ??AesLoadIV_0
+    250          #else
+    251            /* Set AES mode */
+    252            AES_SET_ENCR_DECR_KEY_IV( AES_LOAD_IV );
+    253          
+    254            /* Load the block */
+    255            AesLoadBlock( IV );
+    256          #endif
+    257          }
+   \   00001F   80..         SJMP    ?Subroutine0
+   \   000021                REQUIRE DMAIRQ
+   \   000021                REQUIRE DMAARM
+   \   000021                REQUIRE ENCCS
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   EB           MOV     A,R3
+   \   000001   90....       MOV     DPTR,#dmaCh1234
+   \   000004   F0           MOVX    @DPTR,A
+   \   000005   EA           MOV     A,R2
+   \   000006   A3           INC     DPTR
+   \   000007   F0           MOVX    @DPTR,A
+   \   000008   90....       MOV     DPTR,#dmaCh1234 + 5
+   \   00000B   7410         MOV     A,#0x10
+   \   00000D   F0           MOVX    @DPTR,A
+   \   00000E   90....       MOV     DPTR,#dmaCh1234 + 4
+   \   000011   E0           MOVX    A,@DPTR
+   \   000012   54E0         ANL     A,#0xe0
+   \   000014   F0           MOVX    @DPTR,A
+   \   000015   53D1FD       ANL     0xd1,#0xfd
+   \   000018   75D602       MOV     0xd6,#0x2
+   \   00001B   22           RET
+    258          
+    259          /******************************************************************************
+    260           * @fn      AesLoadKey
+    261           *
+    262           * @brief   Writes the key into the CC2540
+    263           *
+    264           * input parameters
+    265           *
+    266           * @param   AesKey  - Pointer to AES Key.
+    267           *
+    268           * @return  None
+    269           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    270          void AesLoadKey( uint8 *AesKey )
+   \                     AesLoadKey:
+    271          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    272          #if (defined HAL_AES_DMA) && (HAL_AES_DMA == TRUE)
+    273            halDMADesc_t *ch = HAL_DMA_GET_DESC1234( HAL_DMA_AES_IN );
+    274          
+    275            /* Modify descriptors for channel 1 */
+    276            HAL_DMA_SET_SOURCE( ch, AesKey );
+   \   000004   12....       LCALL   ?Subroutine1 & 0xFFFF
+    277            HAL_DMA_SET_LEN( ch, KEY_BLENGTH );
+    278          
+    279            /* Arm DMA channel 1 */
+    280            HAL_DMA_CLEAR_IRQ( HAL_DMA_AES_IN );
+    281            HAL_DMA_ARM_CH( HAL_DMA_AES_IN );
+    282            do {
+    283              asm("NOP");
+   \                     ??CrossCallReturnLabel_1:
+   \   000007   00           NOP
+    284            } while (!HAL_DMA_CH_ARMED(HAL_DMA_AES_IN));
+   \   000008   E5D6         MOV     A,0xd6
+   \   00000A   A2E1         MOV     C,0xE0 /* A   */.1
+   \   00000C   50F9         JNC     ??CrossCallReturnLabel_1
+    285          
+    286            /* Set AES mode */
+    287            AES_SET_ENCR_DECR_KEY_IV( AES_LOAD_KEY );
+   \   00000E   E5B3         MOV     A,0xb3
+   \   000010   54F8         ANL     A,#0xf8
+   \   000012   4404         ORL     A,#0x4
+   \   000014   F5B3         MOV     0xb3,A
+    288          
+    289            /* Kick it off, block until AES is ready */
+    290            AES_START();
+   \   000016   43B301       ORL     0xb3,#0x1
+    291            while( !(ENCCS & 0x08) );
+   \                     ??AesLoadKey_0:
+   \   000019   E5B3         MOV     A,0xb3
+   \   00001B   A2E3         MOV     C,0xE0 /* A   */.3
+   \   00001D   50FA         JNC     ??AesLoadKey_0
+    292          #else
+    293            /* Set AES mode */
+    294            AES_SET_ENCR_DECR_KEY_IV( AES_LOAD_KEY );
+    295          
+    296            /* Load the block */
+    297            AesLoadBlock( AesKey );
+    298          #endif
+    299          }
+   \   00001F                REQUIRE ?Subroutine0
+   \   00001F                REQUIRE DMAIRQ
+   \   00001F                REQUIRE DMAARM
+   \   00001F                REQUIRE ENCCS
+   \   00001F                ; // Fall through to label ?Subroutine0
+    300          
+    301          #if (defined HAL_AES_DMA) && (HAL_AES_DMA == TRUE)
+    302          /******************************************************************************
+    303           * @fn      AesDmaSetup
+    304           *
+    305           * @brief   Sets up DMA of 16 byte block using CC2540 HW aes encryption engine
+    306           *
+    307           * input parameters
+    308           *
+    309           * @param   Cstate  - Pointer to output data.
+    310           * @param   msg_out_len - message out length
+    311           * @param   msg_in  - pointer to input data.
+    312           * @param   msg_in_len - message in length
+    313           *
+    314           * output parameters
+    315           *
+    316           * @param   Cstate  - Pointer to encrypted data.
+    317           *
+    318           * @return  None
+    319           *
+    320           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    321          void AesDmaSetup( uint8 *Cstate, uint16 msg_out_len, uint8 *msg_in, uint16 msg_in_len )
+   \                     AesDmaSetup:
+    322          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   7409         MOV     A,#0x9
+   \   000007   12....       LCALL   ?XSTACK_DISP0_8
+   \   00000A   E0           MOVX    A,@DPTR
+   \   00000B   F8           MOV     R0,A
+   \   00000C   A3           INC     DPTR
+   \   00000D   E0           MOVX    A,@DPTR
+    323            halDMADesc_t *ch;
+    324          
+    325            /* Modify descriptors for channel 1 */
+    326            ch = HAL_DMA_GET_DESC1234( HAL_DMA_AES_IN );
+    327            HAL_DMA_SET_SOURCE( ch, msg_in );
+   \   00000E   90....       MOV     DPTR,#dmaCh1234
+   \   000011   F0           MOVX    @DPTR,A
+   \   000012   E8           MOV     A,R0
+   \   000013   A3           INC     DPTR
+   \   000014   F0           MOVX    @DPTR,A
+   \   000015   740B         MOV     A,#0xb
+   \   000017   12....       LCALL   ?XSTACK_DISP0_8
+   \   00001A   E0           MOVX    A,@DPTR
+   \   00001B   F8           MOV     R0,A
+   \   00001C   A3           INC     DPTR
+   \   00001D   E0           MOVX    A,@DPTR
+   \   00001E   F9           MOV     R1,A
+    328            HAL_DMA_SET_LEN( ch, msg_in_len );
+   \   00001F   E8           MOV     A,R0
+   \   000020   90....       MOV     DPTR,#dmaCh1234 + 5
+   \   000023   F0           MOVX    @DPTR,A
+   \   000024   E9           MOV     A,R1
+   \   000025   F8           MOV     R0,A
+   \   000026   90....       MOV     DPTR,#dmaCh1234 + 4
+   \   000029   E0           MOVX    A,@DPTR
+   \   00002A   54E0         ANL     A,#0xe0
+   \   00002C   48           ORL     A,R0
+   \   00002D   F0           MOVX    @DPTR,A
+    329          
+    330            /* Modify descriptors for channel 2 */
+    331            ch = HAL_DMA_GET_DESC1234( HAL_DMA_AES_OUT );
+    332            HAL_DMA_SET_DEST( ch, Cstate );
+   \   00002E   EB           MOV     A,R3
+   \   00002F   90....       MOV     DPTR,#dmaCh1234 + 10
+   \   000032   F0           MOVX    @DPTR,A
+   \   000033   EA           MOV     A,R2
+   \   000034   A3           INC     DPTR
+   \   000035   F0           MOVX    @DPTR,A
+    333            HAL_DMA_SET_LEN( ch, msg_out_len );
+   \   000036   EC           MOV     A,R4
+   \   000037   90....       MOV     DPTR,#dmaCh1234 + 13
+   \   00003A   F0           MOVX    @DPTR,A
+   \   00003B   ED           MOV     A,R5
+   \   00003C   FC           MOV     R4,A
+   \   00003D   90....       MOV     DPTR,#dmaCh1234 + 12
+   \   000040   E0           MOVX    A,@DPTR
+   \   000041   54E0         ANL     A,#0xe0
+   \   000043   4C           ORL     A,R4
+   \   000044   F0           MOVX    @DPTR,A
+    334          
+    335            /* Arm DMA channels 1 and 2 */
+    336            HAL_DMA_CLEAR_IRQ( HAL_DMA_AES_IN );
+   \   000045   53D1FD       ANL     0xd1,#0xfd
+    337            HAL_DMA_ARM_CH( HAL_DMA_AES_IN );
+   \   000048   75D602       MOV     0xd6,#0x2
+    338            do {
+    339              asm("NOP");
+   \                     ??AesDmaSetup_0:
+   \   00004B   00           NOP
+    340            } while (!HAL_DMA_CH_ARMED(HAL_DMA_AES_IN));
+   \   00004C   E5D6         MOV     A,0xd6
+   \   00004E   A2E1         MOV     C,0xE0 /* A   */.1
+   \   000050   50F9         JNC     ??AesDmaSetup_0
+    341            HAL_DMA_CLEAR_IRQ( HAL_DMA_AES_OUT );
+   \   000052   53D1FB       ANL     0xd1,#0xfb
+    342            HAL_DMA_ARM_CH( HAL_DMA_AES_OUT );
+   \   000055   75D604       MOV     0xd6,#0x4
+    343            do {
+    344              asm("NOP");
+   \                     ??AesDmaSetup_1:
+   \   000058   00           NOP
+    345            } while (!HAL_DMA_CH_ARMED(HAL_DMA_AES_OUT));
+   \   000059   E5D6         MOV     A,0xd6
+   \   00005B   A2E2         MOV     C,0xE0 /* A   */.2
+   \   00005D   50F9         JNC     ??AesDmaSetup_1
+    346          }
+   \   00005F   7F01         MOV     R7,#0x1
+   \   000061   02....       LJMP    ?BANKED_LEAVE_XDATA
+   \   000064                REQUIRE DMAIRQ
+   \   000064                REQUIRE DMAARM
+    347          #endif
+    348          
+    349          /******************************************************************************
+    350           * @fn      HalAesInit
+    351           *
+    352           * @brief   Initilize AES engine
+    353           *
+    354           * input parameters
+    355           *
+    356           * @param   None
+    357           *
+    358           * @return  None
+    359           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    360          void HalAesInit( void )
+   \                     HalAesInit:
+    361          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    362          #if (defined HAL_AES_DMA) && (HAL_AES_DMA == TRUE)
+    363            /* Init DMA channels 1 and 2 */
+    364            aesDmaInit();
+   \   000004                ; Setup parameters for call to function aesDmaInit
+   \   000004   12....       LCALL   ??aesDmaInit?relay   ; Banked call to: aesDmaInit
+    365          #endif
+    366          }
+   \   000007   02....       LJMP    ?Subroutine0 & 0xFFFF
+    367          
+    368          /******************************************************************************
+    369           * @fn      ssp_HW_KeyInit
+    370           *
+    371           * @brief   Writes the key into AES engine
+    372           *
+    373           * input parameters
+    374           *
+    375           * @param   AesKey  - Pointer to AES Key.
+    376           *
+    377           * @return  None
+    378           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    379          void ssp_HW_KeyInit( uint8 *AesKey )
+   \                     ssp_HW_KeyInit:
+    380          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    381            AES_SETMODE(ECB);
+   \   000004   E5B3         MOV     A,0xb3
+   \   000006   548F         ANL     A,#0x8f
+   \   000008   4440         ORL     A,#0x40
+   \   00000A   F5B3         MOV     0xb3,A
+    382            AesLoadKey( AesKey );
+   \   00000C                ; Setup parameters for call to function AesLoadKey
+   \   00000C   12....       LCALL   ??AesLoadKey?relay   ; Banked call to: AesLoadKey
+    383          }
+   \   00000F   02....       LJMP    ?Subroutine0 & 0xFFFF
+   \   000012                REQUIRE ENCCS
+    384          
+    385          /******************************************************************************
+    386           * @fn      sspAesEncryptHW
+    387           *
+    388           * @brief   Encrypts 16 byte block using AES encryption engine
+    389           *
+    390           * input parameters
+    391           *
+    392           * @param   AesKey  - Pointer to AES Key.
+    393           * @param   Cstate  - Pointer to input data.
+    394           *
+    395           * output parameters
+    396           *
+    397           * @param   Cstate  - Pointer to encrypted data.
+    398           *
+    399           * @return  None
+    400           *
+    401           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    402          void sspAesEncryptHW( uint8 *AesKey, uint8 *Cstate )
+   \                     sspAesEncryptHW:
+    403          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   8C..         MOV     ?V0,R4
+   \   000007   8D..         MOV     ?V1,R5
+    404            (void)AesKey;
+    405          
+    406          #if (defined HAL_AES_DMA) && (HAL_AES_DMA == TRUE)
+    407            /* Setup DMA for AES encryption */
+    408            AesDmaSetup( Cstate, STATE_BLENGTH, Cstate, STATE_BLENGTH );
+   \   000009                ; Setup parameters for call to function AesDmaSetup
+   \   000009   75..10       MOV     ?V2,#0x10
+   \   00000C   75..00       MOV     ?V3,#0x0
+   \   00000F   78..         MOV     R0,#?V2
+   \   000011   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000014   78..         MOV     R0,#?V0
+   \   000016   12....       LCALL   ?PUSH_XSTACK_I_TWO
+   \   000019   7C10         MOV     R4,#0x10
+   \   00001B   7D00         MOV     R5,#0x0
+   \   00001D   AA..         MOV     R2,?V0
+   \   00001F   AB..         MOV     R3,?V1
+   \   000021   12....       LCALL   ??AesDmaSetup?relay  ; Banked call to: AesDmaSetup
+   \   000024   7404         MOV     A,#0x4
+   \   000026   12....       LCALL   ?DEALLOC_XSTACK8
+    409            AES_SET_ENCR_DECR_KEY_IV( AES_ENCRYPT );
+   \   000029   53B3F8       ANL     0xb3,#0xf8
+    410          
+    411            /* Kick it off, block until DMA is done */
+    412            AES_START();
+   \   00002C   43B301       ORL     0xb3,#0x1
+    413            while( !HAL_DMA_CHECK_IRQ( HAL_DMA_AES_OUT ) );
+   \                     ??sspAesEncryptHW_0:
+   \   00002F   E5D1         MOV     A,0xd1
+   \   000031   A2E2         MOV     C,0xE0 /* A   */.2
+   \   000033   50FA         JNC     ??sspAesEncryptHW_0
+    414          #else
+    415            /* Set ECB mode for AES encryption */
+    416            AES_SETMODE(ECB);
+    417            AES_SET_ENCR_DECR_KEY_IV( AES_ENCRYPT );
+    418          
+    419            /* Load and start the block */
+    420            AesStartBlock( Cstate, Cstate );
+    421          #endif
+    422          }
+   \   000035   7F04         MOV     R7,#0x4
+   \   000037   02....       LJMP    ?BANKED_LEAVE_XDATA
+   \   00003A                REQUIRE ENCCS
+   \   00003A                REQUIRE DMAIRQ
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??aesDmaInit?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    aesDmaInit
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??AesLoadIV?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    AesLoadIV
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??AesLoadKey?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    AesLoadKey
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??AesDmaSetup?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    AesDmaSetup
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??HalAesInit?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    HalAesInit
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??ssp_HW_KeyInit?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    ssp_HW_KeyInit
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??sspAesEncryptHW?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    sspAesEncryptHW
+
+   Maximum stack usage in bytes:
+
+   ISTACK XSTACK Function
+   ------ ------ --------
+      0     25   AesDmaSetup
+      2      0   AesLoadIV
+      2      0   AesLoadKey
+      2      0   HalAesInit
+        2      0   -> aesDmaInit
+      2      0   aesDmaInit
+      0     16   sspAesEncryptHW
+        0     16   -> AesDmaSetup
+      2      0   ssp_HW_KeyInit
+        2      0   -> AesLoadKey
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       6  ??AesDmaSetup?relay
+       6  ??AesLoadIV?relay
+       6  ??AesLoadKey?relay
+       6  ??HalAesInit?relay
+       6  ??aesDmaInit?relay
+       6  ??sspAesEncryptHW?relay
+       6  ??ssp_HW_KeyInit?relay
+       7  ?Subroutine0
+      28  ?Subroutine1
+     100  AesDmaSetup
+      33  AesLoadIV
+      31  AesLoadKey
+       1  DMAARM
+       1  DMAIRQ
+       1  ENCCS
+      10  HalAesInit
+      56  aesDmaInit
+       2  pSspAesEncrypt
+      58  sspAesEncryptHW
+      18  ssp_HW_KeyInit
+
+ 
+ 341 bytes in segment BANKED_CODE
+  42 bytes in segment BANK_RELAYS
+   3 bytes in segment SFR_AN
+   2 bytes in segment XDATA_Z
+ 
+ 383 bytes of CODE  memory
+   0 bytes of DATA  memory (+ 3 bytes shared)
+   2 bytes of XDATA memory
+
+Errors: none
+Warnings: none

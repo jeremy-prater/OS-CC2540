@@ -1,0 +1,777 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.30.1.41636 for 8051             02/Jun/2014  17:47:56 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Components\ble\hos #
+#                          t\gatt_uuid.c                                      #
+#    Command line       =  -f "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\config\buildComponents.cfg"    #
+#                          (-DBROADCASTER_CFG=0x01 -DOBSERVER_CFG=0x02        #
+#                          -DPERIPHERAL_CFG=0x04 -DCENTRAL_CFG=0x08           #
+#                          -DADV_NCONN_CFG=0x01 -DADV_CONN_CFG=0x02           #
+#                          -DSCAN_CFG=0x04 -DINIT_CFG=0x08                    #
+#                          -DADV_CFG=ADV_NCONN_CFG+ADV_CONN_CFG               #
+#                          -DLINK_CFG=ADV_CONN_CFG+INIT_CFG                   #
+#                          -DFULL_CFG=INIT_CFG+SCAN_CFG+ADV_NCONN_CFG+ADV_CON #
+#                          N_CFG) -f "c:\Users\Administrator\Documents\Dropbo #
+#                          x\Fish Brain\HM-10 Hack\HM-10                      #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\buildConf #
+#                          ig.cfg" (-DHOST_CONFIG=PERIPHERAL_CFG+CENTRAL_CFG  #
+#                          -DGAP_PRIVACY_RECONNECT)                           #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Components\ble\hos #
+#                          t\gatt_uuid.c" -D INT_HEAP_LEN=2700 -D HALNODEBUG  #
+#                          -D OSAL_CBTIMER_NUM_TASKS=1 -D POWER_SAVING -D     #
+#                          HAL_AES_DMA=TRUE -D HAL_DMA=TRUE -D HAL_UART=TRUE  #
+#                          -D HAL_UART_DMA=0 -D HAL_UART_ISR=0 -D             #
+#                          HAL_UART_SPI=2 -D HAL_SPI_QUEUED_TX=TRUE -D        #
+#                          HAL_KEY=FALSE -D HAL_LCD=FALSE -D HAL_LED=FALSE    #
+#                          -D GATT_DB_OFF_CHIP -D GAP_BOND_MGR -lCN           #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -lA                 #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -o                  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\" -e --debug           #
+#                          --core=plain --dptr=16,1 --data_model=large        #
+#                          --code_model=banked --calling_convention=xdata_ree #
+#                          ntrant --place_constants=data_rom                  #
+#                          --nr_virtual_regs 8 -I "c:\Users\Administrator\Doc #
+#                          uments\Dropbox\Fish Brain\HM-10 Hack\HM-10         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\com #
+#                          mon\" -I "c:\Users\Administrator\Documents\Dropbox #
+#                          \Fish Brain\HM-10 Hack\HM-10                       #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\hal\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\hal\target\CC #
+#                          2540EB\" -I "c:\Users\Administrator\Documents\Drop #
+#                          box\Fish Brain\HM-10 Hack\HM-10                    #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\osal\include\" -I                    #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\services\sadd #
+#                          r\" -I "c:\Users\Administrator\Documents\Dropbox\F #
+#                          ish Brain\HM-10 Hack\HM-10                         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\controlle #
+#                          r\phy\" -I "c:\Users\Administrator\Documents\Dropb #
+#                          ox\Fish Brain\HM-10 Hack\HM-10                     #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\controller\include\" -I          #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\hci\" -I  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\host\"    #
+#                          -I "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\cc2540\" -I             #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\npi\npi_np\" -I         #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Include\" -I                   #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Profiles\Roles\" -I            #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\source\" -Ohz                     #
+#    List file          =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\gatt_uuid.lst         #
+#    Object file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\gatt_uuid.r51          #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Components\ble\host\gatt_uuid.c
+      1          /**************************************************************************************************
+      2            Filename:       gatt_uuid.c
+      3            Revised:        $Date: 2009-06-29 16:20:52 -0700 (Mon, 29 Jun 2009) $
+      4            Revision:       $Revision: 20240 $
+      5          
+      6            Description:    This file contains Generic Attribute Profile (GATT)
+      7                            UUID types.
+      8          
+      9          
+     10            Copyright 2011-2013 Texas Instruments Incorporated. All rights reserved.
+     11          
+     12            IMPORTANT: Your use of this Software is limited to those specific rights
+     13            granted under the terms of a software license agreement between the user
+     14            who downloaded the software, his/her employer (which must be your employer)
+     15            and Texas Instruments Incorporated (the "License").  You may not use this
+     16            Software unless you agree to abide by the terms of the License. The License
+     17            limits your use, and you acknowledge, that the Software may not be modified,
+     18            copied or distributed unless embedded on a Texas Instruments microcontroller
+     19            or used solely and exclusively in conjunction with a Texas Instruments radio
+     20            frequency transceiver, which is integrated into your product.  Other than for
+     21            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     22            works of, modify, distribute, perform, display or sell this Software and/or
+     23            its documentation for any purpose.
+     24          
+     25            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     26            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     27            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     28            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     29            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     30            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     31            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     32            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     33            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     34            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     35            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     36          
+     37            Should you have any questions regarding your right to use this Software,
+     38            contact Texas Instruments Incorporated at www.TI.com.
+     39          **************************************************************************************************/
+     40          
+     41          
+     42          /*********************************************************************
+     43           * INCLUDES
+     44           */
+     45          #include "comdef.h"
+     46          #include "OSAL.h"
+     47          
+     48          #include "gatt.h"
+     49          #include "gatt_uuid.h"
+     50          
+     51          /*********************************************************************
+     52           * MACROS
+     53           */
+     54          
+     55          /*********************************************************************
+     56           * CONSTANTS
+     57           */
+     58          
+     59          /*********************************************************************
+     60           * TYPEDEFS
+     61           */
+     62          
+     63          /*********************************************************************
+     64           * GLOBAL VARIABLES
+     65           */
+     66          
+     67          /**
+     68           * GATT Services
+     69           */
+     70          // Generic Access Profile Service UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+     71          CONST uint8 gapServiceUUID[ATT_BT_UUID_SIZE] =
+   \                     gapServiceUUID:
+   \   000000   00           DB 0
+   \   000001   18           DB 24
+     72          {
+     73            LO_UINT16( GAP_SERVICE_UUID ), HI_UINT16( GAP_SERVICE_UUID )
+     74          };
+     75          
+     76          // Generic Attribute Profile Service UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+     77          CONST uint8 gattServiceUUID[ATT_BT_UUID_SIZE] =
+   \                     gattServiceUUID:
+   \   000000   01           DB 1
+   \   000001   18           DB 24
+     78          {
+     79            LO_UINT16( GATT_SERVICE_UUID ), HI_UINT16( GATT_SERVICE_UUID )
+     80          };
+     81          
+     82          /**
+     83           * GATT Declarations
+     84           */
+     85          // Primary Service UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+     86          CONST uint8 primaryServiceUUID[ATT_BT_UUID_SIZE] =
+   \                     primaryServiceUUID:
+   \   000000   00           DB 0
+   \   000001   28           DB 40
+     87          {
+     88            LO_UINT16( GATT_PRIMARY_SERVICE_UUID ), HI_UINT16( GATT_PRIMARY_SERVICE_UUID )
+     89          };
+     90          
+     91          // Secondary Service UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+     92          CONST uint8 secondaryServiceUUID[ATT_BT_UUID_SIZE] =
+   \                     secondaryServiceUUID:
+   \   000000   01           DB 1
+   \   000001   28           DB 40
+     93          {
+     94            LO_UINT16( GATT_SECONDARY_SERVICE_UUID ), HI_UINT16( GATT_SECONDARY_SERVICE_UUID )
+     95          };
+     96          
+     97          // Include UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+     98          CONST uint8 includeUUID[ATT_BT_UUID_SIZE] =
+   \                     includeUUID:
+   \   000000   02           DB 2
+   \   000001   28           DB 40
+     99          {
+    100            LO_UINT16( GATT_INCLUDE_UUID ), HI_UINT16( GATT_INCLUDE_UUID )
+    101          };
+    102          
+    103          // Characteristic UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    104          CONST uint8 characterUUID[ATT_BT_UUID_SIZE] =
+   \                     characterUUID:
+   \   000000   03           DB 3
+   \   000001   28           DB 40
+    105          {
+    106            LO_UINT16( GATT_CHARACTER_UUID ), HI_UINT16( GATT_CHARACTER_UUID )
+    107          };
+    108          
+    109          /**
+    110           * GATT Descriptors
+    111           */
+    112          // Characteristic Extended Properties UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    113          CONST uint8 charExtPropsUUID[ATT_BT_UUID_SIZE] =
+   \                     charExtPropsUUID:
+   \   000000   00           DB 0
+   \   000001   29           DB 41
+    114          {
+    115            LO_UINT16( GATT_CHAR_EXT_PROPS_UUID ), HI_UINT16( GATT_CHAR_EXT_PROPS_UUID )
+    116          };
+    117          
+    118          // Characteristic User Description UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    119          CONST uint8 charUserDescUUID[ATT_BT_UUID_SIZE] =
+   \                     charUserDescUUID:
+   \   000000   01           DB 1
+   \   000001   29           DB 41
+    120          {
+    121            LO_UINT16( GATT_CHAR_USER_DESC_UUID ), HI_UINT16( GATT_CHAR_USER_DESC_UUID )
+    122          };
+    123          
+    124          // Client Characteristic Configuration UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    125          CONST uint8 clientCharCfgUUID[ATT_BT_UUID_SIZE] =
+   \                     clientCharCfgUUID:
+   \   000000   02           DB 2
+   \   000001   29           DB 41
+    126          {
+    127            LO_UINT16( GATT_CLIENT_CHAR_CFG_UUID ), HI_UINT16( GATT_CLIENT_CHAR_CFG_UUID )
+    128          };
+    129          
+    130          // Server Characteristic Configuration UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    131          CONST uint8 servCharCfgUUID[ATT_BT_UUID_SIZE] =
+   \                     servCharCfgUUID:
+   \   000000   03           DB 3
+   \   000001   29           DB 41
+    132          {
+    133            LO_UINT16( GATT_SERV_CHAR_CFG_UUID ), HI_UINT16( GATT_SERV_CHAR_CFG_UUID )
+    134          };
+    135          
+    136          // Characteristic Presentation Format UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    137          CONST uint8 charFormatUUID[ATT_BT_UUID_SIZE] =
+   \                     charFormatUUID:
+   \   000000   04           DB 4
+   \   000001   29           DB 41
+    138          {
+    139            LO_UINT16( GATT_CHAR_FORMAT_UUID ), HI_UINT16( GATT_CHAR_FORMAT_UUID )
+    140          };
+    141          
+    142          // Characteristic Aggregate Format UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    143          CONST uint8 charAggFormatUUID[ATT_BT_UUID_SIZE] =
+   \                     charAggFormatUUID:
+   \   000000   05           DB 5
+   \   000001   29           DB 41
+    144          {
+    145            LO_UINT16( GATT_CHAR_AGG_FORMAT_UUID ), HI_UINT16( GATT_CHAR_AGG_FORMAT_UUID )
+    146          };
+    147          
+    148          /**
+    149           * GATT Characteristics
+    150           */
+    151          // Device Name UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    152          CONST uint8 deviceNameUUID[ATT_BT_UUID_SIZE] =
+   \                     deviceNameUUID:
+   \   000000   00           DB 0
+   \   000001   2A           DB 42
+    153          {
+    154            LO_UINT16( DEVICE_NAME_UUID ), HI_UINT16( DEVICE_NAME_UUID )
+    155          };
+    156          
+    157          // Appearance UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    158          CONST uint8 appearanceUUID[ATT_BT_UUID_SIZE] =
+   \                     appearanceUUID:
+   \   000000   01           DB 1
+   \   000001   2A           DB 42
+    159          {
+    160            LO_UINT16( APPEARANCE_UUID ), HI_UINT16( APPEARANCE_UUID )
+    161          };
+    162          
+    163          // Peripheral Privacy Flag UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    164          CONST uint8 periPrivacyFlagUUID[ATT_BT_UUID_SIZE] =
+   \                     periPrivacyFlagUUID:
+   \   000000   02           DB 2
+   \   000001   2A           DB 42
+    165          {
+    166            LO_UINT16( PERI_PRIVACY_FLAG_UUID ), HI_UINT16( PERI_PRIVACY_FLAG_UUID )
+    167          };
+    168          
+    169          // Reconnection Address UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    170          CONST uint8 reconnectAddrUUID[ATT_BT_UUID_SIZE] =
+   \                     reconnectAddrUUID:
+   \   000000   03           DB 3
+   \   000001   2A           DB 42
+    171          {
+    172            LO_UINT16( RECONNECT_ADDR_UUID ), HI_UINT16( RECONNECT_ADDR_UUID )
+    173          };
+    174          
+    175          // Peripheral Preferred Connection Parameters UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    176          CONST uint8 periConnParamUUID[ATT_BT_UUID_SIZE] =
+   \                     periConnParamUUID:
+   \   000000   04           DB 4
+   \   000001   2A           DB 42
+    177          {
+    178            LO_UINT16( PERI_CONN_PARAM_UUID ), HI_UINT16( PERI_CONN_PARAM_UUID )
+    179          };
+    180          
+    181          // Service Changed UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    182          CONST uint8 serviceChangedUUID[ATT_BT_UUID_SIZE] =
+   \                     serviceChangedUUID:
+   \   000000   05           DB 5
+   \   000001   2A           DB 42
+    183          {
+    184            LO_UINT16( SERVICE_CHANGED_UUID ), HI_UINT16( SERVICE_CHANGED_UUID )
+    185          };
+    186          
+    187          // Valid Range UUID
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    188          CONST uint8 validRangeUUID[ATT_BT_UUID_SIZE] =
+   \                     validRangeUUID:
+   \   000000   06           DB 6
+   \   000001   29           DB 41
+    189          {
+    190            LO_UINT16( GATT_VALID_RANGE_UUID ), HI_UINT16( GATT_VALID_RANGE_UUID )
+    191          };
+    192          
+    193          // External Report Reference Descriptor
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    194          CONST uint8 extReportRefUUID[ATT_BT_UUID_SIZE] =
+   \                     extReportRefUUID:
+   \   000000   07           DB 7
+   \   000001   29           DB 41
+    195          {
+    196            LO_UINT16( GATT_EXT_REPORT_REF_UUID ), HI_UINT16( GATT_EXT_REPORT_REF_UUID )
+    197          };
+    198          
+    199          // Report Reference characteristic descriptor
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    200          CONST uint8 reportRefUUID[ATT_BT_UUID_SIZE] =
+   \                     reportRefUUID:
+   \   000000   08           DB 8
+   \   000001   29           DB 41
+    201          {
+    202            LO_UINT16( GATT_REPORT_REF_UUID ), HI_UINT16( GATT_REPORT_REF_UUID )
+    203          };
+    204          
+    205          /*********************************************************************
+    206           * GLOBAL FUNCTIONS
+    207           */
+    208          
+    209          /*********************************************************************
+    210           * LOCAL VARIABLES
+    211           */
+    212          
+    213          /*********************************************************************
+    214           * LOCAL FUNCTIONS
+    215           */
+    216          
+    217          /*********************************************************************
+    218           * API FUNCTIONS
+    219           */
+    220          
+    221          /*********************************************************************
+    222           * @fn      GATT_FindUUIDRec
+    223           *
+    224           * @brief   Find the UUID record for a given UUID.
+    225           *
+    226           * @param   pUUID - UUID to look for.
+    227           * @param   len - length of UUID.
+    228           *
+    229           * @return  Pointer to UUID record. NULL, otherwise.
+    230           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    231          const uint8 *GATT_FindUUIDRec( const uint8 *pUUID, uint8 len )
+   \                     GATT_FindUUIDRec:
+    232          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+   \   000005   8A82         MOV     DPL,R2
+   \   000007   8B83         MOV     DPH,R3
+    233            const uint8 *pRec = NULL;
+   \   000009   7A00         MOV     R2,#0x0
+   \   00000B   7B00         MOV     R3,#0x0
+    234          
+    235            if ( len == ATT_BT_UUID_SIZE )
+   \   00000D   7402         MOV     A,#0x2
+   \   00000F   69           XRL     A,R1
+   \   000010   6003         JZ      $+5
+   \   000012   02....       LJMP    ??GATT_FindUUIDRec_0 & 0xFFFF
+    236            {
+    237              // 16-bit UUID
+    238              uint16 uuid = BUILD_UINT16( pUUID[0], pUUID[1] );
+    239              switch ( uuid )
+   \   000015   E0           MOVX    A,@DPTR
+   \   000016   FE           MOV     R6,A
+   \   000017   A3           INC     DPTR
+   \   000018   E0           MOVX    A,@DPTR
+   \   000019   FD           MOV     R5,A
+   \   00001A   EE           MOV     A,R6
+   \   00001B   2A           ADD     A,R2
+   \   00001C   F5..         MOV     ?V0,A
+   \   00001E   E4           CLR     A
+   \   00001F   3D           ADDC    A,R5
+   \   000020   F5..         MOV     ?V1,A
+   \   000022   78..         MOV     R0,#?V0
+   \   000024   12....       LCALL   ?US_SWITCH_SPARSE
+   \                     `?<Jumptable for GATT_FindUUIDRec>_0`:
+   \   000027   0000         DW        0
+   \   000029   1500         DW        21
+   \   00002B   0018         DW        6144
+   \   00002D   ....         DW        ??GATT_FindUUIDRec_1
+   \   00002F   0118         DW        6145
+   \   000031   ....         DW        ??GATT_FindUUIDRec_2
+   \   000033   0028         DW        10240
+   \   000035   ....         DW        ??GATT_FindUUIDRec_3
+   \   000037   0128         DW        10241
+   \   000039   ....         DW        ??GATT_FindUUIDRec_4
+   \   00003B   0228         DW        10242
+   \   00003D   ....         DW        ??GATT_FindUUIDRec_5
+   \   00003F   0328         DW        10243
+   \   000041   ....         DW        ??GATT_FindUUIDRec_6
+   \   000043   0029         DW        10496
+   \   000045   ....         DW        ??GATT_FindUUIDRec_7
+   \   000047   0129         DW        10497
+   \   000049   ....         DW        ??GATT_FindUUIDRec_8
+   \   00004B   0229         DW        10498
+   \   00004D   ....         DW        ??GATT_FindUUIDRec_9
+   \   00004F   0329         DW        10499
+   \   000051   ....         DW        ??GATT_FindUUIDRec_10
+   \   000053   0429         DW        10500
+   \   000055   ....         DW        ??GATT_FindUUIDRec_11
+   \   000057   0529         DW        10501
+   \   000059   ....         DW        ??GATT_FindUUIDRec_12
+   \   00005B   0629         DW        10502
+   \   00005D   ....         DW        ??GATT_FindUUIDRec_13
+   \   00005F   0729         DW        10503
+   \   000061   ....         DW        ??GATT_FindUUIDRec_14
+   \   000063   0829         DW        10504
+   \   000065   ....         DW        ??GATT_FindUUIDRec_15
+   \   000067   002A         DW        10752
+   \   000069   ....         DW        ??GATT_FindUUIDRec_16
+   \   00006B   012A         DW        10753
+   \   00006D   ....         DW        ??GATT_FindUUIDRec_17
+   \   00006F   022A         DW        10754
+   \   000071   ....         DW        ??GATT_FindUUIDRec_18
+   \   000073   032A         DW        10755
+   \   000075   ....         DW        ??GATT_FindUUIDRec_19
+   \   000077   042A         DW        10756
+   \   000079   ....         DW        ??GATT_FindUUIDRec_20
+   \   00007B   052A         DW        10757
+   \   00007D   ....         DW        ??GATT_FindUUIDRec_21
+   \   00007F   ....         DW        ??GATT_FindUUIDRec_0
+    240              {
+    241                /*** GATT Services ***/
+    242          
+    243                case GAP_SERVICE_UUID:
+    244                  pRec = gapServiceUUID;
+   \                     ??GATT_FindUUIDRec_1:
+   \   000081   7A..         MOV     R2,#gapServiceUUID & 0xff
+   \   000083   7B..         MOV     R3,#(gapServiceUUID >> 8) & 0xff
+    245                  break;
+   \   000085   8076         SJMP    ??GATT_FindUUIDRec_0
+    246          
+    247                case GATT_SERVICE_UUID:
+    248                  pRec = gattServiceUUID;
+   \                     ??GATT_FindUUIDRec_2:
+   \   000087   7A..         MOV     R2,#gattServiceUUID & 0xff
+   \   000089   7B..         MOV     R3,#(gattServiceUUID >> 8) & 0xff
+    249                  break;
+   \   00008B   8070         SJMP    ??GATT_FindUUIDRec_0
+    250          
+    251                /*** GATT Declarations ***/
+    252          
+    253                case GATT_PRIMARY_SERVICE_UUID:
+    254                  pRec = primaryServiceUUID;
+   \                     ??GATT_FindUUIDRec_3:
+   \   00008D   7A..         MOV     R2,#primaryServiceUUID & 0xff
+   \   00008F   7B..         MOV     R3,#(primaryServiceUUID >> 8) & 0xff
+    255                  break;
+   \   000091   806A         SJMP    ??GATT_FindUUIDRec_0
+    256          
+    257                case GATT_SECONDARY_SERVICE_UUID:
+    258                  pRec = secondaryServiceUUID;
+   \                     ??GATT_FindUUIDRec_4:
+   \   000093   7A..         MOV     R2,#secondaryServiceUUID & 0xff
+   \   000095   7B..         MOV     R3,#(secondaryServiceUUID >> 8) & 0xff
+    259                  break;
+   \   000097   8064         SJMP    ??GATT_FindUUIDRec_0
+    260          
+    261                case GATT_INCLUDE_UUID:
+    262                  pRec = includeUUID;
+   \                     ??GATT_FindUUIDRec_5:
+   \   000099   7A..         MOV     R2,#includeUUID & 0xff
+   \   00009B   7B..         MOV     R3,#(includeUUID >> 8) & 0xff
+    263                  break;
+   \   00009D   805E         SJMP    ??GATT_FindUUIDRec_0
+    264          
+    265                case GATT_CHARACTER_UUID:
+    266                  pRec = characterUUID;
+   \                     ??GATT_FindUUIDRec_6:
+   \   00009F   7A..         MOV     R2,#characterUUID & 0xff
+   \   0000A1   7B..         MOV     R3,#(characterUUID >> 8) & 0xff
+    267                  break;
+   \   0000A3   8058         SJMP    ??GATT_FindUUIDRec_0
+    268          
+    269                /*** GATT Descriptors ***/
+    270          
+    271                case GATT_CHAR_EXT_PROPS_UUID:
+    272                  pRec = charExtPropsUUID;
+   \                     ??GATT_FindUUIDRec_7:
+   \   0000A5   7A..         MOV     R2,#charExtPropsUUID & 0xff
+   \   0000A7   7B..         MOV     R3,#(charExtPropsUUID >> 8) & 0xff
+    273                  break;
+   \   0000A9   8052         SJMP    ??GATT_FindUUIDRec_0
+    274          
+    275                case GATT_CHAR_USER_DESC_UUID:
+    276                  pRec = charUserDescUUID;
+   \                     ??GATT_FindUUIDRec_8:
+   \   0000AB   7A..         MOV     R2,#charUserDescUUID & 0xff
+   \   0000AD   7B..         MOV     R3,#(charUserDescUUID >> 8) & 0xff
+    277                  break;
+   \   0000AF   804C         SJMP    ??GATT_FindUUIDRec_0
+    278          
+    279                case GATT_CLIENT_CHAR_CFG_UUID:
+    280                  pRec = clientCharCfgUUID;
+   \                     ??GATT_FindUUIDRec_9:
+   \   0000B1   7A..         MOV     R2,#clientCharCfgUUID & 0xff
+   \   0000B3   7B..         MOV     R3,#(clientCharCfgUUID >> 8) & 0xff
+    281                  break;
+   \   0000B5   8046         SJMP    ??GATT_FindUUIDRec_0
+    282          
+    283                case GATT_SERV_CHAR_CFG_UUID:
+    284                  pRec = servCharCfgUUID;
+   \                     ??GATT_FindUUIDRec_10:
+   \   0000B7   7A..         MOV     R2,#servCharCfgUUID & 0xff
+   \   0000B9   7B..         MOV     R3,#(servCharCfgUUID >> 8) & 0xff
+    285                  break;
+   \   0000BB   8040         SJMP    ??GATT_FindUUIDRec_0
+    286          
+    287                case GATT_CHAR_FORMAT_UUID:
+    288                  pRec = charFormatUUID;
+   \                     ??GATT_FindUUIDRec_11:
+   \   0000BD   7A..         MOV     R2,#charFormatUUID & 0xff
+   \   0000BF   7B..         MOV     R3,#(charFormatUUID >> 8) & 0xff
+    289                  break;
+   \   0000C1   803A         SJMP    ??GATT_FindUUIDRec_0
+    290          
+    291                case GATT_CHAR_AGG_FORMAT_UUID:
+    292                  pRec = charAggFormatUUID;
+   \                     ??GATT_FindUUIDRec_12:
+   \   0000C3   7A..         MOV     R2,#charAggFormatUUID & 0xff
+   \   0000C5   7B..         MOV     R3,#(charAggFormatUUID >> 8) & 0xff
+    293                  break;
+   \   0000C7   8034         SJMP    ??GATT_FindUUIDRec_0
+    294          
+    295                case GATT_VALID_RANGE_UUID:
+    296                  pRec = validRangeUUID;
+   \                     ??GATT_FindUUIDRec_13:
+   \   0000C9   7A..         MOV     R2,#validRangeUUID & 0xff
+   \   0000CB   7B..         MOV     R3,#(validRangeUUID >> 8) & 0xff
+    297                  break;
+   \   0000CD   802E         SJMP    ??GATT_FindUUIDRec_0
+    298          
+    299                case GATT_EXT_REPORT_REF_UUID:
+    300                  pRec = extReportRefUUID;
+   \                     ??GATT_FindUUIDRec_14:
+   \   0000CF   7A..         MOV     R2,#extReportRefUUID & 0xff
+   \   0000D1   7B..         MOV     R3,#(extReportRefUUID >> 8) & 0xff
+    301                  break;
+   \   0000D3   8028         SJMP    ??GATT_FindUUIDRec_0
+    302          
+    303                case GATT_REPORT_REF_UUID:
+    304                  pRec = reportRefUUID;
+   \                     ??GATT_FindUUIDRec_15:
+   \   0000D5   7A..         MOV     R2,#reportRefUUID & 0xff
+   \   0000D7   7B..         MOV     R3,#(reportRefUUID >> 8) & 0xff
+    305                  break;
+   \   0000D9   8022         SJMP    ??GATT_FindUUIDRec_0
+    306          
+    307                /*** GATT Characteristics ***/
+    308          
+    309                case DEVICE_NAME_UUID:
+    310                  pRec = deviceNameUUID;
+   \                     ??GATT_FindUUIDRec_16:
+   \   0000DB   7A..         MOV     R2,#deviceNameUUID & 0xff
+   \   0000DD   7B..         MOV     R3,#(deviceNameUUID >> 8) & 0xff
+    311                  break;
+   \   0000DF   801C         SJMP    ??GATT_FindUUIDRec_0
+    312          
+    313                case APPEARANCE_UUID:
+    314                  pRec = appearanceUUID;
+   \                     ??GATT_FindUUIDRec_17:
+   \   0000E1   7A..         MOV     R2,#appearanceUUID & 0xff
+   \   0000E3   7B..         MOV     R3,#(appearanceUUID >> 8) & 0xff
+    315                  break;
+   \   0000E5   8016         SJMP    ??GATT_FindUUIDRec_0
+    316          
+    317                case RECONNECT_ADDR_UUID:
+    318                  pRec = reconnectAddrUUID;
+   \                     ??GATT_FindUUIDRec_19:
+   \   0000E7   7A..         MOV     R2,#reconnectAddrUUID & 0xff
+   \   0000E9   7B..         MOV     R3,#(reconnectAddrUUID >> 8) & 0xff
+    319                  break;
+   \   0000EB   8010         SJMP    ??GATT_FindUUIDRec_0
+    320          
+    321                case PERI_PRIVACY_FLAG_UUID:
+    322                  pRec = periPrivacyFlagUUID;
+   \                     ??GATT_FindUUIDRec_18:
+   \   0000ED   7A..         MOV     R2,#periPrivacyFlagUUID & 0xff
+   \   0000EF   7B..         MOV     R3,#(periPrivacyFlagUUID >> 8) & 0xff
+    323                  break;
+   \   0000F1   800A         SJMP    ??GATT_FindUUIDRec_0
+    324          
+    325                case PERI_CONN_PARAM_UUID:
+    326                  pRec = periConnParamUUID;
+   \                     ??GATT_FindUUIDRec_20:
+   \   0000F3   7A..         MOV     R2,#periConnParamUUID & 0xff
+   \   0000F5   7B..         MOV     R3,#(periConnParamUUID >> 8) & 0xff
+    327                  break;
+   \   0000F7   8004         SJMP    ??GATT_FindUUIDRec_0
+    328          
+    329                case SERVICE_CHANGED_UUID:
+    330                  pRec = serviceChangedUUID;
+   \                     ??GATT_FindUUIDRec_21:
+   \   0000F9   7A..         MOV     R2,#serviceChangedUUID & 0xff
+   \   0000FB   7B..         MOV     R3,#(serviceChangedUUID >> 8) & 0xff
+    331                  break;
+    332          
+    333                /*** GATT Units ***/
+    334          
+    335                default:
+    336                  break;
+    337              }
+    338            }
+    339            else if ( len == ATT_UUID_SIZE )
+    340            {
+    341              // 128-bit UUID
+    342            }
+    343          
+    344            return ( pRec );
+   \                     ??GATT_FindUUIDRec_0:
+   \   0000FD   7F02         MOV     R7,#0x2
+   \   0000FF   02....       LJMP    ?BANKED_LEAVE_XDATA
+    345          }
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??GATT_FindUUIDRec?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    GATT_FindUUIDRec
+    346          
+    347          /****************************************************************************
+    348          ****************************************************************************/
+
+   Maximum stack usage in bytes:
+
+   XSTACK Function
+   ------ --------
+     10   GATT_FindUUIDRec
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       6  ??GATT_FindUUIDRec?relay
+     258  GATT_FindUUIDRec
+       2  appearanceUUID
+       2  charAggFormatUUID
+       2  charExtPropsUUID
+       2  charFormatUUID
+       2  charUserDescUUID
+       2  characterUUID
+       2  clientCharCfgUUID
+       2  deviceNameUUID
+       2  extReportRefUUID
+       2  gapServiceUUID
+       2  gattServiceUUID
+       2  includeUUID
+       2  periConnParamUUID
+       2  periPrivacyFlagUUID
+       2  primaryServiceUUID
+       2  reconnectAddrUUID
+       2  reportRefUUID
+       2  secondaryServiceUUID
+       2  servCharCfgUUID
+       2  serviceChangedUUID
+       2  validRangeUUID
+
+ 
+ 258 bytes in segment BANKED_CODE
+   6 bytes in segment BANK_RELAYS
+  42 bytes in segment XDATA_ROM_C
+ 
+ 264 bytes of CODE  memory
+  42 bytes of CONST memory
+
+Errors: none
+Warnings: none

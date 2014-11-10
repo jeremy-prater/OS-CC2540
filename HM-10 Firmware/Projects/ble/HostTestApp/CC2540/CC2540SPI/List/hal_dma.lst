@@ -1,0 +1,389 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.30.1.41636 for 8051             02/Jun/2014  17:47:56 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Components\hal\tar #
+#                          get\CC2540EB\hal_dma.c                             #
+#    Command line       =  -f "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\config\buildComponents.cfg"    #
+#                          (-DBROADCASTER_CFG=0x01 -DOBSERVER_CFG=0x02        #
+#                          -DPERIPHERAL_CFG=0x04 -DCENTRAL_CFG=0x08           #
+#                          -DADV_NCONN_CFG=0x01 -DADV_CONN_CFG=0x02           #
+#                          -DSCAN_CFG=0x04 -DINIT_CFG=0x08                    #
+#                          -DADV_CFG=ADV_NCONN_CFG+ADV_CONN_CFG               #
+#                          -DLINK_CFG=ADV_CONN_CFG+INIT_CFG                   #
+#                          -DFULL_CFG=INIT_CFG+SCAN_CFG+ADV_NCONN_CFG+ADV_CON #
+#                          N_CFG) -f "c:\Users\Administrator\Documents\Dropbo #
+#                          x\Fish Brain\HM-10 Hack\HM-10                      #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\buildConf #
+#                          ig.cfg" (-DHOST_CONFIG=PERIPHERAL_CFG+CENTRAL_CFG  #
+#                          -DGAP_PRIVACY_RECONNECT)                           #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Components\hal\tar #
+#                          get\CC2540EB\hal_dma.c" -D INT_HEAP_LEN=2700 -D    #
+#                          HALNODEBUG -D OSAL_CBTIMER_NUM_TASKS=1 -D          #
+#                          POWER_SAVING -D HAL_AES_DMA=TRUE -D HAL_DMA=TRUE   #
+#                          -D HAL_UART=TRUE -D HAL_UART_DMA=0 -D              #
+#                          HAL_UART_ISR=0 -D HAL_UART_SPI=2 -D                #
+#                          HAL_SPI_QUEUED_TX=TRUE -D HAL_KEY=FALSE -D         #
+#                          HAL_LCD=FALSE -D HAL_LED=FALSE -D                  #
+#                          GATT_DB_OFF_CHIP -D GAP_BOND_MGR -lCN              #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -lA                 #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -o                  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\" -e --debug           #
+#                          --core=plain --dptr=16,1 --data_model=large        #
+#                          --code_model=banked --calling_convention=xdata_ree #
+#                          ntrant --place_constants=data_rom                  #
+#                          --nr_virtual_regs 8 -I "c:\Users\Administrator\Doc #
+#                          uments\Dropbox\Fish Brain\HM-10 Hack\HM-10         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\com #
+#                          mon\" -I "c:\Users\Administrator\Documents\Dropbox #
+#                          \Fish Brain\HM-10 Hack\HM-10                       #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\hal\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\hal\target\CC #
+#                          2540EB\" -I "c:\Users\Administrator\Documents\Drop #
+#                          box\Fish Brain\HM-10 Hack\HM-10                    #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\osal\include\" -I                    #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\services\sadd #
+#                          r\" -I "c:\Users\Administrator\Documents\Dropbox\F #
+#                          ish Brain\HM-10 Hack\HM-10                         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\controlle #
+#                          r\phy\" -I "c:\Users\Administrator\Documents\Dropb #
+#                          ox\Fish Brain\HM-10 Hack\HM-10                     #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\controller\include\" -I          #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\hci\" -I  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\host\"    #
+#                          -I "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\cc2540\" -I             #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\npi\npi_np\" -I         #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Include\" -I                   #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Profiles\Roles\" -I            #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\source\" -Ohz                     #
+#    List file          =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\hal_dma.lst           #
+#    Object file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\hal_dma.r51            #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Components\hal\target\CC2540EB\hal_dma.c
+      1          /**************************************************************************************************
+      2            Filename:       hal_dma.c
+      3            Revised:        $Date: 2012-07-18 12:44:06 -0700 (Wed, 18 Jul 2012) $
+      4            Revision:       $Revision: 30952 $
+      5          
+      6            Description:    This file contains the interface to the DMA.
+      7          
+      8          
+      9            Copyright 2009-2012 Texas Instruments Incorporated. All rights reserved.
+     10          
+     11            IMPORTANT: Your use of this Software is limited to those specific rights
+     12            granted under the terms of a software license agreement between the user
+     13            who downloaded the software, his/her employer (which must be your employer)
+     14            and Texas Instruments Incorporated (the "License").  You may not use this
+     15            Software unless you agree to abide by the terms of the License. The License
+     16            limits your use, and you acknowledge, that the Software may not be modified,
+     17            copied or distributed unless embedded on a Texas Instruments microcontroller
+     18            or used solely and exclusively in conjunction with a Texas Instruments radio
+     19            frequency transceiver, which is integrated into your product.  Other than for
+     20            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     21            works of, modify, distribute, perform, display or sell this Software and/or
+     22            its documentation for any purpose.
+     23          
+     24            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     25            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     26            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     27            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     28            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     29            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     30            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     31            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     32            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     33            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     34            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     35          
+     36            Should you have any questions regarding your right to use this Software,
+     37            contact Texas Instruments Incorporated at www.TI.com.
+     38          **************************************************************************************************/
+     39          
+     40          /*********************************************************************
+     41           * INCLUDES
+     42           */
+     43          
+     44          #include "hal_dma.h"
+
+   \                                 In  segment SFR_AN, at 0xa8
+   \   union <unnamed> volatile __sfr _A_IEN0
+   \                     _A_IEN0:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xb8
+   \   union <unnamed> volatile __sfr _A_IEN1
+   \                     _A_IEN1:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xc0
+   \   union <unnamed> volatile __sfr _A_IRCON
+   \                     _A_IRCON:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xd1
+   \   unsigned char volatile __sfr DMAIRQ
+   \                     DMAIRQ:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xd2
+   \   unsigned char volatile __sfr DMA1CFGL
+   \                     DMA1CFGL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xd3
+   \   unsigned char volatile __sfr DMA1CFGH
+   \                     DMA1CFGH:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xd4
+   \   unsigned char volatile __sfr DMA0CFGL
+   \                     DMA0CFGL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xd5
+   \   unsigned char volatile __sfr DMA0CFGH
+   \                     DMA0CFGH:
+   \   000000                DS 1
+     45          #include "hal_mcu.h"
+     46          #include "hal_types.h"
+     47          #include "hal_uart.h"
+     48          
+     49          #if (defined HAL_IRGEN) && (HAL_IRGEN == TRUE)
+     50          #include "hal_irgen.h"
+     51          #endif
+     52          
+     53          #if ((defined HAL_DMA) && (HAL_DMA == TRUE))
+     54          
+     55          /*********************************************************************
+     56           * GLOBAL VARIABLES
+     57           */
+     58          
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     59          halDMADesc_t dmaCh0;
+   \                     dmaCh0:
+   \   000000                DS 8
+   \   000008                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     60          halDMADesc_t dmaCh1234[4];
+   \                     dmaCh1234:
+   \   000000                DS 32
+   \   000020                REQUIRE __INIT_XDATA_Z
+     61          
+     62          /******************************************************************************
+     63           * @fn      HalDMAInit
+     64           *
+     65           * @brief   DMA Interrupt Service Routine
+     66           *
+     67           * @param   None
+     68           *
+     69           * @return  None
+     70           *****************************************************************************/
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     71          void HalDmaInit( void )
+   \                     HalDmaInit:
+     72          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+     73            HAL_DMA_SET_ADDR_DESC0( &dmaCh0 );
+   \   000000   74..         MOV     A,#(dmaCh0 >> 8) & 0xff
+   \   000002   F5D5         MOV     0xd5,A
+   \   000004   75D4..       MOV     0xd4,#dmaCh0 & 0xff
+     74            HAL_DMA_SET_ADDR_DESC1234( dmaCh1234 );
+   \   000007   74..         MOV     A,#(dmaCh1234 >> 8) & 0xff
+   \   000009   F5D3         MOV     0xd3,A
+   \   00000B   75D2..       MOV     0xd2,#dmaCh1234 & 0xff
+     75          #if (HAL_UART_DMA || \
+     76             ((defined HAL_UART_SPI) && (HAL_UART_SPI != 0)) || \
+     77             ((defined HAL_IRGEN) && (HAL_IRGEN == TRUE)))
+     78            DMAIE = 1;
+   \   00000E   D2B8         SETB    0xb8.0
+     79          #endif
+     80          }
+   \   000010   02....       LJMP    ?BRET
+   \   000013                REQUIRE DMA0CFGH
+   \   000013                REQUIRE DMA0CFGL
+   \   000013                REQUIRE DMA1CFGH
+   \   000013                REQUIRE DMA1CFGL
+   \   000013                REQUIRE _A_IEN1
+     81          
+     82          #if (HAL_UART_DMA || \
+     83             ((defined HAL_UART_SPI) && (HAL_UART_SPI != 0)) || \
+     84             ((defined HAL_IRGEN) && (HAL_IRGEN == TRUE)))
+     85          /******************************************************************************
+     86           * @fn      HalDMAInit
+     87           *
+     88           * @brief   DMA Interrupt Service Routine
+     89           *
+     90           * @param   None
+     91           *
+     92           * @return  None
+     93           *****************************************************************************/
+
+   \                                 In  segment NEAR_CODE, align 1, keep-with-next
+     94          HAL_ISR_FUNCTION( halDmaIsr, DMA_VECTOR )
+   \                     halDmaIsr:
+     95          {
+   \   000000   C0E0         PUSH    A
+   \   000002   74F2         MOV     A,#-0xe
+   \   000004   12....       LCALL   ?INTERRUPT_ENTER_XSP
+   \   000007                ; Saved register size: 14
+   \   000007                ; Auto size: 0
+     96            HAL_ENTER_ISR();
+   \   000007   A2AF         MOV     C,0xa8.7
+   \   000009   E4           CLR     A
+   \   00000A   33           RLC     A
+   \   00000B   FE           MOV     R6,A
+   \   00000C   D2AF         SETB    0xa8.7
+     97          
+     98            DMAIF = 0;
+   \   00000E   C2C0         CLR     0xc0.0
+     99          
+    100          #if (((defined HAL_UART_DMA) && (HAL_UART_DMA != 0)) || \
+    101               ((defined HAL_UART_SPI) && (HAL_UART_SPI != 0)))
+    102            if (HAL_DMA_CHECK_IRQ(HAL_DMA_CH_TX))
+   \   000010   E5D1         MOV     A,0xd1
+   \   000012   A2E4         MOV     C,0xE0 /* A   */.4
+   \   000014   5006         JNC     ??halDmaIsr_0
+    103            {
+    104              HAL_DMA_CLEAR_IRQ(HAL_DMA_CH_TX);
+   \   000016   53D1EF       ANL     0xd1,#0xef
+    105              extern void HalUARTIsrDMA(void);
+    106              HalUARTIsrDMA();
+   \   000019                ; Setup parameters for call to function HalUARTIsrDMA
+   \   000019   12....       LCALL   ??HalUARTIsrDMA?relay; Banked call to: HalUARTIsrDMA
+    107            }
+    108          #endif
+    109          
+    110          #if (defined HAL_IRGEN) && (HAL_IRGEN == TRUE)
+    111            if ( HAL_IRGEN == TRUE && HAL_DMA_CHECK_IRQ( HAL_IRGEN_DMA_CH ) )
+    112            {
+    113              HAL_DMA_CLEAR_IRQ( HAL_IRGEN_DMA_CH );
+    114              HalIrGenDmaIsr();
+    115            }
+    116          #endif
+    117          
+    118            CLEAR_SLEEP_MODE();
+   \                     ??halDmaIsr_0:
+   \   00001C   75..00       MOV     halSleepPconValue,#0x0
+    119            HAL_EXIT_ISR();
+   \   00001F   EE           MOV     A,R6
+   \   000020   A2E0         MOV     C,0xE0 /* A   */.0
+   \   000022   92AF         MOV     0xa8.7,C
+    120          
+    121            return;
+   \   000024   7F01         MOV     R7,#0x1
+   \   000026   02....       LJMP    ?INTERRUPT_LEAVE_XSP
+   \   000029                REQUIRE _A_IEN0
+   \   000029                REQUIRE _A_IRCON
+   \   000029                REQUIRE DMAIRQ
+    122          }
+
+   \                                 In  segment INTVEC, offset 0x43, root
+   \                     `??halDmaIsr??INTVEC 67`:
+   \   000043   02....       LJMP       (halDmaIsr)
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??HalDmaInit?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    HalDmaInit
+    123          #endif
+    124          #endif  // #if ((defined HAL_DMA) && (HAL_DMA == TRUE))
+    125          
+    126          /******************************************************************************
+    127          ******************************************************************************/
+
+   Maximum stack usage in bytes:
+
+   XSTACK Function
+   ------ --------
+      0   HalDmaInit
+     14   halDmaIsr
+       14   -> HalUARTIsrDMA
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       6  ??HalDmaInit?relay
+       3  ??halDmaIsr??INTVEC 67
+       1  DMA0CFGH
+       1  DMA0CFGL
+       1  DMA1CFGH
+       1  DMA1CFGL
+       1  DMAIRQ
+      19  HalDmaInit
+       1  _A_IEN0
+       1  _A_IEN1
+       1  _A_IRCON
+       8  dmaCh0
+      32  dmaCh1234
+      41  halDmaIsr
+
+ 
+ 19 bytes in segment BANKED_CODE
+  6 bytes in segment BANK_RELAYS
+  3 bytes in segment INTVEC
+ 41 bytes in segment NEAR_CODE
+  8 bytes in segment SFR_AN
+ 40 bytes in segment XDATA_Z
+ 
+ 66 bytes of CODE  memory (+ 3 bytes shared)
+  0 bytes of DATA  memory (+ 8 bytes shared)
+ 40 bytes of XDATA memory
+
+Errors: none
+Warnings: none

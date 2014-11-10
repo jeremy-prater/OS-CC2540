@@ -1,0 +1,17 @@
+Zilog Z8 Encore! Macro Assembler Version 2.52 (11010702) 29-Apr-14     19:05:16     page:   1
+
+
+PC     Object              I  Line    Source 
+                           A     1    ; Zilog Z8 Encore! ANSI C Compiler Release 3.62
+                           A     2    ; -nolocalcse -optsize -nofastcall -const=RAM -
+                           A     3    ; -nooptlink -noregvar -reduceopt -debug -norev
+                           A     4    ; -alias 
+                           A     5    	DEFINE terface_TEXT,SPACE=ROM
+                           A     6    	FILE	"..\OLDINTERFACE.C"
+                           A     7    .debug "C"
+                           A     8    	END
+
+
+Errors: 0
+Warnings: 0
+Lines Assembled: 9

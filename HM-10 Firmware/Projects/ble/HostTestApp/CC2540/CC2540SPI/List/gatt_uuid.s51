@@ -1,0 +1,1208 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V8.30.1.41636 for 8051            02/Jun/2014  17:47:56 /
+// Copyright 2004-2013 IAR Systems AB.                                        /
+//                                                                            /
+//    Core               =  plain                                             /
+//    Code model         =  banked                                            /
+//    Data model         =  large                                             /
+//    Calling convention =  xdata reentrant                                   /
+//    Constant location  =  data_rom                                          /
+//    Dptr setup         =  1,16                                              /
+//                                                                            /
+//    Source file        =  c:\Users\Administrator\Documents\Dropbox\Fish     /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Components\ble\ho /
+//                          st\gatt_uuid.c                                    /
+//    Command line       =  -f "c:\Users\Administrator\Documents\Dropbox\Fish /
+//                           Brain\HM-10 Hack\HM-10                           /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\co /
+//                          nfig\buildComponents.cfg"                         /
+//                          (-DBROADCASTER_CFG=0x01 -DOBSERVER_CFG=0x02       /
+//                          -DPERIPHERAL_CFG=0x04 -DCENTRAL_CFG=0x08          /
+//                          -DADV_NCONN_CFG=0x01 -DADV_CONN_CFG=0x02          /
+//                          -DSCAN_CFG=0x04 -DINIT_CFG=0x08                   /
+//                          -DADV_CFG=ADV_NCONN_CFG+ADV_CONN_CFG              /
+//                          -DLINK_CFG=ADV_CONN_CFG+INIT_CFG                  /
+//                          -DFULL_CFG=INIT_CFG+SCAN_CFG+ADV_NCONN_CFG+ADV_CO /
+//                          NN_CFG) -f "c:\Users\Administrator\Documents\Drop /
+//                          box\Fish Brain\HM-10 Hack\HM-10                   /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\buildCon /
+//                          fig.cfg" (-DHOST_CONFIG=PERIPHERAL_CFG+CENTRAL_CF /
+//                          G -DGAP_PRIVACY_RECONNECT)                        /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Components\ble\ho /
+//                          st\gatt_uuid.c" -D INT_HEAP_LEN=2700 -D           /
+//                          HALNODEBUG -D OSAL_CBTIMER_NUM_TASKS=1 -D         /
+//                          POWER_SAVING -D HAL_AES_DMA=TRUE -D HAL_DMA=TRUE  /
+//                          -D HAL_UART=TRUE -D HAL_UART_DMA=0 -D             /
+//                          HAL_UART_ISR=0 -D HAL_UART_SPI=2 -D               /
+//                          HAL_SPI_QUEUED_TX=TRUE -D HAL_KEY=FALSE -D        /
+//                          HAL_LCD=FALSE -D HAL_LED=FALSE -D                 /
+//                          GATT_DB_OFF_CHIP -D GAP_BOND_MGR -lCN             /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\List\" -lA               /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\List\" -o                /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\Obj\" -e --debug         /
+//                          --core=plain --dptr=16,1 --data_model=large       /
+//                          --code_model=banked --calling_convention=xdata_re /
+//                          entrant --place_constants=data_rom                /
+//                          --nr_virtual_regs 8 -I "c:\Users\Administrator\Do /
+//                          cuments\Dropbox\Fish Brain\HM-10 Hack\HM-10       /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\co /
+//                          mmon\" -I "c:\Users\Administrator\Documents\Dropb /
+//                          ox\Fish Brain\HM-10 Hack\HM-10                    /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\hal\include\" -I                   /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\hal\target\ /
+//                          CC2540EB\" -I "c:\Users\Administrator\Documents\D /
+//                          ropbox\Fish Brain\HM-10 Hack\HM-10                /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\osal\include\" -I                  /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\services\sa /
+//                          ddr\" -I "c:\Users\Administrator\Documents\Dropbo /
+//                          x\Fish Brain\HM-10 Hack\HM-10                     /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\ble\include\" -I                   /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\ble\control /
+//                          ler\phy\" -I "c:\Users\Administrator\Documents\Dr /
+//                          opbox\Fish Brain\HM-10 Hack\HM-10                 /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\ble\controller\include\" -I        /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\ble\hci\"   /
+//                          -I "c:\Users\Administrator\Documents\Dropbox\Fish /
+//                           Brain\HM-10 Hack\HM-10                           /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\ble\host\" -I                      /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\common\cc2540\" -I           /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\common\npi\npi_np\" -I       /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\Include\" -I                 /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\Profiles\Roles\" -I          /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\source\" -Ohz                   /
+//    List file          =  c:\Users\Administrator\Documents\Dropbox\Fish     /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\List\gatt_uuid.s51       /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME gatt_uuid
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?V0
+        EXTERN ?V1
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BDISPATCH
+        EXTERN ?US_SWITCH_SPARSE
+
+        PUBLIC ??GATT_FindUUIDRec?relay
+        FUNCTION ??GATT_FindUUIDRec?relay,0203H
+        PUBLIC GATT_FindUUIDRec
+        FUNCTION GATT_FindUUIDRec,080203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        PUBLIC appearanceUUID
+        PUBLIC charAggFormatUUID
+        PUBLIC charExtPropsUUID
+        PUBLIC charFormatUUID
+        PUBLIC charUserDescUUID
+        PUBLIC characterUUID
+        PUBLIC clientCharCfgUUID
+        PUBLIC deviceNameUUID
+        PUBLIC extReportRefUUID
+        PUBLIC gapServiceUUID
+        PUBLIC gattServiceUUID
+        PUBLIC includeUUID
+        PUBLIC periConnParamUUID
+        PUBLIC periPrivacyFlagUUID
+        PUBLIC primaryServiceUUID
+        PUBLIC reconnectAddrUUID
+        PUBLIC reportRefUUID
+        PUBLIC secondaryServiceUUID
+        PUBLIC servCharCfgUUID
+        PUBLIC serviceChangedUUID
+        PUBLIC validRangeUUID
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+GATT_FindUUIDRec    SYMBOL "GATT_FindUUIDRec"
+??GATT_FindUUIDRec?relay SYMBOL "?relay", GATT_FindUUIDRec
+
+// c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Components\ble\host\gatt_uuid.c
+//    1 /**************************************************************************************************
+//    2   Filename:       gatt_uuid.c
+//    3   Revised:        $Date: 2009-06-29 16:20:52 -0700 (Mon, 29 Jun 2009) $
+//    4   Revision:       $Revision: 20240 $
+//    5 
+//    6   Description:    This file contains Generic Attribute Profile (GATT)
+//    7                   UUID types.
+//    8 
+//    9 
+//   10   Copyright 2011-2013 Texas Instruments Incorporated. All rights reserved.
+//   11 
+//   12   IMPORTANT: Your use of this Software is limited to those specific rights
+//   13   granted under the terms of a software license agreement between the user
+//   14   who downloaded the software, his/her employer (which must be your employer)
+//   15   and Texas Instruments Incorporated (the "License").  You may not use this
+//   16   Software unless you agree to abide by the terms of the License. The License
+//   17   limits your use, and you acknowledge, that the Software may not be modified,
+//   18   copied or distributed unless embedded on a Texas Instruments microcontroller
+//   19   or used solely and exclusively in conjunction with a Texas Instruments radio
+//   20   frequency transceiver, which is integrated into your product.  Other than for
+//   21   the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//   22   works of, modify, distribute, perform, display or sell this Software and/or
+//   23   its documentation for any purpose.
+//   24 
+//   25   YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//   26   PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+//   27   INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+//   28   NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//   29   TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//   30   NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//   31   LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//   32   INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//   33   OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//   34   OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//   35   (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//   36 
+//   37   Should you have any questions regarding your right to use this Software,
+//   38   contact Texas Instruments Incorporated at www.TI.com.
+//   39 **************************************************************************************************/
+//   40 
+//   41 
+//   42 /*********************************************************************
+//   43  * INCLUDES
+//   44  */
+//   45 #include "comdef.h"
+//   46 #include "OSAL.h"
+//   47 
+//   48 #include "gatt.h"
+//   49 #include "gatt_uuid.h"
+//   50 
+//   51 /*********************************************************************
+//   52  * MACROS
+//   53  */
+//   54 
+//   55 /*********************************************************************
+//   56  * CONSTANTS
+//   57  */
+//   58 
+//   59 /*********************************************************************
+//   60  * TYPEDEFS
+//   61  */
+//   62 
+//   63 /*********************************************************************
+//   64  * GLOBAL VARIABLES
+//   65  */
+//   66 
+//   67 /**
+//   68  * GATT Services
+//   69  */
+//   70 // Generic Access Profile Service UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//   71 CONST uint8 gapServiceUUID[ATT_BT_UUID_SIZE] =
+gapServiceUUID:
+        DATA8
+        DB 0
+        DB 24
+//   72 {
+//   73   LO_UINT16( GAP_SERVICE_UUID ), HI_UINT16( GAP_SERVICE_UUID )
+//   74 };
+//   75 
+//   76 // Generic Attribute Profile Service UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//   77 CONST uint8 gattServiceUUID[ATT_BT_UUID_SIZE] =
+gattServiceUUID:
+        DATA8
+        DB 1
+        DB 24
+//   78 {
+//   79   LO_UINT16( GATT_SERVICE_UUID ), HI_UINT16( GATT_SERVICE_UUID )
+//   80 };
+//   81 
+//   82 /**
+//   83  * GATT Declarations
+//   84  */
+//   85 // Primary Service UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//   86 CONST uint8 primaryServiceUUID[ATT_BT_UUID_SIZE] =
+primaryServiceUUID:
+        DATA8
+        DB 0
+        DB 40
+//   87 {
+//   88   LO_UINT16( GATT_PRIMARY_SERVICE_UUID ), HI_UINT16( GATT_PRIMARY_SERVICE_UUID )
+//   89 };
+//   90 
+//   91 // Secondary Service UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//   92 CONST uint8 secondaryServiceUUID[ATT_BT_UUID_SIZE] =
+secondaryServiceUUID:
+        DATA8
+        DB 1
+        DB 40
+//   93 {
+//   94   LO_UINT16( GATT_SECONDARY_SERVICE_UUID ), HI_UINT16( GATT_SECONDARY_SERVICE_UUID )
+//   95 };
+//   96 
+//   97 // Include UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//   98 CONST uint8 includeUUID[ATT_BT_UUID_SIZE] =
+includeUUID:
+        DATA8
+        DB 2
+        DB 40
+//   99 {
+//  100   LO_UINT16( GATT_INCLUDE_UUID ), HI_UINT16( GATT_INCLUDE_UUID )
+//  101 };
+//  102 
+//  103 // Characteristic UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  104 CONST uint8 characterUUID[ATT_BT_UUID_SIZE] =
+characterUUID:
+        DATA8
+        DB 3
+        DB 40
+//  105 {
+//  106   LO_UINT16( GATT_CHARACTER_UUID ), HI_UINT16( GATT_CHARACTER_UUID )
+//  107 };
+//  108 
+//  109 /**
+//  110  * GATT Descriptors
+//  111  */
+//  112 // Characteristic Extended Properties UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  113 CONST uint8 charExtPropsUUID[ATT_BT_UUID_SIZE] =
+charExtPropsUUID:
+        DATA8
+        DB 0
+        DB 41
+//  114 {
+//  115   LO_UINT16( GATT_CHAR_EXT_PROPS_UUID ), HI_UINT16( GATT_CHAR_EXT_PROPS_UUID )
+//  116 };
+//  117 
+//  118 // Characteristic User Description UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  119 CONST uint8 charUserDescUUID[ATT_BT_UUID_SIZE] =
+charUserDescUUID:
+        DATA8
+        DB 1
+        DB 41
+//  120 {
+//  121   LO_UINT16( GATT_CHAR_USER_DESC_UUID ), HI_UINT16( GATT_CHAR_USER_DESC_UUID )
+//  122 };
+//  123 
+//  124 // Client Characteristic Configuration UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  125 CONST uint8 clientCharCfgUUID[ATT_BT_UUID_SIZE] =
+clientCharCfgUUID:
+        DATA8
+        DB 2
+        DB 41
+//  126 {
+//  127   LO_UINT16( GATT_CLIENT_CHAR_CFG_UUID ), HI_UINT16( GATT_CLIENT_CHAR_CFG_UUID )
+//  128 };
+//  129 
+//  130 // Server Characteristic Configuration UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  131 CONST uint8 servCharCfgUUID[ATT_BT_UUID_SIZE] =
+servCharCfgUUID:
+        DATA8
+        DB 3
+        DB 41
+//  132 {
+//  133   LO_UINT16( GATT_SERV_CHAR_CFG_UUID ), HI_UINT16( GATT_SERV_CHAR_CFG_UUID )
+//  134 };
+//  135 
+//  136 // Characteristic Presentation Format UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  137 CONST uint8 charFormatUUID[ATT_BT_UUID_SIZE] =
+charFormatUUID:
+        DATA8
+        DB 4
+        DB 41
+//  138 {
+//  139   LO_UINT16( GATT_CHAR_FORMAT_UUID ), HI_UINT16( GATT_CHAR_FORMAT_UUID )
+//  140 };
+//  141 
+//  142 // Characteristic Aggregate Format UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  143 CONST uint8 charAggFormatUUID[ATT_BT_UUID_SIZE] =
+charAggFormatUUID:
+        DATA8
+        DB 5
+        DB 41
+//  144 {
+//  145   LO_UINT16( GATT_CHAR_AGG_FORMAT_UUID ), HI_UINT16( GATT_CHAR_AGG_FORMAT_UUID )
+//  146 };
+//  147 
+//  148 /**
+//  149  * GATT Characteristics
+//  150  */
+//  151 // Device Name UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  152 CONST uint8 deviceNameUUID[ATT_BT_UUID_SIZE] =
+deviceNameUUID:
+        DATA8
+        DB 0
+        DB 42
+//  153 {
+//  154   LO_UINT16( DEVICE_NAME_UUID ), HI_UINT16( DEVICE_NAME_UUID )
+//  155 };
+//  156 
+//  157 // Appearance UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  158 CONST uint8 appearanceUUID[ATT_BT_UUID_SIZE] =
+appearanceUUID:
+        DATA8
+        DB 1
+        DB 42
+//  159 {
+//  160   LO_UINT16( APPEARANCE_UUID ), HI_UINT16( APPEARANCE_UUID )
+//  161 };
+//  162 
+//  163 // Peripheral Privacy Flag UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  164 CONST uint8 periPrivacyFlagUUID[ATT_BT_UUID_SIZE] =
+periPrivacyFlagUUID:
+        DATA8
+        DB 2
+        DB 42
+//  165 {
+//  166   LO_UINT16( PERI_PRIVACY_FLAG_UUID ), HI_UINT16( PERI_PRIVACY_FLAG_UUID )
+//  167 };
+//  168 
+//  169 // Reconnection Address UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  170 CONST uint8 reconnectAddrUUID[ATT_BT_UUID_SIZE] =
+reconnectAddrUUID:
+        DATA8
+        DB 3
+        DB 42
+//  171 {
+//  172   LO_UINT16( RECONNECT_ADDR_UUID ), HI_UINT16( RECONNECT_ADDR_UUID )
+//  173 };
+//  174 
+//  175 // Peripheral Preferred Connection Parameters UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  176 CONST uint8 periConnParamUUID[ATT_BT_UUID_SIZE] =
+periConnParamUUID:
+        DATA8
+        DB 4
+        DB 42
+//  177 {
+//  178   LO_UINT16( PERI_CONN_PARAM_UUID ), HI_UINT16( PERI_CONN_PARAM_UUID )
+//  179 };
+//  180 
+//  181 // Service Changed UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  182 CONST uint8 serviceChangedUUID[ATT_BT_UUID_SIZE] =
+serviceChangedUUID:
+        DATA8
+        DB 5
+        DB 42
+//  183 {
+//  184   LO_UINT16( SERVICE_CHANGED_UUID ), HI_UINT16( SERVICE_CHANGED_UUID )
+//  185 };
+//  186 
+//  187 // Valid Range UUID
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  188 CONST uint8 validRangeUUID[ATT_BT_UUID_SIZE] =
+validRangeUUID:
+        DATA8
+        DB 6
+        DB 41
+//  189 {
+//  190   LO_UINT16( GATT_VALID_RANGE_UUID ), HI_UINT16( GATT_VALID_RANGE_UUID )
+//  191 };
+//  192 
+//  193 // External Report Reference Descriptor
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  194 CONST uint8 extReportRefUUID[ATT_BT_UUID_SIZE] =
+extReportRefUUID:
+        DATA8
+        DB 7
+        DB 41
+//  195 {
+//  196   LO_UINT16( GATT_EXT_REPORT_REF_UUID ), HI_UINT16( GATT_EXT_REPORT_REF_UUID )
+//  197 };
+//  198 
+//  199 // Report Reference characteristic descriptor
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA16
+//  200 CONST uint8 reportRefUUID[ATT_BT_UUID_SIZE] =
+reportRefUUID:
+        DATA8
+        DB 8
+        DB 41
+//  201 {
+//  202   LO_UINT16( GATT_REPORT_REF_UUID ), HI_UINT16( GATT_REPORT_REF_UUID )
+//  203 };
+//  204 
+//  205 /*********************************************************************
+//  206  * GLOBAL FUNCTIONS
+//  207  */
+//  208 
+//  209 /*********************************************************************
+//  210  * LOCAL VARIABLES
+//  211  */
+//  212 
+//  213 /*********************************************************************
+//  214  * LOCAL FUNCTIONS
+//  215  */
+//  216 
+//  217 /*********************************************************************
+//  218  * API FUNCTIONS
+//  219  */
+//  220 
+//  221 /*********************************************************************
+//  222  * @fn      GATT_FindUUIDRec
+//  223  *
+//  224  * @brief   Find the UUID record for a given UUID.
+//  225  *
+//  226  * @param   pUUID - UUID to look for.
+//  227  * @param   len - length of UUID.
+//  228  *
+//  229  * @return  Pointer to UUID record. NULL, otherwise.
+//  230  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  231 const uint8 *GATT_FindUUIDRec( const uint8 *pUUID, uint8 len )
+GATT_FindUUIDRec:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function GATT_FindUUIDRec
+        CODE
+//  232 {
+        REQUIRE ?V0
+        REQUIRE ?V1
+        MOV     A,#-0xa
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 10)
+        ; Saved register size: 10
+        ; Auto size: 0
+        MOV     DPL,R2
+        MOV     DPH,R3
+//  233   const uint8 *pRec = NULL;
+        MOV     R2,#0x0
+        MOV     R3,#0x0
+//  234 
+//  235   if ( len == ATT_BT_UUID_SIZE )
+        MOV     A,#0x2
+        XRL     A,R1
+        JZ      $+5
+        LJMP    ??GATT_FindUUIDRec_0 & 0xFFFF
+//  236   {
+//  237     // 16-bit UUID
+//  238     uint16 uuid = BUILD_UINT16( pUUID[0], pUUID[1] );
+//  239     switch ( uuid )
+        MOVX    A,@DPTR
+        MOV     R6,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R5,A
+        MOV     A,R6
+        ADD     A,R2
+        MOV     ?V0,A
+        CLR     A
+        ADDC    A,R5
+        MOV     ?V1,A
+        MOV     R0,#?V0
+        LCALL   ?US_SWITCH_SPARSE
+`?<Jumptable for GATT_FindUUIDRec>_0`:
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        0
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        21
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        6144
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_1
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        6145
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_2
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10240
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_3
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10241
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_4
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10242
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_5
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10243
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_6
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10496
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_7
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10497
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_8
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10498
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_9
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10499
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_10
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10500
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_11
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10501
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_12
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10502
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_13
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10503
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_14
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10504
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_15
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10752
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10753
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_17
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10754
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_18
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10755
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_19
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10756
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_20
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        10757
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_21
+        DATA
+        DATA16
+        DATA
+        DATA16
+        DW        ??GATT_FindUUIDRec_0
+        CODE
+//  240     {
+//  241       /*** GATT Services ***/
+//  242 
+//  243       case GAP_SERVICE_UUID:
+//  244         pRec = gapServiceUUID;
+??GATT_FindUUIDRec_1:
+        MOV     R2,#gapServiceUUID & 0xff
+        MOV     R3,#(gapServiceUUID >> 8) & 0xff
+//  245         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  246 
+//  247       case GATT_SERVICE_UUID:
+//  248         pRec = gattServiceUUID;
+??GATT_FindUUIDRec_2:
+        MOV     R2,#gattServiceUUID & 0xff
+        MOV     R3,#(gattServiceUUID >> 8) & 0xff
+//  249         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  250 
+//  251       /*** GATT Declarations ***/
+//  252 
+//  253       case GATT_PRIMARY_SERVICE_UUID:
+//  254         pRec = primaryServiceUUID;
+??GATT_FindUUIDRec_3:
+        MOV     R2,#primaryServiceUUID & 0xff
+        MOV     R3,#(primaryServiceUUID >> 8) & 0xff
+//  255         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  256 
+//  257       case GATT_SECONDARY_SERVICE_UUID:
+//  258         pRec = secondaryServiceUUID;
+??GATT_FindUUIDRec_4:
+        MOV     R2,#secondaryServiceUUID & 0xff
+        MOV     R3,#(secondaryServiceUUID >> 8) & 0xff
+//  259         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  260 
+//  261       case GATT_INCLUDE_UUID:
+//  262         pRec = includeUUID;
+??GATT_FindUUIDRec_5:
+        MOV     R2,#includeUUID & 0xff
+        MOV     R3,#(includeUUID >> 8) & 0xff
+//  263         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  264 
+//  265       case GATT_CHARACTER_UUID:
+//  266         pRec = characterUUID;
+??GATT_FindUUIDRec_6:
+        MOV     R2,#characterUUID & 0xff
+        MOV     R3,#(characterUUID >> 8) & 0xff
+//  267         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  268 
+//  269       /*** GATT Descriptors ***/
+//  270 
+//  271       case GATT_CHAR_EXT_PROPS_UUID:
+//  272         pRec = charExtPropsUUID;
+??GATT_FindUUIDRec_7:
+        MOV     R2,#charExtPropsUUID & 0xff
+        MOV     R3,#(charExtPropsUUID >> 8) & 0xff
+//  273         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  274 
+//  275       case GATT_CHAR_USER_DESC_UUID:
+//  276         pRec = charUserDescUUID;
+??GATT_FindUUIDRec_8:
+        MOV     R2,#charUserDescUUID & 0xff
+        MOV     R3,#(charUserDescUUID >> 8) & 0xff
+//  277         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  278 
+//  279       case GATT_CLIENT_CHAR_CFG_UUID:
+//  280         pRec = clientCharCfgUUID;
+??GATT_FindUUIDRec_9:
+        MOV     R2,#clientCharCfgUUID & 0xff
+        MOV     R3,#(clientCharCfgUUID >> 8) & 0xff
+//  281         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  282 
+//  283       case GATT_SERV_CHAR_CFG_UUID:
+//  284         pRec = servCharCfgUUID;
+??GATT_FindUUIDRec_10:
+        MOV     R2,#servCharCfgUUID & 0xff
+        MOV     R3,#(servCharCfgUUID >> 8) & 0xff
+//  285         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  286 
+//  287       case GATT_CHAR_FORMAT_UUID:
+//  288         pRec = charFormatUUID;
+??GATT_FindUUIDRec_11:
+        MOV     R2,#charFormatUUID & 0xff
+        MOV     R3,#(charFormatUUID >> 8) & 0xff
+//  289         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  290 
+//  291       case GATT_CHAR_AGG_FORMAT_UUID:
+//  292         pRec = charAggFormatUUID;
+??GATT_FindUUIDRec_12:
+        MOV     R2,#charAggFormatUUID & 0xff
+        MOV     R3,#(charAggFormatUUID >> 8) & 0xff
+//  293         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  294 
+//  295       case GATT_VALID_RANGE_UUID:
+//  296         pRec = validRangeUUID;
+??GATT_FindUUIDRec_13:
+        MOV     R2,#validRangeUUID & 0xff
+        MOV     R3,#(validRangeUUID >> 8) & 0xff
+//  297         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  298 
+//  299       case GATT_EXT_REPORT_REF_UUID:
+//  300         pRec = extReportRefUUID;
+??GATT_FindUUIDRec_14:
+        MOV     R2,#extReportRefUUID & 0xff
+        MOV     R3,#(extReportRefUUID >> 8) & 0xff
+//  301         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  302 
+//  303       case GATT_REPORT_REF_UUID:
+//  304         pRec = reportRefUUID;
+??GATT_FindUUIDRec_15:
+        MOV     R2,#reportRefUUID & 0xff
+        MOV     R3,#(reportRefUUID >> 8) & 0xff
+//  305         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  306 
+//  307       /*** GATT Characteristics ***/
+//  308 
+//  309       case DEVICE_NAME_UUID:
+//  310         pRec = deviceNameUUID;
+??GATT_FindUUIDRec_16:
+        MOV     R2,#deviceNameUUID & 0xff
+        MOV     R3,#(deviceNameUUID >> 8) & 0xff
+//  311         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  312 
+//  313       case APPEARANCE_UUID:
+//  314         pRec = appearanceUUID;
+??GATT_FindUUIDRec_17:
+        MOV     R2,#appearanceUUID & 0xff
+        MOV     R3,#(appearanceUUID >> 8) & 0xff
+//  315         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  316 
+//  317       case RECONNECT_ADDR_UUID:
+//  318         pRec = reconnectAddrUUID;
+??GATT_FindUUIDRec_19:
+        MOV     R2,#reconnectAddrUUID & 0xff
+        MOV     R3,#(reconnectAddrUUID >> 8) & 0xff
+//  319         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  320 
+//  321       case PERI_PRIVACY_FLAG_UUID:
+//  322         pRec = periPrivacyFlagUUID;
+??GATT_FindUUIDRec_18:
+        MOV     R2,#periPrivacyFlagUUID & 0xff
+        MOV     R3,#(periPrivacyFlagUUID >> 8) & 0xff
+//  323         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  324 
+//  325       case PERI_CONN_PARAM_UUID:
+//  326         pRec = periConnParamUUID;
+??GATT_FindUUIDRec_20:
+        MOV     R2,#periConnParamUUID & 0xff
+        MOV     R3,#(periConnParamUUID >> 8) & 0xff
+//  327         break;
+        SJMP    ??GATT_FindUUIDRec_0
+//  328 
+//  329       case SERVICE_CHANGED_UUID:
+//  330         pRec = serviceChangedUUID;
+??GATT_FindUUIDRec_21:
+        MOV     R2,#serviceChangedUUID & 0xff
+        MOV     R3,#(serviceChangedUUID >> 8) & 0xff
+//  331         break;
+//  332 
+//  333       /*** GATT Units ***/
+//  334 
+//  335       default:
+//  336         break;
+//  337     }
+//  338   }
+//  339   else if ( len == ATT_UUID_SIZE )
+//  340   {
+//  341     // 128-bit UUID
+//  342   }
+//  343 
+//  344   return ( pRec );
+??GATT_FindUUIDRec_0:
+        MOV     R7,#0x2
+        LJMP    ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock0
+//  345 }
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??GATT_FindUUIDRec?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    GATT_FindUUIDRec
+
+        END
+//  346 
+//  347 /****************************************************************************
+//  348 ****************************************************************************/
+// 
+// 258 bytes in segment BANKED_CODE
+//   6 bytes in segment BANK_RELAYS
+//  42 bytes in segment XDATA_ROM_C
+// 
+// 264 bytes of CODE  memory
+//  42 bytes of CONST memory
+//
+//Errors: none
+//Warnings: none

@@ -1,0 +1,23 @@
+OS CC-2540
+
+Directory Structure
+
+\Final Design.png -- Start here to see how the board is layed out
+\BLE v1.0 prater mod.sch -- HM-10 Host board schematic
+\BLE v1.0 prater mod.brd -- HM-10 Host board layout
+\OSCC2540 - BOM.csv -- HM-10 Host board Bill Of Materials
+\ATMega 328 SPI\ATMega 328 SPI.atsln -- ATMega 328 Firmware Project file for ATMEL Studio 6.2
+\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\HostTestRelease.eww -- IAR Project file for CC2540 firmware
+\Interface Board\Interface Board.zdsproj -- Project file for Zilog interface board
+\HM-10 SDI\HM-10 SDI.sln -- Visual Studio 2013 project for windows interface to OS-CC2540
+
+Best steps to start prototyping the firmware
+
+Look over the Final Design.png
+Look over Board schematic and layout
+Order BOM parts
+Order HM-10 Host Board from OSH Park
+Build Board
+Flash ATMega Firmware
+Flash CC2540 Firmware
+Start Issuing Commands via SPI to HM-10 Host Board

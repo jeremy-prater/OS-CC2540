@@ -1,0 +1,4335 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V8.30.1.41636 for 8051            02/Jun/2014  17:48:03 /
+// Copyright 2004-2013 IAR Systems AB.                                        /
+//                                                                            /
+//    Core               =  plain                                             /
+//    Code model         =  banked                                            /
+//    Data model         =  large                                             /
+//    Calling convention =  xdata reentrant                                   /
+//    Constant location  =  data_rom                                          /
+//    Dptr setup         =  1,16                                              /
+//                                                                            /
+//    Source file        =  c:\Users\Administrator\Documents\Dropbox\Fish     /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Components\osal\m /
+//                          cu\cc2540\osal_snv.c                              /
+//    Command line       =  -f "c:\Users\Administrator\Documents\Dropbox\Fish /
+//                           Brain\HM-10 Hack\HM-10                           /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\co /
+//                          nfig\buildComponents.cfg"                         /
+//                          (-DBROADCASTER_CFG=0x01 -DOBSERVER_CFG=0x02       /
+//                          -DPERIPHERAL_CFG=0x04 -DCENTRAL_CFG=0x08          /
+//                          -DADV_NCONN_CFG=0x01 -DADV_CONN_CFG=0x02          /
+//                          -DSCAN_CFG=0x04 -DINIT_CFG=0x08                   /
+//                          -DADV_CFG=ADV_NCONN_CFG+ADV_CONN_CFG              /
+//                          -DLINK_CFG=ADV_CONN_CFG+INIT_CFG                  /
+//                          -DFULL_CFG=INIT_CFG+SCAN_CFG+ADV_NCONN_CFG+ADV_CO /
+//                          NN_CFG) -f "c:\Users\Administrator\Documents\Drop /
+//                          box\Fish Brain\HM-10 Hack\HM-10                   /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\buildCon /
+//                          fig.cfg" (-DHOST_CONFIG=PERIPHERAL_CFG+CENTRAL_CF /
+//                          G -DGAP_PRIVACY_RECONNECT)                        /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Components\osal\m /
+//                          cu\cc2540\osal_snv.c" -D INT_HEAP_LEN=2700 -D     /
+//                          HALNODEBUG -D OSAL_CBTIMER_NUM_TASKS=1 -D         /
+//                          POWER_SAVING -D HAL_AES_DMA=TRUE -D HAL_DMA=TRUE  /
+//                          -D HAL_UART=TRUE -D HAL_UART_DMA=0 -D             /
+//                          HAL_UART_ISR=0 -D HAL_UART_SPI=2 -D               /
+//                          HAL_SPI_QUEUED_TX=TRUE -D HAL_KEY=FALSE -D        /
+//                          HAL_LCD=FALSE -D HAL_LED=FALSE -D                 /
+//                          GATT_DB_OFF_CHIP -D GAP_BOND_MGR -lCN             /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\List\" -lA               /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\List\" -o                /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\Obj\" -e --debug         /
+//                          --core=plain --dptr=16,1 --data_model=large       /
+//                          --code_model=banked --calling_convention=xdata_re /
+//                          entrant --place_constants=data_rom                /
+//                          --nr_virtual_regs 8 -I "c:\Users\Administrator\Do /
+//                          cuments\Dropbox\Fish Brain\HM-10 Hack\HM-10       /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\co /
+//                          mmon\" -I "c:\Users\Administrator\Documents\Dropb /
+//                          ox\Fish Brain\HM-10 Hack\HM-10                    /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\hal\include\" -I                   /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\hal\target\ /
+//                          CC2540EB\" -I "c:\Users\Administrator\Documents\D /
+//                          ropbox\Fish Brain\HM-10 Hack\HM-10                /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\osal\include\" -I                  /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\services\sa /
+//                          ddr\" -I "c:\Users\Administrator\Documents\Dropbo /
+//                          x\Fish Brain\HM-10 Hack\HM-10                     /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\ble\include\" -I                   /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\ble\control /
+//                          ler\phy\" -I "c:\Users\Administrator\Documents\Dr /
+//                          opbox\Fish Brain\HM-10 Hack\HM-10                 /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\ble\controller\include\" -I        /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\ble\hci\"   /
+//                          -I "c:\Users\Administrator\Documents\Dropbox\Fish /
+//                           Brain\HM-10 Hack\HM-10                           /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\ble\host\" -I                      /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\common\cc2540\" -I           /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\common\npi\npi_np\" -I       /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\Include\" -I                 /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\Profiles\Roles\" -I          /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\source\" -Ohz                   /
+//    List file          =  c:\Users\Administrator\Documents\Dropbox\Fish     /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\List\osal_snv.s51        /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME osal_snv
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?V0
+        EXTERN ?V1
+        EXTERN ?V2
+        EXTERN ?V3
+        EXTERN ?V4
+        EXTERN ?V5
+        EXTERN ?V6
+        EXTERN ?V7
+        EXTERN ?ALLOC_XSTACK8
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN ?DEALLOC_XSTACK8
+        EXTERN ?L_EQ_X
+        EXTERN ?L_MOV_X
+        EXTERN ?L_MUL
+        EXTERN ?L_SHL
+        EXTERN ?PUSH_XSTACK_I_ONE
+        EXTERN ?PUSH_XSTACK_I_TWO
+        EXTERN ?S_DIV_MOD
+        EXTERN ?S_SHL
+        EXTERN ?UL_GT
+        EXTERN ?US_SHR
+        EXTERN ?XLOAD_R0123
+        EXTERN ?XSP
+        EXTERN ?XSTACK_DISP0_8
+        EXTERN ?XSTACK_DISP101_8
+        EXTERN ?XSTACK_DISP102_8
+        EXTERN __INIT_XDATA_Z
+
+        FUNCTION ??cleanErasedPage?relay,0203H
+        FUNCTION ??compactPage?relay,0203H
+        FUNCTION ??erasePage?relay,0203H
+        FUNCTION ??findItem?relay,0203H
+        FUNCTION ??findOffset?relay,0203H
+        FUNCTION ??initNV?relay,0203H
+        PUBLIC ??osal_snv_compact?relay
+        FUNCTION ??osal_snv_compact?relay,0203H
+        PUBLIC ??osal_snv_init?relay
+        FUNCTION ??osal_snv_init?relay,0203H
+        PUBLIC ??osal_snv_read?relay
+        FUNCTION ??osal_snv_read?relay,0203H
+        PUBLIC ??osal_snv_write?relay
+        FUNCTION ??osal_snv_write?relay,0203H
+        FUNCTION ??setActivePage?relay,0203H
+        FUNCTION ??setXferPage?relay,0203H
+        FUNCTION ??verifyWordM?relay,0203H
+        FUNCTION ??writeItem?relay,0203H
+        FUNCTION ??writeWord?relay,0203H
+        PUBWEAK __Constant_100000
+        PUBWEAK __Constant_64
+        PUBWEAK __Constant_ffffffff
+        PUBLIC _nvBuf
+        FUNCTION cleanErasedPage,0a1203H
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 15, STACK
+        FUNCTION compactPage,0a1203H
+        ARGFRAME XSTACK, 17, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME XSTACK, 31, STACK
+        FUNCTION erasePage,0a1203H
+        ARGFRAME XSTACK, 29, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 15, STACK
+        FUNCTION findItem,0a1203H
+        ARGFRAME XSTACK, 29, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 18, STACK
+        FUNCTION findOffset,0a1203H
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 18, STACK
+        FUNCTION initNV,0a1203H
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 18, STACK
+        PUBLIC osal_snv_compact
+        FUNCTION osal_snv_compact,0a1203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 4, STACK
+        LOCFRAME XSTACK, 16, STACK
+        PUBLIC osal_snv_init
+        FUNCTION osal_snv_init,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC osal_snv_read
+        FUNCTION osal_snv_read,0a1203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 14, STACK
+        PUBLIC osal_snv_write
+        FUNCTION osal_snv_write,0a1203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 21, STACK
+        FUNCTION setActivePage,021203H
+        ARGFRAME XSTACK, 29, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 13, STACK
+        FUNCTION setXferPage,021203H
+        ARGFRAME XSTACK, 17, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 13, STACK
+        FUNCTION verifyWordM,0a1203H
+        ARGFRAME XSTACK, 22, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 21, STACK
+        FUNCTION writeItem,0a1203H
+        ARGFRAME XSTACK, 21, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME ISTACK, 1, STACK
+        LOCFRAME XSTACK, 23, STACK
+        FUNCTION writeWord,0a1203H
+        ARGFRAME XSTACK, 29, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 18, STACK
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-2
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B SameValue
+          CFI A SameValue
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT SameValue
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon1
+        
+HalFlashErase       SYMBOL "HalFlashErase"
+??HalFlashErase?relay SYMBOL "?relay", HalFlashErase
+HalFlashRead        SYMBOL "HalFlashRead"
+??HalFlashRead?relay SYMBOL "?relay", HalFlashRead
+HalFlashWrite       SYMBOL "HalFlashWrite"
+??HalFlashWrite?relay SYMBOL "?relay", HalFlashWrite
+osal_memcmp         SYMBOL "osal_memcmp"
+??osal_memcmp?relay SYMBOL "?relay", osal_memcmp
+osal_snv_compact    SYMBOL "osal_snv_compact"
+??osal_snv_compact?relay SYMBOL "?relay", osal_snv_compact
+osal_snv_init       SYMBOL "osal_snv_init"
+??osal_snv_init?relay SYMBOL "?relay", osal_snv_init
+osal_snv_read       SYMBOL "osal_snv_read"
+??osal_snv_read?relay SYMBOL "?relay", osal_snv_read
+osal_snv_write      SYMBOL "osal_snv_write"
+??osal_snv_write?relay SYMBOL "?relay", osal_snv_write
+
+        EXTERN ??HalFlashErase?relay
+        FUNCTION ??HalFlashErase?relay,00H
+        EXTERN ??HalFlashRead?relay
+        FUNCTION ??HalFlashRead?relay,00H
+        EXTERN ??HalFlashWrite?relay
+        FUNCTION ??HalFlashWrite?relay,00H
+        EXTERN ??osal_memcmp?relay
+        FUNCTION ??osal_memcmp?relay,00H
+        EXTERN HalFlashErase
+        FUNCTION HalFlashErase,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 13, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN HalFlashRead
+        FUNCTION HalFlashRead,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 31, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN HalFlashWrite
+        FUNCTION HalFlashWrite,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 23, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN osal_memcmp
+        FUNCTION osal_memcmp,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 21, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+
+// c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Components\osal\mcu\cc2540\osal_snv.c
+//    1 /**************************************************************************************************
+//    2   Filename:       osal_snv.c
+//    3   Revised:        $Date: 2013-02-15 10:12:26 -0800 (Fri, 15 Feb 2013) $
+//    4   Revision:       $Revision: 33143 $
+//    5 
+//    6   Description:    This module contains the OSAL simple non-volatile memory functions.
+//    7 
+//    8 
+//    9   Copyright 2009-2013 Texas Instruments Incorporated. All rights reserved.
+//   10 
+//   11   IMPORTANT: Your use of this Software is limited to those specific rights
+//   12   granted under the terms of a software license agreement between the user
+//   13   who downloaded the software, his/her employer (which must be your employer)
+//   14   and Texas Instruments Incorporated (the "License").  You may not use this
+//   15   Software unless you agree to abide by the terms of the License. The License
+//   16   limits your use, and you acknowledge, that the Software may not be modified,
+//   17   copied or distributed unless embedded on a Texas Instruments microcontroller
+//   18   or used solely and exclusively in conjunction with a Texas Instruments radio
+//   19   frequency transceiver, which is integrated into your product.  Other than for
+//   20   the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//   21   works of, modify, distribute, perform, display or sell this Software and/or
+//   22   its documentation for any purpose.
+//   23 
+//   24   YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//   25   PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+//   26   INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+//   27   NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//   28   TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//   29   NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//   30   LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//   31   INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//   32   OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//   33   OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//   34   (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//   35 
+//   36   Should you have any questions regarding your right to use this Software,
+//   37   contact Texas Instruments Incorporated at www.TI.com.
+//   38 **************************************************************************************************/
+//   39 
+//   40 /*********************************************************************
+//   41  * INCLUDES
+//   42  */
+//   43 
+//   44 #include "hal_adc.h"
+//   45 #include "hal_flash.h"
+//   46 #include "hal_types.h"
+//   47 #include "comdef.h"
+//   48 #include "OSAL.h"
+//   49 #include "osal_snv.h"
+//   50 #include "hal_assert.h"
+//   51 #include "saddr.h"
+//   52 
+//   53 #ifdef OSAL_SNV_UINT16_ID
+//   54 # error "This OSAL SNV implementation does not support the extended ID space"
+//   55 #endif
+//   56 
+//   57 /*********************************************************************
+//   58  * CONSTANTS
+//   59  */
+//   60 
+//   61 // NV page configuration
+//   62 #define OSAL_NV_PAGE_SIZE       HAL_FLASH_PAGE_SIZE
+//   63 #define OSAL_NV_PAGES_USED      HAL_NV_PAGE_CNT
+//   64 #define OSAL_NV_PAGE_BEG        HAL_NV_PAGE_BEG
+//   65 #define OSAL_NV_PAGE_END       (OSAL_NV_PAGE_BEG + OSAL_NV_PAGES_USED - 1)
+//   66 
+//   67 // Default byte value when flash is erased
+//   68 #define OSAL_NV_ERASED          0xFF
+//   69 
+//   70 // NV page header size in bytes
+//   71 #define OSAL_NV_PAGE_HDR_SIZE  4
+//   72 
+//   73 // In case pages 0-1 are ever used, define a null page value.
+//   74 #define OSAL_NV_PAGE_NULL       0
+//   75 
+//   76 // In case item Id 0 is ever used, define a null item value.
+//   77 #define OSAL_NV_ITEM_NULL       0
+//   78 
+//   79 // Length in bytes of a flash word
+//   80 #define OSAL_NV_WORD_SIZE       HAL_FLASH_WORD_SIZE
+//   81 
+//   82 // NV page header offset within a page
+//   83 #define OSAL_NV_PAGE_HDR_OFFSET 0
+//   84 
+//   85 
+//   86 // Flag in a length field of an item header to indicate validity
+//   87 // of the length field
+//   88 #define OSAL_NV_INVALID_LEN_MARK 0x8000
+//   89 
+//   90 // Flag in an ID field of an item header to indicate validity of
+//   91 // the identifier field
+//   92 #define OSAL_NV_INVALID_ID_MARK  0x8000
+//   93 
+//   94 
+//   95 // Bit difference between active page state indicator value and
+//   96 // transfer page state indicator value
+//   97 #define OSAL_NV_ACTIVE_XFER_DIFF  0x00100000
+//   98 
+//   99 // active page state indicator value
+//  100 #define OSAL_NV_ACTIVE_PAGE_STATE OSAL_NV_ACTIVE_XFER_DIFF
+//  101 
+//  102 // transfer page state indicator value
+//  103 #define OSAL_NV_XFER_PAGE_STATE   (OSAL_NV_ACTIVE_PAGE_STATE ^ OSAL_NV_ACTIVE_XFER_DIFF)
+//  104 
+//  105 #define OSAL_NV_MIN_COMPACT_THRESHOLD   70 // Minimum compaction threshold
+//  106 #define OSAL_NV_MAX_COMPACT_THRESHOLD   95 // Maximum compaction threshold
+//  107 
+//  108 /*********************************************************************
+//  109  * MACROS
+//  110  */
+//  111 
+//  112 // Macro to check supply voltage
+//  113 #if (defined HAL_MCU_CC2530 || defined HAL_MCU_CC2531)
+//  114 # define  OSAL_NV_CHECK_BUS_VOLTAGE  (HalAdcCheckVdd(VDD_MIN_FLASH))
+//  115 #elif defined HAL_MCU_CC2533
+//  116 # define  OSAL_NV_CHECK_BUS_VOLTAGE  (HalBatMonRead( HAL_BATMON_MIN_FLASH ))
+//  117 #else
+//  118 // The radio chip does not support voltage monitoring
+//  119 # define  OSAL_NV_CHECK_BUS_VOLTAGE TRUE
+//  120 #endif
+//  121 
+//  122 /*********************************************************************
+//  123  * TYPEDEFS
+//  124  */
+//  125 
+//  126 // NV item header structure
+//  127 typedef struct
+//  128 {
+//  129   uint16 id;
+//  130   uint16 len;
+//  131 } osalNvItemHdr_t;
+//  132 // Note that osalSnvId_t and osalSnvLen_t cannot be bigger than uint16
+//  133 
+//  134 /*********************************************************************
+//  135  * EXTERNAL FUNCTIONS
+//  136  */
+//  137 
+//  138 extern bool HalAdcCheckVdd(uint8 limit);
+//  139 
+//  140 /*********************************************************************
+//  141  * GLOBAL VARIABLES
+//  142  */
+//  143 
+//  144 #ifndef OAD_KEEP_NV_PAGES
+//  145 // When NV pages are to remain intact during OAD download,
+//  146 // the image itself should not include NV pages.
+//  147 #pragma location="BLENV_ADDRESS_SPACE"
+
+        RSEG BLENV_ADDRESS_SPACE:XDATA:REORDER:NOROOT(0)
+        DATA8
+//  148 __no_init uint8 _nvBuf[OSAL_NV_PAGES_USED * OSAL_NV_PAGE_SIZE];
+_nvBuf:
+        DS 4096
+//  149 #pragma required=_nvBuf
+//  150 #endif // OAD_KEEP_NV_PAGES
+//  151 
+//  152 #if defined MAKE_CRC_SHDW
+//  153 #pragma location="CRC_SHDW"
+//  154 const CODE uint16 _crcShdw = 0xFFFF;
+//  155 #pragma required=_crcShdw
+//  156 #endif
+//  157 
+//  158 /*********************************************************************
+//  159  * LOCAL VARIABLES
+//  160  */
+//  161 
+//  162 // active page
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//  163 static uint8 activePg;
+activePg:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+        REQUIRE _nvBuf
+//  164 
+//  165 // active page offset
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA16
+//  166 static uint16 pgOff;
+pgOff:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+//  167 
+//  168 // flag to indicate that an error has occurred while writing to or erasing the
+//  169 // flash device. Once this flag indicates failure, it is unsafe to attempt
+//  170 // another write or erase.
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//  171 static uint8 failF;
+failF:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+//  172 
+//  173 /*********************************************************************
+//  174  * LOCAL FUNCTIONS
+//  175  */
+//  176 
+//  177 static uint8  initNV( void );
+//  178 
+//  179 static void   setActivePage( uint8 pg );
+//  180 static void   setXferPage(void);
+//  181 static void   erasePage( uint8 pg );
+//  182 static void   cleanErasedPage( uint8 pg );
+//  183 static void   findOffset( void );
+//  184 static void   compactPage( uint8 pg );
+//  185 
+//  186 static void   writeWord( uint8 pg, uint16 offset, uint8 *pBuf );
+//  187 static void   writeWordM( uint8 pg, uint16 offset, uint8 *pBuf, osalSnvLen_t cnt );
+//  188 
+//  189 
+//  190 // NOTE: Triggering erase upon power up may cause fast aging of the flash device
+//  191 //       if there is power switch debounce issue, etc.
+//  192 //       Improvement of this is to add a certain delay upon power up before
+//  193 //       osal_nv_init() is called.
+//  194 
+//  195 /*********************************************************************
+//  196  * @fn      initNV
+//  197  *
+//  198  * @brief   Initialize the NV flash pages.
+//  199  *
+//  200  * @param   none
+//  201  *
+//  202  * @return  TRUE if initialization succeeds. FALSE, otherwise.
+//  203  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  204 static uint8 initNV( void )
+initNV:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function initNV
+        CODE
+//  205 {
+        FUNCALL initNV, HalFlashRead
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 18, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 18, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL initNV, cleanErasedPage
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL initNV, cleanErasedPage
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL initNV, cleanErasedPage
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL initNV, setActivePage
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL initNV, findOffset
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL initNV, compactPage
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL initNV, erasePage
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL initNV, findOffset
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        MOV     A,#-0xc
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 4
+        MOV     A,#-0x4
+        LCALL   ?ALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 16)
+//  206   uint32 pgHdr;
+//  207   uint8 xferPg = OSAL_NV_PAGE_NULL;
+        MOV     R7,#0x0
+//  208   uint8 pg;
+//  209 
+//  210   failF = FALSE;
+        MOV     DPTR,#failF
+        CLR     A
+        MOVX    @DPTR,A
+//  211   activePg = OSAL_NV_PAGE_NULL;
+        MOV     DPTR,#activePg
+        MOVX    @DPTR,A
+//  212 
+//  213   // Pick active page and clean up erased page if necessary
+//  214   for ( pg = OSAL_NV_PAGE_BEG; pg <= OSAL_NV_PAGE_END; pg++ )
+        MOV     R6,#0x7d
+//  215   {
+//  216     HalFlashRead(pg, OSAL_NV_PAGE_HDR_OFFSET, (uint8 *)(&pgHdr), OSAL_NV_PAGE_HDR_SIZE);
+??initNV_0:
+        ; Setup parameters for call to function HalFlashRead
+        MOV     ?V0,#0x4
+        MOV     ?V1,#0x0
+        MOV     R0,#?V0
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 18)
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP102_8
+        MOV     R2,#0x0
+        MOV     R3,#0x0
+        MOV     A,R6
+        MOV     R1,A
+        LCALL   ??HalFlashRead?relay ; Banked call to: HalFlashRead
+        MOV     A,#0x2
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 16)
+//  217 
+//  218     if ( pgHdr == OSAL_NV_ACTIVE_PAGE_STATE)
+        MOV     DPTR,#__Constant_100000
+        MOV     R0,#?V0
+        LCALL   ?L_MOV_X
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     R0,#?V0
+        LCALL   ?L_EQ_X
+        JNZ     ??initNV_1
+//  219     {
+//  220       if (activePg != OSAL_NV_PAGE_NULL)
+        MOV     DPTR,#activePg
+        MOVX    A,@DPTR
+        JZ      ??initNV_2
+//  221       {
+//  222         // Both pages are active only when power failed during flash erase and
+//  223         // with very low probability.
+//  224         // As it is hard (code size intensive) to figure out which page is the real active page,
+//  225         // and theoretically impossible as well in lowest probability, erase both pages
+//  226         // in this case
+//  227         cleanErasedPage(activePg);
+        ; Setup parameters for call to function cleanErasedPage
+        MOV     R1,A
+        LCALL   ??cleanErasedPage?relay; Banked call to: cleanErasedPage
+//  228         cleanErasedPage(pg);
+        ; Setup parameters for call to function cleanErasedPage
+        MOV     A,R6
+        MOV     R1,A
+        LCALL   ??cleanErasedPage?relay; Banked call to: cleanErasedPage
+//  229         activePg = OSAL_NV_PAGE_NULL;
+        MOV     DPTR,#activePg
+        CLR     A
+        SJMP    ??initNV_3
+//  230       }
+//  231       else
+//  232       {
+//  233         activePg = pg;
+??initNV_2:
+        MOV     A,R6
+??initNV_3:
+        MOVX    @DPTR,A
+        SJMP    ??initNV_4
+//  234       }
+//  235     }
+//  236     else if ( pgHdr == OSAL_NV_XFER_PAGE_STATE)
+??initNV_1:
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        LCALL   ?XLOAD_R0123
+        MOV     A,R0
+        ORL     A,R1
+        ORL     A,R2
+        ORL     A,R3
+        JNZ     ??initNV_5
+//  237     {
+//  238       xferPg = pg;
+        MOV     A,R6
+        MOV     R7,A
+        SJMP    ??initNV_4
+//  239     }
+//  240     else
+//  241     {
+//  242       // Erase this page if it is not erased.
+//  243       // This is to ensure that any page that were in the middle of
+//  244       // compacting gets erased.
+//  245       cleanErasedPage(pg);
+??initNV_5:
+        ; Setup parameters for call to function cleanErasedPage
+        MOV     A,R6
+        MOV     R1,A
+        LCALL   ??cleanErasedPage?relay; Banked call to: cleanErasedPage
+//  246     }
+//  247   }
+??initNV_4:
+        INC     R6
+        MOV     A,R6
+        CLR     C
+        SUBB    A,#0x7f
+        JC      ??initNV_0
+//  248 
+//  249   if (activePg == OSAL_NV_PAGE_NULL)
+        MOV     DPTR,#activePg
+        MOVX    A,@DPTR
+        JNZ     ??initNV_6
+//  250   {
+//  251     if (xferPg == OSAL_NV_PAGE_NULL)
+        MOV     A,R7
+        JNZ     ??initNV_7
+//  252     {
+//  253       // Both pages are erased. This must be initial state.
+//  254       // Pick one page as active page.
+//  255       setActivePage(OSAL_NV_PAGE_BEG);
+        ; Setup parameters for call to function setActivePage
+        MOV     R1,#0x7d
+        LCALL   ??setActivePage?relay; Banked call to: setActivePage
+//  256       pgOff = OSAL_NV_PAGE_HDR_SIZE;
+        MOV     DPTR,#pgOff
+        MOV     A,#0x4
+        MOVX    @DPTR,A
+        INC     DPTR
+        CLR     A
+        MOVX    @DPTR,A
+//  257 
+//  258       // If setting active page from a completely erased page failed,
+//  259       // it is not recommended to operate any further.
+//  260       // Other cases, even if non-active page is corrupt, NV module can still read
+//  261       // the active page content and hence this function could return TRUE.
+//  262       return (!failF);
+        MOV     DPTR,#failF
+        MOVX    A,@DPTR
+        JZ      ??initNV_8
+        MOV     R1,#0x0
+        SJMP    ??initNV_9
+//  263     }
+//  264     else
+//  265     {
+//  266       // Compacting a page hasn't completed in previous power cycle.
+//  267       // Complete the compacting.
+//  268       activePg = xferPg;
+??initNV_7:
+        MOVX    @DPTR,A
+//  269       findOffset();
+        ; Setup parameters for call to function findOffset
+        LCALL   ??findOffset?relay   ; Banked call to: findOffset
+//  270 
+//  271       compactPage(xferPg);
+        ; Setup parameters for call to function compactPage
+        MOV     A,R7
+        MOV     R1,A
+        LCALL   ??compactPage?relay  ; Banked call to: compactPage
+        SJMP    ??initNV_8
+//  272     }
+//  273   }
+//  274   else
+//  275   {
+//  276     if (xferPg != OSAL_NV_PAGE_NULL)
+??initNV_6:
+        MOV     A,R7
+        JZ      ??initNV_10
+//  277     {
+//  278       // Compacting has completed except for the final step of erasing
+//  279       // the xferPage.
+//  280       erasePage(xferPg);
+        ; Setup parameters for call to function erasePage
+        MOV     R1,A
+        LCALL   ??erasePage?relay    ; Banked call to: erasePage
+//  281     }
+//  282 
+//  283     // find the active page offset to write a new variable location item
+//  284     findOffset();
+??initNV_10:
+        ; Setup parameters for call to function findOffset
+        LCALL   ??findOffset?relay   ; Banked call to: findOffset
+//  285   }
+//  286 
+//  287   return TRUE;
+??initNV_8:
+        MOV     R1,#0x1
+??initNV_9:
+        LJMP    ?Subroutine0 & 0xFFFF
+          CFI EndBlock cfiBlock0
+//  288 }
+//  289 
+//  290 /*********************************************************************
+//  291  * @fn      setActivePage
+//  292  *
+//  293  * @brief   Set page header active state to be active.
+//  294  *
+//  295  * @param   pg - Valid NV page to activate.
+//  296  *
+//  297  * @return  none
+//  298  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  299 static void setActivePage( uint8 pg )
+setActivePage:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function setActivePage
+        CODE
+//  300 {
+        FUNCALL setActivePage, writeWord
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 13, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 13, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0x9
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 4
+        MOV     A,#-0x4
+        LCALL   ?ALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 13)
+        MOV     A,R1
+        MOV     R6,A
+//  301   uint32 pgHdr;
+//  302 
+//  303   pgHdr = OSAL_NV_ACTIVE_PAGE_STATE;
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        CLR     A
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,#0x10
+        MOVX    @DPTR,A
+        INC     DPTR
+        CLR     A
+        MOVX    @DPTR,A
+//  304 
+//  305   writeWord( pg, OSAL_NV_PAGE_HDR_OFFSET, (uint8*) &pgHdr );
+        ; Setup parameters for call to function writeWord
+        MOV     R4,?XSP + 0
+        MOV     R5,?XSP + 1
+        MOV     R2,A
+        MOV     R3,A
+        LCALL   ??writeWord?relay    ; Banked call to: writeWord
+//  306   if (!failF)
+        MOV     DPTR,#failF
+        MOVX    A,@DPTR
+        JNZ     ??setActivePage_0
+//  307   {
+//  308     activePg = pg;
+        MOV     A,R6
+        MOV     DPTR,#activePg
+        MOVX    @DPTR,A
+          CFI EndBlock cfiBlock1
+//  309   }
+//  310 }
+??setActivePage_0:
+        REQUIRE ?Subroutine1
+        ; // Fall through to label ?Subroutine1
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine1:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 13)
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        MOV     A,#0x4
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 9)
+        MOV     R7,#0x1
+        LJMP    ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock2
+//  311 
+//  312 /*********************************************************************
+//  313  * @fn      setXferPage
+//  314  *
+//  315  * @brief   Set active page header state to be transfer state.
+//  316  *
+//  317  * @param   none
+//  318  *
+//  319  * @return  none
+//  320  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  321 static void setXferPage(void)
+setXferPage:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function setXferPage
+        CODE
+//  322 {
+        FUNCALL setXferPage, writeWord
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 13, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 13, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV     A,#-0x9
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 4
+        MOV     A,#-0x4
+        LCALL   ?ALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 13)
+//  323   uint32 pgHdr;
+//  324 
+//  325   // erase difference bit between active state and xfer state
+//  326   pgHdr = OSAL_NV_XFER_PAGE_STATE;
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        CLR     A
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOVX    @DPTR,A
+//  327 
+//  328   writeWord( activePg, OSAL_NV_PAGE_HDR_OFFSET, (uint8*)&pgHdr );
+        ; Setup parameters for call to function writeWord
+        MOV     R4,?XSP + 0
+        MOV     R5,?XSP + 1
+        MOV     R2,A
+        MOV     R3,A
+        MOV     DPTR,#activePg
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   ??writeWord?relay    ; Banked call to: writeWord
+//  329 }
+        SJMP    ?Subroutine1
+          CFI EndBlock cfiBlock3
+//  330 
+//  331 /*********************************************************************
+//  332  * @fn      erasePage
+//  333  *
+//  334  * @brief   Erases a page in Flash.
+//  335  *
+//  336  * @param   pg - Valid NV page to erase.
+//  337  *
+//  338  * @return  none
+//  339  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  340 static void erasePage( uint8 pg )
+erasePage:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function erasePage
+        CODE
+//  341 {
+        FUNCALL erasePage, HalFlashErase
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 13, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 13, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL erasePage, HalFlashRead
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 15, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 15, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V2
+        REQUIRE ?V3
+        MOV     A,#-0xc
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 1
+        MOV     A,#-0x1
+        LCALL   ?ALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 13)
+        MOV     ?V0,R1
+//  342   if ( !OSAL_NV_CHECK_BUS_VOLTAGE || failF)
+        MOV     DPTR,#failF
+        MOVX    A,@DPTR
+        JNZ     ??erasePage_0
+//  343   {
+//  344     failF = TRUE;
+//  345     return;
+//  346   }
+//  347 
+//  348   HalFlashErase(pg);
+        ; Setup parameters for call to function HalFlashErase
+        LCALL   ??HalFlashErase?relay; Banked call to: HalFlashErase
+//  349 
+//  350   {
+//  351     // Verify the erase operation
+//  352     uint16 offset;
+//  353     uint8 tmp;
+//  354 
+//  355     for (offset = 0; offset < OSAL_NV_PAGE_SIZE; offset ++)
+        MOV     R6,#0x0
+        MOV     R7,#0x0
+//  356     {
+//  357       HalFlashRead(pg, offset, &tmp, 1);
+??erasePage_1:
+        ; Setup parameters for call to function HalFlashRead
+        MOV     ?V2,#0x1
+        MOV     ?V3,#0x0
+        MOV     R0,#?V2
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 15)
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP102_8
+        MOV     A,R6
+        MOV     R2,A
+        MOV     A,R7
+        MOV     R3,A
+        MOV     R1,?V0
+        LCALL   ??HalFlashRead?relay ; Banked call to: HalFlashRead
+        MOV     A,#0x2
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 13)
+//  358       if (tmp != OSAL_NV_ERASED)
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOVX    A,@DPTR
+        CPL     A
+        JZ      ??erasePage_2
+//  359       {
+//  360         failF = TRUE;
+        MOV     DPTR,#failF
+??erasePage_0:
+        MOV     A,#0x1
+        MOVX    @DPTR,A
+//  361         break;
+        SJMP    ??erasePage_3
+//  362       }
+//  363     }
+??erasePage_2:
+        INC     R6
+        MOV     A,R6
+        JNZ     ??erasePage_4
+        INC     R7
+??erasePage_4:
+        CLR     C
+        MOV     A,R7
+        SUBB    A,#0x8
+        JC      ??erasePage_1
+          CFI EndBlock cfiBlock4
+//  364   }
+//  365 }
+??erasePage_3:
+        REQUIRE ?Subroutine3
+        ; // Fall through to label ?Subroutine3
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine3:
+          CFI Block cfiBlock5 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 13)
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        MOV     A,#0x1
+        SJMP    ??Subroutine10_0
+          CFI EndBlock cfiBlock5
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine0:
+          CFI Block cfiBlock6 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 16)
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        MOV     A,#0x4
+          CFI EndBlock cfiBlock6
+        REQUIRE ??Subroutine10_0
+        ; // Fall through to label ??Subroutine10_0
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+??Subroutine10_0:
+          CFI Block cfiBlock7 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 13)
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI Invalid
+        LCALL   ?DEALLOC_XSTACK8
+          CFI EndBlock cfiBlock7
+        REQUIRE ??Subroutine11_0
+        ; // Fall through to label ??Subroutine11_0
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+??Subroutine11_0:
+          CFI Block cfiBlock8 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 12)
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        MOV     R7,#0x4
+        LJMP    ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock8
+//  366 
+//  367 /*********************************************************************
+//  368  * @fn      cleanErasedPage
+//  369  *
+//  370  * @brief   Erases a page in Flash if the page is not completely erased.
+//  371  *
+//  372  * @param   pg - Valid NV page to erase.
+//  373  *
+//  374  * @return  none
+//  375  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  376 static void cleanErasedPage( uint8 pg )
+cleanErasedPage:
+          CFI Block cfiBlock9 Using cfiCommon0
+          CFI Function cleanErasedPage
+        CODE
+//  377 {
+        FUNCALL cleanErasedPage, HalFlashRead
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 15, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 15, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL cleanErasedPage, erasePage
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 13, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 13, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V2
+        REQUIRE ?V3
+        MOV     A,#-0xc
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 1
+        MOV     A,#-0x1
+        LCALL   ?ALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 13)
+        MOV     ?V0,R1
+//  378   uint8 buf;
+//  379   uint16 offset;
+//  380 
+//  381   for (offset = 0; offset < OSAL_NV_PAGE_SIZE; offset ++)
+        MOV     R6,#0x0
+        MOV     R7,#0x0
+//  382   {
+//  383     HalFlashRead(pg, offset, &buf, 1);
+??cleanErasedPage_0:
+        ; Setup parameters for call to function HalFlashRead
+        MOV     ?V2,#0x1
+        MOV     ?V3,#0x0
+        MOV     R0,#?V2
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 15)
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP102_8
+        MOV     A,R6
+        MOV     R2,A
+        MOV     A,R7
+        MOV     R3,A
+        MOV     R1,?V0
+        LCALL   ??HalFlashRead?relay ; Banked call to: HalFlashRead
+        MOV     A,#0x2
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 13)
+//  384     if (buf != OSAL_NV_ERASED)
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOVX    A,@DPTR
+        CPL     A
+        JZ      ??cleanErasedPage_1
+//  385     {
+//  386       erasePage(pg);
+        ; Setup parameters for call to function erasePage
+        MOV     R1,?V0
+        LCALL   ??erasePage?relay    ; Banked call to: erasePage
+//  387       break;
+        SJMP    ??cleanErasedPage_2
+//  388     }
+//  389   }
+??cleanErasedPage_1:
+        INC     R6
+        MOV     A,R6
+        JNZ     ??cleanErasedPage_3
+        INC     R7
+??cleanErasedPage_3:
+        CLR     C
+        MOV     A,R7
+        SUBB    A,#0x8
+        JC      ??cleanErasedPage_0
+//  390 }
+??cleanErasedPage_2:
+        SJMP    ?Subroutine3
+          CFI EndBlock cfiBlock9
+//  391 
+//  392 /*********************************************************************
+//  393  * @fn      findOffset
+//  394  *
+//  395  * @brief   find an offset of an empty space in active page
+//  396  *          where to write a new item to.
+//  397  *
+//  398  * @param   None
+//  399  *
+//  400  * @return  none
+//  401  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  402 static void findOffset(void)
+findOffset:
+          CFI Block cfiBlock10 Using cfiCommon0
+          CFI Function findOffset
+        CODE
+//  403 {
+        FUNCALL findOffset, HalFlashRead
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 18, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 18, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        MOV     A,#-0xc
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 4
+        MOV     A,#-0x4
+        LCALL   ?ALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 16)
+//  404   uint16 offset;
+//  405   for (offset = OSAL_NV_PAGE_SIZE - OSAL_NV_WORD_SIZE;
+        MOV     R6,#-0x4
+        MOV     R7,#0x7
+//  406        offset >= OSAL_NV_PAGE_HDR_SIZE;
+//  407        offset -= OSAL_NV_WORD_SIZE)
+//  408   {
+//  409     uint32 tmp;
+//  410 
+//  411     HalFlashRead(activePg, offset, (uint8 *)&tmp, OSAL_NV_WORD_SIZE);
+??findOffset_0:
+        ; Setup parameters for call to function HalFlashRead
+        MOV     ?V0,#0x4
+        MOV     ?V1,#0x0
+        MOV     R0,#?V0
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 18)
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP102_8
+        MOV     A,R6
+        MOV     R2,A
+        MOV     A,R7
+        MOV     R3,A
+        MOV     DPTR,#activePg
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   ??HalFlashRead?relay ; Banked call to: HalFlashRead
+        MOV     A,#0x2
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 16)
+//  412     if (tmp != 0xFFFFFFFF)
+        MOV     DPTR,#__Constant_ffffffff
+        MOV     R0,#?V0
+        LCALL   ?L_MOV_X
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     R0,#?V0
+        LCALL   ?L_EQ_X
+        JNZ     ??findOffset_1
+//  413     {
+//  414       break;
+//  415     }
+//  416   }
+        MOV     A,R6
+        ADD     A,#-0x4
+        MOV     R6,A
+        MOV     A,R7
+        LCALL   ?Subroutine6 & 0xFFFF
+??CrossCallReturnLabel_0:
+        JNC     ??findOffset_0
+//  417   pgOff = offset + OSAL_NV_WORD_SIZE;
+??findOffset_1:
+        LCALL   ?Subroutine8 & 0xFFFF
+??CrossCallReturnLabel_5:
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+//  418 }
+        LJMP    ?Subroutine0 & 0xFFFF
+          CFI EndBlock cfiBlock10
+//  419 
+//  420 /*********************************************************************
+//  421  * @fn      findItem
+//  422  *
+//  423  * @brief   find a valid item from a designated page and offset
+//  424  *
+//  425  * @param   pg       - NV page
+//  426  * @param   offset   - offset in the NV page from where to start
+//  427  *                     search up.
+//  428  *                     Usually this paramter is set to the empty space
+//  429  *                     offset.
+//  430  * @param   id       - NV item ID to search for
+//  431  *
+//  432  * @return  offset of the item, 0 when not found
+//  433  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  434 static uint16 findItem(uint8 pg, uint16 offset, osalSnvId_t id)
+findItem:
+          CFI Block cfiBlock11 Using cfiCommon0
+          CFI Function findItem
+        CODE
+//  435 {
+        FUNCALL findItem, HalFlashRead
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 18, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 18, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        MOV     A,#-0xc
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 4
+        MOV     A,#-0x4
+        LCALL   ?ALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 16)
+        MOV     ?V0,R1
+        MOV     A,R2
+        MOV     R6,A
+        MOV     A,R3
+        MOV     R7,A
+        MOV     ?V1,R4
+//  436   offset -= OSAL_NV_WORD_SIZE;
+//  437 
+//  438   while (offset >= OSAL_NV_PAGE_HDR_SIZE)
+//  439   {
+//  440     osalNvItemHdr_t hdr;
+//  441 
+//  442     HalFlashRead(pg, offset, (uint8 *) &hdr, OSAL_NV_WORD_SIZE);
+//  443 
+//  444     if (hdr.id == id)
+//  445     {
+//  446       // item found
+//  447       // length field could be corrupt. Mask invalid length mark.
+//  448       uint8 len = hdr.len & ~OSAL_NV_INVALID_LEN_MARK;
+//  449       return offset - len;
+//  450     }
+//  451     else if (hdr.len & OSAL_NV_INVALID_LEN_MARK)
+//  452     {
+//  453       offset -= OSAL_NV_WORD_SIZE;
+??findItem_0:
+        MOV     A,R6
+        ADD     A,#-0x4
+        MOV     R6,A
+        MOV     A,R7
+//  454     }
+??findItem_1:
+        LCALL   ?Subroutine6 & 0xFFFF
+??CrossCallReturnLabel_1:
+        JC      ??findItem_2
+        ; Setup parameters for call to function HalFlashRead
+        MOV     ?V2,#0x4
+        MOV     ?V3,#0x0
+        MOV     R0,#?V2
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 18)
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP102_8
+        MOV     A,R6
+        MOV     R2,A
+        MOV     A,R7
+        MOV     R3,A
+        MOV     R1,?V0
+        LCALL   ??HalFlashRead?relay ; Banked call to: HalFlashRead
+        MOV     A,#0x2
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 16)
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP0_8
+        LCALL   ?Subroutine9 & 0xFFFF
+??CrossCallReturnLabel_7:
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     ?V2,?V1
+        MOVX    A,@DPTR
+        XRL     A,?V2
+        JNZ     ??findItem_3
+        INC     DPTR
+        MOVX    A,@DPTR
+??findItem_3:
+        JNZ     ??findItem_4
+        MOV     A,R6
+        CLR     C
+        SUBB    A,R0
+        MOV     R2,A
+        MOV     A,R7
+        SUBB    A,#0x0
+        MOV     R3,A
+        SJMP    ??findItem_5
+??findItem_4:
+        MOV     A,R1
+        ANL     A,#0x80
+        JNZ     ??findItem_0
+//  455     else
+//  456     {
+//  457       // valid length field
+//  458       if (hdr.len + OSAL_NV_WORD_SIZE <= offset)
+        MOV     A,R0
+        ADD     A,#0x4
+        MOV     R2,A
+        CLR     A
+        ADDC    A,R1
+        MOV     R3,A
+        CLR     C
+        MOV     A,R6
+        SUBB    A,R2
+        MOV     A,R7
+        SUBB    A,R3
+        JC      ??findItem_2
+//  459       {
+//  460         // valid length
+//  461         offset -= hdr.len + OSAL_NV_WORD_SIZE;
+        MOV     A,R6
+        CLR     C
+        SUBB    A,R0
+        MOV     R0,A
+        MOV     A,R7
+        SUBB    A,R1
+        MOV     R1,A
+        MOV     A,R0
+        ADD     A,#-0x4
+        MOV     R6,A
+        MOV     A,R1
+        SJMP    ??findItem_1
+//  462       }
+//  463       else
+//  464       {
+//  465         // active page is corrupt
+//  466         // This could happen if NV initialization failed upon failure to erase
+//  467         // page and active page is set to uncleanly erased page.
+//  468         HAL_ASSERT_FORCED();
+//  469         return 0;
+//  470       }
+//  471     }
+//  472   }
+//  473   return 0;
+??findItem_2:
+        MOV     R2,#0x0
+        MOV     R3,#0x0
+??findItem_5:
+        LJMP    ?Subroutine0 & 0xFFFF
+          CFI EndBlock cfiBlock11
+//  474 }
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine6:
+          CFI Block cfiCond12 Using cfiCommon0
+          CFI Function findOffset
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 16)
+          CFI Block cfiCond13 Using cfiCommon0
+          CFI (cfiCond13) Function findItem
+          CFI (cfiCond13) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond13) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond13) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond13) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond13) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond13) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond13) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond13) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond13) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond13) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond13) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond13) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond13) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond13) CFA_SP SP+-2
+          CFI (cfiCond13) CFA_XSP16 add(XSP16, 16)
+          CFI Block cfiCond14 Using cfiCommon0
+          CFI (cfiCond14) Function compactPage
+          CFI (cfiCond14) Conditional ??CrossCallReturnLabel_2
+          CFI (cfiCond14) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond14) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond14) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond14) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond14) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond14) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond14) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond14) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond14) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond14) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond14) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond14) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond14) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond14) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond14) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond14) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond14) CFA_SP SP+-2
+          CFI (cfiCond14) CFA_XSP16 add(XSP16, 29)
+          CFI Block cfiPicker15 Using cfiCommon1
+          CFI (cfiPicker15) NoFunction
+          CFI (cfiPicker15) Picker
+        ADDC    A,#-0x1
+        MOV     R7,A
+        CLR     C
+        MOV     A,R6
+        SUBB    A,#0x4
+        MOV     A,R7
+        SUBB    A,#0x0
+        RET
+          CFI EndBlock cfiCond12
+          CFI EndBlock cfiCond13
+          CFI EndBlock cfiCond14
+          CFI EndBlock cfiPicker15
+//  475 
+//  476 /*********************************************************************
+//  477  * @fn      writeItem
+//  478  *
+//  479  * @brief   Write a data item to NV. Function can write an entire item to NV
+//  480  *
+//  481  * @param   pg     - Page number
+//  482  * @param   offset - offset within the NV page where to write the new item
+//  483  * @param   id     - NV item ID
+//  484  * @param   alignedLen - Length of data to write, alinged in flash word
+//  485  *                       boundary
+//  486  * @param  *pBuf   - Data to write.
+//  487  *
+//  488  * @return  none
+//  489  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  490 static void writeItem( uint8 pg, uint16 offset, osalSnvId_t id, uint16 alignedLen, uint8 *pBuf )
+writeItem:
+          CFI Block cfiBlock16 Using cfiCommon0
+          CFI Function writeItem
+        CODE
+//  491 {
+        FUNCALL writeItem, writeWord
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 21, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 21, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL writeItem, writeWord
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 21, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 21, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL writeItem, HalFlashWrite
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 23, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 23, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL writeItem, verifyWordM
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 22, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 22, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL writeItem, writeWord
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 21, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 21, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL writeItem, writeWord
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 21, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 21, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        REQUIRE ?V5
+        REQUIRE ?V6
+        REQUIRE ?V7
+        MOV     A,#-0x10
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 16)
+        ; Saved register size: 16
+        ; Auto size: 5
+        MOV     A,#-0x5
+        LCALL   ?ALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 21)
+        MOV     A,#0x4
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,R4
+        MOVX    @DPTR,A
+        MOV     ?V6,R1
+        MOV     ?V0,R2
+        MOV     ?V1,R3
+//  492   osalNvItemHdr_t hdr;
+//  493 
+//  494   hdr.id = 0xFFFF;
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     A,#-0x1
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOVX    @DPTR,A
+        MOV     A,#0x15
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        MOV     ?V2,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     ?V3,A
+//  495   hdr.len = alignedLen | OSAL_NV_INVALID_LEN_MARK;
+        MOV     R0,?V2
+        ORL     A,#0x80
+        MOV     R1,A
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+//  496 
+//  497   // Write the len portion of the header first
+//  498   writeWord(pg, offset + alignedLen, (uint8 *) &hdr);
+        MOV     A,R2
+        ADD     A,R0
+        MOV     R6,A
+        MOV     A,R3
+        ADDC    A,?V3
+        MOV     R7,A
+        ; Setup parameters for call to function writeWord
+        MOV     R4,?XSP + 0
+        MOV     R5,?XSP + 1
+        MOV     A,R6
+        MOV     R2,A
+        MOV     A,R7
+        MOV     R3,A
+        MOV     R1,?V6
+        LCALL   ??writeWord?relay    ; Banked call to: writeWord
+//  499 
+//  500   // remove invalid len mark
+//  501   hdr.len &= ~OSAL_NV_INVALID_LEN_MARK;
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP0_8
+        LCALL   ?Subroutine4 & 0xFFFF
+//  502   writeWord(pg, offset + alignedLen, (uint8 *) &hdr);
+??CrossCallReturnLabel_11:
+        LCALL   ??writeWord?relay    ; Banked call to: writeWord
+//  503 
+//  504   // Copy over the data
+//  505   writeWordM(pg, offset, pBuf, alignedLen / OSAL_NV_WORD_SIZE);
+        MOV     A,#0x2
+        MOV     R0,#?V2
+        LCALL   ?US_SHR
+        MOV     A,?V2
+        MOV     ?V7,A
+        MOV     DPTR,#failF
+        MOVX    A,@DPTR
+        JNZ     ??writeItem_0
+        ; Setup parameters for call to function HalFlashWrite
+        MOV     ?V3,#0x0
+        MOV     R0,#?V2
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 23)
+        MOV     A,#0x19
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        MOV     R4,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R5,A
+        MOV     ?V2,?V0
+        MOV     ?V3,?V1
+        MOV     A,#0x2
+        MOV     R0,#?V2
+        LCALL   ?US_SHR
+        MOV     ?V4,?V6
+        MOV     ?V5,A
+        MOV     A,#0x9
+        MOV     R0,#?V4
+        LCALL   ?S_SHL
+        MOV     A,?V2
+        ADD     A,#0x0
+        MOV     R2,A
+        MOV     A,?V3
+        ADDC    A,?V5
+        MOV     R3,A
+        LCALL   ??HalFlashWrite?relay; Banked call to: HalFlashWrite
+        MOV     A,#0x2
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 21)
+        ; Setup parameters for call to function verifyWordM
+        MOV     A,?V7
+        MOV     ?V2,A
+        MOV     R0,#?V2
+        LCALL   ?PUSH_XSTACK_I_ONE
+          CFI CFA_XSP16 add(XSP16, 22)
+        MOV     A,#0x18
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        MOV     R4,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R5,A
+        MOV     R2,?V0
+        MOV     R3,?V1
+        MOV     R1,?V6
+        LCALL   ??verifyWordM?relay  ; Banked call to: verifyWordM
+        MOV     A,#0x1
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 21)
+//  506 
+//  507   // value is valid. Write header except for the most significant bit.
+//  508   hdr.id = id | OSAL_NV_INVALID_ID_MARK;
+??writeItem_0:
+        MOV     A,#0x4
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,#-0x80
+        LCALL   ??Subroutine12_0 & 0xFFFF
+//  509   writeWord(pg, offset + alignedLen, (uint8 *) &hdr);
+??CrossCallReturnLabel_13:
+        LCALL   ??writeWord?relay    ; Banked call to: writeWord
+//  510 
+//  511   // write the most significant bit
+//  512   hdr.id &= ~OSAL_NV_INVALID_ID_MARK;
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        LCALL   ?Subroutine4 & 0xFFFF
+//  513   writeWord(pg, offset + alignedLen, (uint8 *) &hdr);
+??CrossCallReturnLabel_12:
+        LCALL   ??writeWord?relay    ; Banked call to: writeWord
+//  514 }
+        MOV     A,#0x5
+        LJMP    ?Subroutine2 & 0xFFFF
+          CFI EndBlock cfiBlock16
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine4:
+          CFI Block cfiCond17 Using cfiCommon0
+          CFI Function writeItem
+          CFI Conditional ??CrossCallReturnLabel_11
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 21)
+          CFI Block cfiCond18 Using cfiCommon0
+          CFI (cfiCond18) Function writeItem
+          CFI (cfiCond18) Conditional ??CrossCallReturnLabel_12
+          CFI (cfiCond18) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond18) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond18) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond18) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond18) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond18) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond18) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond18) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond18) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond18) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond18) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond18) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond18) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond18) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond18) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond18) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond18) CFA_SP SP+-2
+          CFI (cfiCond18) CFA_XSP16 add(XSP16, 21)
+          CFI Block cfiPicker19 Using cfiCommon1
+          CFI (cfiPicker19) NoFunction
+          CFI (cfiPicker19) Picker
+        INC     DPTR
+        MOVX    A,@DPTR
+        ANL     A,#0x7f
+          CFI EndBlock cfiCond17
+          CFI EndBlock cfiCond18
+          CFI EndBlock cfiPicker19
+        REQUIRE ??Subroutine12_0
+        ; // Fall through to label ??Subroutine12_0
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+??Subroutine12_0:
+          CFI Block cfiCond20 Using cfiCommon0
+          CFI Function writeItem
+          CFI Conditional ??CrossCallReturnLabel_13
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 21)
+          CFI Block cfiCond21 Using cfiCommon0
+          CFI (cfiCond21) Function writeItem
+          CFI (cfiCond21) Conditional ??CrossCallReturnLabel_11
+          CFI (cfiCond21) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond21) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond21) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond21) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond21) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond21) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond21) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond21) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond21) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond21) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond21) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond21) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond21) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond21) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond21) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond21) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond21) CFA_SP SP+-2
+          CFI (cfiCond21) CFA_XSP16 add(XSP16, 21)
+          CFI Block cfiCond22 Using cfiCommon0
+          CFI (cfiCond22) Function writeItem
+          CFI (cfiCond22) Conditional ??CrossCallReturnLabel_12
+          CFI (cfiCond22) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond22) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond22) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond22) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond22) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond22) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond22) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond22) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond22) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond22) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond22) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond22) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond22) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond22) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond22) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond22) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond22) CFA_SP SP+-2
+          CFI (cfiCond22) CFA_XSP16 add(XSP16, 21)
+          CFI Block cfiPicker23 Using cfiCommon1
+          CFI (cfiPicker23) NoFunction
+          CFI (cfiPicker23) Picker
+        MOVX    @DPTR,A
+        ; Setup parameters for call to function writeWord
+        ; Setup parameters for call to function writeWord
+        ; Setup parameters for call to function writeWord
+        MOV     R4,?XSP + 0
+        MOV     R5,?XSP + 1
+        MOV     A,R6
+        MOV     R2,A
+        MOV     A,R7
+        MOV     R3,A
+        MOV     R1,?V6
+        RET
+          CFI EndBlock cfiCond20
+          CFI EndBlock cfiCond21
+          CFI EndBlock cfiCond22
+          CFI EndBlock cfiPicker23
+//  515 
+//  516 /*********************************************************************
+//  517  * @fn      xferItem
+//  518  *
+//  519  * @brief   Copy an NV item from the active page to a designated page.
+//  520  *
+//  521  * @param   pg         - NV page where to copy the item to.
+//  522  * @param   offset     - NV page offset where to copy the item to.
+//  523  * @param   alignedLen - Length of data to write, aligned in flash word
+//  524  *                       boundary.
+//  525  * @param   srcOff     - NV page offset of the original data in active page
+//  526  *
+//  527  * @return  none.
+//  528  */
+//  529 static void xferItem( uint8 pg, uint16 offset, uint16 alignedLen, uint16 srcOff )
+//  530 {
+//  531   uint8 tmp[OSAL_NV_WORD_SIZE];
+//  532   uint16 i = 0;
+//  533 
+//  534   // Copy over the data
+//  535   while (i <= alignedLen)
+//  536   {
+//  537     HalFlashRead(activePg, srcOff + i, tmp, OSAL_NV_WORD_SIZE);
+//  538     writeWord(pg, offset + i, tmp);
+//  539 
+//  540     i += OSAL_NV_WORD_SIZE;
+//  541   }
+//  542 }
+//  543 
+//  544 /*********************************************************************
+//  545  * @fn      compactPage
+//  546  *
+//  547  * @brief   Compacts the page specified.
+//  548  *
+//  549  * @param   srcPg - Valid NV page to compact from.
+//  550  *                  The page must have changed its state (header) to xfer state
+//  551  *                  prior to this function call. This function will not
+//  552  *                  modify the state of its header to xfer state before starting
+//  553  *                  to compact.
+//  554  *
+//  555  * @return  none.
+//  556  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  557 static void compactPage( uint8 srcPg )
+compactPage:
+          CFI Block cfiBlock24 Using cfiCommon0
+          CFI Function compactPage
+        CODE
+//  558 {
+        FUNCALL compactPage, findItem
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 29, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 29, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL compactPage, HalFlashRead
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 31, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 31, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL compactPage, writeWord
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 29, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 29, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL compactPage, HalFlashRead
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 31, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 31, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL compactPage, setActivePage
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 29, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 29, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL compactPage, erasePage
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 29, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 29, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        REQUIRE ?V5
+        REQUIRE ?V6
+        REQUIRE ?V7
+        MOV     A,#-0x10
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 16)
+        ; Saved register size: 16
+        ; Auto size: 13
+        MOV     A,#-0xd
+        LCALL   ?ALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 29)
+        MOV     A,R1
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOVX    @DPTR,A
+//  559   uint16 srcOff, dstOff;
+//  560   uint8 dstPg;
+//  561   osalSnvId_t lastId = (osalSnvId_t) 0xFFFF;
+        MOV     ?V7,#-0x1
+//  562 
+//  563   dstPg = (srcPg == OSAL_NV_PAGE_BEG)? OSAL_NV_PAGE_END : OSAL_NV_PAGE_BEG;
+        XRL     A,#0x7d
+        JNZ     ??compactPage_0
+        MOV     ?V6,#0x7e
+        SJMP    ??compactPage_1
+??compactPage_0:
+        MOV     ?V6,#0x7d
+//  564 
+//  565   dstOff = OSAL_NV_PAGE_HDR_SIZE;
+??compactPage_1:
+        MOV     ?V2,#0x4
+        MOV     ?V3,#0x0
+//  566 
+//  567   // Read from the latest value
+//  568   srcOff = pgOff - sizeof(osalNvItemHdr_t);
+        MOV     DPTR,#pgOff
+        MOVX    A,@DPTR
+        ADD     A,#-0x4
+        MOV     R6,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        LJMP    ??compactPage_2 & 0xFFFF
+//  569 
+//  570   while (srcOff >= OSAL_NV_PAGE_HDR_SIZE)
+//  571   {
+//  572     osalNvItemHdr_t hdr;
+//  573 
+//  574     if (failF)
+//  575     {
+//  576       // Failure during transfer item will make next findItem error prone.
+//  577       return;
+//  578     }
+//  579 
+//  580     HalFlashRead(srcPg, srcOff, (uint8 *) &hdr, OSAL_NV_WORD_SIZE);
+//  581 
+//  582     if (hdr.id == 0xFFFF)
+//  583     {
+//  584       // Invalid entry. Skip this one.
+//  585       if (hdr.len & OSAL_NV_INVALID_LEN_MARK)
+//  586       {
+//  587         srcOff -= OSAL_NV_WORD_SIZE;
+//  588       }
+//  589       else
+//  590       {
+//  591         if (hdr.len + OSAL_NV_WORD_SIZE <= srcOff)
+//  592         {
+//  593           srcOff -= hdr.len + OSAL_NV_WORD_SIZE;
+//  594         }
+//  595         else
+//  596         {
+//  597           // invalid length. Source page must be a corrupt page.
+//  598           // This is possible only if the NV initialization failed upon erasing
+//  599           // what is selected as active page.
+//  600           // This is supposed to be a very rare case, as power should be
+//  601           // shutdown exactly during erase and then the page header is
+//  602           // still retained as either the Xfer or the Active state.
+//  603 
+//  604           // For production code, it might be useful to attempt to erase the page
+//  605           // so that at next power cycle at least the device is runnable
+//  606           // (with all entries removed).
+//  607           // However, it might be still better not to attempt erasing the page
+//  608           // just to see if this very rare case actually happened.
+//  609           //erasePage(srcPg);
+//  610 
+//  611           HAL_ASSERT_FORCED();
+//  612           return;
+//  613         }
+//  614       }
+//  615 
+//  616       continue;
+//  617     }
+//  618 
+//  619     // Consider only valid item
+//  620     if (!(hdr.id & OSAL_NV_INVALID_ID_MARK) && hdr.id != lastId)
+??compactPage_3:
+        MOV     A,#0x3
+        LCALL   ?XSTACK_DISP0_8
+        INC     DPTR
+        MOVX    A,@DPTR
+        ANL     A,#0x80
+        JZ      $+5
+        LJMP    ??compactPage_4 & 0xFFFF
+        MOV     A,#0x3
+        LCALL   ?XSTACK_DISP0_8
+        MOV     ?V0,?V7
+        MOVX    A,@DPTR
+        XRL     A,?V0
+        JNZ     ??compactPage_5
+        INC     DPTR
+        MOVX    A,@DPTR
+??compactPage_5:
+        JNZ     $+5
+        LJMP    ??compactPage_4 & 0xFFFF
+//  621     {
+//  622       // lastId is used to speed up compacting in case the same item ID
+//  623       // items were neighboring each other contiguously.
+//  624       lastId = (osalSnvId_t) hdr.id;
+        MOV     A,#0x3
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        MOV     ?V7,A
+//  625 
+//  626       // Check if the latest value of the item was already written
+//  627       if (findItem(dstPg, dstOff, lastId) == 0)
+        ; Setup parameters for call to function findItem
+        MOV     R4,A
+        MOV     R2,?V2
+        MOV     R3,?V3
+        MOV     R1,?V6
+        LCALL   ??findItem?relay     ; Banked call to: findItem
+        MOV     ?V1,R3
+        MOV     A,R2
+        ORL     A,?V1
+        JZ      $+5
+        LJMP    ??compactPage_4 & 0xFFFF
+//  628       {
+//  629         // This item was not copied over yet.
+//  630         // This must be the latest value.
+//  631         // Write the latest value to the destination page
+//  632 
+//  633         xferItem(dstPg, dstOff, hdr.len, srcOff - hdr.len);
+        MOV     A,#0x5
+        LCALL   ?XSTACK_DISP0_8
+        LCALL   ?Subroutine7 & 0xFFFF
+??CrossCallReturnLabel_3:
+        MOV     ?V0,A
+        MOV     A,R7
+        SUBB    A,R1
+        MOV     ?V1,A
+        MOV     A,#0x7
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+        MOV     A,#0x1
+        LCALL   ?XSTACK_DISP0_8
+        CLR     A
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOVX    @DPTR,A
+??compactPage_6:
+        ; Setup parameters for call to function HalFlashRead
+        MOV     ?V4,#0x4
+        MOV     ?V5,#0x0
+        MOV     R0,#?V4
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 31)
+        MOV     A,#0xb
+        LCALL   ?XSTACK_DISP102_8
+        MOV     A,#0x3
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        ADD     A,?V0
+        MOV     R2,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        ADDC    A,?V1
+        MOV     R3,A
+        MOV     DPTR,#activePg
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   ??HalFlashRead?relay ; Banked call to: HalFlashRead
+        MOV     A,#0x2
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 29)
+        ; Setup parameters for call to function writeWord
+        MOV     A,#0x9
+        LCALL   ?XSTACK_DISP102_8
+        MOV     A,#0x1
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        ADD     A,?V2
+        MOV     R2,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        ADDC    A,?V3
+        MOV     R3,A
+        MOV     R1,?V6
+        LCALL   ??writeWord?relay    ; Banked call to: writeWord
+        MOV     A,#0x1
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        ADD     A,#0x4
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        ADDC    A,#0x0
+        MOVX    @DPTR,A
+        MOV     A,#0x7
+        LCALL   ?XSTACK_DISP0_8
+        PUSH    DPL
+          CFI CFA_SP SP+-1
+        PUSH    DPH
+          CFI CFA_SP SP+-2
+        MOV     A,#0x1
+        LCALL   ?XSTACK_DISP0_8
+        LCALL   ?Subroutine9 & 0xFFFF
+??CrossCallReturnLabel_8:
+        POP     DPH
+          CFI CFA_SP SP+-1
+        POP     DPL
+          CFI CFA_SP SP+0
+        CLR     C
+        MOVX    A,@DPTR
+        SUBB    A,R0
+        INC     DPTR
+        MOVX    A,@DPTR
+        SUBB    A,R1
+        JNC     ??compactPage_6
+//  634 
+//  635         dstOff += hdr.len + OSAL_NV_WORD_SIZE;
+        MOV     A,#0x5
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        ADD     A,#0x4
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        ADDC    A,#0x0
+        MOV     R1,A
+        MOV     A,?V2
+        ADD     A,R0
+        MOV     ?V2,A
+        MOV     A,?V3
+        ADDC    A,R1
+        MOV     ?V3,A
+//  636       }
+//  637     }
+//  638     srcOff -= hdr.len + OSAL_NV_WORD_SIZE;
+??compactPage_4:
+        MOV     A,#0x5
+        LCALL   ?XSTACK_DISP0_8
+        LCALL   ?Subroutine7 & 0xFFFF
+??CrossCallReturnLabel_4:
+        MOV     R0,A
+        MOV     A,R7
+        SUBB    A,R1
+        MOV     R1,A
+        MOV     A,R0
+        ADD     A,#-0x4
+        MOV     R6,A
+        MOV     A,R1
+??compactPage_2:
+        LCALL   ?Subroutine6 & 0xFFFF
+??CrossCallReturnLabel_2:
+        JC      ??compactPage_7
+        MOV     DPTR,#failF
+        MOVX    A,@DPTR
+        JNZ     ??compactPage_8
+        ; Setup parameters for call to function HalFlashRead
+        MOV     ?V0,#0x4
+        MOV     ?V1,#0x0
+        MOV     R0,#?V0
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 31)
+        MOV     A,#0x5
+        LCALL   ?XSTACK_DISP102_8
+        MOV     A,R6
+        MOV     R2,A
+        MOV     A,R7
+        MOV     R3,A
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   ??HalFlashRead?relay ; Banked call to: HalFlashRead
+        MOV     A,#0x2
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 29)
+        MOV     A,#0x3
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        CPL     A
+        JNZ     ??compactPage_9
+        INC     DPTR
+        MOVX    A,@DPTR
+        CPL     A
+??compactPage_9:
+        JZ      $+5
+        LJMP    ??compactPage_3 & 0xFFFF
+        MOV     A,#0x5
+        LCALL   ?XSTACK_DISP0_8
+        LCALL   ?Subroutine9 & 0xFFFF
+??CrossCallReturnLabel_9:
+        ANL     A,#0x80
+        JZ      ??compactPage_10
+        MOV     A,R6
+        ADD     A,#-0x4
+        MOV     R6,A
+        MOV     A,R7
+        SJMP    ??compactPage_2
+??compactPage_10:
+        MOV     A,R0
+        ADD     A,#0x4
+        MOV     R0,A
+        JNC     ??compactPage_11
+        INC     R1
+??compactPage_11:
+        CLR     C
+        MOV     A,R6
+        SUBB    A,R0
+        MOV     A,R7
+        SUBB    A,R1
+        JNC     ??compactPage_4
+        SJMP    ??compactPage_8
+//  639   }
+//  640 
+//  641   // All items copied.
+//  642   // Activate the new page
+//  643   setActivePage(dstPg);
+??compactPage_7:
+        ; Setup parameters for call to function setActivePage
+        MOV     R1,?V6
+        LCALL   ??setActivePage?relay; Banked call to: setActivePage
+//  644 
+//  645   if (!failF)
+        MOV     DPTR,#failF
+        MOVX    A,@DPTR
+        JNZ     ??compactPage_12
+//  646   {
+//  647     pgOff = dstOff; // update active page offset
+        MOV     DPTR,#pgOff
+        MOV     A,?V2
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,?V3
+        MOVX    @DPTR,A
+//  648   }
+//  649 
+//  650   // Erase the currently active page
+//  651   erasePage(srcPg);
+??compactPage_12:
+        ; Setup parameters for call to function erasePage
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   ??erasePage?relay    ; Banked call to: erasePage
+//  652 }
+??compactPage_8:
+        MOV     A,#0xd
+        LJMP    ?Subroutine2 & 0xFFFF
+          CFI EndBlock cfiBlock24
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine9:
+          CFI Block cfiCond25 Using cfiCommon0
+          CFI Function findItem
+          CFI Conditional ??CrossCallReturnLabel_7
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 16)
+          CFI Block cfiCond26 Using cfiCommon0
+          CFI (cfiCond26) Function compactPage
+          CFI (cfiCond26) Conditional ??CrossCallReturnLabel_8
+          CFI (cfiCond26) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond26) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond26) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond26) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond26) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond26) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond26) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond26) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond26) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond26) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond26) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond26) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond26) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond26) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond26) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond26) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond26) CFA_SP SP+-4
+          CFI (cfiCond26) CFA_XSP16 add(XSP16, 29)
+          CFI Block cfiCond27 Using cfiCommon0
+          CFI (cfiCond27) Function compactPage
+          CFI (cfiCond27) Conditional ??CrossCallReturnLabel_9
+          CFI (cfiCond27) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond27) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond27) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond27) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond27) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond27) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond27) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond27) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond27) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond27) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond27) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond27) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond27) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond27) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond27) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond27) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond27) CFA_SP SP+-2
+          CFI (cfiCond27) CFA_XSP16 add(XSP16, 29)
+          CFI Block cfiCond28 Using cfiCommon0
+          CFI (cfiCond28) Function compactPage
+          CFI (cfiCond28) Conditional ??CrossCallReturnLabel_10, ??CrossCallReturnLabel_3
+          CFI (cfiCond28) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond28) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond28) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond28) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond28) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond28) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond28) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond28) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond28) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond28) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond28) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond28) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond28) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond28) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond28) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond28) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond28) CFA_SP SP+-4
+          CFI (cfiCond28) CFA_XSP16 add(XSP16, 29)
+          CFI Block cfiCond29 Using cfiCommon0
+          CFI (cfiCond29) Function compactPage
+          CFI (cfiCond29) Conditional ??CrossCallReturnLabel_10, ??CrossCallReturnLabel_4
+          CFI (cfiCond29) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond29) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond29) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond29) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond29) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond29) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond29) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond29) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond29) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond29) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond29) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond29) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond29) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond29) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond29) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond29) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond29) CFA_SP SP+-4
+          CFI (cfiCond29) CFA_XSP16 add(XSP16, 29)
+          CFI Block cfiPicker30 Using cfiCommon1
+          CFI (cfiPicker30) NoFunction
+          CFI (cfiPicker30) Picker
+        MOVX    A,@DPTR
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R1,A
+        RET
+          CFI EndBlock cfiCond25
+          CFI EndBlock cfiCond26
+          CFI EndBlock cfiCond27
+          CFI EndBlock cfiCond28
+          CFI EndBlock cfiCond29
+          CFI EndBlock cfiPicker30
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine7:
+          CFI Block cfiCond31 Using cfiCommon0
+          CFI Function compactPage
+          CFI Conditional ??CrossCallReturnLabel_3
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 29)
+          CFI Block cfiCond32 Using cfiCommon0
+          CFI (cfiCond32) Function compactPage
+          CFI (cfiCond32) Conditional ??CrossCallReturnLabel_4
+          CFI (cfiCond32) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond32) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond32) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond32) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond32) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond32) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond32) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond32) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond32) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond32) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond32) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond32) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond32) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond32) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond32) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond32) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond32) CFA_SP SP+-2
+          CFI (cfiCond32) CFA_XSP16 add(XSP16, 29)
+          CFI Block cfiPicker33 Using cfiCommon1
+          CFI (cfiPicker33) NoFunction
+          CFI (cfiPicker33) Picker
+        LCALL   ?Subroutine9 & 0xFFFF
+??CrossCallReturnLabel_10:
+        MOV     A,R6
+        CLR     C
+        SUBB    A,R0
+        RET
+          CFI EndBlock cfiCond31
+          CFI EndBlock cfiCond32
+          CFI EndBlock cfiPicker33
+//  653 
+//  654 /*********************************************************************
+//  655  * @fn      verifyWordM
+//  656  *
+//  657  * @brief   verify the written word.
+//  658  *
+//  659  * @param   pg - A valid NV Flash page.
+//  660  * @param   offset - A valid offset into the page.
+//  661  * @param   pBuf - Pointer to source buffer.
+//  662  * @param   cnt - Number of 4-byte blocks to verify.
+//  663  *
+//  664  * @return  none
+//  665  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  666 static void verifyWordM( uint8 pg, uint16 offset, uint8 *pBuf, osalSnvLen_t cnt )
+verifyWordM:
+          CFI Block cfiBlock34 Using cfiCommon0
+          CFI Function verifyWordM
+        CODE
+//  667 {
+        FUNCALL verifyWordM, HalFlashRead
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 21, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 21, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL verifyWordM, osal_memcmp
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 21, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 21, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        REQUIRE ?V5
+        REQUIRE ?V6
+        MOV     A,#-0xf
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 15)
+        ; Saved register size: 15
+        ; Auto size: 4
+        MOV     A,#-0x4
+        LCALL   ?ALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 19)
+        MOV     ?V6,R1
+        MOV     ?V0,R2
+        MOV     ?V1,R3
+        MOV     ?V4,R4
+        MOV     ?V5,R5
+        MOV     A,#0x13
+        LCALL   ?XSTACK_DISP0_8
+        MOVX    A,@DPTR
+        MOV     R6,A
+        SJMP    ??verifyWordM_0
+//  668   uint8 tmp[OSAL_NV_WORD_SIZE];
+//  669 
+//  670   while (cnt--)
+//  671   {
+//  672     // Reading byte per byte will reduce code size but will slow down
+//  673     // and not sure it will meet the timing requirements.
+//  674     HalFlashRead(pg, offset, tmp, OSAL_NV_WORD_SIZE);
+//  675     if (FALSE == osal_memcmp(tmp, pBuf, OSAL_NV_WORD_SIZE))
+//  676     {
+//  677       failF = TRUE;
+//  678       return;
+//  679     }
+//  680     offset += OSAL_NV_WORD_SIZE;
+??verifyWordM_1:
+        MOV     A,?V0
+        ADD     A,#0x4
+        MOV     ?V0,A
+        CLR     A
+        ADDC    A,?V1
+        MOV     ?V1,A
+//  681     pBuf += OSAL_NV_WORD_SIZE;
+        MOV     A,?V4
+        ADD     A,#0x4
+        MOV     ?V4,A
+        JNC     ??verifyWordM_0
+        INC     ?V5
+??verifyWordM_0:
+        MOV     A,R6
+        MOV     R7,A
+        MOV     A,#-0x1
+        ADD     A,R7
+        DEC     R6
+        INC     A
+        JZ      ??verifyWordM_2
+        ; Setup parameters for call to function HalFlashRead
+        MOV     ?V2,#0x4
+        MOV     ?V3,#0x0
+        MOV     R0,#?V2
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 21)
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP102_8
+        MOV     R2,?V0
+        MOV     R3,?V1
+        MOV     R1,?V6
+        LCALL   ??HalFlashRead?relay ; Banked call to: HalFlashRead
+        MOV     A,#0x2
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 19)
+        ; Setup parameters for call to function osal_memcmp
+        MOV     R0,#?V2
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 21)
+        MOV     R4,?V4
+        MOV     R5,?V5
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP101_8
+        LCALL   ??osal_memcmp?relay  ; Banked call to: osal_memcmp
+        MOV     A,#0x2
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 19)
+        MOV     A,R1
+        JNZ     ??verifyWordM_1
+        MOV     DPTR,#failF
+        MOV     A,#0x1
+        MOVX    @DPTR,A
+//  682   }
+//  683 }
+??verifyWordM_2:
+        MOV     A,#0x4
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 15)
+        MOV     R7,#0x7
+        LJMP    ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock34
+//  684 
+//  685 /*********************************************************************
+//  686  * @fn      writeWord
+//  687  *
+//  688  * @brief   Writes a Flash-WORD to NV.
+//  689  *
+//  690  * @param   pg - A valid NV Flash page.
+//  691  * @param   offset - A valid offset into the page.
+//  692  * @param   pBuf - Pointer to source buffer.
+//  693  *
+//  694  * @return  none
+//  695  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  696 static void writeWord( uint8 pg, uint16 offset, uint8 *pBuf )
+writeWord:
+          CFI Block cfiBlock35 Using cfiCommon0
+          CFI Function writeWord
+        CODE
+//  697 {
+        FUNCALL writeWord, HalFlashWrite
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 18, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 18, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL writeWord, verifyWordM
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 17, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 17, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V4
+        REQUIRE ?V5
+        REQUIRE ?V6
+        REQUIRE ?V7
+        MOV     A,#-0x10
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 16)
+        ; Saved register size: 16
+        ; Auto size: 0
+        MOV     ?V2,R1
+        MOV     A,R2
+        MOV     R6,A
+        MOV     A,R3
+        MOV     R7,A
+        MOV     ?V6,R4
+        MOV     ?V7,R5
+//  698   uint16 addr = (offset >> 2) + ((uint16)pg << 9);
+//  699 
+//  700   if ( !failF )
+        MOV     DPTR,#failF
+        MOVX    A,@DPTR
+        JNZ     ??writeWord_0
+//  701   {
+//  702     HalFlashWrite(addr, pBuf, 1);
+        ; Setup parameters for call to function HalFlashWrite
+        MOV     ?V0,#0x1
+        MOV     ?V1,#0x0
+        MOV     R0,#?V0
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 18)
+        MOV     ?V0,R6
+        MOV     ?V1,R7
+        MOV     A,#0x2
+        MOV     R0,#?V0
+        LCALL   ?US_SHR
+        MOV     ?V4,R1
+        MOV     ?V5,A
+        MOV     A,#0x9
+        MOV     R0,#?V4
+        LCALL   ?S_SHL
+        MOV     A,?V0
+        ADD     A,#0x0
+        MOV     R2,A
+        MOV     A,?V1
+        ADDC    A,?V5
+        MOV     R3,A
+        LCALL   ??HalFlashWrite?relay; Banked call to: HalFlashWrite
+        MOV     A,#0x2
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 16)
+//  703     verifyWordM(pg, offset, pBuf, 1);
+        ; Setup parameters for call to function verifyWordM
+        MOV     ?V0,#0x1
+        MOV     R0,#?V0
+        LCALL   ?PUSH_XSTACK_I_ONE
+          CFI CFA_XSP16 add(XSP16, 17)
+        MOV     R4,?V6
+        MOV     R5,?V7
+        MOV     A,R6
+        MOV     R2,A
+        MOV     A,R7
+        MOV     R3,A
+        MOV     R1,?V2
+        LCALL   ??verifyWordM?relay  ; Banked call to: verifyWordM
+        MOV     A,#0x1
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 16)
+//  704   }
+//  705 }
+??writeWord_0:
+        LJMP    ??Subroutine13_0 & 0xFFFF
+          CFI EndBlock cfiBlock35
+//  706 
+//  707 /*********************************************************************
+//  708  * @fn      writeWordM
+//  709  *
+//  710  * @brief   Writes multiple Flash-WORDs to NV.
+//  711  *
+//  712  * @param   pg - A valid NV Flash page.
+//  713  * @param   offset - A valid offset into the page.
+//  714  * @param   buf - Pointer to source buffer.
+//  715  * @param   cnt - Number of 4-byte blocks to write.
+//  716  *
+//  717  * @return  none
+//  718  */
+//  719 static void writeWordM( uint8 pg, uint16 offset, uint8 *buf, osalSnvLen_t cnt )
+//  720 {
+//  721   uint16 addr = (offset >> 2) + ((uint16)pg << 9);
+//  722 
+//  723   if ( !failF )
+//  724   {
+//  725     HalFlashWrite(addr, buf, cnt);
+//  726     verifyWordM(pg, offset, buf, cnt);
+//  727   }
+//  728 }
+//  729 
+//  730 /*********************************************************************
+//  731  * @fn      osal_snv_init
+//  732  *
+//  733  * @brief   Initialize NV service.
+//  734  *
+//  735  * @return  SUCCESS if initialization succeeds. FAILURE, otherwise.
+//  736  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  737 uint8 osal_snv_init( void )
+osal_snv_init:
+          CFI Block cfiBlock36 Using cfiCommon0
+          CFI Function osal_snv_init
+        CODE
+//  738 {
+        FUNCALL osal_snv_init, initNV
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH    DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH    DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  739   if (!initNV())
+        ; Setup parameters for call to function initNV
+        LCALL   ??initNV?relay       ; Banked call to: initNV
+        MOV     A,R1
+        JNZ     ??osal_snv_init_0
+//  740   {
+//  741     // NV initialization failed
+//  742     HAL_ASSERT_FORCED();
+//  743 
+//  744     return FAILURE;
+        MOV     R1,#0x1
+        SJMP    ??osal_snv_init_1
+//  745   }
+//  746 
+//  747   return SUCCESS;
+??osal_snv_init_0:
+        MOV     R1,#0x0
+??osal_snv_init_1:
+        POP     DPH
+          CFI DPH0 SameValue
+          CFI CFA_SP SP+-4
+        POP     DPL
+          CFI DPL0 SameValue
+          CFI CFA_SP SP+-3
+        LJMP    ?BRET
+          CFI EndBlock cfiBlock36
+//  748 }
+//  749 
+//  750 /*********************************************************************
+//  751  * @fn      osal_snv_write
+//  752  *
+//  753  * @brief   Write a data item to NV.
+//  754  *
+//  755  * @param   id  - Valid NV item Id.
+//  756  * @param   len - Length of data to write.
+//  757  * @param   *pBuf - Data to write.
+//  758  *
+//  759  * @return  SUCCESS if successful, NV_OPER_FAILED if failed.
+//  760  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  761 uint8 osal_snv_write( osalSnvId_t id, osalSnvLen_t len, void *pBuf )
+osal_snv_write:
+          CFI Block cfiBlock37 Using cfiCommon0
+          CFI Function osal_snv_write
+        CODE
+//  762 {
+        FUNCALL osal_snv_write, findItem
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 17, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 17, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL osal_snv_write, HalFlashRead
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 19, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 19, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL osal_snv_write, setXferPage
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 17, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 17, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL osal_snv_write, compactPage
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 17, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 17, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL osal_snv_write, writeItem
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 21, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 21, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        REQUIRE ?V6
+        REQUIRE ?V7
+        MOV     A,#-0x10
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 16)
+        ; Saved register size: 16
+        ; Auto size: 1
+        MOV     A,#-0x1
+        LCALL   ?ALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 17)
+        MOV     ?V4,R1
+        MOV     ?V1,R2
+        MOV     ?V6,R4
+        MOV     ?V7,R5
+//  763   uint16 alignedLen;
+//  764 
+//  765   {
+//  766     uint16 offset = findItem(activePg, pgOff, id);
+        ; Setup parameters for call to function findItem
+        LCALL   ?Subroutine5 & 0xFFFF
+??CrossCallReturnLabel_15:
+        LCALL   ??findItem?relay     ; Banked call to: findItem
+        MOV     ?V2,R2
+        MOV     ?V3,R3
+        MOV     R6,?V2
+        MOV     R7,?V3
+//  767 
+//  768     if (offset > 0)
+        MOV     A,R6
+        ORL     A,R7
+        JZ      ??osal_snv_write_0
+//  769     {
+//  770       uint8 tmp;
+//  771       osalSnvLen_t i;
+//  772 
+//  773       for (i = 0; i < len; i++)
+        MOV     ?V0,#0x0
+        SJMP    ??osal_snv_write_1
+//  774       {
+//  775         HalFlashRead(activePg, offset, &tmp, 1);
+??osal_snv_write_2:
+        ; Setup parameters for call to function HalFlashRead
+        MOV     ?V2,#0x1
+        MOV     ?V3,#0x0
+        MOV     R0,#?V2
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 19)
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP102_8
+        MOV     A,R6
+        MOV     R2,A
+        MOV     A,R7
+        MOV     R3,A
+        MOV     DPTR,#activePg
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   ??HalFlashRead?relay ; Banked call to: HalFlashRead
+        MOV     A,#0x2
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 17)
+//  776         if (tmp != ((uint8 *)pBuf)[i])
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOVX    A,@DPTR
+        MOV     R0,A
+        MOV     ?V2,?V0
+        MOV     A,?V6
+        ADD     A,?V2
+        MOV     DPL,A
+        CLR     A
+        ADDC    A,?V7
+        MOV     DPH,A
+        MOVX    A,@DPTR
+        XRL     A,R0
+        JNZ     ??osal_snv_write_0
+//  777         {
+//  778           break;
+//  779         }
+//  780         offset++;
+        INC     R6
+        MOV     A,R6
+        JNZ     ??osal_snv_write_3
+        INC     R7
+//  781       }
+??osal_snv_write_3:
+        INC     ?V0
+??osal_snv_write_1:
+        MOV     A,?V0
+        CLR     C
+        SUBB    A,?V1
+        JC      ??osal_snv_write_2
+//  782 
+//  783       if (i == len)
+        MOV     A,?V1
+        XRL     A,?V0
+        JZ      ??osal_snv_write_4
+//  784       {
+//  785         // Changed value is the same value as before.
+//  786         // Return here instead of re-writing the same value to NV.
+//  787         return SUCCESS;
+//  788       }
+//  789     }
+//  790   }
+//  791 
+//  792   alignedLen = ((len + OSAL_NV_WORD_SIZE - 1) / OSAL_NV_WORD_SIZE) * OSAL_NV_WORD_SIZE;
+??osal_snv_write_0:
+        MOV     ?V0,?V1
+        MOV     ?V2,?V0
+        MOV     A,?V2
+        ADD     A,#0x3
+        MOV     R0,A
+        CLR     A
+        ADDC    A,#0x0
+        MOV     R1,A
+        MOV     R2,#0x4
+        MOV     R3,#0x0
+        LCALL   ?S_DIV_MOD
+        MOV     ?V2,R0
+        MOV     ?V3,R1
+        MOV     A,#0x2
+        MOV     R0,#?V2
+        LCALL   ?S_SHL
+        MOV     R6,?V2
+        MOV     R7,?V3
+//  793 
+//  794   if ( pgOff + alignedLen + OSAL_NV_WORD_SIZE > OSAL_NV_PAGE_SIZE )
+        MOV     DPTR,#pgOff
+        MOVX    A,@DPTR
+        ADD     A,R6
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        ADDC    A,R7
+        MOV     R1,A
+        MOV     A,R0
+        ADD     A,#0x4
+        JNC     ??osal_snv_write_5
+        INC     R1
+??osal_snv_write_5:
+        CLR     C
+        SUBB    A,#0x1
+        MOV     A,R1
+        SUBB    A,#0x8
+        JC      ??osal_snv_write_6
+//  795   {
+//  796     setXferPage();
+        ; Setup parameters for call to function setXferPage
+        LCALL   ??setXferPage?relay  ; Banked call to: setXferPage
+//  797     compactPage(activePg);
+        ; Setup parameters for call to function compactPage
+        MOV     DPTR,#activePg
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   ??compactPage?relay  ; Banked call to: compactPage
+//  798   }
+//  799 
+//  800   // pBuf shall be referenced beyond its valid length to save code size.
+//  801   writeItem(activePg, pgOff, id, alignedLen, pBuf);
+??osal_snv_write_6:
+        ; Setup parameters for call to function writeItem
+        MOV     R0,#?V6
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 19)
+        MOV     R0,#?V2
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 21)
+        LCALL   ?Subroutine5 & 0xFFFF
+??CrossCallReturnLabel_16:
+        LCALL   ??writeItem?relay    ; Banked call to: writeItem
+        MOV     A,#0x4
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 17)
+//  802   if (failF)
+        MOV     DPTR,#failF
+        MOVX    A,@DPTR
+        JZ      ??osal_snv_write_7
+//  803   {
+//  804     return NV_OPER_FAILED;
+        MOV     R1,#0xa
+        SJMP    ??osal_snv_write_8
+//  805   }
+//  806 
+//  807   pgOff += alignedLen + OSAL_NV_WORD_SIZE;
+??osal_snv_write_7:
+        LCALL   ?Subroutine8 & 0xFFFF
+??CrossCallReturnLabel_6:
+        MOVX    A,@DPTR
+        ADD     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        ADDC    A,R1
+        MOVX    @DPTR,A
+//  808 
+//  809   return SUCCESS;
+??osal_snv_write_4:
+        MOV     R1,#0x0
+??osal_snv_write_8:
+        MOV     A,#0x1
+          CFI EndBlock cfiBlock37
+        REQUIRE ?Subroutine2
+        ; // Fall through to label ?Subroutine2
+//  810 }
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine2:
+          CFI Block cfiBlock38 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 21)
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI Invalid
+        LCALL   ?DEALLOC_XSTACK8
+          CFI EndBlock cfiBlock38
+        REQUIRE ??Subroutine13_0
+        ; // Fall through to label ??Subroutine13_0
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+??Subroutine13_0:
+          CFI Block cfiBlock39 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 16)
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        MOV     R7,#0x8
+        LJMP    ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock39
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine8:
+          CFI Block cfiCond40 Using cfiCommon0
+          CFI Function findOffset
+          CFI Conditional ??CrossCallReturnLabel_5
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 16)
+          CFI Block cfiCond41 Using cfiCommon0
+          CFI (cfiCond41) Function osal_snv_write
+          CFI (cfiCond41) Conditional ??CrossCallReturnLabel_6
+          CFI (cfiCond41) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond41) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond41) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond41) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond41) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond41) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond41) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond41) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond41) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond41) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond41) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond41) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond41) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond41) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond41) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond41) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond41) CFA_SP SP+-2
+          CFI (cfiCond41) CFA_XSP16 add(XSP16, 17)
+          CFI Block cfiPicker42 Using cfiCommon1
+          CFI (cfiPicker42) NoFunction
+          CFI (cfiPicker42) Picker
+        MOV     A,R6
+        ADD     A,#0x4
+        MOV     R0,A
+        CLR     A
+        ADDC    A,R7
+        MOV     R1,A
+        MOV     DPTR,#pgOff
+        RET
+          CFI EndBlock cfiCond40
+          CFI EndBlock cfiCond41
+          CFI EndBlock cfiPicker42
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine5:
+          CFI Block cfiCond43 Using cfiCommon0
+          CFI Function osal_snv_write
+          CFI Conditional ??CrossCallReturnLabel_15
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 17)
+          CFI Block cfiCond44 Using cfiCommon0
+          CFI (cfiCond44) Function osal_snv_write
+          CFI (cfiCond44) Conditional ??CrossCallReturnLabel_16
+          CFI (cfiCond44) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond44) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond44) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond44) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond44) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond44) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond44) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond44) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond44) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond44) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond44) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond44) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond44) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond44) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond44) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond44) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond44) CFA_SP SP+-2
+          CFI (cfiCond44) CFA_XSP16 add(XSP16, 21)
+          CFI Block cfiPicker45 Using cfiCommon1
+          CFI (cfiPicker45) NoFunction
+          CFI (cfiPicker45) Picker
+        MOV     R4,?V4
+          CFI EndBlock cfiCond43
+          CFI EndBlock cfiCond44
+          CFI EndBlock cfiPicker45
+        REQUIRE ??Subroutine14_0
+        ; // Fall through to label ??Subroutine14_0
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+??Subroutine14_0:
+          CFI Block cfiCond46 Using cfiCommon0
+          CFI Function osal_snv_read
+          CFI Conditional ??CrossCallReturnLabel_14
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiCond47 Using cfiCommon0
+          CFI (cfiCond47) Function osal_snv_write
+          CFI (cfiCond47) Conditional ??CrossCallReturnLabel_15
+          CFI (cfiCond47) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond47) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond47) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond47) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond47) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond47) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond47) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond47) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond47) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond47) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond47) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond47) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond47) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond47) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond47) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond47) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond47) CFA_SP SP+-2
+          CFI (cfiCond47) CFA_XSP16 add(XSP16, 17)
+          CFI Block cfiCond48 Using cfiCommon0
+          CFI (cfiCond48) Function osal_snv_write
+          CFI (cfiCond48) Conditional ??CrossCallReturnLabel_16
+          CFI (cfiCond48) R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI (cfiCond48) VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI (cfiCond48) V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI (cfiCond48) V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI (cfiCond48) V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond48) V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond48) V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond48) V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond48) V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond48) V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond48) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond48) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond48) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond48) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond48) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond48) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond48) CFA_SP SP+-2
+          CFI (cfiCond48) CFA_XSP16 add(XSP16, 21)
+          CFI Block cfiPicker49 Using cfiCommon1
+          CFI (cfiPicker49) NoFunction
+          CFI (cfiPicker49) Picker
+        MOV     DPTR,#pgOff
+        MOVX    A,@DPTR
+        MOV     R2,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R3,A
+        MOV     DPTR,#activePg
+        MOVX    A,@DPTR
+        MOV     R1,A
+        RET
+          CFI EndBlock cfiCond46
+          CFI EndBlock cfiCond47
+          CFI EndBlock cfiCond48
+          CFI EndBlock cfiPicker49
+//  811 
+//  812 /*********************************************************************
+//  813  * @fn      osal_snv_read
+//  814  *
+//  815  * @brief   Read data from NV.
+//  816  *
+//  817  * @param   id  - Valid NV item Id.
+//  818  * @param   len - Length of data to read.
+//  819  * @param   *pBuf - Data is read into this buffer.
+//  820  *
+//  821  * @return  SUCCESS if successful.
+//  822  *          Otherwise, NV_OPER_FAILED for failure.
+//  823  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  824 uint8 osal_snv_read( osalSnvId_t id, osalSnvLen_t len, void *pBuf )
+osal_snv_read:
+          CFI Block cfiBlock50 Using cfiCommon0
+          CFI Function osal_snv_read
+        CODE
+//  825 {
+        FUNCALL osal_snv_read, findItem
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 12, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 12, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL osal_snv_read, HalFlashRead
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 14, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 14, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        MOV     A,#-0xc
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 0
+        MOV     ?V1,R1
+        MOV     ?V0,R2
+        MOV     A,R4
+        MOV     R6,A
+        MOV     A,R5
+        MOV     R7,A
+//  826   uint16 offset = findItem(activePg, pgOff, id);
+        ; Setup parameters for call to function findItem
+        MOV     R4,?V1
+        LCALL   ??Subroutine14_0 & 0xFFFF
+??CrossCallReturnLabel_14:
+        LCALL   ??findItem?relay     ; Banked call to: findItem
+//  827 
+//  828   if (offset != 0)
+        MOV     A,R2
+        ORL     A,R3
+        JZ      ??osal_snv_read_0
+//  829   {
+//  830     HalFlashRead(activePg, offset, pBuf, len);
+        ; Setup parameters for call to function HalFlashRead
+        MOV     ?V2,?V0
+        MOV     ?V3,#0x0
+        MOV     R0,#?V2
+        LCALL   ?PUSH_XSTACK_I_TWO
+          CFI CFA_XSP16 add(XSP16, 14)
+        MOV     A,R6
+        MOV     R4,A
+        MOV     A,R7
+        MOV     R5,A
+        MOV     DPTR,#activePg
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   ??HalFlashRead?relay ; Banked call to: HalFlashRead
+        MOV     A,#0x2
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 12)
+//  831     return SUCCESS;
+        MOV     R1,#0x0
+        SJMP    ??osal_snv_read_1
+//  832   }
+//  833   return NV_OPER_FAILED;
+??osal_snv_read_0:
+        MOV     R1,#0xa
+??osal_snv_read_1:
+        LJMP    ??Subroutine11_0 & 0xFFFF
+          CFI EndBlock cfiBlock50
+//  834 }
+//  835 
+//  836 /*********************************************************************
+//  837  * @fn      osal_snv_compact
+//  838  *
+//  839  * @brief   Compacts NV if its usage has reached a specific threshold.
+//  840  *
+//  841  * @param   threshold - compaction threshold
+//  842  *
+//  843  * @return  SUCCESS if successful,
+//  844  *          NV_OPER_FAILED if failed, or
+//  845  *          INVALIDPARAMETER if threshold invalid.
+//  846  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  847 uint8 osal_snv_compact( uint8 threshold )
+osal_snv_compact:
+          CFI Block cfiBlock51 Using cfiCommon0
+          CFI Function osal_snv_compact
+        CODE
+//  848 {
+        FUNCALL osal_snv_compact, setXferPage
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL osal_snv_compact, compactPage
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        REQUIRE ?V5
+        REQUIRE ?V6
+        REQUIRE ?V7
+        MOV     A,#-0x10
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 16)
+        ; Saved register size: 16
+        ; Auto size: 0
+        MOV     A,R1
+        MOV     R6,A
+//  849   if ( ( threshold < OSAL_NV_MIN_COMPACT_THRESHOLD ) ||
+//  850        ( threshold > OSAL_NV_MAX_COMPACT_THRESHOLD ) )
+        MOV     A,#-0x46
+        ADD     A,R1
+        CLR     C
+        SUBB    A,#0x1a
+        JC      ??osal_snv_compact_0
+//  851   {
+//  852     return INVALIDPARAMETER;
+        MOV     R1,#0x2
+        SJMP    ??osal_snv_compact_1
+//  853   }
+//  854 
+//  855   // See if NV active page usage has reached compaction threshold
+//  856   if ( ( (uint32)pgOff * 100 ) >= ( OSAL_NV_PAGE_SIZE * (uint32)threshold ) )
+??osal_snv_compact_0:
+        MOV     ?V0,R6
+        CLR     A
+        MOV     ?V1,A
+        MOV     ?V2,A
+        MOV     ?V3,A
+        MOV     A,#0xb
+        MOV     R0,#?V0
+        LCALL   ?L_SHL
+        PUSH    ?V0
+          CFI CFA_SP SP+-1
+        PUSH    ?V1
+          CFI CFA_SP SP+-2
+        PUSH    ?V2
+          CFI CFA_SP SP+-3
+        MOV     DPTR,#pgOff
+        MOVX    A,@DPTR
+        MOV     ?V4,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     ?V5,A
+        CLR     A
+        MOV     ?V6,A
+        MOV     ?V7,A
+        MOV     DPTR,#__Constant_64
+        MOV     R0,#?V0
+        LCALL   ?L_MOV_X
+        MOV     R0,#?V4
+        MOV     R1,#?V0
+        LCALL   ?L_MUL
+        MOV     ?V3,#0x0
+        POP     ?V2
+          CFI CFA_SP SP+-2
+        POP     ?V1
+          CFI CFA_SP SP+-1
+        POP     ?V0
+          CFI CFA_SP SP+0
+        MOV     R0,#?V0
+        MOV     R1,#?V4
+        LCALL   ?UL_GT
+        JC      ??osal_snv_compact_2
+//  857   {
+//  858     setXferPage();
+        ; Setup parameters for call to function setXferPage
+        LCALL   ??setXferPage?relay  ; Banked call to: setXferPage
+//  859     compactPage(activePg);
+        ; Setup parameters for call to function compactPage
+        MOV     DPTR,#activePg
+        MOVX    A,@DPTR
+        MOV     R1,A
+        LCALL   ??compactPage?relay  ; Banked call to: compactPage
+//  860 
+//  861     return SUCCESS;
+        MOV     R1,#0x0
+        SJMP    ??osal_snv_compact_1
+//  862   }
+//  863 
+//  864   return NV_OPER_FAILED;
+??osal_snv_compact_2:
+        MOV     R1,#0xa
+??osal_snv_compact_1:
+        LJMP    ??Subroutine13_0 & 0xFFFF
+          CFI EndBlock cfiBlock51
+//  865 }
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA32
+__Constant_100000:
+        DD 1048576
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA32
+__Constant_ffffffff:
+        DD 4294967295
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA32
+__Constant_64:
+        DD 100
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??initNV?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    initNV
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??setActivePage?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    setActivePage
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??setXferPage?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    setXferPage
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??erasePage?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    erasePage
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??cleanErasedPage?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    cleanErasedPage
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??findOffset?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    findOffset
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??findItem?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    findItem
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??writeItem?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    writeItem
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??compactPage?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    compactPage
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??verifyWordM?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    verifyWordM
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??writeWord?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    writeWord
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??osal_snv_init?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    osal_snv_init
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??osal_snv_write?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    osal_snv_write
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??osal_snv_read?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    osal_snv_read
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??osal_snv_compact?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    osal_snv_compact
+
+        END
+//  866 
+//  867 /*********************************************************************
+//  868 *********************************************************************/
+// 
+// 2 096 bytes in segment BANKED_CODE
+//    90 bytes in segment BANK_RELAYS
+// 4 096 bytes in segment BLENV_ADDRESS_SPACE
+//    12 bytes in segment XDATA_ROM_C
+//     4 bytes in segment XDATA_Z
+// 
+// 2 186 bytes of CODE  memory
+//     0 bytes of CONST memory (+ 12 bytes shared)
+// 4 100 bytes of XDATA memory
+//
+//Errors: none
+//Warnings: none

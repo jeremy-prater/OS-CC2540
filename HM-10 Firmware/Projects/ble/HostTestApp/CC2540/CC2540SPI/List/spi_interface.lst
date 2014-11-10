@@ -1,0 +1,486 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.30.1.41636 for 8051             02/Jun/2014  22:57:02 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\Source\spi_interface.c                      #
+#    Command line       =  -f "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\config\buildComponents.cfg"    #
+#                          (-DBROADCASTER_CFG=0x01 -DOBSERVER_CFG=0x02        #
+#                          -DPERIPHERAL_CFG=0x04 -DCENTRAL_CFG=0x08           #
+#                          -DADV_NCONN_CFG=0x01 -DADV_CONN_CFG=0x02           #
+#                          -DSCAN_CFG=0x04 -DINIT_CFG=0x08                    #
+#                          -DADV_CFG=ADV_NCONN_CFG+ADV_CONN_CFG               #
+#                          -DLINK_CFG=ADV_CONN_CFG+INIT_CFG                   #
+#                          -DFULL_CFG=INIT_CFG+SCAN_CFG+ADV_NCONN_CFG+ADV_CON #
+#                          N_CFG) -f "c:\Users\Administrator\Documents\Dropbo #
+#                          x\Fish Brain\HM-10 Hack\HM-10                      #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\buildConf #
+#                          ig.cfg" (-DHOST_CONFIG=PERIPHERAL_CFG+CENTRAL_CFG  #
+#                          -DGAP_PRIVACY_RECONNECT)                           #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\Source\spi_interface.c" -D                  #
+#                          INT_HEAP_LEN=2700 -D HALNODEBUG -D                 #
+#                          OSAL_CBTIMER_NUM_TASKS=1 -D POWER_SAVING -D        #
+#                          HAL_AES_DMA=TRUE -D HAL_DMA=TRUE -D HAL_UART=TRUE  #
+#                          -D HAL_UART_DMA=0 -D HAL_UART_ISR=0 -D             #
+#                          HAL_UART_SPI=2 -D HAL_SPI_QUEUED_TX=TRUE -D        #
+#                          HAL_KEY=FALSE -D HAL_LCD=FALSE -D HAL_LED=FALSE    #
+#                          -D GATT_DB_OFF_CHIP -D GAP_BOND_MGR -lCN           #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -lA                 #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -o                  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\" -e --debug           #
+#                          --core=plain --dptr=16,1 --data_model=large        #
+#                          --code_model=banked --calling_convention=xdata_ree #
+#                          ntrant --place_constants=data_rom                  #
+#                          --nr_virtual_regs 8 -I "c:\Users\Administrator\Doc #
+#                          uments\Dropbox\Fish Brain\HM-10 Hack\HM-10         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\com #
+#                          mon\" -I "c:\Users\Administrator\Documents\Dropbox #
+#                          \Fish Brain\HM-10 Hack\HM-10                       #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\hal\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\hal\target\CC #
+#                          2540EB\" -I "c:\Users\Administrator\Documents\Drop #
+#                          box\Fish Brain\HM-10 Hack\HM-10                    #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\osal\include\" -I                    #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\services\sadd #
+#                          r\" -I "c:\Users\Administrator\Documents\Dropbox\F #
+#                          ish Brain\HM-10 Hack\HM-10                         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\controlle #
+#                          r\phy\" -I "c:\Users\Administrator\Documents\Dropb #
+#                          ox\Fish Brain\HM-10 Hack\HM-10                     #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\controller\include\" -I          #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\hci\" -I  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\host\"    #
+#                          -I "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\cc2540\" -I             #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\npi\npi_np\" -I         #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Include\" -I                   #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Profiles\Roles\" -I            #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\source\" -Ohz                     #
+#    List file          =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\spi_interface.lst     #
+#    Object file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\spi_interface.r51      #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\Source\spi_interface.c
+      1          /*******************************************************************************
+      2            Filename:       npicallback.c
+      3          
+      4            *******************************************************************************/
+      5          
+      6          /*******************************************************************************
+      7           * INCLUDES
+      8           */
+      9          
+     10          #include "hal_types.h"
+     11          #include "OSAL.h"
+     12          #include "OSAL_Tasks.h"
+     13          
+     14          #include "hal_board.h"
+     15          #include "npi.h"
+     16          #include "spi_interface.h"
+     17          
+     18          /*******************************************************************************
+     19           * MACROS
+     20           */
+     21          
+     22          /*******************************************************************************
+     23           * CONSTANTS
+     24           */
+     25          
+     26          /*******************************************************************************
+     27           * TYPEDEFS
+     28           */
+     29          
+     30          /*******************************************************************************
+     31           * LOCAL VARIABLES
+     32           */
+     33          
+     34          /*******************************************************************************
+     35           * GLOBAL VARIABLES
+     36           */
+     37          
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+     38          static uint8 SPI_Interface_TaskID;
+   \                     SPI_Interface_TaskID:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+     39          
+     40          /*******************************************************************************
+     41           * PROTOTYPES
+     42           */
+     43          
+     44          static void SPI_Interface_ProcessOSALMsg(osal_event_hdr_t *pMsg);
+     45          
+     46          /*******************************************************************************
+     47           * FUNCTIONS
+     48           */
+     49          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     50          void SPI_Interface_Init(uint8 task_id)
+   \                     SPI_Interface_Init:
+     51          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+     52          	SPI_Interface_TaskID = task_id;
+   \   000006   90....       MOV     DPTR,#SPI_Interface_TaskID
+   \   000009   F0           MOVX    @DPTR,A
+     53          	NPI_InitTransport(npiCallBack);
+   \   00000A                ; Setup parameters for call to function NPI_InitTransport
+   \   00000A   7A..         MOV     R2,#??npiCallBack?relay & 0xff
+   \   00000C   7B..         MOV     R3,#(??npiCallBack?relay >> 8) & 0xff
+   \   00000E   12....       LCALL   ??NPI_InitTransport?relay; Banked call to: NPI_InitTransport
+     54          }
+   \   000011   7F01         MOV     R7,#0x1
+   \   000013   02....       LJMP    ?BANKED_LEAVE_XDATA
+     55          
+     56          static void SPI_Interface_ProcessOSALMsg(osal_event_hdr_t *pMsg)
+     57          {
+     58          	switch (pMsg->event)
+     59          	{
+     60          	default:
+     61          		// do nothing
+     62          		break;
+     63          	}
+     64          }
+     65          
+     66          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     67          uint16 SPI_Interface_ProcessEvent(uint8 task_id, uint16 events)
+   \                     SPI_Interface_ProcessEvent:
+     68          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV     A,R2
+   \   000006   FE           MOV     R6,A
+   \   000007   EB           MOV     A,R3
+   \   000008   FF           MOV     R7,A
+     69          	VOID task_id; // OSAL required parameter that isn't used in this function
+     70          
+     71          	if (events & SYS_EVENT_MSG)
+   \   000009   5480         ANL     A,#0x80
+   \   00000B   6030         JZ      ??SPI_Interface_ProcessEvent_0
+     72          	{
+     73          		uint8 *pMsg;
+     74          
+     75          		if ((pMsg = osal_msg_receive(SPI_Interface_TaskID)) != NULL)
+   \   00000D                ; Setup parameters for call to function osal_msg_receive
+   \   00000D   90....       MOV     DPTR,#SPI_Interface_TaskID
+   \   000010   E0           MOVX    A,@DPTR
+   \   000011   F9           MOV     R1,A
+   \   000012   12....       LCALL   ??osal_msg_receive?relay; Banked call to: osal_msg_receive
+   \   000015   EA           MOV     A,R2
+   \   000016   4B           ORL     A,R3
+   \   000017   601C         JZ      ??SPI_Interface_ProcessEvent_1
+     76          		{
+     77          			//SPI_Interface_ProcessOSALMsg((osal_event_hdr_t *) pMsg);
+     78          			if (events & SPI_CMD_RX)
+   \   000019   EE           MOV     A,R6
+   \   00001A   5402         ANL     A,#0x2
+   \   00001C   6008         JZ      ??SPI_Interface_ProcessEvent_2
+     79          			{
+     80          				parseCmd(pMsg);
+   \   00001E                ; Setup parameters for call to function parseCmd
+   \   00001E   12....       LCALL   ??parseCmd?relay     ; Banked call to: parseCmd
+     81          
+     82          				return (events ^ SPI_CMD_RX);
+   \   000021   EE           MOV     A,R6
+   \   000022   6402         XRL     A,#0x2
+   \   000024   8008         SJMP    ??SPI_Interface_ProcessEvent_3
+     83          			}
+     84          
+     85          			if (events & SPI_EVT_TX)
+   \                     ??SPI_Interface_ProcessEvent_2:
+   \   000026   EE           MOV     A,R6
+   \   000027   5404         ANL     A,#0x4
+   \   000029   6007         JZ      ??SPI_Interface_ProcessEvent_4
+     86          			{
+     87          
+     88          				sendSerialEvt();
+     89          
+     90          				return (events ^ SPI_EVT_TX);
+   \   00002B   EE           MOV     A,R6
+   \   00002C   6404         XRL     A,#0x4
+   \                     ??SPI_Interface_ProcessEvent_3:
+   \   00002E   FA           MOV     R2,A
+   \   00002F   EF           MOV     A,R7
+   \   000030   8008         SJMP    ??SPI_Interface_ProcessEvent_5
+     91          			}
+     92          			// Release the OSAL message
+     93          			VOID osal_msg_deallocate(pMsg);
+   \                     ??SPI_Interface_ProcessEvent_4:
+   \   000032                ; Setup parameters for call to function osal_msg_deallocate
+   \   000032   12....       LCALL   ??osal_msg_deallocate?relay; Banked call to: osal_msg_deallocate
+     94          		}
+     95          
+     96          		// return unprocessed events
+     97          		return (events ^ SYS_EVENT_MSG);
+   \                     ??SPI_Interface_ProcessEvent_1:
+   \   000035   EE           MOV     A,R6
+   \   000036   FA           MOV     R2,A
+   \   000037   EF           MOV     A,R7
+   \   000038   6480         XRL     A,#0x80
+   \                     ??SPI_Interface_ProcessEvent_5:
+   \   00003A   FB           MOV     R3,A
+   \   00003B   8004         SJMP    ??SPI_Interface_ProcessEvent_6
+     98          	}
+     99          	// Discard unknown events
+    100          	return 0;
+   \                     ??SPI_Interface_ProcessEvent_0:
+   \   00003D   7A00         MOV     R2,#0x0
+   \   00003F   7B00         MOV     R3,#0x0
+   \                     ??SPI_Interface_ProcessEvent_6:
+   \   000041                REQUIRE ?Subroutine0
+   \   000041                ; // Fall through to label ?Subroutine0
+    101          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   7F02         MOV     R7,#0x2
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+    102          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    103          void parseCmd(uint8 * ipacket)
+   \                     parseCmd:
+    104          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV     A,R2
+   \   000006   FE           MOV     R6,A
+   \   000007   EB           MOV     A,R3
+   \   000008   FF           MOV     R7,A
+    105          	SPIPacket_t * packet = (SPIPacket_t*) ipacket;
+    106          	SPIPacket_t * newpacket = osal_mem_alloc(packet->Length);
+   \   000009                ; Setup parameters for call to function osal_mem_alloc
+   \   000009   8E82         MOV     DPL,R6
+   \   00000B   8F83         MOV     DPH,R7
+   \   00000D   E0           MOVX    A,@DPTR
+   \   00000E   FA           MOV     R2,A
+   \   00000F   A3           INC     DPTR
+   \   000010   E0           MOVX    A,@DPTR
+   \   000011   FB           MOV     R3,A
+   \   000012   12....       LCALL   ??osal_mem_alloc?relay; Banked call to: osal_mem_alloc
+   \   000015   8A..         MOV     ?V0,R2
+   \   000017   8B..         MOV     ?V1,R3
+    107          	(void)memcpy(newpacket, packet, packet->Length);
+   \   000019                ; Setup parameters for call to function memcpy
+   \   000019   8E82         MOV     DPL,R6
+   \   00001B   8F83         MOV     DPH,R7
+   \   00001D   12....       LCALL   ?PUSH_XSTACK8_X_TWO
+   \   000020   EE           MOV     A,R6
+   \   000021   FC           MOV     R4,A
+   \   000022   EF           MOV     A,R7
+   \   000023   FD           MOV     R5,A
+   \   000024   12....       LCALL   ??memcpy?relay       ; Banked call to: memcpy
+   \   000027   7402         MOV     A,#0x2
+   \   000029   12....       LCALL   ?DEALLOC_XSTACK8
+    108          	osal_msg_send(SPI_Interface_TaskID, (uint8*) newpacket);
+   \   00002C                ; Setup parameters for call to function osal_msg_send
+   \   00002C   AA..         MOV     R2,?V0
+   \   00002E   AB..         MOV     R3,?V1
+   \   000030   90....       MOV     DPTR,#SPI_Interface_TaskID
+   \   000033   E0           MOVX    A,@DPTR
+   \   000034   F9           MOV     R1,A
+   \   000035   12....       LCALL   ??osal_msg_send?relay; Banked call to: osal_msg_send
+    109          	osal_set_event(SPI_Interface_TaskID, SPI_EVT_TX);
+   \   000038                ; Setup parameters for call to function osal_set_event
+   \   000038   7A04         MOV     R2,#0x4
+   \   00003A   7B00         MOV     R3,#0x0
+   \   00003C   90....       MOV     DPTR,#SPI_Interface_TaskID
+   \   00003F   E0           MOVX    A,@DPTR
+   \   000040   F9           MOV     R1,A
+   \   000041   12....       LCALL   ??osal_set_event?relay; Banked call to: osal_set_event
+    110          }
+   \   000044   7F04         MOV     R7,#0x4
+   \   000046   02....       LJMP    ?BANKED_LEAVE_XDATA
+    111          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    112          void sendSerialEvt(void)
+   \                     sendSerialEvt:
+    113          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    114          
+    115          }
+   \   000000   02....       LJMP    ?BRET
+    116          
+    117          
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    118          npi_serial_parse_state_t  pktState = NPI_SERIAL_STATE_LENGTH;
+   \                     pktState:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+    119          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    120          void npiCallBack(uint8 port, uint8 event)
+   \                     npiCallBack:
+    121          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   74F6         MOV     A,#-0xa
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+    122          	(void) port;
+    123          	osal_msg_send(SPI_Interface_TaskID, (uint8*) event);
+   \   000005                ; Setup parameters for call to function osal_msg_send
+   \   000005   7B00         MOV     R3,#0x0
+   \   000007   90....       MOV     DPTR,#SPI_Interface_TaskID
+   \   00000A   E0           MOVX    A,@DPTR
+   \   00000B   F9           MOV     R1,A
+   \   00000C   12....       LCALL   ??osal_msg_send?relay; Banked call to: osal_msg_send
+    124          	osal_set_event(SPI_Interface_TaskID, SPI_CMD_RX);
+   \   00000F                ; Setup parameters for call to function osal_set_event
+   \   00000F   7A02         MOV     R2,#0x2
+   \   000011   7B00         MOV     R3,#0x0
+   \   000013   90....       MOV     DPTR,#SPI_Interface_TaskID
+   \   000016   E0           MOVX    A,@DPTR
+   \   000017   F9           MOV     R1,A
+   \   000018   12....       LCALL   ??osal_set_event?relay; Banked call to: osal_set_event
+    125          }
+   \   00001B   80..         SJMP    ?Subroutine0
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??SPI_Interface_Init?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    SPI_Interface_Init
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??SPI_Interface_ProcessEvent?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    SPI_Interface_ProcessEvent
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??parseCmd?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    parseCmd
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??sendSerialEvt?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    sendSerialEvt
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??npiCallBack?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    npiCallBack
+    126          
+    127          /*******************************************************************************
+    128           ******************************************************************************/
+
+   Maximum stack usage in bytes:
+
+   XSTACK Function
+   ------ --------
+      9   SPI_Interface_Init
+        9   -> NPI_InitTransport
+     10   SPI_Interface_ProcessEvent
+       10   -> osal_msg_deallocate
+       10   -> osal_msg_receive
+       10   -> parseCmd
+     10   npiCallBack
+       10   -> osal_msg_send
+       10   -> osal_set_event
+     24   parseCmd
+       14   -> memcpy
+       12   -> osal_mem_alloc
+       12   -> osal_msg_send
+       12   -> osal_set_event
+      0   sendSerialEvt
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       6  ??SPI_Interface_Init?relay
+       6  ??SPI_Interface_ProcessEvent?relay
+       6  ??npiCallBack?relay
+       6  ??parseCmd?relay
+       6  ??sendSerialEvt?relay
+       5  ?Subroutine0
+      22  SPI_Interface_Init
+      65  SPI_Interface_ProcessEvent
+       1  SPI_Interface_TaskID
+      29  npiCallBack
+      73  parseCmd
+       1  pktState
+       3  sendSerialEvt
+
+ 
+ 197 bytes in segment BANKED_CODE
+  30 bytes in segment BANK_RELAYS
+   2 bytes in segment XDATA_Z
+ 
+ 227 bytes of CODE  memory
+   2 bytes of XDATA memory
+
+Errors: none
+Warnings: 2

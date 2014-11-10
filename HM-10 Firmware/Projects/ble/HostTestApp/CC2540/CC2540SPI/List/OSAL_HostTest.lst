@@ -1,0 +1,426 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.30.1.41636 for 8051             02/Jun/2014  22:55:48 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\Source\OSAL_HostTest.c                      #
+#    Command line       =  -f "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\config\buildComponents.cfg"    #
+#                          (-DBROADCASTER_CFG=0x01 -DOBSERVER_CFG=0x02        #
+#                          -DPERIPHERAL_CFG=0x04 -DCENTRAL_CFG=0x08           #
+#                          -DADV_NCONN_CFG=0x01 -DADV_CONN_CFG=0x02           #
+#                          -DSCAN_CFG=0x04 -DINIT_CFG=0x08                    #
+#                          -DADV_CFG=ADV_NCONN_CFG+ADV_CONN_CFG               #
+#                          -DLINK_CFG=ADV_CONN_CFG+INIT_CFG                   #
+#                          -DFULL_CFG=INIT_CFG+SCAN_CFG+ADV_NCONN_CFG+ADV_CON #
+#                          N_CFG) -f "c:\Users\Administrator\Documents\Dropbo #
+#                          x\Fish Brain\HM-10 Hack\HM-10                      #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\buildConf #
+#                          ig.cfg" (-DHOST_CONFIG=PERIPHERAL_CFG+CENTRAL_CFG  #
+#                          -DGAP_PRIVACY_RECONNECT)                           #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\Source\OSAL_HostTest.c" -D                  #
+#                          INT_HEAP_LEN=2700 -D HALNODEBUG -D                 #
+#                          OSAL_CBTIMER_NUM_TASKS=1 -D POWER_SAVING -D        #
+#                          HAL_AES_DMA=TRUE -D HAL_DMA=TRUE -D HAL_UART=TRUE  #
+#                          -D HAL_UART_DMA=0 -D HAL_UART_ISR=0 -D             #
+#                          HAL_UART_SPI=2 -D HAL_SPI_QUEUED_TX=TRUE -D        #
+#                          HAL_KEY=FALSE -D HAL_LCD=FALSE -D HAL_LED=FALSE    #
+#                          -D GATT_DB_OFF_CHIP -D GAP_BOND_MGR -lCN           #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -lA                 #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -o                  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\" -e --debug           #
+#                          --core=plain --dptr=16,1 --data_model=large        #
+#                          --code_model=banked --calling_convention=xdata_ree #
+#                          ntrant --place_constants=data_rom                  #
+#                          --nr_virtual_regs 8 -I "c:\Users\Administrator\Doc #
+#                          uments\Dropbox\Fish Brain\HM-10 Hack\HM-10         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\com #
+#                          mon\" -I "c:\Users\Administrator\Documents\Dropbox #
+#                          \Fish Brain\HM-10 Hack\HM-10                       #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\hal\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\hal\target\CC #
+#                          2540EB\" -I "c:\Users\Administrator\Documents\Drop #
+#                          box\Fish Brain\HM-10 Hack\HM-10                    #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\osal\include\" -I                    #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\services\sadd #
+#                          r\" -I "c:\Users\Administrator\Documents\Dropbox\F #
+#                          ish Brain\HM-10 Hack\HM-10                         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\controlle #
+#                          r\phy\" -I "c:\Users\Administrator\Documents\Dropb #
+#                          ox\Fish Brain\HM-10 Hack\HM-10                     #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\controller\include\" -I          #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\hci\" -I  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\host\"    #
+#                          -I "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\cc2540\" -I             #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\npi\npi_np\" -I         #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Include\" -I                   #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Profiles\Roles\" -I            #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\source\" -Ohz                     #
+#    List file          =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\OSAL_HostTest.lst     #
+#    Object file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\OSAL_HostTest.r51      #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\Source\OSAL_HostTest.c
+      1          /**************************************************************************************************
+      2            Filename:       OSAL_HostTest.c
+      3            Revised:        $Date: 2013-08-16 11:27:49 -0700 (Fri, 16 Aug 2013) $
+      4            Revision:       $Revision: 35000 $
+      5          
+      6            Description:    This file contains function that allows user setup tasks
+      7          
+      8          
+      9            Copyright 2009 - 2013 Texas Instruments Incorporated. All rights reserved.
+     10          
+     11            IMPORTANT: Your use of this Software is limited to those specific rights
+     12            granted under the terms of a software license agreement between the user
+     13            who downloaded the software, his/her employer (which must be your employer)
+     14            and Texas Instruments Incorporated (the "License").  You may not use this
+     15            Software unless you agree to abide by the terms of the License. The License
+     16            limits your use, and you acknowledge, that the Software may not be modified,
+     17            copied or distributed unless embedded on a Texas Instruments microcontroller
+     18            or used solely and exclusively in conjunction with a Texas Instruments radio
+     19            frequency transceiver, which is integrated into your product.  Other than for
+     20            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     21            works of, modify, distribute, perform, display or sell this Software and/or
+     22            its documentation for any purpose.
+     23          
+     24            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     25            PROVIDED “AS IS?WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     26            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     27            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     28            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     29            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     30            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     31            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     32            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     33            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     34            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     35          
+     36            Should you have any questions regarding your right to use this Software,
+     37            contact Texas Instruments Incorporated at www.TI.com.
+     38          **************************************************************************************************/
+     39          
+     40          /**************************************************************************************************
+     41           *                                            INCLUDES
+     42           **************************************************************************************************/
+     43          #include "hal_types.h"
+     44          #include "OSAL.h"
+     45          #include "OSAL_Tasks.h"
+     46          
+     47          /* HAL */
+     48          #include "hal_drivers.h"
+     49          
+     50          /* LL */
+     51          #include "ll.h"
+     52          
+     53          #if defined ( OSAL_CBTIMER_NUM_TASKS )
+     54            #include "osal_cbTimer.h"
+     55          #endif
+     56          
+     57          /* L2CAP */
+     58          #include "l2cap.h"
+     59          
+     60          /* gap */
+     61          #include "gap.h"
+     62          
+     63          #if defined ( GAP_BOND_MGR )
+     64            #include "gapbondmgr.h"
+     65          #endif
+     66          
+     67          /* GATT */
+     68          #include "gatt.h"
+     69          
+     70          /* Application */
+     71          #include "hci_tl.h"
+     72          
+     73          #if !defined ( GATT_DB_OFF_CHIP )
+     74            #include "gattservapp.h"
+     75          
+     76            #if defined ( GATT_TEST )
+     77              #include "gatttest.h"
+     78            #endif
+     79          #endif // GATT_DB_OFF_CHIP
+     80          
+     81          #include "spi_interface.h"
+     82          
+     83          #include "hci_ext_app.h"
+     84          
+     85          /*********************************************************************
+     86           * GLOBAL VARIABLES
+     87           */
+     88          
+     89          // The order in this table must be identical to the task initialization calls below in osalInitTask.
+
+   \                                 In  segment XDATA_ROM_C, align 1
+     90          const pTaskEventHandlerFn tasksArr[] =
+   \                     tasksArr:
+   \   000000   ....         DW ??LL_ProcessEvent?relay
+   \   000002   ....         DW ??Hal_ProcessEvent?relay
+   \   000004   ....         DW ??HCI_ProcessEvent?relay
+   \   000006   ....         DW ??osal_CbTimerProcessEvent?relay
+   \   000008   ....         DW ??L2CAP_ProcessEvent?relay
+   \   00000A   ....         DW ??GAP_ProcessEvent?relay
+   \   00000C   ....         DW ??GATT_ProcessEvent?relay
+   \   00000E   ....         DW ??SM_ProcessEvent?relay
+   \   000010   ....         DW ??GAPBondMgr_ProcessEvent?relay
+   \   000012   ....         DW ??SPI_Interface_ProcessEvent?relay
+   \   000014   ....         DW ??HCI_EXT_App_ProcessEvent?relay
+     91          {
+     92            LL_ProcessEvent,
+     93            Hal_ProcessEvent,
+     94            HCI_ProcessEvent,
+     95          #if defined ( OSAL_CBTIMER_NUM_TASKS )
+     96            OSAL_CBTIMER_PROCESS_EVENT( osal_CbTimerProcessEvent ),
+     97          #endif
+     98            L2CAP_ProcessEvent,
+     99            GAP_ProcessEvent,
+    100            GATT_ProcessEvent,
+    101            SM_ProcessEvent,
+    102          #if defined ( GAP_BOND_MGR )
+    103            GAPBondMgr_ProcessEvent,
+    104          #endif
+    105          #if !defined ( GATT_DB_OFF_CHIP )
+    106            GATTServApp_ProcessEvent,
+    107            #if defined ( GATT_TEST )
+    108              GATTTest_ProcessEvent,
+    109            #endif
+    110          #endif
+    111            SPI_Interface_ProcessEvent,
+    112            HCI_EXT_App_ProcessEvent
+    113          };
+    114          
+
+   \                                 In  segment XDATA_ROM_C, align 1
+    115          const uint8 tasksCnt = sizeof( tasksArr ) / sizeof( tasksArr[0] );
+   \                     tasksCnt:
+   \   000000   0B           DB 11
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    116          uint16 *tasksEvents;
+   \                     tasksEvents:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+    117          
+    118          /*********************************************************************
+    119           * FUNCTIONS
+    120           *********************************************************************/
+    121          
+    122          /*********************************************************************
+    123           * @fn      osalInitTasks
+    124           *
+    125           * @brief   This function invokes the initialization function for each task.
+    126           *
+    127           * @param   void
+    128           *
+    129           * @return  none
+    130           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    131          void osalInitTasks( void )
+   \                     osalInitTasks:
+    132          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    133            uint8 taskID = 0;
+    134          
+    135            tasksEvents = (uint16 *)osal_mem_alloc( sizeof( uint16 ) * tasksCnt);
+   \   000004                ; Setup parameters for call to function osal_mem_alloc
+   \   000004   7A16         MOV     R2,#0x16
+   \   000006   7B00         MOV     R3,#0x0
+   \   000008   12....       LCALL   ??osal_mem_alloc?relay; Banked call to: osal_mem_alloc
+   \   00000B   90....       MOV     DPTR,#tasksEvents
+   \   00000E   EA           MOV     A,R2
+   \   00000F   F0           MOVX    @DPTR,A
+   \   000010   A3           INC     DPTR
+   \   000011   EB           MOV     A,R3
+   \   000012   F0           MOVX    @DPTR,A
+    136            VOID osal_memset( tasksEvents, 0, (sizeof( uint16 ) * tasksCnt));
+   \   000013                ; Setup parameters for call to function osal_memset
+   \   000013   7C16         MOV     R4,#0x16
+   \   000015   7D00         MOV     R5,#0x0
+   \   000017   7900         MOV     R1,#0x0
+   \   000019   12....       LCALL   ??osal_memset?relay  ; Banked call to: osal_memset
+    137          
+    138            /* LL Task */
+    139            LL_Init( taskID++ );
+   \   00001C                ; Setup parameters for call to function LL_Init
+   \   00001C   7900         MOV     R1,#0x0
+   \   00001E   12....       LCALL   ??LL_Init?relay      ; Banked call to: LL_Init
+    140          
+    141            /* Hal Task */
+    142            Hal_Init( taskID++ );
+   \   000021                ; Setup parameters for call to function Hal_Init
+   \   000021   7901         MOV     R1,#0x1
+   \   000023   12....       LCALL   ??Hal_Init?relay     ; Banked call to: Hal_Init
+    143          
+    144            /* HCI Task */
+    145            HCI_Init( taskID++ );
+   \   000026                ; Setup parameters for call to function HCI_Init
+   \   000026   7902         MOV     R1,#0x2
+   \   000028   12....       LCALL   ??HCI_Init?relay     ; Banked call to: HCI_Init
+    146          
+    147          #if defined ( OSAL_CBTIMER_NUM_TASKS )
+    148            /* Callback Timer Tasks */
+    149            osal_CbTimerInit( taskID );
+   \   00002B                ; Setup parameters for call to function osal_CbTimerInit
+   \   00002B   7903         MOV     R1,#0x3
+   \   00002D   12....       LCALL   ??osal_CbTimerInit?relay; Banked call to: osal_CbTimerInit
+    150            taskID += OSAL_CBTIMER_NUM_TASKS;
+    151          #endif
+    152          
+    153            /* L2CAP Task */
+    154            L2CAP_Init( taskID++ );
+   \   000030                ; Setup parameters for call to function L2CAP_Init
+   \   000030   7904         MOV     R1,#0x4
+   \   000032   12....       LCALL   ??L2CAP_Init?relay   ; Banked call to: L2CAP_Init
+    155          
+    156            /* GAP Task */
+    157            GAP_Init( taskID++ );
+   \   000035                ; Setup parameters for call to function GAP_Init
+   \   000035   7905         MOV     R1,#0x5
+   \   000037   12....       LCALL   ??GAP_Init?relay     ; Banked call to: GAP_Init
+    158          
+    159            /* GATT Task */
+    160            GATT_Init( taskID++ );
+   \   00003A                ; Setup parameters for call to function GATT_Init
+   \   00003A   7906         MOV     R1,#0x6
+   \   00003C   12....       LCALL   ??GATT_Init?relay    ; Banked call to: GATT_Init
+    161            
+    162            /* SM Task */
+    163            SM_Init( taskID++ );
+   \   00003F                ; Setup parameters for call to function SM_Init
+   \   00003F   7907         MOV     R1,#0x7
+   \   000041   12....       LCALL   ??SM_Init?relay      ; Banked call to: SM_Init
+    164            
+    165          #if defined ( GAP_BOND_MGR )
+    166              GAPBondMgr_Init( taskID++ );
+   \   000044                ; Setup parameters for call to function GAPBondMgr_Init
+   \   000044   7908         MOV     R1,#0x8
+   \   000046   12....       LCALL   ??GAPBondMgr_Init?relay; Banked call to: GAPBondMgr_Init
+    167          #endif
+    168              
+    169          #if !defined ( GATT_DB_OFF_CHIP )
+    170            /* GATT Server App Task */
+    171            GATTServApp_Init( taskID++ );
+    172          
+    173            #if defined ( GATT_TEST )
+    174              /* GATT Test Task */
+    175              GATTTest_Init( taskID++ );
+    176            #endif
+    177          #endif // GATT_DB_OFF_CHIP
+    178          
+    179            /* HCI Extension GAP Task */
+    180          	SPI_Interface_Init( taskID++ );
+   \   000049                ; Setup parameters for call to function SPI_Interface_Init
+   \   000049   7909         MOV     R1,#0x9
+   \   00004B   12....       LCALL   ??SPI_Interface_Init?relay; Banked call to: SPI_Interface_Init
+    181            HCI_EXT_App_Init( taskID );
+   \   00004E                ; Setup parameters for call to function HCI_EXT_App_Init
+   \   00004E   790A         MOV     R1,#0xa
+   \   000050   12....       LCALL   ??HCI_EXT_App_Init?relay; Banked call to: HCI_EXT_App_Init
+    182          }
+   \   000053   D083         POP     DPH
+   \   000055   D082         POP     DPL
+   \   000057   02....       LJMP    ?BRET
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??osalInitTasks?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    osalInitTasks
+    183          
+    184          /*********************************************************************
+    185          *********************************************************************/
+
+   Maximum stack usage in bytes:
+
+   ISTACK Function
+   ------ --------
+      2   osalInitTasks
+        2   -> GAPBondMgr_Init
+        2   -> GAP_Init
+        2   -> GATT_Init
+        2   -> HCI_EXT_App_Init
+        2   -> HCI_Init
+        2   -> Hal_Init
+        2   -> L2CAP_Init
+        2   -> LL_Init
+        2   -> SM_Init
+        2   -> SPI_Interface_Init
+        2   -> osal_CbTimerInit
+        2   -> osal_mem_alloc
+        2   -> osal_memset
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       6  ??osalInitTasks?relay
+      90  osalInitTasks
+      22  tasksArr
+       1  tasksCnt
+       2  tasksEvents
+
+ 
+ 90 bytes in segment BANKED_CODE
+  6 bytes in segment BANK_RELAYS
+ 23 bytes in segment XDATA_ROM_C
+  2 bytes in segment XDATA_Z
+ 
+ 96 bytes of CODE  memory
+ 23 bytes of CONST memory
+  2 bytes of XDATA memory
+
+Errors: none
+Warnings: none

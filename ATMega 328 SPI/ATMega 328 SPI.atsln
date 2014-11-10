@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "ATMega 328 SPI", "ATMega 328 SPI\ATMega 328 SPI.cproj", "{FD25718B-40DB-4126-9ED7-1A5FD7F54A3D}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "MEGA_UART_INTERRUPT_EXAMPLE1", "MEGA_UART_INTERRUPT_EXAMPLE1\MEGA_UART_INTERRUPT_EXAMPLE1.cproj", "{76A0D6F7-39D6-48AC-85CA-15D7C204DE60}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD25718B-40DB-4126-9ED7-1A5FD7F54A3D}.Debug|AVR.ActiveCfg = Debug|AVR
+		{FD25718B-40DB-4126-9ED7-1A5FD7F54A3D}.Debug|AVR.Build.0 = Debug|AVR
+		{FD25718B-40DB-4126-9ED7-1A5FD7F54A3D}.Release|AVR.ActiveCfg = Release|AVR
+		{FD25718B-40DB-4126-9ED7-1A5FD7F54A3D}.Release|AVR.Build.0 = Release|AVR
+		{76A0D6F7-39D6-48AC-85CA-15D7C204DE60}.Debug|AVR.ActiveCfg = Debug|AVR
+		{76A0D6F7-39D6-48AC-85CA-15D7C204DE60}.Debug|AVR.Build.0 = Debug|AVR
+		{76A0D6F7-39D6-48AC-85CA-15D7C204DE60}.Release|AVR.ActiveCfg = Release|AVR
+		{76A0D6F7-39D6-48AC-85CA-15D7C204DE60}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

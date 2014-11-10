@@ -1,0 +1,437 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.30.1.41636 for 8051             02/Jun/2014  17:47:54 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Profi #
+#                          les\Roles\gap.c                                    #
+#    Command line       =  -f "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\config\buildComponents.cfg"    #
+#                          (-DBROADCASTER_CFG=0x01 -DOBSERVER_CFG=0x02        #
+#                          -DPERIPHERAL_CFG=0x04 -DCENTRAL_CFG=0x08           #
+#                          -DADV_NCONN_CFG=0x01 -DADV_CONN_CFG=0x02           #
+#                          -DSCAN_CFG=0x04 -DINIT_CFG=0x08                    #
+#                          -DADV_CFG=ADV_NCONN_CFG+ADV_CONN_CFG               #
+#                          -DLINK_CFG=ADV_CONN_CFG+INIT_CFG                   #
+#                          -DFULL_CFG=INIT_CFG+SCAN_CFG+ADV_NCONN_CFG+ADV_CON #
+#                          N_CFG) -f "c:\Users\Administrator\Documents\Dropbo #
+#                          x\Fish Brain\HM-10 Hack\HM-10                      #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\buildConf #
+#                          ig.cfg" (-DHOST_CONFIG=PERIPHERAL_CFG+CENTRAL_CFG  #
+#                          -DGAP_PRIVACY_RECONNECT)                           #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Profi #
+#                          les\Roles\gap.c" -D INT_HEAP_LEN=2700 -D           #
+#                          HALNODEBUG -D OSAL_CBTIMER_NUM_TASKS=1 -D          #
+#                          POWER_SAVING -D HAL_AES_DMA=TRUE -D HAL_DMA=TRUE   #
+#                          -D HAL_UART=TRUE -D HAL_UART_DMA=0 -D              #
+#                          HAL_UART_ISR=0 -D HAL_UART_SPI=2 -D                #
+#                          HAL_SPI_QUEUED_TX=TRUE -D HAL_KEY=FALSE -D         #
+#                          HAL_LCD=FALSE -D HAL_LED=FALSE -D                  #
+#                          GATT_DB_OFF_CHIP -D GAP_BOND_MGR -lCN              #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -lA                 #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -o                  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\" -e --debug           #
+#                          --core=plain --dptr=16,1 --data_model=large        #
+#                          --code_model=banked --calling_convention=xdata_ree #
+#                          ntrant --place_constants=data_rom                  #
+#                          --nr_virtual_regs 8 -I "c:\Users\Administrator\Doc #
+#                          uments\Dropbox\Fish Brain\HM-10 Hack\HM-10         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\com #
+#                          mon\" -I "c:\Users\Administrator\Documents\Dropbox #
+#                          \Fish Brain\HM-10 Hack\HM-10                       #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\hal\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\hal\target\CC #
+#                          2540EB\" -I "c:\Users\Administrator\Documents\Drop #
+#                          box\Fish Brain\HM-10 Hack\HM-10                    #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\osal\include\" -I                    #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\services\sadd #
+#                          r\" -I "c:\Users\Administrator\Documents\Dropbox\F #
+#                          ish Brain\HM-10 Hack\HM-10                         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\controlle #
+#                          r\phy\" -I "c:\Users\Administrator\Documents\Dropb #
+#                          ox\Fish Brain\HM-10 Hack\HM-10                     #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\controller\include\" -I          #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\hci\" -I  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\host\"    #
+#                          -I "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\cc2540\" -I             #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\npi\npi_np\" -I         #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Include\" -I                   #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Profiles\Roles\" -I            #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\source\" -Ohz                     #
+#    List file          =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\gap.lst               #
+#    Object file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\gap.r51                #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Profiles\Roles\gap.c
+      1          /*************************************************************************************************
+      2            Filename:       gap.c
+      3            Revised:        $Date: 2013-05-06 13:33:47 -0700 (Mon, 06 May 2013) $
+      4            Revision:       $Revision: 34153 $
+      5          
+      6            Description:    This file contains the GAP Configuration API.
+      7          
+      8          
+      9            Copyright 2011 Texas Instruments Incorporated. All rights reserved.
+     10          
+     11            IMPORTANT: Your use of this Software is limited to those specific rights
+     12            granted under the terms of a software license agreement between the user
+     13            who downloaded the software, his/her employer (which must be your employer)
+     14            and Texas Instruments Incorporated (the "License").  You may not use this
+     15            Software unless you agree to abide by the terms of the License. The License
+     16            limits your use, and you acknowledge, that the Software may not be modified,
+     17            copied or distributed unless embedded on a Texas Instruments microcontroller
+     18            or used solely and exclusively in conjunction with a Texas Instruments radio
+     19            frequency transceiver, which is integrated into your product.  Other than for
+     20            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     21            works of, modify, distribute, perform, display or sell this Software and/or
+     22            its documentation for any purpose.
+     23          
+     24            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     25            PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     26            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     27            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     28            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     29            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     30            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     31            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     32            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     33            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     34            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     35          
+     36            Should you have any questions regarding your right to use this Software,
+     37            contact Texas Instruments Incorporated at www.TI.com.
+     38          **************************************************************************************************/
+     39          
+     40          #include "bcomdef.h"
+     41          #include "gap.h"
+     42          #include "sm.h"
+     43          
+     44          /*********************************************************************
+     45           * MACROS
+     46           */
+     47          
+     48          /*********************************************************************
+     49           * CONSTANTS
+     50           */
+     51          
+     52          /*********************************************************************
+     53           * GLOBAL VARIABLES
+     54           */
+     55          
+     56          /*********************************************************************
+     57           * EXTERNAL VARIABLES
+     58           */
+     59          
+     60          /*********************************************************************
+     61           * EXTERNAL FUNCTIONS
+     62           */
+     63          
+     64          /*********************************************************************
+     65           * LOCAL VARIABLES
+     66           */
+     67          
+     68          /*********************************************************************
+     69           * LOCAL FUNCTION PROTOTYPES
+     70           */
+     71          
+     72          /*********************************************************************
+     73           * API FUNCTIONS
+     74           */
+     75          
+     76          /*********************************************************************
+     77           * Called to setup the device.  Call just once.
+     78           *
+     79           * Public function defined in gap.h.
+     80           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     81          bStatus_t GAP_DeviceInit(  uint8 taskID,
+   \                     GAP_DeviceInit:
+     82                                     uint8 profileRole,
+     83                                     uint8 maxScanResponses,
+     84                                     uint8 *pIRK,
+     85                                     uint8 *pSRK,
+     86                                     uint32 *pSignCounter )
+     87          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV     A,R2
+   \   000006   FF           MOV     R7,A
+   \   000007   8B..         MOV     ?V0,R3
+   \   000009   8C..         MOV     ?V2,R4
+   \   00000B   8D..         MOV     ?V3,R5
+     88            bStatus_t stat = INVALIDPARAMETER;   // Return status
+   \   00000D   75..02       MOV     ?V1,#0x2
+     89          
+     90            // Valid profile roles and supported combinations
+     91            switch ( profileRole )
+   \   000010   14           DEC     A
+   \   000011   6014         JZ      ??GAP_DeviceInit_0
+   \   000013   14           DEC     A
+   \   000014   6011         JZ      ??GAP_DeviceInit_0
+   \   000016   14           DEC     A
+   \   000017   600E         JZ      ??GAP_DeviceInit_0
+   \   000019   14           DEC     A
+   \   00001A   600B         JZ      ??GAP_DeviceInit_0
+   \   00001C   24FE         ADD     A,#-0x2
+   \   00001E   6007         JZ      ??GAP_DeviceInit_0
+   \   000020   24FE         ADD     A,#-0x2
+   \   000022   6003         JZ      ??GAP_DeviceInit_0
+   \   000024   14           DEC     A
+   \   000025   7044         JNZ     ??GAP_DeviceInit_1
+     92            {
+     93              case GAP_PROFILE_BROADCASTER:
+     94                #if ( HOST_CONFIG & ( BROADCASTER_CFG | PERIPHERAL_CFG ) )
+     95                {
+     96                  stat = SUCCESS;
+     97                }
+     98                #endif
+     99                break;
+    100          
+    101              case GAP_PROFILE_OBSERVER:
+    102                #if ( HOST_CONFIG & ( OBSERVER_CFG | CENTRAL_CFG ) )
+    103                {
+    104                  stat = SUCCESS;
+    105                }
+    106                #endif
+    107                break;
+    108          
+    109              case GAP_PROFILE_PERIPHERAL:
+    110                #if ( HOST_CONFIG & PERIPHERAL_CFG )
+    111                {
+    112                  stat = SUCCESS;
+    113                }
+    114                #endif
+    115                break;
+    116          
+    117              case GAP_PROFILE_CENTRAL:
+    118                #if ( HOST_CONFIG & CENTRAL_CFG )
+    119                {
+    120                  stat = SUCCESS;
+    121                }
+    122                #endif
+    123                break;
+    124          
+    125              case (GAP_PROFILE_BROADCASTER | GAP_PROFILE_OBSERVER):
+    126                #if ( ( HOST_CONFIG & ( BROADCASTER_CFG | PERIPHERAL_CFG ) ) && \
+    127                      ( HOST_CONFIG & ( OBSERVER_CFG | CENTRAL_CFG ) ) )
+    128                {
+    129                  stat = SUCCESS;
+    130                }
+    131                #endif
+    132                break;
+    133          
+    134              case (GAP_PROFILE_PERIPHERAL | GAP_PROFILE_OBSERVER):
+    135                #if ( ( HOST_CONFIG & PERIPHERAL_CFG ) && \
+    136                      ( HOST_CONFIG & ( OBSERVER_CFG | CENTRAL_CFG ) ) )
+    137                {
+    138                  stat = SUCCESS;
+    139                }
+    140                #endif
+    141                break;
+    142          
+    143              case (GAP_PROFILE_CENTRAL | GAP_PROFILE_BROADCASTER):
+    144                #if ( ( HOST_CONFIG & CENTRAL_CFG ) && \
+    145                      ( HOST_CONFIG & ( BROADCASTER_CFG | PERIPHERAL_CFG ) ) )
+    146                {
+    147                  stat = SUCCESS;
+    148                }
+    149                #endif
+    150                break;
+    151          
+    152              // Invalid profile roles
+    153              default:
+    154                stat = INVALIDPARAMETER;
+    155                break;
+    156            }
+    157          
+    158            if ( stat == SUCCESS )
+    159            {
+    160              // Setup the device configuration parameters
+    161              stat = GAP_ParamsInit( taskID, profileRole );
+   \                     ??GAP_DeviceInit_0:
+   \   000027                ; Setup parameters for call to function GAP_ParamsInit
+   \   000027   12....       LCALL   ??GAP_ParamsInit?relay; Banked call to: GAP_ParamsInit
+   \   00002A   E9           MOV     A,R1
+   \   00002B   F5..         MOV     ?V1,A
+    162              if ( stat == SUCCESS )
+   \   00002D   703C         JNZ     ??GAP_DeviceInit_1
+    163              {
+    164                #if ( HOST_CONFIG & ( CENTRAL_CFG | PERIPHERAL_CFG ) )
+    165                {
+    166                  GAP_SecParamsInit( pIRK, pSRK, pSignCounter );
+   \   00002F                ; Setup parameters for call to function GAP_SecParamsInit
+   \   00002F   740E         MOV     A,#0xe
+   \   000031   12....       LCALL   ?XSTACK_DISP0_8
+   \   000034   12....       LCALL   ?PUSH_XSTACK8_X_TWO
+   \   000037   740E         MOV     A,#0xe
+   \   000039   12....       LCALL   ?XSTACK_DISP0_8
+   \   00003C   E0           MOVX    A,@DPTR
+   \   00003D   FC           MOV     R4,A
+   \   00003E   A3           INC     DPTR
+   \   00003F   E0           MOVX    A,@DPTR
+   \   000040   FD           MOV     R5,A
+   \   000041   AA..         MOV     R2,?V2
+   \   000043   AB..         MOV     R3,?V3
+   \   000045   12....       LCALL   ??GAP_SecParamsInit?relay; Banked call to: GAP_SecParamsInit
+   \   000048   7402         MOV     A,#0x2
+   \   00004A   12....       LCALL   ?DEALLOC_XSTACK8
+    167                }
+    168                #endif
+    169          
+    170                #if ( HOST_CONFIG & ( CENTRAL_CFG | OBSERVER_CFG ) )
+    171                {
+    172                  if ( (profileRole == GAP_PROFILE_BROADCASTER) ||
+    173                       (profileRole == GAP_PROFILE_PERIPHERAL) )
+   \   00004D   7401         MOV     A,#0x1
+   \   00004F   6F           XRL     A,R7
+   \   000050   6005         JZ      ??GAP_DeviceInit_2
+   \   000052   7404         MOV     A,#0x4
+   \   000054   6F           XRL     A,R7
+   \   000055   7003         JNZ     ??GAP_DeviceInit_3
+    174                  {
+    175                    maxScanResponses = 0; // Can't scan, so no need for responses. Force 0.
+   \                     ??GAP_DeviceInit_2:
+   \   000057   75..00       MOV     ?V0,#0x0
+    176                  }
+    177          
+    178                  // Initialize GAP Central Device Manager
+    179                  VOID GAP_CentDevMgrInit( maxScanResponses );
+   \                     ??GAP_DeviceInit_3:
+   \   00005A                ; Setup parameters for call to function GAP_CentDevMgrInit
+   \   00005A   A9..         MOV     R1,?V0
+   \   00005C   12....       LCALL   ??GAP_CentDevMgrInit?relay; Banked call to: GAP_CentDevMgrInit
+    180          
+    181                  #if ( HOST_CONFIG & CENTRAL_CFG )
+    182                  {
+    183                    // Register GAP Central Connection processing functions
+    184                    GAP_CentConnRegister();
+   \   00005F                ; Setup parameters for call to function GAP_CentConnRegister
+   \   00005F   12....       LCALL   ??GAP_CentConnRegister?relay; Banked call to: GAP_CentConnRegister
+    185          
+    186                    // Initialize SM Initiator
+    187                    VOID SM_InitiatorInit();
+   \   000062                ; Setup parameters for call to function SM_InitiatorInit
+   \   000062   12....       LCALL   ??SM_InitiatorInit?relay; Banked call to: SM_InitiatorInit
+    188                  }
+    189                  #endif
+    190                }
+    191                #endif
+    192          
+    193                #if ( HOST_CONFIG & ( PERIPHERAL_CFG | BROADCASTER_CFG ) )
+    194                {
+    195                  // Initialize GAP Peripheral Device Manager
+    196                  VOID GAP_PeriDevMgrInit();
+   \   000065                ; Setup parameters for call to function GAP_PeriDevMgrInit
+   \   000065   12....       LCALL   ??GAP_PeriDevMgrInit?relay; Banked call to: GAP_PeriDevMgrInit
+    197          
+    198                  #if ( HOST_CONFIG & PERIPHERAL_CFG )
+    199                  {
+    200                    // Initialize SM Responder
+    201                    VOID SM_ResponderInit();
+   \   000068                ; Setup parameters for call to function SM_ResponderInit
+   \   000068   12....       LCALL   ??SM_ResponderInit?relay; Banked call to: SM_ResponderInit
+    202                  }
+    203                  #endif
+    204                }
+    205                #endif
+    206              }
+    207            }
+    208          
+    209            return ( stat );
+   \                     ??GAP_DeviceInit_1:
+   \   00006B   A9..         MOV     R1,?V1
+   \   00006D   7F04         MOV     R7,#0x4
+   \   00006F   02....       LJMP    ?BANKED_LEAVE_XDATA
+    210          }
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??GAP_DeviceInit?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    GAP_DeviceInit
+    211          
+    212          /*********************************************************************
+    213          *********************************************************************/
+
+   Maximum stack usage in bytes:
+
+   XSTACK Function
+   ------ --------
+     18   GAP_DeviceInit
+       12   -> GAP_CentConnRegister
+       12   -> GAP_CentDevMgrInit
+       12   -> GAP_ParamsInit
+       12   -> GAP_PeriDevMgrInit
+       14   -> GAP_SecParamsInit
+       12   -> SM_InitiatorInit
+       12   -> SM_ResponderInit
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       6  ??GAP_DeviceInit?relay
+     114  GAP_DeviceInit
+
+ 
+ 114 bytes in segment BANKED_CODE
+   6 bytes in segment BANK_RELAYS
+ 
+ 120 bytes of CODE memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,537 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.30.1.41636 for 8051             02/Jun/2014  17:48:02 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\commo #
+#                          n\npi\npi_np\npi.c                                 #
+#    Command line       =  -f "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\config\buildComponents.cfg"    #
+#                          (-DBROADCASTER_CFG=0x01 -DOBSERVER_CFG=0x02        #
+#                          -DPERIPHERAL_CFG=0x04 -DCENTRAL_CFG=0x08           #
+#                          -DADV_NCONN_CFG=0x01 -DADV_CONN_CFG=0x02           #
+#                          -DSCAN_CFG=0x04 -DINIT_CFG=0x08                    #
+#                          -DADV_CFG=ADV_NCONN_CFG+ADV_CONN_CFG               #
+#                          -DLINK_CFG=ADV_CONN_CFG+INIT_CFG                   #
+#                          -DFULL_CFG=INIT_CFG+SCAN_CFG+ADV_NCONN_CFG+ADV_CON #
+#                          N_CFG) -f "c:\Users\Administrator\Documents\Dropbo #
+#                          x\Fish Brain\HM-10 Hack\HM-10                      #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\buildConf #
+#                          ig.cfg" (-DHOST_CONFIG=PERIPHERAL_CFG+CENTRAL_CFG  #
+#                          -DGAP_PRIVACY_RECONNECT)                           #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\commo #
+#                          n\npi\npi_np\npi.c" -D INT_HEAP_LEN=2700 -D        #
+#                          HALNODEBUG -D OSAL_CBTIMER_NUM_TASKS=1 -D          #
+#                          POWER_SAVING -D HAL_AES_DMA=TRUE -D HAL_DMA=TRUE   #
+#                          -D HAL_UART=TRUE -D HAL_UART_DMA=0 -D              #
+#                          HAL_UART_ISR=0 -D HAL_UART_SPI=2 -D                #
+#                          HAL_SPI_QUEUED_TX=TRUE -D HAL_KEY=FALSE -D         #
+#                          HAL_LCD=FALSE -D HAL_LED=FALSE -D                  #
+#                          GATT_DB_OFF_CHIP -D GAP_BOND_MGR -lCN              #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -lA                 #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -o                  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\" -e --debug           #
+#                          --core=plain --dptr=16,1 --data_model=large        #
+#                          --code_model=banked --calling_convention=xdata_ree #
+#                          ntrant --place_constants=data_rom                  #
+#                          --nr_virtual_regs 8 -I "c:\Users\Administrator\Doc #
+#                          uments\Dropbox\Fish Brain\HM-10 Hack\HM-10         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\com #
+#                          mon\" -I "c:\Users\Administrator\Documents\Dropbox #
+#                          \Fish Brain\HM-10 Hack\HM-10                       #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\hal\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\hal\target\CC #
+#                          2540EB\" -I "c:\Users\Administrator\Documents\Drop #
+#                          box\Fish Brain\HM-10 Hack\HM-10                    #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\osal\include\" -I                    #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\services\sadd #
+#                          r\" -I "c:\Users\Administrator\Documents\Dropbox\F #
+#                          ish Brain\HM-10 Hack\HM-10                         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\controlle #
+#                          r\phy\" -I "c:\Users\Administrator\Documents\Dropb #
+#                          ox\Fish Brain\HM-10 Hack\HM-10                     #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\controller\include\" -I          #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\hci\" -I  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\host\"    #
+#                          -I "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\cc2540\" -I             #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\npi\npi_np\" -I         #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Include\" -I                   #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Profiles\Roles\" -I            #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\source\" -Ohz                     #
+#    List file          =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\npi.lst               #
+#    Object file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\npi.r51                #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\common\npi\npi_np\npi.c
+      1          /*******************************************************************************
+      2            Filename:       npi.c
+      3            Revised:        $Date: 2008-06-11 14:30:47 -0700 (Wed, 11 Jun 2008) $
+      4            Revision:       $Revision: 17210 $
+      5          
+      6            Description:    This file contains the Network Processor Interface (NPI),
+      7                            which abstracts the physical link between the Application
+      8                            Processor (AP) and the Network Processor (NP). The NPI
+      9                            serves as the HAL's client for the SPI and UART drivers, and
+     10                            provides API and callback services for its client.
+     11          
+     12            Copyright 2006-2012 Texas Instruments Incorporated. All rights reserved.
+     13          
+     14            IMPORTANT: Your use of this Software is limited to those specific rights
+     15            granted under the terms of a software license agreement between the user
+     16            who downloaded the software, his/her employer (which must be your employer)
+     17            and Texas Instruments Incorporated (the "License").  You may not use this
+     18            Software unless you agree to abide by the terms of the License. The License
+     19            limits your use, and you acknowledge, that the Software may not be modified,
+     20            copied or distributed unless embedded on a Texas Instruments microcontroller
+     21            or used solely and exclusively in conjunction with a Texas Instruments radio
+     22            frequency transceiver, which is integrated into your product.  Other than for
+     23            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     24            works of, modify, distribute, perform, display or sell this Software and/or
+     25            its documentation for any purpose.
+     26          
+     27            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     28            PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     29            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     30            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     31            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     32            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     33            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     34            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     35            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     36            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     37            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     38          
+     39            Should you have any questions regarding your right to use this Software,
+     40            contact Texas Instruments Incorporated at www.TI.com.
+     41          *******************************************************************************/
+     42          
+     43          /*******************************************************************************
+     44           * INCLUDES
+     45           */
+     46          
+     47          #include "hal_types.h"
+     48          #include "hal_board.h"
+     49          #include "npi.h"
+     50          
+     51          /*******************************************************************************
+     52           * MACROS
+     53           */
+     54          
+     55          /*******************************************************************************
+     56           * CONSTANTS
+     57           */
+     58          
+     59          /*******************************************************************************
+     60           * TYPEDEFS
+     61           */
+     62          
+     63          /*******************************************************************************
+     64           * LOCAL VARIABLES
+     65           */
+     66          
+     67          /*******************************************************************************
+     68           * GLOBAL VARIABLES
+     69           */
+     70          
+     71          /*******************************************************************************
+     72           * PROTOTYPES
+     73           */
+     74          
+     75          /*******************************************************************************
+     76           * FUNCTIONS
+     77           */
+     78          
+     79          /*******************************************************************************
+     80           * @fn          NPI_InitTransport
+     81           *
+     82           * @brief       This routine initializes the transport layer and opens the port
+     83           *              of the device. Note that based on project defines, either the
+     84           *              UART, USB (CDC), or SPI driver can be used.
+     85           *
+     86           * input parameters
+     87           *
+     88           * @param       npiCback - User callback function when data is available.
+     89           *
+     90           * output parameters
+     91           *
+     92           * @param       None.
+     93           *
+     94           * @return      None.
+     95           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     96          void NPI_InitTransport( npiCBack_t npiCBack )
+   \                     NPI_InitTransport:
+     97          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 29
+   \   000004   74E3         MOV     A,#-0x1d
+   \   000006   12....       LCALL   ?ALLOC_XSTACK8
+     98            halUARTCfg_t uartConfig;
+     99          
+    100            // configure UART
+    101            uartConfig.configured           = TRUE;
+   \   000009   85..82       MOV     DPL,?XSP + 0
+   \   00000C   85..83       MOV     DPH,?XSP + 1
+   \   00000F   7401         MOV     A,#0x1
+   \   000011   F0           MOVX    @DPTR,A
+    102            uartConfig.baudRate             = NPI_UART_BR;
+   \   000012   12....       LCALL   ?XSTACK_DISP0_8
+   \   000015   7404         MOV     A,#0x4
+   \   000017   F0           MOVX    @DPTR,A
+    103            uartConfig.flowControl          = NPI_UART_FC;
+   \   000018   7402         MOV     A,#0x2
+   \   00001A   12....       LCALL   ?XSTACK_DISP0_8
+   \   00001D   7401         MOV     A,#0x1
+   \   00001F   F0           MOVX    @DPTR,A
+    104            uartConfig.flowControlThreshold = NPI_UART_FC_THRESHOLD;
+   \   000020   7403         MOV     A,#0x3
+   \   000022   12....       LCALL   ?XSTACK_DISP0_8
+   \   000025   7430         MOV     A,#0x30
+   \   000027   F0           MOVX    @DPTR,A
+   \   000028   A3           INC     DPTR
+   \   000029   E4           CLR     A
+   \   00002A   F0           MOVX    @DPTR,A
+    105            uartConfig.rx.maxBufSize        = NPI_UART_RX_BUF_SIZE;
+   \   00002B   740A         MOV     A,#0xa
+   \   00002D   12....       LCALL   ?XSTACK_DISP0_8
+   \   000030   7480         MOV     A,#-0x80
+   \   000032   F0           MOVX    @DPTR,A
+   \   000033   A3           INC     DPTR
+   \   000034   E4           CLR     A
+   \   000035   F0           MOVX    @DPTR,A
+    106            uartConfig.tx.maxBufSize        = NPI_UART_TX_BUF_SIZE;
+   \   000036   7412         MOV     A,#0x12
+   \   000038   12....       LCALL   ?XSTACK_DISP0_8
+   \   00003B   7480         MOV     A,#-0x80
+   \   00003D   F0           MOVX    @DPTR,A
+   \   00003E   A3           INC     DPTR
+   \   00003F   E4           CLR     A
+   \   000040   F0           MOVX    @DPTR,A
+    107            uartConfig.idleTimeout          = NPI_UART_IDLE_TIMEOUT;
+   \   000041   7405         MOV     A,#0x5
+   \   000043   12....       LCALL   ?XSTACK_DISP0_8
+   \   000046   7406         MOV     A,#0x6
+   \   000048   F0           MOVX    @DPTR,A
+    108            uartConfig.intEnable            = NPI_UART_INT_ENABLE;
+   \   000049   7416         MOV     A,#0x16
+   \   00004B   12....       LCALL   ?XSTACK_DISP0_8
+   \   00004E   7401         MOV     A,#0x1
+   \   000050   F0           MOVX    @DPTR,A
+    109            uartConfig.callBackFunc         = (halUARTCBack_t)npiCBack;
+   \   000051   741B         MOV     A,#0x1b
+   \   000053   12....       LCALL   ?XSTACK_DISP0_8
+   \   000056   EA           MOV     A,R2
+   \   000057   F0           MOVX    @DPTR,A
+   \   000058   A3           INC     DPTR
+   \   000059   EB           MOV     A,R3
+   \   00005A   F0           MOVX    @DPTR,A
+    110          
+    111            // start UART
+    112            // Note: Assumes no issue opening UART port.
+    113            (void)HalUARTOpen( NPI_UART_PORT, &uartConfig );
+   \   00005B                ; Setup parameters for call to function HalUARTOpen
+   \   00005B   AA..         MOV     R2,?XSP + 0
+   \   00005D   AB..         MOV     R3,?XSP + 1
+   \   00005F   7901         MOV     R1,#0x1
+   \   000061   12....       LCALL   ??HalUARTOpen?relay  ; Banked call to: HalUARTOpen
+    114          
+    115            return;
+   \   000064   741D         MOV     A,#0x1d
+   \   000066   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000069   80..         SJMP    ?Subroutine0
+    116          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   D083         POP     DPH
+   \   000002   D082         POP     DPL
+   \   000004   02....       LJMP    ?BRET
+    117          
+    118          
+    119          /*******************************************************************************
+    120           * @fn          NPI_ReadTransport
+    121           *
+    122           * @brief       This routine reads data from the transport layer based on len,
+    123           *              and places it into the buffer.
+    124           *
+    125           * input parameters
+    126           *
+    127           * @param       buf - Pointer to buffer to place read data.
+    128           * @param       len - Number of bytes to read.
+    129           *
+    130           * output parameters
+    131           *
+    132           * @param       None.
+    133           *
+    134           * @return      Returns the number of bytes read from transport.
+    135           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    136          uint16 NPI_ReadTransport( uint8 *buf, uint16 len )
+   \                     NPI_ReadTransport:
+    137          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    138            return( HalUARTRead( NPI_UART_PORT, buf, len ) );
+   \   000004                ; Setup parameters for call to function HalUARTRead
+   \   000004   7901         MOV     R1,#0x1
+   \   000006   12....       LCALL   ??HalUARTRead?relay  ; Banked call to: HalUARTRead
+   \   000009   80..         SJMP    ?Subroutine0
+    139          }
+    140          
+    141          
+    142          /*******************************************************************************
+    143           * @fn          NPI_WriteTransport
+    144           *
+    145           * @brief       This routine writes data from the buffer to the transport layer.
+    146           *
+    147           * input parameters
+    148           *
+    149           * @param       buf - Pointer to buffer to write data from.
+    150           * @param       len - Number of bytes to write.
+    151           *
+    152           * output parameters
+    153           *
+    154           * @param       None.
+    155           *
+    156           * @return      Returns the number of bytes written to transport.
+    157           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    158          uint16 NPI_WriteTransport( uint8 *buf, uint16 len )
+   \                     NPI_WriteTransport:
+    159          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    160            return( HalUARTWrite( NPI_UART_PORT, buf, len ) );
+   \   000004                ; Setup parameters for call to function HalUARTWrite
+   \   000004   7901         MOV     R1,#0x1
+   \   000006   12....       LCALL   ??HalUARTWrite?relay ; Banked call to: HalUARTWrite
+   \   000009                REQUIRE ?Subroutine0
+   \   000009                ; // Fall through to label ?Subroutine0
+    161          }
+    162          
+    163          
+    164          /*******************************************************************************
+    165           * @fn          NPI_RxBufLen
+    166           *
+    167           * @brief       This routine returns the number of bytes in the receive buffer.
+    168           *
+    169           * input parameters
+    170           *
+    171           * @param       None.
+    172           *
+    173           * output parameters
+    174           *
+    175           * @param       None.
+    176           *
+    177           * @return      Returns the number of bytes in the receive buffer.
+    178           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    179          uint16 NPI_RxBufLen( void )
+   \                     NPI_RxBufLen:
+    180          {
+   \   000000   C082         PUSH    DPL
+   \   000002   C083         PUSH    DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    181            return( Hal_UART_RxBufLen( NPI_UART_PORT ) );
+   \   000004                ; Setup parameters for call to function Hal_UART_RxBufLen
+   \   000004   7901         MOV     R1,#0x1
+   \   000006   12....       LCALL   ??Hal_UART_RxBufLen?relay; Banked call to: Hal_UART_RxBufLen
+   \   000009   80..         SJMP    ?Subroutine0
+    182          }
+    183          
+    184          
+    185          /*******************************************************************************
+    186           * @fn          NPI_GetMaxRxBufSize
+    187           *
+    188           * @brief       This routine returns the max size receive buffer.
+    189           *
+    190           * input parameters
+    191           *
+    192           * @param       None.
+    193           *
+    194           * output parameters
+    195           *
+    196           * @param       None.
+    197           *
+    198           * @return      Returns the max size of the receive buffer.
+    199           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    200          uint16 NPI_GetMaxRxBufSize( void )
+   \                     NPI_GetMaxRxBufSize:
+    201          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    202            return( NPI_UART_RX_BUF_SIZE );
+   \   000000                REQUIRE ?Subroutine1
+   \   000000                ; // Fall through to label ?Subroutine1
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   7A80         MOV     R2,#-0x80
+   \   000002   7B00         MOV     R3,#0x0
+   \   000004   02....       LJMP    ?BRET
+    203          }
+    204          
+    205          
+    206          /*******************************************************************************
+    207           * @fn          NPI_GetMaxTxBufSize
+    208           *
+    209           * @brief       This routine returns the max size transmit buffer.
+    210           *
+    211           * input parameters
+    212           *
+    213           * @param       None.
+    214           *
+    215           * output parameters
+    216           *
+    217           * @param       None.
+    218           *
+    219           * @return      Returns the max size of the transmit buffer.
+    220           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    221          uint16 NPI_GetMaxTxBufSize( void )
+   \                     NPI_GetMaxTxBufSize:
+    222          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    223            return( NPI_UART_TX_BUF_SIZE );
+   \   000000   80..         SJMP    ?Subroutine1
+    224          }
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??NPI_InitTransport?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    NPI_InitTransport
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??NPI_ReadTransport?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    NPI_ReadTransport
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??NPI_WriteTransport?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    NPI_WriteTransport
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??NPI_RxBufLen?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    NPI_RxBufLen
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??NPI_GetMaxRxBufSize?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    NPI_GetMaxRxBufSize
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??NPI_GetMaxTxBufSize?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    NPI_GetMaxTxBufSize
+    225          
+    226          
+    227          /*******************************************************************************
+    228           ******************************************************************************/
+
+   Maximum stack usage in bytes:
+
+   ISTACK XSTACK Function
+   ------ ------ --------
+      0      0   NPI_GetMaxRxBufSize
+      0      0   NPI_GetMaxTxBufSize
+      2     29   NPI_InitTransport
+        2     29   -> HalUARTOpen
+      2      0   NPI_ReadTransport
+        2      0   -> HalUARTRead
+      2      0   NPI_RxBufLen
+        2      0   -> Hal_UART_RxBufLen
+      2      0   NPI_WriteTransport
+        2      0   -> HalUARTWrite
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       6  ??NPI_GetMaxRxBufSize?relay
+       6  ??NPI_GetMaxTxBufSize?relay
+       6  ??NPI_InitTransport?relay
+       6  ??NPI_ReadTransport?relay
+       6  ??NPI_RxBufLen?relay
+       6  ??NPI_WriteTransport?relay
+       7  ?Subroutine0
+       7  ?Subroutine1
+       0  NPI_GetMaxRxBufSize
+       2  NPI_GetMaxTxBufSize
+     107  NPI_InitTransport
+      11  NPI_ReadTransport
+      11  NPI_RxBufLen
+       9  NPI_WriteTransport
+
+ 
+ 154 bytes in segment BANKED_CODE
+  36 bytes in segment BANK_RELAYS
+ 
+ 190 bytes of CODE memory
+
+Errors: none
+Warnings: none

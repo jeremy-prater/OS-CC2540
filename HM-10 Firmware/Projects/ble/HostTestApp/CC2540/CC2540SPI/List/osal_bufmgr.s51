@@ -1,0 +1,1369 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V8.30.1.41636 for 8051            02/Jun/2014  17:48:16 /
+// Copyright 2004-2013 IAR Systems AB.                                        /
+//                                                                            /
+//    Core               =  plain                                             /
+//    Code model         =  banked                                            /
+//    Data model         =  large                                             /
+//    Calling convention =  xdata reentrant                                   /
+//    Constant location  =  data_rom                                          /
+//    Dptr setup         =  1,16                                              /
+//                                                                            /
+//    Source file        =  c:\Users\Administrator\Documents\Dropbox\Fish     /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Components\osal\c /
+//                          ommon\osal_bufmgr.c                               /
+//    Command line       =  -f "c:\Users\Administrator\Documents\Dropbox\Fish /
+//                           Brain\HM-10 Hack\HM-10                           /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\co /
+//                          nfig\buildComponents.cfg"                         /
+//                          (-DBROADCASTER_CFG=0x01 -DOBSERVER_CFG=0x02       /
+//                          -DPERIPHERAL_CFG=0x04 -DCENTRAL_CFG=0x08          /
+//                          -DADV_NCONN_CFG=0x01 -DADV_CONN_CFG=0x02          /
+//                          -DSCAN_CFG=0x04 -DINIT_CFG=0x08                   /
+//                          -DADV_CFG=ADV_NCONN_CFG+ADV_CONN_CFG              /
+//                          -DLINK_CFG=ADV_CONN_CFG+INIT_CFG                  /
+//                          -DFULL_CFG=INIT_CFG+SCAN_CFG+ADV_NCONN_CFG+ADV_CO /
+//                          NN_CFG) -f "c:\Users\Administrator\Documents\Drop /
+//                          box\Fish Brain\HM-10 Hack\HM-10                   /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\buildCon /
+//                          fig.cfg" (-DHOST_CONFIG=PERIPHERAL_CFG+CENTRAL_CF /
+//                          G -DGAP_PRIVACY_RECONNECT)                        /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Components\osal\c /
+//                          ommon\osal_bufmgr.c" -D INT_HEAP_LEN=2700 -D      /
+//                          HALNODEBUG -D OSAL_CBTIMER_NUM_TASKS=1 -D         /
+//                          POWER_SAVING -D HAL_AES_DMA=TRUE -D HAL_DMA=TRUE  /
+//                          -D HAL_UART=TRUE -D HAL_UART_DMA=0 -D             /
+//                          HAL_UART_ISR=0 -D HAL_UART_SPI=2 -D               /
+//                          HAL_SPI_QUEUED_TX=TRUE -D HAL_KEY=FALSE -D        /
+//                          HAL_LCD=FALSE -D HAL_LED=FALSE -D                 /
+//                          GATT_DB_OFF_CHIP -D GAP_BOND_MGR -lCN             /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\List\" -lA               /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\List\" -o                /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\Obj\" -e --debug         /
+//                          --core=plain --dptr=16,1 --data_model=large       /
+//                          --code_model=banked --calling_convention=xdata_re /
+//                          entrant --place_constants=data_rom                /
+//                          --nr_virtual_regs 8 -I "c:\Users\Administrator\Do /
+//                          cuments\Dropbox\Fish Brain\HM-10 Hack\HM-10       /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\co /
+//                          mmon\" -I "c:\Users\Administrator\Documents\Dropb /
+//                          ox\Fish Brain\HM-10 Hack\HM-10                    /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\hal\include\" -I                   /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\hal\target\ /
+//                          CC2540EB\" -I "c:\Users\Administrator\Documents\D /
+//                          ropbox\Fish Brain\HM-10 Hack\HM-10                /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\osal\include\" -I                  /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\services\sa /
+//                          ddr\" -I "c:\Users\Administrator\Documents\Dropbo /
+//                          x\Fish Brain\HM-10 Hack\HM-10                     /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\ble\include\" -I                   /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\ble\control /
+//                          ler\phy\" -I "c:\Users\Administrator\Documents\Dr /
+//                          opbox\Fish Brain\HM-10 Hack\HM-10                 /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\ble\controller\include\" -I        /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\ble\hci\"   /
+//                          -I "c:\Users\Administrator\Documents\Dropbox\Fish /
+//                           Brain\HM-10 Hack\HM-10                           /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\ble\host\" -I                      /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\common\cc2540\" -I           /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\common\npi\npi_np\" -I       /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\Include\" -I                 /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\Profiles\Roles\" -I          /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\source\" -Ohz                   /
+//    List file          =  c:\Users\Administrator\Documents\Dropbox\Fish     /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\List\osal_bufmgr.s51     /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME osal_bufmgr
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?V0
+        EXTERN ?V2
+        EXTERN ?V3
+        EXTERN ?V1
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN __INIT_XDATA_Z
+
+        FUNCTION ??bm_desc_from_payload?relay,0203H
+        PUBLIC ??osal_bm_adjust_header?relay
+        FUNCTION ??osal_bm_adjust_header?relay,0203H
+        PUBLIC ??osal_bm_adjust_tail?relay
+        FUNCTION ??osal_bm_adjust_tail?relay,0203H
+        PUBLIC ??osal_bm_alloc?relay
+        FUNCTION ??osal_bm_alloc?relay,0203H
+        PUBLIC ??osal_bm_free?relay
+        FUNCTION ??osal_bm_free?relay,0203H
+        PUBWEAK _A_IEN0
+        FUNCTION bm_desc_from_payload,0203H
+        ARGFRAME XSTACK, 12, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC osal_bm_adjust_header
+        FUNCTION osal_bm_adjust_header,0a1203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 12, STACK
+        PUBLIC osal_bm_adjust_tail
+        FUNCTION osal_bm_adjust_tail,0a1203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 12, STACK
+        PUBLIC osal_bm_alloc
+        FUNCTION osal_bm_alloc,0a1203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 12, STACK
+        PUBLIC osal_bm_free
+        FUNCTION osal_bm_free,0a1203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-2
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B SameValue
+          CFI A SameValue
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT SameValue
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon1
+        
+osal_mem_alloc      SYMBOL "osal_mem_alloc"
+??osal_mem_alloc?relay SYMBOL "?relay", osal_mem_alloc
+osal_mem_free       SYMBOL "osal_mem_free"
+??osal_mem_free?relay SYMBOL "?relay", osal_mem_free
+osal_bm_adjust_header SYMBOL "osal_bm_adjust_header"
+??osal_bm_adjust_header?relay SYMBOL "?relay", osal_bm_adjust_header
+osal_bm_adjust_tail SYMBOL "osal_bm_adjust_tail"
+??osal_bm_adjust_tail?relay SYMBOL "?relay", osal_bm_adjust_tail
+osal_bm_alloc       SYMBOL "osal_bm_alloc"
+??osal_bm_alloc?relay SYMBOL "?relay", osal_bm_alloc
+osal_bm_free        SYMBOL "osal_bm_free"
+??osal_bm_free?relay SYMBOL "?relay", osal_bm_free
+
+        EXTERN ??osal_mem_alloc?relay
+        FUNCTION ??osal_mem_alloc?relay,00H
+        EXTERN ??osal_mem_free?relay
+        FUNCTION ??osal_mem_free?relay,00H
+        EXTERN osal_mem_alloc
+        FUNCTION osal_mem_alloc,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 12, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN osal_mem_free
+        FUNCTION osal_mem_free,0202H
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+
+// c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Components\osal\common\osal_bufmgr.c
+//    1 /**************************************************************************************************
+//    2   Filename:       osal_bufmgr.c
+//    3   Revised:        $Date: 2009-01-29 09:58:32 -0800 (Thu, 29 Jan 2009) $
+//    4   Revision:       $Revision: 18882 $
+//    5 
+//    6   Description:    This file contains the buffer management APIs. These APIs
+//    7                   are not reentrant hence cannot be called from an interrupt
+//    8                   contex.
+//    9 
+//   10 
+//   11   Copyright 2008-2013 Texas Instruments Incorporated. All rights reserved.
+//   12 
+//   13   IMPORTANT: Your use of this Software is limited to those specific rights
+//   14   granted under the terms of a software license agreement between the user
+//   15   who downloaded the software, his/her employer (which must be your employer)
+//   16   and Texas Instruments Incorporated (the "License").  You may not use this
+//   17   Software unless you agree to abide by the terms of the License. The License
+//   18   limits your use, and you acknowledge, that the Software may not be modified,
+//   19   copied or distributed unless embedded on a Texas Instruments microcontroller
+//   20   or used solely and exclusively in conjunction with a Texas Instruments radio
+//   21   frequency transceiver, which is integrated into your product.  Other than for
+//   22   the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//   23   works of, modify, distribute, perform, display or sell this Software and/or
+//   24   its documentation for any purpose.
+//   25 
+//   26   YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//   27   PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+//   28   INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+//   29   NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//   30   TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//   31   NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//   32   LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//   33   INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//   34   OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//   35   OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//   36   (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//   37 
+//   38   Should you have any questions regarding your right to use this Software,
+//   39   contact Texas Instruments Incorporated at www.TI.com.
+//   40 **************************************************************************************************/
+//   41 
+//   42 
+//   43 /*********************************************************************
+//   44  * INCLUDES
+//   45  */
+//   46 #include "OSAL.h"
+//   47 #include "OnBoard.h"
+
+        ASEGN SFR_AN:DATA:NOROOT,0a8H
+// union <unnamed> volatile __sfr _A_IEN0
+_A_IEN0:
+        DATA8
+        DS 1
+//   48 #include "osal_bufmgr.h"
+//   49 
+//   50 /*********************************************************************
+//   51  * MACROS
+//   52  */
+//   53 // 'bd_ptr' used with these macros must be of the type 'bm_desc_t *'
+//   54 #define START_PTR( bd_ptr )  ( (bd_ptr) + 1 )
+//   55 #define END_PTR( bd_ptr )    ( (uint8 *)START_PTR( bd_ptr ) + (bd_ptr)->payload_len )
+//   56 
+//   57 /*********************************************************************
+//   58  * CONSTANTS
+//   59  */
+//   60 
+//   61 /*********************************************************************
+//   62  * TYPEDEFS
+//   63  */
+//   64 typedef struct bm_desc
+//   65 {
+//   66   struct bm_desc *next_ptr;    // pointer to next buffer descriptor
+//   67   uint16          payload_len; // length of user's buffer
+//   68 } bm_desc_t;
+//   69 
+//   70 /*********************************************************************
+//   71  * GLOBAL VARIABLES
+//   72  */
+//   73 
+//   74 /*********************************************************************
+//   75  * GLOBAL FUNCTIONS
+//   76  */
+//   77 
+//   78 /*********************************************************************
+//   79  * LOCAL VARIABLES
+//   80  */
+//   81 // Linked list of allocated buffer descriptors
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA16
+//   82 static bm_desc_t *bm_list_ptr = NULL;
+bm_list_ptr:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+//   83 
+//   84 /*********************************************************************
+//   85  * LOCAL FUNCTIONS
+//   86  */
+//   87 static bm_desc_t *bm_desc_from_payload ( uint8 *payload_ptr );
+//   88 
+//   89 /*********************************************************************
+//   90  * @fn      osal_bm_alloc
+//   91  *
+//   92  * @brief   Implementation of the allocator functionality.
+//   93  *
+//   94  *          WARNING: THIS FUNCTION CAN BE CALLED ONLY FROM THE BOTTOM
+//   95  *                   LAYER OF THE STACK (HCI FOR DUAL MODE AND LINK
+//   96  *                   LAYER FOR SINGLE MODE).
+//   97  *
+//   98  * @param   size - number of bytes to allocate from the heap.
+//   99  *
+//  100  * @return  pointer to the heap allocation; NULL if error or failure.
+//  101  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  102 void *osal_bm_alloc( uint16 size )
+osal_bm_alloc:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function osal_bm_alloc
+        CODE
+//  103 {
+        FUNCALL osal_bm_alloc, osal_mem_alloc
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 12, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 12, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V2
+        REQUIRE ?V3
+        MOV     A,#-0xc
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 0
+        MOV     A,R2
+        MOV     R6,A
+        MOV     A,R3
+        MOV     R7,A
+//  104   halIntState_t  cs;
+//  105   bm_desc_t     *bd_ptr;
+//  106 
+//  107   HAL_ENTER_CRITICAL_SECTION(cs);
+        MOV     C,0xa8.7
+        CLR     A
+        RLC     A
+        MOV     ?V0,A
+        CLR     0xa8.7
+//  108 
+//  109   bd_ptr = osal_mem_alloc( sizeof( bm_desc_t ) + size );
+        ; Setup parameters for call to function osal_mem_alloc
+        MOV     A,R6
+        ADD     A,#0x4
+        MOV     R2,A
+        CLR     A
+        ADDC    A,R7
+        MOV     R3,A
+        LCALL   ??osal_mem_alloc?relay; Banked call to: osal_mem_alloc
+//  110 
+//  111   if ( bd_ptr != NULL )
+        MOV     A,R2
+        ORL     A,R3
+        JZ      ??osal_bm_alloc_0
+//  112   {
+//  113     // set the buffer descriptor info
+//  114     bd_ptr->payload_len  = size;
+        MOV     DPL,R2
+        MOV     DPH,R3
+        INC     DPTR
+        INC     DPTR
+        MOV     A,R6
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R7
+        MOVX    @DPTR,A
+//  115 
+//  116     // add item to the beginning of the list
+//  117     bd_ptr->next_ptr = bm_list_ptr;
+        MOV     DPTR,#bm_list_ptr
+        MOVX    A,@DPTR
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R1,A
+        MOV     DPL,R2
+        MOV     DPH,R3
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+//  118     bm_list_ptr = bd_ptr;
+        MOV     DPTR,#bm_list_ptr
+        MOV     A,R2
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R3
+        MOVX    @DPTR,A
+//  119 
+//  120     // return start of the buffer
+//  121     bd_ptr = START_PTR( bd_ptr );
+        MOV     A,R2
+        ADD     A,#0x4
+        MOV     R2,A
+        JNC     ??osal_bm_alloc_0
+        INC     R3
+//  122   }
+//  123 
+//  124   HAL_EXIT_CRITICAL_SECTION(cs);
+??osal_bm_alloc_0:
+        MOV     A,?V0
+        MOV     C,0xE0 /* A   */.0
+        MOV     0xa8.7,C
+          CFI EndBlock cfiBlock0
+//  125 
+//  126   return ( (void *)bd_ptr );
+        REQUIRE ?Subroutine0
+        REQUIRE _A_IEN0
+        ; // Fall through to label ?Subroutine0
+//  127 }
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine0:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 12)
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        MOV     R7,#0x4
+        LJMP    ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock1
+//  128 
+//  129 /*********************************************************************
+//  130  * @fn      osal_bm_free
+//  131  *
+//  132  * @brief   Implementation of the de-allocator functionality.
+//  133  *
+//  134  * @param   payload_ptr - pointer to the memory to free.
+//  135  *
+//  136  * @return  none
+//  137  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  138 void osal_bm_free( void *payload_ptr )
+osal_bm_free:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function osal_bm_free
+        CODE
+//  139 {
+        FUNCALL osal_bm_free, osal_mem_free
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        MOV     A,#-0xa
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 10)
+        ; Saved register size: 10
+        ; Auto size: 0
+        MOV     A,R2
+        MOV     R0,A
+        MOV     A,R3
+        MOV     R1,A
+//  140   halIntState_t cs;
+//  141   bm_desc_t *loop_ptr;
+//  142   bm_desc_t *prev_ptr;
+//  143 
+//  144   HAL_ENTER_CRITICAL_SECTION(cs);
+        MOV     C,0xa8.7
+        CLR     A
+        RLC     A
+        MOV     R6,A
+        CLR     0xa8.7
+//  145 
+//  146   prev_ptr = NULL;
+        MOV     R4,#0x0
+        MOV     R5,#0x0
+//  147 
+//  148   loop_ptr = bm_list_ptr;
+        MOV     DPTR,#bm_list_ptr
+        LCALL   ??Subroutine3_0 & 0xFFFF
+??CrossCallReturnLabel_2:
+        MOV     ?V0,R0
+        MOV     ?V1,R1
+        SJMP    ??CrossCallReturnLabel_5
+//  149   while ( loop_ptr != NULL )
+//  150   {
+//  151     if ( payload_ptr >= (void *)START_PTR( loop_ptr ) &&
+//  152          payload_ptr <= (void *)END_PTR( loop_ptr) )
+//  153     {
+//  154       // unlink item from the linked list
+//  155       if ( prev_ptr == NULL )
+//  156       {
+//  157         // it's the first item on the list
+//  158         bm_list_ptr = loop_ptr->next_ptr;
+//  159       }
+//  160       else
+//  161       {
+//  162         prev_ptr->next_ptr = loop_ptr->next_ptr;
+//  163       }
+//  164 
+//  165       // free the memory
+//  166       osal_mem_free( loop_ptr );
+//  167 
+//  168       // we're done here
+//  169       break;
+//  170     }
+//  171 
+//  172     // move on to next item
+//  173     prev_ptr = loop_ptr;
+??osal_bm_free_0:
+        MOV     A,R2
+        MOV     R4,A
+        MOV     A,R3
+        MOV     R5,A
+//  174     loop_ptr = loop_ptr->next_ptr;
+        LCALL   ?Subroutine2 & 0xFFFF
+??CrossCallReturnLabel_5:
+        MOV     A,R2
+        ORL     A,R3
+        JZ      ??osal_bm_free_1
+        MOV     A,R2
+        ADD     A,#0x4
+        MOV     R0,A
+        CLR     A
+        ADDC    A,R3
+        MOV     R1,A
+        CLR     C
+        MOV     A,?V0
+        SUBB    A,R0
+        MOV     A,?V1
+        SUBB    A,R1
+        JC      ??osal_bm_free_0
+        LCALL   ?Subroutine1 & 0xFFFF
+??CrossCallReturnLabel_0:
+        SUBB    A,?V0
+        MOV     A,DPH
+        SUBB    A,?V1
+        JC      ??osal_bm_free_0
+        MOV     DPL,R2
+        MOV     DPH,R3
+        MOVX    A,@DPTR
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R1,A
+        MOV     A,R4
+        ORL     A,R5
+        JNZ     ??osal_bm_free_2
+        MOV     DPTR,#bm_list_ptr
+        SJMP    ??osal_bm_free_3
+??osal_bm_free_2:
+        MOV     DPL,R4
+        MOV     DPH,R5
+??osal_bm_free_3:
+        MOV     A,R0
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R1
+        MOVX    @DPTR,A
+        ; Setup parameters for call to function osal_mem_free
+        LCALL   ??osal_mem_free?relay; Banked call to: osal_mem_free
+//  175   }
+//  176 
+//  177   HAL_EXIT_CRITICAL_SECTION(cs);
+??osal_bm_free_1:
+        MOV     A,R6
+        MOV     C,0xE0 /* A   */.0
+        MOV     0xa8.7,C
+//  178 
+//  179   return;
+        MOV     R7,#0x2
+        LJMP    ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock2
+        REQUIRE _A_IEN0
+//  180 }
+//  181 
+//  182 /*********************************************************************
+//  183  * @fn      osal_bm_adjust_header
+//  184  *
+//  185  * @brief   Add or remove header space for the payload pointer. A positive
+//  186  *          adjustment adds header space, and negative removes header space.
+//  187  *
+//  188  * @param   payload_ptr - pointer to payload
+//  189  * @param   size - +/- number of bytes to move (affecting header area)
+//  190  *
+//  191  * @return  pointer to payload at the new adjusted location
+//  192  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  193 void *osal_bm_adjust_header( void *payload_ptr, int16 size )
+osal_bm_adjust_header:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function osal_bm_adjust_header
+        CODE
+//  194 {
+        FUNCALL osal_bm_adjust_header, bm_desc_from_payload
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 12, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 12, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        MOV     A,#-0xc
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 0
+        MOV     A,R2
+        MOV     R6,A
+        MOV     A,R3
+        MOV     R7,A
+        MOV     ?V0,R4
+        MOV     ?V1,R5
+//  195   bm_desc_t *bd_ptr;
+//  196   uint8 *new_payload_ptr;
+//  197 
+//  198   bd_ptr = bm_desc_from_payload( (uint8 *)payload_ptr );
+        ; Setup parameters for call to function bm_desc_from_payload
+        LCALL   ??bm_desc_from_payload?relay; Banked call to: bm_desc_from_payload
+        MOV     ?V2,R2
+        MOV     ?V3,R3
+        MOV     R0,?V2
+        MOV     R1,?V3
+//  199   if ( bd_ptr != NULL )
+        MOV     A,R0
+        ORL     A,R1
+        JZ      ??osal_bm_adjust_header_0
+//  200   {
+//  201     new_payload_ptr = (uint8 *)( (uint8 *)payload_ptr - size );
+        CLR     C
+        CLR     A
+        SUBB    A,?V0
+        MOV     R2,A
+        CLR     A
+        SUBB    A,?V1
+        MOV     R3,A
+        MOV     A,R6
+        ADD     A,R2
+        MOV     R2,A
+        MOV     A,R7
+        ADDC    A,R3
+        MOV     R3,A
+//  202 
+//  203     // make sure the new payload is within valid range
+//  204     if ( new_payload_ptr >= (uint8 *)START_PTR( bd_ptr ) &&
+//  205          new_payload_ptr <= (uint8 *)END_PTR( bd_ptr ) )
+        MOV     ?V0,R2
+        MOV     ?V1,R3
+        MOV     A,R0
+        ADD     A,#0x4
+        MOV     R4,A
+        CLR     A
+        ADDC    A,R1
+        MOV     R5,A
+        CLR     C
+        MOV     A,R2
+        SUBB    A,R4
+        MOV     A,R3
+        SUBB    A,R5
+        JC      ??osal_bm_adjust_header_0
+        MOV     DPL,R0
+        MOV     DPH,R1
+        INC     DPTR
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R4,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R5,A
+        MOV     A,R0
+        ADD     A,R4
+        MOV     DPL,A
+        MOV     A,R1
+        ADDC    A,R5
+        MOV     DPH,A
+        INC     DPTR
+        INC     DPTR
+        INC     DPTR
+        INC     DPTR
+        CLR     C
+        MOV     A,DPL
+        SUBB    A,?V0
+        MOV     A,DPH
+        SUBB    A,?V1
+        JNC     ??osal_bm_adjust_header_1
+//  206     {
+//  207       // return new payload pointer
+//  208       return ( (void *)new_payload_ptr );
+//  209     }
+//  210   }
+//  211 
+//  212   // return original value
+//  213   return ( payload_ptr );
+??osal_bm_adjust_header_0:
+        MOV     A,R6
+        MOV     R2,A
+        MOV     A,R7
+        MOV     R3,A
+??osal_bm_adjust_header_1:
+        LJMP    ?Subroutine0 & 0xFFFF
+          CFI EndBlock cfiBlock3
+//  214 }
+//  215 
+//  216 /*********************************************************************
+//  217  * @fn      osal_bm_adjust_tail
+//  218  *
+//  219  * @brief   Add or remove tail space for the payload pointer. A positive
+//  220  *          adjustment adds tail space, and negative removes tail space.
+//  221  *
+//  222  * @param   payload_ptr - pointer to payload
+//  223  * @param   size - +/- number of bytes to move (affecting header area)
+//  224  *
+//  225  * @return  pointer to payload at the new adjusted location
+//  226  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  227 void *osal_bm_adjust_tail( void *payload_ptr, int16 size )
+osal_bm_adjust_tail:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function osal_bm_adjust_tail
+        CODE
+//  228 {
+        FUNCALL osal_bm_adjust_tail, bm_desc_from_payload
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 12, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 12, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        MOV     A,#-0xc
+        LCALL   ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 12)
+        ; Saved register size: 12
+        ; Auto size: 0
+        MOV     ?V0,R2
+        MOV     ?V1,R3
+        MOV     A,R4
+        MOV     R6,A
+        MOV     A,R5
+        MOV     R7,A
+//  229   bm_desc_t *bd_ptr;
+//  230   uint8 *new_payload_ptr;
+//  231 
+//  232   bd_ptr = bm_desc_from_payload( (uint8 *)payload_ptr );
+        ; Setup parameters for call to function bm_desc_from_payload
+        LCALL   ??bm_desc_from_payload?relay; Banked call to: bm_desc_from_payload
+        MOV     ?V2,R2
+        MOV     ?V3,R3
+        MOV     R0,?V2
+        MOV     R1,?V3
+//  233   if ( bd_ptr != NULL )
+        MOV     A,R0
+        ORL     A,R1
+        JZ      ??osal_bm_adjust_tail_0
+        MOV     DPL,R0
+        MOV     DPH,R1
+        INC     DPTR
+        INC     DPTR
+        LCALL   ??Subroutine3_0 & 0xFFFF
+??CrossCallReturnLabel_3:
+        MOV     A,R0
+        ADD     A,R2
+        MOV     DPL,A
+        MOV     A,R1
+        ADDC    A,R3
+        MOV     DPH,A
+        CLR     C
+        CLR     A
+        SUBB    A,R6
+        MOV     R2,A
+        CLR     A
+        SUBB    A,R7
+        MOV     R3,A
+        MOV     A,DPL
+        ADD     A,R2
+        MOV     R2,A
+        MOV     A,DPH
+        ADDC    A,R3
+        MOV     R3,A
+        MOV     A,R2
+        ADD     A,#0x4
+        MOV     R2,A
+        JNC     ??osal_bm_adjust_tail_1
+        INC     R3
+//  234   {
+//  235     new_payload_ptr = (uint8 *)END_PTR( bd_ptr ) - size;
+//  236 
+//  237     // make sure the new payload is within valid range
+//  238     if ( new_payload_ptr >= (uint8 *)START_PTR( bd_ptr ) &&
+//  239          new_payload_ptr <= (uint8 *)END_PTR( bd_ptr ) )
+??osal_bm_adjust_tail_1:
+        MOV     R4,A
+        MOV     A,R3
+        MOV     R5,A
+        MOV     A,R0
+        ADD     A,#0x4
+        MOV     R0,A
+        JNC     ??osal_bm_adjust_tail_2
+        INC     R1
+??osal_bm_adjust_tail_2:
+        CLR     C
+        MOV     A,R4
+        SUBB    A,R0
+        MOV     A,R5
+        SUBB    A,R1
+        JC      ??osal_bm_adjust_tail_0
+        INC     DPTR
+        INC     DPTR
+        INC     DPTR
+        INC     DPTR
+        CLR     C
+        MOV     A,DPL
+        SUBB    A,R4
+        MOV     A,DPH
+        SUBB    A,R5
+        JNC     ??osal_bm_adjust_tail_3
+//  240     {
+//  241       // return new payload pointer
+//  242       return ( (void *)new_payload_ptr );
+//  243     }
+//  244   }
+//  245 
+//  246   // return original value
+//  247   return ( payload_ptr );
+??osal_bm_adjust_tail_0:
+        MOV     R2,?V0
+        MOV     R3,?V1
+??osal_bm_adjust_tail_3:
+        LJMP    ?Subroutine0 & 0xFFFF
+          CFI EndBlock cfiBlock4
+//  248 }
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine2:
+          CFI Block cfiCond5 Using cfiCommon0
+          CFI Function osal_bm_free
+          CFI Conditional ??CrossCallReturnLabel_5
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 10)
+          CFI Block cfiCond6 Using cfiCommon0
+          CFI (cfiCond6) Function bm_desc_from_payload
+          CFI (cfiCond6) Conditional ??CrossCallReturnLabel_6
+          CFI (cfiCond6) DPL0 Frame(CFA_SP, 4)
+          CFI (cfiCond6) DPH0 Frame(CFA_SP, 5)
+          CFI (cfiCond6) CFA_SP SP+-7
+          CFI Block cfiPicker7 Using cfiCommon1
+          CFI (cfiPicker7) NoFunction
+          CFI (cfiPicker7) Picker
+        MOV     DPL,R2
+        MOV     DPH,R3
+          CFI EndBlock cfiCond5
+          CFI EndBlock cfiCond6
+          CFI EndBlock cfiPicker7
+        REQUIRE ??Subroutine3_0
+        ; // Fall through to label ??Subroutine3_0
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+??Subroutine3_0:
+          CFI Block cfiCond8 Using cfiCommon0
+          CFI Function osal_bm_free
+          CFI Conditional ??CrossCallReturnLabel_2
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 10)
+          CFI Block cfiCond9 Using cfiCommon0
+          CFI (cfiCond9) Function osal_bm_adjust_tail
+          CFI (cfiCond9) Conditional ??CrossCallReturnLabel_3
+          CFI (cfiCond9) R6 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI (cfiCond9) VB load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI (cfiCond9) V0 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond9) V1 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond9) V2 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond9) V3 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond9) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond9) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond9) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond9) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond9) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond9) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond9) CFA_SP SP+-2
+          CFI (cfiCond9) CFA_XSP16 add(XSP16, 12)
+          CFI Block cfiCond10 Using cfiCommon0
+          CFI (cfiCond10) Function bm_desc_from_payload
+          CFI (cfiCond10) Conditional ??CrossCallReturnLabel_4
+          CFI (cfiCond10) DPL0 Frame(CFA_SP, 4)
+          CFI (cfiCond10) DPH0 Frame(CFA_SP, 5)
+          CFI (cfiCond10) CFA_SP SP+-7
+          CFI Block cfiCond11 Using cfiCommon0
+          CFI (cfiCond11) Function osal_bm_free
+          CFI (cfiCond11) Conditional ??CrossCallReturnLabel_5
+          CFI (cfiCond11) R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI (cfiCond11) VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond11) V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond11) V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond11) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond11) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond11) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond11) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond11) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond11) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond11) CFA_SP SP+-2
+          CFI (cfiCond11) CFA_XSP16 add(XSP16, 10)
+          CFI Block cfiCond12 Using cfiCommon0
+          CFI (cfiCond12) Function bm_desc_from_payload
+          CFI (cfiCond12) Conditional ??CrossCallReturnLabel_6
+          CFI (cfiCond12) DPL0 Frame(CFA_SP, 4)
+          CFI (cfiCond12) DPH0 Frame(CFA_SP, 5)
+          CFI (cfiCond12) CFA_SP SP+-7
+          CFI Block cfiPicker13 Using cfiCommon1
+          CFI (cfiPicker13) NoFunction
+          CFI (cfiPicker13) Picker
+        MOVX    A,@DPTR
+        MOV     R2,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R3,A
+        RET
+          CFI EndBlock cfiCond8
+          CFI EndBlock cfiCond9
+          CFI EndBlock cfiCond10
+          CFI EndBlock cfiCond11
+          CFI EndBlock cfiCond12
+          CFI EndBlock cfiPicker13
+//  249 
+//  250 /*********************************************************************
+//  251  * @fn      bm_desc_from_payload
+//  252  *
+//  253  * @brief   Find buffer descriptor from payload pointer
+//  254  *
+//  255  * @param   payload_ptr - pointer to payload
+//  256  *
+//  257  * @return  pointer to buffer descriptor
+//  258  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  259 static bm_desc_t *bm_desc_from_payload ( uint8 *payload_ptr )
+bm_desc_from_payload:
+          CFI Block cfiBlock14 Using cfiCommon0
+          CFI Function bm_desc_from_payload
+        CODE
+//  260 {
+        PUSH    DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH    DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+        MOV     A,R2
+        MOV     R0,A
+        MOV     A,R3
+        MOV     R1,A
+//  261   bm_desc_t *loop_ptr;
+//  262 
+//  263   loop_ptr = bm_list_ptr;
+        MOV     DPTR,#bm_list_ptr
+        LCALL   ??Subroutine3_0 & 0xFFFF
+??CrossCallReturnLabel_4:
+        MOV     A,R0
+        MOV     R4,A
+        MOV     A,R1
+        MOV     R5,A
+        SJMP    ??CrossCallReturnLabel_6
+//  264   while ( loop_ptr != NULL )
+//  265   {
+//  266     if ( payload_ptr >= (uint8 *)START_PTR( loop_ptr ) &&
+//  267          payload_ptr <= (uint8 *)END_PTR( loop_ptr) )
+//  268     {
+//  269       // item found
+//  270       break;
+//  271     }
+//  272 
+//  273     // move on to next item
+//  274     loop_ptr = loop_ptr->next_ptr;
+??bm_desc_from_payload_0:
+        LCALL   ?Subroutine2 & 0xFFFF
+??CrossCallReturnLabel_6:
+        MOV     A,R2
+        ORL     A,R3
+        JZ      ??bm_desc_from_payload_1
+        MOV     A,R2
+        ADD     A,#0x4
+        MOV     R0,A
+        CLR     A
+        ADDC    A,R3
+        MOV     R1,A
+        CLR     C
+        MOV     A,R4
+        SUBB    A,R0
+        MOV     A,R5
+        SUBB    A,R1
+        JC      ??bm_desc_from_payload_0
+        LCALL   ?Subroutine1 & 0xFFFF
+//  275   }
+??CrossCallReturnLabel_1:
+        SUBB    A,R4
+        MOV     A,DPH
+        SUBB    A,R5
+        JC      ??bm_desc_from_payload_0
+//  276 
+//  277   return ( loop_ptr );
+??bm_desc_from_payload_1:
+        POP     DPH
+          CFI DPH0 SameValue
+          CFI CFA_SP SP+-4
+        POP     DPL
+          CFI DPL0 SameValue
+          CFI CFA_SP SP+-3
+        LJMP    ?BRET
+          CFI EndBlock cfiBlock14
+//  278 }
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine1:
+          CFI Block cfiCond15 Using cfiCommon0
+          CFI Function osal_bm_free
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 10)
+          CFI Block cfiCond16 Using cfiCommon0
+          CFI (cfiCond16) Function bm_desc_from_payload
+          CFI (cfiCond16) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond16) DPL0 Frame(CFA_SP, 4)
+          CFI (cfiCond16) DPH0 Frame(CFA_SP, 5)
+          CFI (cfiCond16) CFA_SP SP+-7
+          CFI Block cfiPicker17 Using cfiCommon1
+          CFI (cfiPicker17) NoFunction
+          CFI (cfiPicker17) Picker
+        MOV     DPL,R2
+        MOV     DPH,R3
+        INC     DPTR
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R0,A
+        INC     DPTR
+        MOVX    A,@DPTR
+        MOV     R1,A
+        MOV     A,R2
+        ADD     A,R0
+        MOV     DPL,A
+        MOV     A,R3
+        ADDC    A,R1
+        MOV     DPH,A
+        INC     DPTR
+        INC     DPTR
+        INC     DPTR
+        INC     DPTR
+        CLR     C
+        MOV     A,DPL
+        RET
+          CFI EndBlock cfiCond15
+          CFI EndBlock cfiCond16
+          CFI EndBlock cfiPicker17
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??osal_bm_alloc?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    osal_bm_alloc
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??osal_bm_free?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    osal_bm_free
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??osal_bm_adjust_header?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    osal_bm_adjust_header
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??osal_bm_adjust_tail?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    osal_bm_adjust_tail
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??bm_desc_from_payload?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    bm_desc_from_payload
+
+        END
+//  279 
+//  280 
+//  281 /****************************************************************************
+//  282 ****************************************************************************/
+// 
+// 495 bytes in segment BANKED_CODE
+//  30 bytes in segment BANK_RELAYS
+//   1 byte  in segment SFR_AN
+//   2 bytes in segment XDATA_Z
+// 
+// 525 bytes of CODE  memory
+//   0 bytes of DATA  memory (+ 1 byte shared)
+//   2 bytes of XDATA memory
+//
+//Errors: none
+//Warnings: none

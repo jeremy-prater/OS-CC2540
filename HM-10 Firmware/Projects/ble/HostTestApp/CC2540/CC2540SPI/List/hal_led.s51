@@ -1,0 +1,911 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V8.30.1.41636 for 8051            02/Jun/2014  17:47:57 /
+// Copyright 2004-2013 IAR Systems AB.                                        /
+//                                                                            /
+//    Core               =  plain                                             /
+//    Code model         =  banked                                            /
+//    Data model         =  large                                             /
+//    Calling convention =  xdata reentrant                                   /
+//    Constant location  =  data_rom                                          /
+//    Dptr setup         =  1,16                                              /
+//                                                                            /
+//    Source file        =  c:\Users\Administrator\Documents\Dropbox\Fish     /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Components\hal\ta /
+//                          rget\CC2540EB\hal_led.c                           /
+//    Command line       =  -f "c:\Users\Administrator\Documents\Dropbox\Fish /
+//                           Brain\HM-10 Hack\HM-10                           /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\co /
+//                          nfig\buildComponents.cfg"                         /
+//                          (-DBROADCASTER_CFG=0x01 -DOBSERVER_CFG=0x02       /
+//                          -DPERIPHERAL_CFG=0x04 -DCENTRAL_CFG=0x08          /
+//                          -DADV_NCONN_CFG=0x01 -DADV_CONN_CFG=0x02          /
+//                          -DSCAN_CFG=0x04 -DINIT_CFG=0x08                   /
+//                          -DADV_CFG=ADV_NCONN_CFG+ADV_CONN_CFG              /
+//                          -DLINK_CFG=ADV_CONN_CFG+INIT_CFG                  /
+//                          -DFULL_CFG=INIT_CFG+SCAN_CFG+ADV_NCONN_CFG+ADV_CO /
+//                          NN_CFG) -f "c:\Users\Administrator\Documents\Drop /
+//                          box\Fish Brain\HM-10 Hack\HM-10                   /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\buildCon /
+//                          fig.cfg" (-DHOST_CONFIG=PERIPHERAL_CFG+CENTRAL_CF /
+//                          G -DGAP_PRIVACY_RECONNECT)                        /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Components\hal\ta /
+//                          rget\CC2540EB\hal_led.c" -D INT_HEAP_LEN=2700 -D  /
+//                          HALNODEBUG -D OSAL_CBTIMER_NUM_TASKS=1 -D         /
+//                          POWER_SAVING -D HAL_AES_DMA=TRUE -D HAL_DMA=TRUE  /
+//                          -D HAL_UART=TRUE -D HAL_UART_DMA=0 -D             /
+//                          HAL_UART_ISR=0 -D HAL_UART_SPI=2 -D               /
+//                          HAL_SPI_QUEUED_TX=TRUE -D HAL_KEY=FALSE -D        /
+//                          HAL_LCD=FALSE -D HAL_LED=FALSE -D                 /
+//                          GATT_DB_OFF_CHIP -D GAP_BOND_MGR -lCN             /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\List\" -lA               /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\List\" -o                /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\Obj\" -e --debug         /
+//                          --core=plain --dptr=16,1 --data_model=large       /
+//                          --code_model=banked --calling_convention=xdata_re /
+//                          entrant --place_constants=data_rom                /
+//                          --nr_virtual_regs 8 -I "c:\Users\Administrator\Do /
+//                          cuments\Dropbox\Fish Brain\HM-10 Hack\HM-10       /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\co /
+//                          mmon\" -I "c:\Users\Administrator\Documents\Dropb /
+//                          ox\Fish Brain\HM-10 Hack\HM-10                    /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\hal\include\" -I                   /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\hal\target\ /
+//                          CC2540EB\" -I "c:\Users\Administrator\Documents\D /
+//                          ropbox\Fish Brain\HM-10 Hack\HM-10                /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\osal\include\" -I                  /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\services\sa /
+//                          ddr\" -I "c:\Users\Administrator\Documents\Dropbo /
+//                          x\Fish Brain\HM-10 Hack\HM-10                     /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\ble\include\" -I                   /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\ble\control /
+//                          ler\phy\" -I "c:\Users\Administrator\Documents\Dr /
+//                          opbox\Fish Brain\HM-10 Hack\HM-10                 /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\ble\controller\include\" -I        /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\ble\hci\"   /
+//                          -I "c:\Users\Administrator\Documents\Dropbox\Fish /
+//                           Brain\HM-10 Hack\HM-10                           /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\ble\host\" -I                      /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\common\cc2540\" -I           /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\common\npi\npi_np\" -I       /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\Include\" -I                 /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\Profiles\Roles\" -I          /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\source\" -Ohz                   /
+//    List file          =  c:\Users\Administrator\Documents\Dropbox\Fish     /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\List\hal_led.s51         /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME hal_led
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN __INIT_XDATA_Z
+
+        PUBLIC ??HalLedBlink?relay
+        FUNCTION ??HalLedBlink?relay,0203H
+        PUBLIC ??HalLedEnterSleep?relay
+        FUNCTION ??HalLedEnterSleep?relay,0203H
+        PUBLIC ??HalLedExitSleep?relay
+        FUNCTION ??HalLedExitSleep?relay,0203H
+        PUBLIC ??HalLedGetState?relay
+        FUNCTION ??HalLedGetState?relay,0203H
+        PUBLIC ??HalLedInit?relay
+        FUNCTION ??HalLedInit?relay,0203H
+        PUBLIC ??HalLedSet?relay
+        FUNCTION ??HalLedSet?relay,0203H
+        PUBLIC HalLedBlink
+        FUNCTION HalLedBlink,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC HalLedEnterSleep
+        FUNCTION HalLedEnterSleep,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC HalLedExitSleep
+        FUNCTION HalLedExitSleep,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC HalLedGetState
+        FUNCTION HalLedGetState,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC HalLedInit
+        FUNCTION HalLedInit,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC HalLedSet
+        FUNCTION HalLedSet,0203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+HalLedBlink         SYMBOL "HalLedBlink"
+??HalLedBlink?relay SYMBOL "?relay", HalLedBlink
+HalLedEnterSleep    SYMBOL "HalLedEnterSleep"
+??HalLedEnterSleep?relay SYMBOL "?relay", HalLedEnterSleep
+HalLedExitSleep     SYMBOL "HalLedExitSleep"
+??HalLedExitSleep?relay SYMBOL "?relay", HalLedExitSleep
+HalLedGetState      SYMBOL "HalLedGetState"
+??HalLedGetState?relay SYMBOL "?relay", HalLedGetState
+HalLedInit          SYMBOL "HalLedInit"
+??HalLedInit?relay  SYMBOL "?relay", HalLedInit
+HalLedSet           SYMBOL "HalLedSet"
+??HalLedSet?relay   SYMBOL "?relay", HalLedSet
+
+// c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Components\hal\target\CC2540EB\hal_led.c
+//    1 /**************************************************************************************************
+//    2   Filename:       hal_led.c
+//    3   Revised:        $Date: 2012-10-26 14:09:08 -0700 (Fri, 26 Oct 2012) $
+//    4   Revision:       $Revision: 31932 $
+//    5 
+//    6   Description:    This file contains the interface to the HAL LED Service.
+//    7 
+//    8 
+//    9   Copyright 2006-2012 Texas Instruments Incorporated. All rights reserved.
+//   10 
+//   11   IMPORTANT: Your use of this Software is limited to those specific rights
+//   12   granted under the terms of a software license agreement between the user
+//   13   who downloaded the software, his/her employer (which must be your employer)
+//   14   and Texas Instruments Incorporated (the "License").  You may not use this
+//   15   Software unless you agree to abide by the terms of the License. The License
+//   16   limits your use, and you acknowledge, that the Software may not be modified,
+//   17   copied or distributed unless embedded on a Texas Instruments microcontroller
+//   18   or used solely and exclusively in conjunction with a Texas Instruments radio
+//   19   frequency transceiver, which is integrated into your product.  Other than for
+//   20   the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//   21   works of, modify, distribute, perform, display or sell this Software and/or
+//   22   its documentation for any purpose.
+//   23 
+//   24   YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//   25   PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+//   26   INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+//   27   NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//   28   TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//   29   NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//   30   LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//   31   INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//   32   OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//   33   OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//   34   (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//   35 
+//   36   Should you have any questions regarding your right to use this Software,
+//   37   contact Texas Instruments Incorporated at www.TI.com.
+//   38 **************************************************************************************************/
+//   39 
+//   40 /***************************************************************************************************
+//   41  *                                             INCLUDES
+//   42  ***************************************************************************************************/
+//   43 
+//   44 #include "hal_mcu.h"
+//   45 #include "hal_defs.h"
+//   46 #include "hal_types.h"
+//   47 #include "hal_drivers.h"
+//   48 #include "hal_led.h"
+//   49 #include "osal.h"
+//   50 #include "hal_board.h"
+//   51 
+//   52 /***************************************************************************************************
+//   53  *                                              TYPEDEFS
+//   54  ***************************************************************************************************/
+//   55 
+//   56 /* LED control structure */
+//   57 typedef struct {
+//   58   uint8 mode;       /* Operation mode */
+//   59   uint8 left;       /* Blink cycles left */
+//   60   uint8 onPct;      /* On cycle percentage */
+//   61   uint16 time;      /* On/off cycle time (msec) */
+//   62   uint32 next;      /* Time for next change */
+//   63 } HalLedControl_t;
+//   64 
+//   65 typedef struct
+//   66 {
+//   67   HalLedControl_t HalLedControlTable[HAL_LED_DEFAULT_MAX_LEDS];
+//   68   uint8           sleepActive;
+//   69 } HalLedStatus_t;
+//   70 
+//   71 /***************************************************************************************************
+//   72  *                                           GLOBAL VARIABLES
+//   73  ***************************************************************************************************/
+//   74 
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   75 static uint8 HalLedState;              // LED state at last set/clr/blink update
+HalLedState:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+//   76 
+//   77 #if HAL_LED == TRUE
+//   78 static uint8 HalSleepLedState;         // LED state at last set/clr/blink update
+//   79 static uint8 preBlinkState;            // Original State before going to blink mode
+//   80                                        // bit 0, 1, 2, 3 represent led 0, 1, 2, 3
+//   81 #endif
+//   82 
+//   83 #ifdef BLINK_LEDS
+//   84   static HalLedStatus_t HalLedStatusControl;
+//   85 #endif
+//   86 
+//   87 /***************************************************************************************************
+//   88  *                                            LOCAL FUNCTION
+//   89  ***************************************************************************************************/
+//   90 
+//   91 #if (HAL_LED == TRUE)
+//   92 void HalLedUpdate (void);
+//   93 void HalLedOnOff (uint8 leds, uint8 mode);
+//   94 #endif /* HAL_LED */
+//   95 
+//   96 /***************************************************************************************************
+//   97  *                                            FUNCTIONS - API
+//   98  ***************************************************************************************************/
+//   99 
+//  100 /***************************************************************************************************
+//  101  * @fn      HalLedInit
+//  102  *
+//  103  * @brief   Initialize LED Service
+//  104  *
+//  105  * @param   init - pointer to void that contains the initialized value
+//  106  *
+//  107  * @return  None
+//  108  ***************************************************************************************************/
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  109 void HalLedInit (void)
+HalLedInit:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function HalLedInit
+        CODE
+//  110 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  111 #if (HAL_LED == TRUE)
+//  112   HalLedSet(HAL_LED_ALL, HAL_LED_MODE_OFF);  // Initialize all LEDs to OFF.
+//  113 
+//  114   // Set LED GPIOs to outputs.
+//  115   LED1_DDR |= LED1_BV;
+//  116 #if (!defined HAL_PA_LNA && !defined HAL_PA_LNA_CC2590)
+//  117   LED2_DDR |= LED2_BV;
+//  118 #if (!defined CC2540_MINIDK && !defined HAL_BOARD_CC2540USB)
+//  119   LED3_DDR |= LED3_BV;
+//  120 #endif
+//  121 #endif
+//  122 #if defined BLINK_LEDS
+//  123   HalLedStatusControl.sleepActive = FALSE;  // Initialize sleepActive to FALSE.
+//  124 #endif
+//  125 #endif
+//  126 }
+        LJMP    ?BRET
+          CFI EndBlock cfiBlock0
+//  127 
+//  128 /***************************************************************************************************
+//  129  * @fn      HalLedSet
+//  130  *
+//  131  * @brief   Tun ON/OFF/TOGGLE given LEDs
+//  132  *
+//  133  * @param   led - bit mask value of leds to be turned ON/OFF/TOGGLE
+//  134  *          mode - BLINK, FLASH, TOGGLE, ON, OFF
+//  135  * @return  None
+//  136  ***************************************************************************************************/
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  137 uint8 HalLedSet (uint8 leds, uint8 mode)
+HalLedSet:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function HalLedSet
+        CODE
+//  138 {
+        PUSH    DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH    DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  139 
+//  140 #if (defined (BLINK_LEDS)) && (HAL_LED == TRUE)
+//  141   uint8 led;
+//  142   HalLedControl_t *sts;
+//  143 
+//  144   switch (mode)
+//  145   {
+//  146     case HAL_LED_MODE_BLINK:
+//  147       /* Default blink, 1 time, D% duty cycle */
+//  148       HalLedBlink (leds, 1, HAL_LED_DEFAULT_DUTY_CYCLE, HAL_LED_DEFAULT_FLASH_TIME);
+//  149       break;
+//  150 
+//  151     case HAL_LED_MODE_FLASH:
+//  152       /* Default flash, N times, D% duty cycle */
+//  153       HalLedBlink (leds, HAL_LED_DEFAULT_FLASH_COUNT, HAL_LED_DEFAULT_DUTY_CYCLE, HAL_LED_DEFAULT_FLASH_TIME);
+//  154       break;
+//  155 
+//  156     case HAL_LED_MODE_ON:
+//  157     case HAL_LED_MODE_OFF:
+//  158     case HAL_LED_MODE_TOGGLE:
+//  159 
+//  160       led = HAL_LED_1;
+//  161       leds &= HAL_LED_ALL;
+//  162       sts = HalLedStatusControl.HalLedControlTable;
+//  163 
+//  164       while (leds)
+//  165       {
+//  166         if (leds & led)
+//  167         {
+//  168           if (mode != HAL_LED_MODE_TOGGLE)
+//  169           {
+//  170             sts->mode = mode;  /* ON or OFF */
+//  171           }
+//  172           else
+//  173           {
+//  174             sts->mode ^= HAL_LED_MODE_ON;  /* Toggle */
+//  175           }
+//  176           HalLedOnOff (led, sts->mode);
+//  177           leds ^= led;
+//  178         }
+//  179         led <<= 1;
+//  180         sts++;
+//  181       }
+//  182       break;
+//  183 
+//  184     default:
+//  185       break;
+//  186   }
+//  187 
+//  188 #elif (HAL_LED == TRUE)
+//  189   LedOnOff(leds, mode);
+//  190 #else
+//  191   // HAL LED is disabled, suppress unused argument warnings
+//  192   (void) leds;
+//  193   (void) mode;
+//  194 #endif /* BLINK_LEDS && HAL_LED   */
+//  195 
+//  196   return ( HalLedState );
+        MOV     DPTR,#HalLedState
+        MOVX    A,@DPTR
+        MOV     R1,A
+        POP     DPH
+          CFI DPH0 SameValue
+          CFI CFA_SP SP+-4
+        POP     DPL
+          CFI DPL0 SameValue
+          CFI CFA_SP SP+-3
+        LJMP    ?BRET
+          CFI EndBlock cfiBlock1
+//  197 }
+//  198 
+//  199 /***************************************************************************************************
+//  200  * @fn      HalLedBlink
+//  201  *
+//  202  * @brief   Blink the leds
+//  203  *
+//  204  * @param   leds       - bit mask value of leds to be blinked
+//  205  *          numBlinks  - number of blinks
+//  206  *          percent    - the percentage in each period where the led
+//  207  *                       will be on
+//  208  *          period     - length of each cycle in milliseconds
+//  209  *
+//  210  * @return  None
+//  211  ***************************************************************************************************/
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  212 void HalLedBlink (uint8 leds, uint8 numBlinks, uint8 percent, uint16 period)
+HalLedBlink:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function HalLedBlink
+        CODE
+//  213 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  214 #if (defined (BLINK_LEDS)) && (HAL_LED == TRUE)
+//  215   uint8 led;
+//  216   HalLedControl_t *sts;
+//  217 
+//  218   if (leds && percent && period)
+//  219   {
+//  220     if (percent < 100)
+//  221     {
+//  222       led = HAL_LED_1;
+//  223       leds &= HAL_LED_ALL;
+//  224       sts = HalLedStatusControl.HalLedControlTable;
+//  225 
+//  226       while (leds)
+//  227       {
+//  228         if (leds & led)
+//  229         {
+//  230           /* Store the current state of the led before going to blinking if not already blinking */
+//  231           if(sts->mode < HAL_LED_MODE_BLINK )
+//  232           	preBlinkState |= (led & HalLedState);
+//  233 
+//  234           sts->mode  = HAL_LED_MODE_OFF;                    /* Stop previous blink */
+//  235           sts->time  = period;                              /* Time for one on/off cycle */
+//  236           sts->onPct = percent;                             /* % of cycle LED is on */
+//  237           sts->left  = numBlinks;                           /* Number of blink cycles */
+//  238           if (!numBlinks) sts->mode |= HAL_LED_MODE_FLASH;  /* Continuous */
+//  239           sts->next = osal_GetSystemClock();                /* Start now */
+//  240           sts->mode |= HAL_LED_MODE_BLINK;                  /* Enable blinking */
+//  241           leds ^= led;
+//  242         }
+//  243         led <<= 1;
+//  244         sts++;
+//  245       }
+//  246       // Cancel any overlapping timer for blink events
+//  247       osal_stop_timerEx(Hal_TaskID, HAL_LED_BLINK_EVENT);
+//  248       osal_set_event (Hal_TaskID, HAL_LED_BLINK_EVENT);
+//  249     }
+//  250     else
+//  251     {
+//  252       HalLedSet (leds, HAL_LED_MODE_ON);                    /* >= 100%, turn on */
+//  253     }
+//  254   }
+//  255   else
+//  256   {
+//  257     HalLedSet (leds, HAL_LED_MODE_OFF);                     /* No on time, turn off */
+//  258   }
+//  259 #elif (HAL_LED == TRUE)
+//  260   percent = (leds & HalLedState) ? HAL_LED_MODE_OFF : HAL_LED_MODE_ON;
+//  261   HalLedOnOff (leds, percent);                              /* Toggle */
+//  262 #else
+//  263   // HAL LED is disabled, suppress unused argument warnings
+//  264   (void) leds;
+//  265   (void) numBlinks;
+//  266   (void) percent;
+//  267   (void) period;
+//  268 #endif /* BLINK_LEDS && HAL_LED */
+//  269 }
+        LJMP    ?BRET
+          CFI EndBlock cfiBlock2
+//  270 
+//  271 #if (HAL_LED == TRUE)
+//  272 /***************************************************************************************************
+//  273  * @fn      HalLedUpdate
+//  274  *
+//  275  * @brief   Update leds to work with blink
+//  276  *
+//  277  * @param   none
+//  278  *
+//  279  * @return  none
+//  280  ***************************************************************************************************/
+//  281 void HalLedUpdate (void)
+//  282 {
+//  283   uint8 led;
+//  284   uint8 pct;
+//  285   uint8 leds;
+//  286   HalLedControl_t *sts;
+//  287   uint32 time;
+//  288   uint16 next;
+//  289   uint16 wait;
+//  290 
+//  291   next = 0;
+//  292   led  = HAL_LED_1;
+//  293   leds = HAL_LED_ALL;
+//  294   sts = HalLedStatusControl.HalLedControlTable;
+//  295 
+//  296   /* Check if sleep is active or not */
+//  297   if (!HalLedStatusControl.sleepActive)
+//  298   {
+//  299     while (leds)
+//  300     {
+//  301       if (leds & led)
+//  302       {
+//  303         if (sts->mode & HAL_LED_MODE_BLINK)
+//  304         {
+//  305           time = osal_GetSystemClock();
+//  306           if (time >= sts->next)
+//  307           {
+//  308             if (sts->mode & HAL_LED_MODE_ON)
+//  309             {
+//  310               pct = 100 - sts->onPct;               /* Percentage of cycle for off */
+//  311               sts->mode &= ~HAL_LED_MODE_ON;        /* Say it's not on */
+//  312               HalLedOnOff (led, HAL_LED_MODE_OFF);  /* Turn it off */
+//  313 
+//  314               if ( !(sts->mode & HAL_LED_MODE_FLASH) )
+//  315               {
+//  316                 sts->left--;                         // Not continuous, reduce count
+//  317               }
+//  318             }
+//  319             else if ( !(sts->left) && !(sts->mode & HAL_LED_MODE_FLASH) )
+//  320             {
+//  321               sts->mode ^= HAL_LED_MODE_BLINK;       // No more blinks
+//  322             }
+//  323             else
+//  324             {
+//  325               pct = sts->onPct;                      // Percentage of cycle for on
+//  326               sts->mode |= HAL_LED_MODE_ON;          // Say it's on
+//  327               HalLedOnOff( led, HAL_LED_MODE_ON );   // Turn it on
+//  328             }
+//  329             if (sts->mode & HAL_LED_MODE_BLINK)
+//  330             {
+//  331               wait = (((uint32)pct * (uint32)sts->time) / 100);
+//  332               sts->next = time + wait;
+//  333             }
+//  334             else
+//  335             {
+//  336               /* no more blink, no more wait */
+//  337               wait = 0;
+//  338               /* After blinking, set the LED back to the state before it blinks */
+//  339               HalLedSet (led, ((preBlinkState & led)!=0)?HAL_LED_MODE_ON:HAL_LED_MODE_OFF);
+//  340               /* Clear the saved bit */
+//  341               preBlinkState &= (led ^ 0xFF);
+//  342             }
+//  343           }
+//  344           else
+//  345           {
+//  346             wait = sts->next - time;  /* Time left */
+//  347           }
+//  348 
+//  349           if (!next || ( wait && (wait < next) ))
+//  350           {
+//  351             next = wait;
+//  352           }
+//  353         }
+//  354         leds ^= led;
+//  355       }
+//  356       led <<= 1;
+//  357       sts++;
+//  358     }
+//  359 
+//  360     if (next)
+//  361     {
+//  362       osal_start_timerEx(Hal_TaskID, HAL_LED_BLINK_EVENT, next);   /* Schedule event */
+//  363     }
+//  364   }
+//  365 }
+//  366 
+//  367 /***************************************************************************************************
+//  368  * @fn      HalLedOnOff
+//  369  *
+//  370  * @brief   Turns specified LED ON or OFF
+//  371  *
+//  372  * @param   leds - LED bit mask
+//  373  *          mode - LED_ON,LED_OFF,
+//  374  *
+//  375  * @return  none
+//  376  ***************************************************************************************************/
+//  377 void HalLedOnOff (uint8 leds, uint8 mode)
+//  378 {
+//  379   if (leds & HAL_LED_1)
+//  380   {
+//  381     if (mode == HAL_LED_MODE_ON)
+//  382     {
+//  383       HAL_TURN_ON_LED1();
+//  384     }
+//  385     else
+//  386     {
+//  387       HAL_TURN_OFF_LED1();
+//  388     }
+//  389   }
+//  390 
+//  391   if (leds & HAL_LED_2)
+//  392   {
+//  393     if (mode == HAL_LED_MODE_ON)
+//  394     {
+//  395       HAL_TURN_ON_LED2();
+//  396     }
+//  397     else
+//  398     {
+//  399       HAL_TURN_OFF_LED2();
+//  400     }
+//  401   }
+//  402 
+//  403   if (leds & HAL_LED_3)
+//  404   {
+//  405     if (mode == HAL_LED_MODE_ON)
+//  406     {
+//  407       HAL_TURN_ON_LED3();
+//  408     }
+//  409     else
+//  410     {
+//  411       HAL_TURN_OFF_LED3();
+//  412     }
+//  413   }
+//  414 
+//  415   if (leds & HAL_LED_4)
+//  416   {
+//  417     if (mode == HAL_LED_MODE_ON)
+//  418     {
+//  419       HAL_TURN_ON_LED4();
+//  420     }
+//  421     else
+//  422     {
+//  423       HAL_TURN_OFF_LED4();
+//  424     }
+//  425   }
+//  426 
+//  427   /* Remember current state */
+//  428   if (mode)
+//  429   {
+//  430     HalLedState |= leds;
+//  431   }
+//  432   else
+//  433   {
+//  434     HalLedState &= (leds ^ 0xFF);
+//  435   }
+//  436 }
+//  437 #endif /* HAL_LED */
+//  438 
+//  439 /***************************************************************************************************
+//  440  * @fn      HalGetLedState
+//  441  *
+//  442  * @brief   Dim LED2 - Dim (set level) of LED2
+//  443  *
+//  444  * @param   none
+//  445  *
+//  446  * @return  led state
+//  447  ***************************************************************************************************/
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  448 uint8 HalLedGetState ()
+HalLedGetState:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function HalLedGetState
+        CODE
+//  449 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  450 #if (HAL_LED == TRUE)
+//  451   return HalLedState;
+//  452 #else
+//  453   return 0;
+        MOV     R1,#0x0
+        LJMP    ?BRET
+          CFI EndBlock cfiBlock3
+//  454 #endif
+//  455 }
+//  456 
+//  457 /***************************************************************************************************
+//  458  * @fn      HalLedEnterSleep
+//  459  *
+//  460  * @brief   Store current LEDs state before sleep
+//  461  *
+//  462  * @param   none
+//  463  *
+//  464  * @return  none
+//  465  ***************************************************************************************************/
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  466 void HalLedEnterSleep( void )
+HalLedEnterSleep:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function HalLedEnterSleep
+        CODE
+//  467 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  468 #ifdef BLINK_LEDS
+//  469   /* Sleep ON */
+//  470   HalLedStatusControl.sleepActive = TRUE;
+//  471 #endif /* BLINK_LEDS */
+//  472 
+//  473 #if (HAL_LED == TRUE)
+//  474   /* Save the state of each led */
+//  475   HalSleepLedState = 0;
+//  476   HalSleepLedState |= HAL_STATE_LED1();
+//  477   HalSleepLedState |= HAL_STATE_LED2() << 1;
+//  478   HalSleepLedState |= HAL_STATE_LED3() << 2;
+//  479   HalSleepLedState |= HAL_STATE_LED4() << 3;
+//  480 
+//  481   /* TURN OFF all LEDs to save power */
+//  482   HalLedOnOff (HAL_LED_ALL, HAL_LED_MODE_OFF);
+//  483 #endif /* HAL_LED */
+//  484 
+//  485 }
+        LJMP    ?BRET
+          CFI EndBlock cfiBlock4
+//  486 
+//  487 /***************************************************************************************************
+//  488  * @fn      HalLedExitSleep
+//  489  *
+//  490  * @brief   Restore current LEDs state after sleep
+//  491  *
+//  492  * @param   none
+//  493  *
+//  494  * @return  none
+//  495  ***************************************************************************************************/
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  496 void HalLedExitSleep( void )
+HalLedExitSleep:
+          CFI Block cfiBlock5 Using cfiCommon0
+          CFI Function HalLedExitSleep
+        CODE
+//  497 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  498 #if (HAL_LED == TRUE)
+//  499   /* Load back the saved state */
+//  500   HalLedOnOff(HalSleepLedState, HAL_LED_MODE_ON);
+//  501 
+//  502   /* Restart - This takes care BLINKING LEDS */
+//  503   HalLedUpdate();
+//  504 #endif /* HAL_LED */
+//  505 
+//  506 #ifdef BLINK_LEDS
+//  507   /* Sleep OFF */
+//  508   HalLedStatusControl.sleepActive = FALSE;
+//  509 #endif /* BLINK_LEDS */
+//  510 }
+        LJMP    ?BRET
+          CFI EndBlock cfiBlock5
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??HalLedInit?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    HalLedInit
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??HalLedSet?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    HalLedSet
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??HalLedBlink?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    HalLedBlink
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??HalLedGetState?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    HalLedGetState
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??HalLedEnterSleep?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    HalLedEnterSleep
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??HalLedExitSleep?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    HalLedExitSleep
+
+        END
+//  511 
+//  512 /***************************************************************************************************
+//  513 ***************************************************************************************************/
+//  514 
+//  515 
+//  516 
+//  517 
+// 
+// 33 bytes in segment BANKED_CODE
+// 36 bytes in segment BANK_RELAYS
+//  1 byte  in segment XDATA_Z
+// 
+// 69 bytes of CODE  memory
+//  1 byte  of XDATA memory
+//
+//Errors: none
+//Warnings: none

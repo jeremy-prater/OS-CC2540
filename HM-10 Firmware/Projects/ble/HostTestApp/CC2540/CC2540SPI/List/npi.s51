@@ -1,0 +1,809 @@
+///////////////////////////////////////////////////////////////////////////////
+//                                                                            /
+// IAR C/C++ Compiler V8.30.1.41636 for 8051            02/Jun/2014  17:48:02 /
+// Copyright 2004-2013 IAR Systems AB.                                        /
+//                                                                            /
+//    Core               =  plain                                             /
+//    Code model         =  banked                                            /
+//    Data model         =  large                                             /
+//    Calling convention =  xdata reentrant                                   /
+//    Constant location  =  data_rom                                          /
+//    Dptr setup         =  1,16                                              /
+//                                                                            /
+//    Source file        =  c:\Users\Administrator\Documents\Dropbox\Fish     /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\comm /
+//                          on\npi\npi_np\npi.c                               /
+//    Command line       =  -f "c:\Users\Administrator\Documents\Dropbox\Fish /
+//                           Brain\HM-10 Hack\HM-10                           /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\co /
+//                          nfig\buildComponents.cfg"                         /
+//                          (-DBROADCASTER_CFG=0x01 -DOBSERVER_CFG=0x02       /
+//                          -DPERIPHERAL_CFG=0x04 -DCENTRAL_CFG=0x08          /
+//                          -DADV_NCONN_CFG=0x01 -DADV_CONN_CFG=0x02          /
+//                          -DSCAN_CFG=0x04 -DINIT_CFG=0x08                   /
+//                          -DADV_CFG=ADV_NCONN_CFG+ADV_CONN_CFG              /
+//                          -DLINK_CFG=ADV_CONN_CFG+INIT_CFG                  /
+//                          -DFULL_CFG=INIT_CFG+SCAN_CFG+ADV_NCONN_CFG+ADV_CO /
+//                          NN_CFG) -f "c:\Users\Administrator\Documents\Drop /
+//                          box\Fish Brain\HM-10 Hack\HM-10                   /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\buildCon /
+//                          fig.cfg" (-DHOST_CONFIG=PERIPHERAL_CFG+CENTRAL_CF /
+//                          G -DGAP_PRIVACY_RECONNECT)                        /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\comm /
+//                          on\npi\npi_np\npi.c" -D INT_HEAP_LEN=2700 -D      /
+//                          HALNODEBUG -D OSAL_CBTIMER_NUM_TASKS=1 -D         /
+//                          POWER_SAVING -D HAL_AES_DMA=TRUE -D HAL_DMA=TRUE  /
+//                          -D HAL_UART=TRUE -D HAL_UART_DMA=0 -D             /
+//                          HAL_UART_ISR=0 -D HAL_UART_SPI=2 -D               /
+//                          HAL_SPI_QUEUED_TX=TRUE -D HAL_KEY=FALSE -D        /
+//                          HAL_LCD=FALSE -D HAL_LED=FALSE -D                 /
+//                          GATT_DB_OFF_CHIP -D GAP_BOND_MGR -lCN             /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\List\" -lA               /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\List\" -o                /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\Obj\" -e --debug         /
+//                          --core=plain --dptr=16,1 --data_model=large       /
+//                          --code_model=banked --calling_convention=xdata_re /
+//                          entrant --place_constants=data_rom                /
+//                          --nr_virtual_regs 8 -I "c:\Users\Administrator\Do /
+//                          cuments\Dropbox\Fish Brain\HM-10 Hack\HM-10       /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\co /
+//                          mmon\" -I "c:\Users\Administrator\Documents\Dropb /
+//                          ox\Fish Brain\HM-10 Hack\HM-10                    /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\hal\include\" -I                   /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\hal\target\ /
+//                          CC2540EB\" -I "c:\Users\Administrator\Documents\D /
+//                          ropbox\Fish Brain\HM-10 Hack\HM-10                /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\osal\include\" -I                  /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\services\sa /
+//                          ddr\" -I "c:\Users\Administrator\Documents\Dropbo /
+//                          x\Fish Brain\HM-10 Hack\HM-10                     /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\ble\include\" -I                   /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\ble\control /
+//                          ler\phy\" -I "c:\Users\Administrator\Documents\Dr /
+//                          opbox\Fish Brain\HM-10 Hack\HM-10                 /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\ble\controller\include\" -I        /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\..\..\Components\ble\hci\"   /
+//                          -I "c:\Users\Administrator\Documents\Dropbox\Fish /
+//                           Brain\HM-10 Hack\HM-10                           /
+//                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\.. /
+//                          \..\Components\ble\host\" -I                      /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\common\cc2540\" -I           /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\common\npi\npi_np\" -I       /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\Include\" -I                 /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\..\Profiles\Roles\" -I          /
+//                          "c:\Users\Administrator\Documents\Dropbox\Fish    /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\..\source\" -Ohz                   /
+//    List file          =  c:\Users\Administrator\Documents\Dropbox\Fish     /
+//                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\Host /
+//                          TestApp\CC2540\CC2540SPI\List\npi.s51             /
+//                                                                            /
+//                                                                            /
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME npi
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?ALLOC_XSTACK8
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN ?DEALLOC_XSTACK8
+        EXTERN ?XSP
+        EXTERN ?XSTACK_DISP0_8
+
+        PUBLIC ??NPI_GetMaxRxBufSize?relay
+        FUNCTION ??NPI_GetMaxRxBufSize?relay,0203H
+        PUBLIC ??NPI_GetMaxTxBufSize?relay
+        FUNCTION ??NPI_GetMaxTxBufSize?relay,0203H
+        PUBLIC ??NPI_InitTransport?relay
+        FUNCTION ??NPI_InitTransport?relay,0203H
+        PUBLIC ??NPI_ReadTransport?relay
+        FUNCTION ??NPI_ReadTransport?relay,0203H
+        PUBLIC ??NPI_RxBufLen?relay
+        FUNCTION ??NPI_RxBufLen?relay,0203H
+        PUBLIC ??NPI_WriteTransport?relay
+        FUNCTION ??NPI_WriteTransport?relay,0203H
+        PUBLIC NPI_GetMaxRxBufSize
+        FUNCTION NPI_GetMaxRxBufSize,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC NPI_GetMaxTxBufSize
+        FUNCTION NPI_GetMaxTxBufSize,0203H
+        ARGFRAME XSTACK, 0, STACK
+        PUBLIC NPI_InitTransport
+        FUNCTION NPI_InitTransport,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME XSTACK, 29, STACK
+        PUBLIC NPI_ReadTransport
+        FUNCTION NPI_ReadTransport,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC NPI_RxBufLen
+        FUNCTION NPI_RxBufLen,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC NPI_WriteTransport
+        FUNCTION NPI_WriteTransport,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+HalUARTOpen         SYMBOL "HalUARTOpen"
+??HalUARTOpen?relay SYMBOL "?relay", HalUARTOpen
+HalUARTRead         SYMBOL "HalUARTRead"
+??HalUARTRead?relay SYMBOL "?relay", HalUARTRead
+HalUARTWrite        SYMBOL "HalUARTWrite"
+??HalUARTWrite?relay SYMBOL "?relay", HalUARTWrite
+Hal_UART_RxBufLen   SYMBOL "Hal_UART_RxBufLen"
+??Hal_UART_RxBufLen?relay SYMBOL "?relay", Hal_UART_RxBufLen
+NPI_GetMaxRxBufSize SYMBOL "NPI_GetMaxRxBufSize"
+??NPI_GetMaxRxBufSize?relay SYMBOL "?relay", NPI_GetMaxRxBufSize
+NPI_GetMaxTxBufSize SYMBOL "NPI_GetMaxTxBufSize"
+??NPI_GetMaxTxBufSize?relay SYMBOL "?relay", NPI_GetMaxTxBufSize
+NPI_InitTransport   SYMBOL "NPI_InitTransport"
+??NPI_InitTransport?relay SYMBOL "?relay", NPI_InitTransport
+NPI_ReadTransport   SYMBOL "NPI_ReadTransport"
+??NPI_ReadTransport?relay SYMBOL "?relay", NPI_ReadTransport
+NPI_RxBufLen        SYMBOL "NPI_RxBufLen"
+??NPI_RxBufLen?relay SYMBOL "?relay", NPI_RxBufLen
+NPI_WriteTransport  SYMBOL "NPI_WriteTransport"
+??NPI_WriteTransport?relay SYMBOL "?relay", NPI_WriteTransport
+
+        EXTERN ??HalUARTOpen?relay
+        FUNCTION ??HalUARTOpen?relay,00H
+        EXTERN ??HalUARTRead?relay
+        FUNCTION ??HalUARTRead?relay,00H
+        EXTERN ??HalUARTWrite?relay
+        FUNCTION ??HalUARTWrite?relay,00H
+        EXTERN ??Hal_UART_RxBufLen?relay
+        FUNCTION ??Hal_UART_RxBufLen?relay,00H
+        EXTERN HalUARTOpen
+        FUNCTION HalUARTOpen,0202H
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 29, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN HalUARTRead
+        FUNCTION HalUARTRead,0202H
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN HalUARTWrite
+        FUNCTION HalUARTWrite,0202H
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        EXTERN Hal_UART_RxBufLen
+        FUNCTION Hal_UART_RxBufLen,0202H
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+
+// c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\common\npi\npi_np\npi.c
+//    1 /*******************************************************************************
+//    2   Filename:       npi.c
+//    3   Revised:        $Date: 2008-06-11 14:30:47 -0700 (Wed, 11 Jun 2008) $
+//    4   Revision:       $Revision: 17210 $
+//    5 
+//    6   Description:    This file contains the Network Processor Interface (NPI),
+//    7                   which abstracts the physical link between the Application
+//    8                   Processor (AP) and the Network Processor (NP). The NPI
+//    9                   serves as the HAL's client for the SPI and UART drivers, and
+//   10                   provides API and callback services for its client.
+//   11 
+//   12   Copyright 2006-2012 Texas Instruments Incorporated. All rights reserved.
+//   13 
+//   14   IMPORTANT: Your use of this Software is limited to those specific rights
+//   15   granted under the terms of a software license agreement between the user
+//   16   who downloaded the software, his/her employer (which must be your employer)
+//   17   and Texas Instruments Incorporated (the "License").  You may not use this
+//   18   Software unless you agree to abide by the terms of the License. The License
+//   19   limits your use, and you acknowledge, that the Software may not be modified,
+//   20   copied or distributed unless embedded on a Texas Instruments microcontroller
+//   21   or used solely and exclusively in conjunction with a Texas Instruments radio
+//   22   frequency transceiver, which is integrated into your product.  Other than for
+//   23   the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+//   24   works of, modify, distribute, perform, display or sell this Software and/or
+//   25   its documentation for any purpose.
+//   26 
+//   27   YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+//   28   PROVIDED “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+//   29   INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+//   30   NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+//   31   TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+//   32   NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+//   33   LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+//   34   INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+//   35   OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+//   36   OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+//   37   (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+//   38 
+//   39   Should you have any questions regarding your right to use this Software,
+//   40   contact Texas Instruments Incorporated at www.TI.com.
+//   41 *******************************************************************************/
+//   42 
+//   43 /*******************************************************************************
+//   44  * INCLUDES
+//   45  */
+//   46 
+//   47 #include "hal_types.h"
+//   48 #include "hal_board.h"
+//   49 #include "npi.h"
+//   50 
+//   51 /*******************************************************************************
+//   52  * MACROS
+//   53  */
+//   54 
+//   55 /*******************************************************************************
+//   56  * CONSTANTS
+//   57  */
+//   58 
+//   59 /*******************************************************************************
+//   60  * TYPEDEFS
+//   61  */
+//   62 
+//   63 /*******************************************************************************
+//   64  * LOCAL VARIABLES
+//   65  */
+//   66 
+//   67 /*******************************************************************************
+//   68  * GLOBAL VARIABLES
+//   69  */
+//   70 
+//   71 /*******************************************************************************
+//   72  * PROTOTYPES
+//   73  */
+//   74 
+//   75 /*******************************************************************************
+//   76  * FUNCTIONS
+//   77  */
+//   78 
+//   79 /*******************************************************************************
+//   80  * @fn          NPI_InitTransport
+//   81  *
+//   82  * @brief       This routine initializes the transport layer and opens the port
+//   83  *              of the device. Note that based on project defines, either the
+//   84  *              UART, USB (CDC), or SPI driver can be used.
+//   85  *
+//   86  * input parameters
+//   87  *
+//   88  * @param       npiCback - User callback function when data is available.
+//   89  *
+//   90  * output parameters
+//   91  *
+//   92  * @param       None.
+//   93  *
+//   94  * @return      None.
+//   95  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//   96 void NPI_InitTransport( npiCBack_t npiCBack )
+NPI_InitTransport:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function NPI_InitTransport
+        CODE
+//   97 {
+        FUNCALL NPI_InitTransport, HalUARTOpen
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 29, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 29, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH    DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH    DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 29
+        MOV     A,#-0x1d
+        LCALL   ?ALLOC_XSTACK8
+          CFI CFA_XSP16 add(XSP16, 29)
+//   98   halUARTCfg_t uartConfig;
+//   99 
+//  100   // configure UART
+//  101   uartConfig.configured           = TRUE;
+        MOV     DPL,?XSP + 0
+        MOV     DPH,?XSP + 1
+        MOV     A,#0x1
+        MOVX    @DPTR,A
+//  102   uartConfig.baudRate             = NPI_UART_BR;
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,#0x4
+        MOVX    @DPTR,A
+//  103   uartConfig.flowControl          = NPI_UART_FC;
+        MOV     A,#0x2
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,#0x1
+        MOVX    @DPTR,A
+//  104   uartConfig.flowControlThreshold = NPI_UART_FC_THRESHOLD;
+        MOV     A,#0x3
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,#0x30
+        MOVX    @DPTR,A
+        INC     DPTR
+        CLR     A
+        MOVX    @DPTR,A
+//  105   uartConfig.rx.maxBufSize        = NPI_UART_RX_BUF_SIZE;
+        MOV     A,#0xa
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,#-0x80
+        MOVX    @DPTR,A
+        INC     DPTR
+        CLR     A
+        MOVX    @DPTR,A
+//  106   uartConfig.tx.maxBufSize        = NPI_UART_TX_BUF_SIZE;
+        MOV     A,#0x12
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,#-0x80
+        MOVX    @DPTR,A
+        INC     DPTR
+        CLR     A
+        MOVX    @DPTR,A
+//  107   uartConfig.idleTimeout          = NPI_UART_IDLE_TIMEOUT;
+        MOV     A,#0x5
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,#0x6
+        MOVX    @DPTR,A
+//  108   uartConfig.intEnable            = NPI_UART_INT_ENABLE;
+        MOV     A,#0x16
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,#0x1
+        MOVX    @DPTR,A
+//  109   uartConfig.callBackFunc         = (halUARTCBack_t)npiCBack;
+        MOV     A,#0x1b
+        LCALL   ?XSTACK_DISP0_8
+        MOV     A,R2
+        MOVX    @DPTR,A
+        INC     DPTR
+        MOV     A,R3
+        MOVX    @DPTR,A
+//  110 
+//  111   // start UART
+//  112   // Note: Assumes no issue opening UART port.
+//  113   (void)HalUARTOpen( NPI_UART_PORT, &uartConfig );
+        ; Setup parameters for call to function HalUARTOpen
+        MOV     R2,?XSP + 0
+        MOV     R3,?XSP + 1
+        MOV     R1,#0x1
+        LCALL   ??HalUARTOpen?relay  ; Banked call to: HalUARTOpen
+//  114 
+//  115   return;
+        MOV     A,#0x1d
+        LCALL   ?DEALLOC_XSTACK8
+          CFI CFA_XSP16 XSP16+0
+        SJMP    ?Subroutine0
+          CFI EndBlock cfiBlock0
+//  116 }
+//  117 
+//  118 
+//  119 /*******************************************************************************
+//  120  * @fn          NPI_ReadTransport
+//  121  *
+//  122  * @brief       This routine reads data from the transport layer based on len,
+//  123  *              and places it into the buffer.
+//  124  *
+//  125  * input parameters
+//  126  *
+//  127  * @param       buf - Pointer to buffer to place read data.
+//  128  * @param       len - Number of bytes to read.
+//  129  *
+//  130  * output parameters
+//  131  *
+//  132  * @param       None.
+//  133  *
+//  134  * @return      Returns the number of bytes read from transport.
+//  135  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  136 uint16 NPI_ReadTransport( uint8 *buf, uint16 len )
+NPI_ReadTransport:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function NPI_ReadTransport
+        CODE
+//  137 {
+        FUNCALL NPI_ReadTransport, HalUARTRead
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH    DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH    DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  138   return( HalUARTRead( NPI_UART_PORT, buf, len ) );
+        ; Setup parameters for call to function HalUARTRead
+        MOV     R1,#0x1
+        LCALL   ??HalUARTRead?relay  ; Banked call to: HalUARTRead
+        SJMP    ?Subroutine0
+          CFI EndBlock cfiBlock1
+//  139 }
+//  140 
+//  141 
+//  142 /*******************************************************************************
+//  143  * @fn          NPI_WriteTransport
+//  144  *
+//  145  * @brief       This routine writes data from the buffer to the transport layer.
+//  146  *
+//  147  * input parameters
+//  148  *
+//  149  * @param       buf - Pointer to buffer to write data from.
+//  150  * @param       len - Number of bytes to write.
+//  151  *
+//  152  * output parameters
+//  153  *
+//  154  * @param       None.
+//  155  *
+//  156  * @return      Returns the number of bytes written to transport.
+//  157  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  158 uint16 NPI_WriteTransport( uint8 *buf, uint16 len )
+NPI_WriteTransport:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI Function NPI_WriteTransport
+        CODE
+//  159 {
+        FUNCALL NPI_WriteTransport, HalUARTWrite
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH    DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH    DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  160   return( HalUARTWrite( NPI_UART_PORT, buf, len ) );
+        ; Setup parameters for call to function HalUARTWrite
+        MOV     R1,#0x1
+        LCALL   ??HalUARTWrite?relay ; Banked call to: HalUARTWrite
+          CFI EndBlock cfiBlock2
+        REQUIRE ?Subroutine0
+        ; // Fall through to label ?Subroutine0
+//  161 }
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine0:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+-5
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI DPH0 Frame(CFA_SP, 5)
+        POP     DPH
+          CFI CFA_SP SP+-4
+          CFI DPH0 SameValue
+        POP     DPL
+          CFI CFA_SP SP+-3
+          CFI DPL0 SameValue
+        LJMP    ?BRET
+          CFI EndBlock cfiBlock3
+//  162 
+//  163 
+//  164 /*******************************************************************************
+//  165  * @fn          NPI_RxBufLen
+//  166  *
+//  167  * @brief       This routine returns the number of bytes in the receive buffer.
+//  168  *
+//  169  * input parameters
+//  170  *
+//  171  * @param       None.
+//  172  *
+//  173  * output parameters
+//  174  *
+//  175  * @param       None.
+//  176  *
+//  177  * @return      Returns the number of bytes in the receive buffer.
+//  178  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  179 uint16 NPI_RxBufLen( void )
+NPI_RxBufLen:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function NPI_RxBufLen
+        CODE
+//  180 {
+        FUNCALL NPI_RxBufLen, Hal_UART_RxBufLen
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH    DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH    DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//  181   return( Hal_UART_RxBufLen( NPI_UART_PORT ) );
+        ; Setup parameters for call to function Hal_UART_RxBufLen
+        MOV     R1,#0x1
+        LCALL   ??Hal_UART_RxBufLen?relay; Banked call to: Hal_UART_RxBufLen
+        SJMP    ?Subroutine0
+          CFI EndBlock cfiBlock4
+//  182 }
+//  183 
+//  184 
+//  185 /*******************************************************************************
+//  186  * @fn          NPI_GetMaxRxBufSize
+//  187  *
+//  188  * @brief       This routine returns the max size receive buffer.
+//  189  *
+//  190  * input parameters
+//  191  *
+//  192  * @param       None.
+//  193  *
+//  194  * output parameters
+//  195  *
+//  196  * @param       None.
+//  197  *
+//  198  * @return      Returns the max size of the receive buffer.
+//  199  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  200 uint16 NPI_GetMaxRxBufSize( void )
+NPI_GetMaxRxBufSize:
+        CODE
+//  201 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  202   return( NPI_UART_RX_BUF_SIZE );
+        REQUIRE ?Subroutine1
+        ; // Fall through to label ?Subroutine1
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+?Subroutine1:
+          CFI Block cfiBlock5 Using cfiCommon0
+          CFI NoFunction
+        MOV     R2,#-0x80
+        MOV     R3,#0x0
+        LJMP    ?BRET
+          CFI EndBlock cfiBlock5
+//  203 }
+//  204 
+//  205 
+//  206 /*******************************************************************************
+//  207  * @fn          NPI_GetMaxTxBufSize
+//  208  *
+//  209  * @brief       This routine returns the max size transmit buffer.
+//  210  *
+//  211  * input parameters
+//  212  *
+//  213  * @param       None.
+//  214  *
+//  215  * output parameters
+//  216  *
+//  217  * @param       None.
+//  218  *
+//  219  * @return      Returns the max size of the transmit buffer.
+//  220  */
+
+        RSEG BANKED_CODE:CODE:NOROOT(0)
+//  221 uint16 NPI_GetMaxTxBufSize( void )
+NPI_GetMaxTxBufSize:
+          CFI Block cfiBlock6 Using cfiCommon0
+          CFI Function NPI_GetMaxTxBufSize
+        CODE
+//  222 {
+        ; Saved register size: 0
+        ; Auto size: 0
+//  223   return( NPI_UART_TX_BUF_SIZE );
+        SJMP    ?Subroutine1
+          CFI EndBlock cfiBlock6
+//  224 }
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??NPI_InitTransport?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    NPI_InitTransport
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??NPI_ReadTransport?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    NPI_ReadTransport
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??NPI_WriteTransport?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    NPI_WriteTransport
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??NPI_RxBufLen?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    NPI_RxBufLen
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??NPI_GetMaxRxBufSize?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    NPI_GetMaxRxBufSize
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+??NPI_GetMaxTxBufSize?relay:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    NPI_GetMaxTxBufSize
+
+        END
+//  225 
+//  226 
+//  227 /*******************************************************************************
+//  228  ******************************************************************************/
+// 
+// 154 bytes in segment BANKED_CODE
+//  36 bytes in segment BANK_RELAYS
+// 
+// 190 bytes of CODE memory
+//
+//Errors: none
+//Warnings: none

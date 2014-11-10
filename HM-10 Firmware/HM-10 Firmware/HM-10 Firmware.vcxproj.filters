@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{37d2b90c-7cb8-4c2b-835f-443bbad93cb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\HAL">
+      <UniqueIdentifier>{f55e7666-34df-4f6a-b9f7-76847848c3c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\HAL\common">
+      <UniqueIdentifier>{09d392cc-e3b8-45ff-9df7-8c9ff65fb090}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\HAL\Include">
+      <UniqueIdentifier>{e9240ea6-0f88-4cb0-ad4e-7d1a250c8597}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\HAL\Target">
+      <UniqueIdentifier>{2501b41e-aef2-47c9-a037-a71dd1fe26f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\OSAL">
+      <UniqueIdentifier>{b6a09448-f5c3-4f1d-8883-81951f56c8d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\OSAL\common">
+      <UniqueIdentifier>{9823b160-0d72-48ae-b6c9-0c210ef23ec0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\OSAL\Include">
+      <UniqueIdentifier>{ab71861f-7866-4744-9a1e-e57009d6600a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\BLE">
+      <UniqueIdentifier>{12babbf6-66bc-4e9b-bbdb-a21554bd6b49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\BLE\Include">
+      <UniqueIdentifier>{c3417f0d-c010-4200-abd4-b5215315c171}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\BLE\Controller">
+      <UniqueIdentifier>{366d30ac-51de-4131-b05c-6d1481e71efc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\BLE\Controller\Include">
+      <UniqueIdentifier>{f25ad0f7-b852-4239-a0ed-6c07654bdd6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\BLE\HCI">
+      <UniqueIdentifier>{932024dd-b148-446f-9c16-598ae8e665ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\BLE\Host">
+      <UniqueIdentifier>{a32a42b7-6e76-40be-b2cd-afb1c0a4bd8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\NPI">
+      <UniqueIdentifier>{83fa033d-baf4-4664-b0de-abf4db5e63b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Roles">
+      <UniqueIdentifier>{b21891f2-3cb4-470d-a689-e77d409165da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\HAL\Config">
+      <UniqueIdentifier>{92cf3d47-b15f-4fe2-81d2-8a36e88b0d33}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Projects\ble\HostTestApp\Source\hci_ext_app.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Projects\ble\HostTestApp\Source\HostTest_Main.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Projects\ble\HostTestApp\Source\OSAL_HostTest.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Projects\ble\HostTestApp\Source\spi_interface.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\hal\target\CC2540EB\_hal_uart_dma.c">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\hal\target\CC2540EB\_hal_uart_isr.c">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\hal\target\CC2540EB\_hal_uart_spi.c">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_adc.c">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_aes.c">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_crc.c">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_dma.c">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_flash.c">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_key.c">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_lcd.c">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_led.c">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_sleep.c">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_startup.c">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_timer.c">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_uart.c">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\hal\common\hal_assert.c">
+      <Filter>Source Files\Components\HAL\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\hal\common\hal_drivers.c">
+      <Filter>Source Files\Components\HAL\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\osal\common\OSAL.c">
+      <Filter>Source Files\Components\OSAL\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\osal\common\osal_bufmgr.c">
+      <Filter>Source Files\Components\OSAL\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\osal\common\osal_cbtimer.c">
+      <Filter>Source Files\Components\OSAL\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\osal\common\OSAL_ClockBLE.c">
+      <Filter>Source Files\Components\OSAL\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\osal\common\OSAL_Memory.c">
+      <Filter>Source Files\Components\OSAL\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\osal\common\OSAL_PwrMgr.c">
+      <Filter>Source Files\Components\OSAL\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\osal\common\OSAL_Timers.c">
+      <Filter>Source Files\Components\OSAL\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Components\ble\host\gatt_uuid.c">
+      <Filter>Source Files\Components\BLE\Host</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Projects\ble\common\npi\npi_np\npi.c">
+      <Filter>Source Files\Components\NPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Projects\ble\Profiles\Roles\broadcaster.c">
+      <Filter>Source Files\Components\Roles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Projects\ble\Profiles\Roles\central.c">
+      <Filter>Source Files\Components\Roles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Projects\ble\Profiles\Roles\gap.c">
+      <Filter>Source Files\Components\Roles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Projects\ble\Profiles\Roles\gapbondmgr.c">
+      <Filter>Source Files\Components\Roles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Projects\ble\Profiles\Roles\gapperiphbondmgr.c">
+      <Filter>Source Files\Components\Roles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Projects\ble\Profiles\Roles\observer.c">
+      <Filter>Source Files\Components\Roles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Projects\ble\Profiles\Roles\peripheral.c">
+      <Filter>Source Files\Components\Roles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Projects\ble\Profiles\Roles\peripheralBroadcaster.c">
+      <Filter>Source Files\Components\Roles</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Projects\ble\HostTestApp\Source\spi_interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Projects\ble\HostTestApp\Source\hci_ext_app.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\include\hal_adc.h">
+      <Filter>Source Files\Components\HAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\include\hal_assert.h">
+      <Filter>Source Files\Components\HAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\include\hal_board.h">
+      <Filter>Source Files\Components\HAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\include\hal_defs.h">
+      <Filter>Source Files\Components\HAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\include\hal_drivers.h">
+      <Filter>Source Files\Components\HAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\include\hal_flash.h">
+      <Filter>Source Files\Components\HAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\include\hal_key.h">
+      <Filter>Source Files\Components\HAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\include\hal_lcd.h">
+      <Filter>Source Files\Components\HAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\include\hal_led.h">
+      <Filter>Source Files\Components\HAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\include\hal_rpc.h">
+      <Filter>Source Files\Components\HAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\include\hal_sleep.h">
+      <Filter>Source Files\Components\HAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\include\hal_timer.h">
+      <Filter>Source Files\Components\HAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\include\hal_uart.h">
+      <Filter>Source Files\Components\HAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\target\CC2540EB\hal_aes.h">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\target\CC2540EB\hal_ccm.h">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\target\CC2540EB\hal_crc.h">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\target\CC2540EB\hal_dma.h">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\target\CC2540EB\hal_mcu.h">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\target\CC2540EB\hal_types.h">
+      <Filter>Source Files\Components\HAL\Target</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\osal\include\comdef.h">
+      <Filter>Source Files\Components\OSAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\osal\include\OSAL.h">
+      <Filter>Source Files\Components\OSAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\osal\include\osal_bufmgr.h">
+      <Filter>Source Files\Components\OSAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\osal\include\osal_cbtimer.h">
+      <Filter>Source Files\Components\OSAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\osal\include\OSAL_Clock.h">
+      <Filter>Source Files\Components\OSAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\osal\include\OSAL_Memory.h">
+      <Filter>Source Files\Components\OSAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\osal\include\OSAL_Nv.h">
+      <Filter>Source Files\Components\OSAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\osal\include\OSAL_PwrMgr.h">
+      <Filter>Source Files\Components\OSAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\osal\include\osal_snv.h">
+      <Filter>Source Files\Components\OSAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\osal\include\OSAL_Tasks.h">
+      <Filter>Source Files\Components\OSAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\osal\include\OSAL_Timers.h">
+      <Filter>Source Files\Components\OSAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\osal\include\ZComDef.h">
+      <Filter>Source Files\Components\OSAL\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\include\att.h">
+      <Filter>Source Files\Components\BLE\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\include\bcomdef.h">
+      <Filter>Source Files\Components\BLE\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\include\gap.h">
+      <Filter>Source Files\Components\BLE\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\include\gatt.h">
+      <Filter>Source Files\Components\BLE\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\include\gatt_uuid.h">
+      <Filter>Source Files\Components\BLE\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\include\hci.h">
+      <Filter>Source Files\Components\BLE\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\include\l2cap.h">
+      <Filter>Source Files\Components\BLE\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\include\sm.h">
+      <Filter>Source Files\Components\BLE\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\controller\include\ll.h">
+      <Filter>Source Files\Components\BLE\Controller\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\controller\include\ll_math.h">
+      <Filter>Source Files\Components\BLE\Controller\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\controller\include\ll_sleep.h">
+      <Filter>Source Files\Components\BLE\Controller\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\controller\include\ll_timer2.h">
+      <Filter>Source Files\Components\BLE\Controller\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\controller\include\phy.h">
+      <Filter>Source Files\Components\BLE\Controller\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\controller\include\phy_image.h">
+      <Filter>Source Files\Components\BLE\Controller\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\hci\hci_data.h">
+      <Filter>Source Files\Components\BLE\HCI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\hci\hci_event.h">
+      <Filter>Source Files\Components\BLE\HCI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\hci\hci_tl.h">
+      <Filter>Source Files\Components\BLE\HCI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\ble\host\linkdb.h">
+      <Filter>Source Files\Components\BLE\Host</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Projects\ble\common\npi\npi_np\npi.h">
+      <Filter>Source Files\Components\NPI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Projects\ble\Profiles\Roles\broadcaster.h">
+      <Filter>Source Files\Components\Roles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Projects\ble\Profiles\Roles\central.h">
+      <Filter>Source Files\Components\Roles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Projects\ble\Profiles\Roles\gapbondmgr.h">
+      <Filter>Source Files\Components\Roles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Projects\ble\Profiles\Roles\gapperiphbondmgr.h">
+      <Filter>Source Files\Components\Roles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Projects\ble\Profiles\Roles\observer.h">
+      <Filter>Source Files\Components\Roles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Projects\ble\Profiles\Roles\peripheral.h">
+      <Filter>Source Files\Components\Roles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Projects\ble\Profiles\Roles\peripheralBroadcaster.h">
+      <Filter>Source Files\Components\Roles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Components\hal\target\CC2540EB\hal_board_cfg.h">
+      <Filter>Source Files\Components\HAL\Config</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

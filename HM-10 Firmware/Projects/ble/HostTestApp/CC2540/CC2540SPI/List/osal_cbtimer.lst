@@ -1,0 +1,1020 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V8.30.1.41636 for 8051             02/Jun/2014  17:48:02 #
+# Copyright 2004-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Core               =  plain                                              #
+#    Code model         =  banked                                             #
+#    Data model         =  large                                              #
+#    Calling convention =  xdata reentrant                                    #
+#    Constant location  =  data_rom                                           #
+#    Dptr setup         =  1,16                                               #
+#                                                                             #
+#    Source file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Components\osal\co #
+#                          mmon\osal_cbtimer.c                                #
+#    Command line       =  -f "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\config\buildComponents.cfg"    #
+#                          (-DBROADCASTER_CFG=0x01 -DOBSERVER_CFG=0x02        #
+#                          -DPERIPHERAL_CFG=0x04 -DCENTRAL_CFG=0x08           #
+#                          -DADV_NCONN_CFG=0x01 -DADV_CONN_CFG=0x02           #
+#                          -DSCAN_CFG=0x04 -DINIT_CFG=0x08                    #
+#                          -DADV_CFG=ADV_NCONN_CFG+ADV_CONN_CFG               #
+#                          -DLINK_CFG=ADV_CONN_CFG+INIT_CFG                   #
+#                          -DFULL_CFG=INIT_CFG+SCAN_CFG+ADV_NCONN_CFG+ADV_CON #
+#                          N_CFG) -f "c:\Users\Administrator\Documents\Dropbo #
+#                          x\Fish Brain\HM-10 Hack\HM-10                      #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\buildConf #
+#                          ig.cfg" (-DHOST_CONFIG=PERIPHERAL_CFG+CENTRAL_CFG  #
+#                          -DGAP_PRIVACY_RECONNECT)                           #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Components\osal\co #
+#                          mmon\osal_cbtimer.c" -D INT_HEAP_LEN=2700 -D       #
+#                          HALNODEBUG -D OSAL_CBTIMER_NUM_TASKS=1 -D          #
+#                          POWER_SAVING -D HAL_AES_DMA=TRUE -D HAL_DMA=TRUE   #
+#                          -D HAL_UART=TRUE -D HAL_UART_DMA=0 -D              #
+#                          HAL_UART_ISR=0 -D HAL_UART_SPI=2 -D                #
+#                          HAL_SPI_QUEUED_TX=TRUE -D HAL_KEY=FALSE -D         #
+#                          HAL_LCD=FALSE -D HAL_LED=FALSE -D                  #
+#                          GATT_DB_OFF_CHIP -D GAP_BOND_MGR -lCN              #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -lA                 #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\" -o                  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\" -e --debug           #
+#                          --core=plain --dptr=16,1 --data_model=large        #
+#                          --code_model=banked --calling_convention=xdata_ree #
+#                          ntrant --place_constants=data_rom                  #
+#                          --nr_virtual_regs 8 -I "c:\Users\Administrator\Doc #
+#                          uments\Dropbox\Fish Brain\HM-10 Hack\HM-10         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\com #
+#                          mon\" -I "c:\Users\Administrator\Documents\Dropbox #
+#                          \Fish Brain\HM-10 Hack\HM-10                       #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\hal\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\hal\target\CC #
+#                          2540EB\" -I "c:\Users\Administrator\Documents\Drop #
+#                          box\Fish Brain\HM-10 Hack\HM-10                    #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\osal\include\" -I                    #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\services\sadd #
+#                          r\" -I "c:\Users\Administrator\Documents\Dropbox\F #
+#                          ish Brain\HM-10 Hack\HM-10                         #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\include\" -I                     #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\controlle #
+#                          r\phy\" -I "c:\Users\Administrator\Documents\Dropb #
+#                          ox\Fish Brain\HM-10 Hack\HM-10                     #
+#                          Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\ #
+#                          ..\Components\ble\controller\include\" -I          #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\hci\" -I  #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\..\..\Components\ble\host\"    #
+#                          -I "c:\Users\Administrator\Documents\Dropbox\Fish  #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\cc2540\" -I             #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\common\npi\npi_np\" -I         #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Include\" -I                   #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\..\Profiles\Roles\" -I            #
+#                          "c:\Users\Administrator\Documents\Dropbox\Fish     #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\..\source\" -Ohz                     #
+#    List file          =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\List\osal_cbtimer.lst      #
+#    Object file        =  c:\Users\Administrator\Documents\Dropbox\Fish      #
+#                          Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostT #
+#                          estApp\CC2540\CC2540SPI\Obj\osal_cbtimer.r51       #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Components\osal\common\osal_cbtimer.c
+      1          /*************************************************************************************************
+      2            Filename:       osal_cbtimer.c
+      3            Revised:        $Date: 2009-01-14 14:51:34 -0800 (Wed, 14 Jan 2009) $
+      4            Revision:       $Revision: 18762 $
+      5          
+      6            Description:    This file contains the Callback Timer task(s). This module
+      7                            provides 'callback' timers using the existing 'event' timers.
+      8                            In other words, the registered callback function is called 
+      9                            instead of an OSAL event being sent to the owner of the timer
+     10                            when it expires.
+     11          
+     12          
+     13            Copyright 2008-2009 Texas Instruments Incorporated. All rights reserved.
+     14          
+     15            IMPORTANT: Your use of this Software is limited to those specific rights
+     16            granted under the terms of a software license agreement between the user
+     17            who downloaded the software, his/her employer (which must be your employer)
+     18            and Texas Instruments Incorporated (the "License").  You may not use this
+     19            Software unless you agree to abide by the terms of the License. The License
+     20            limits your use, and you acknowledge, that the Software may not be modified,
+     21            copied or distributed unless embedded on a Texas Instruments microcontroller
+     22            or used solely and exclusively in conjunction with a Texas Instruments radio
+     23            frequency transceiver, which is integrated into your product.  Other than for
+     24            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     25            works of, modify, distribute, perform, display or sell this Software and/or
+     26            its documentation for any purpose.
+     27          
+     28            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     29            PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, 
+     30            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE, 
+     31            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     32            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     33            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     34            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     35            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     36            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     37            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     38            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     39          
+     40            Should you have any questions regarding your right to use this Software,
+     41            contact Texas Instruments Incorporated at www.TI.com. 
+     42          **************************************************************************************************/
+     43          
+     44          #include "OSAL.h"
+     45          #include "OSAL_Tasks.h"
+     46          
+     47          #include "osal_cbtimer.h"
+     48          
+     49          /*********************************************************************
+     50           * MACROS
+     51           */
+     52          // Macros to convert one-dimensional index 'timer id' to two-dimensional indices
+     53          // 'task id' and 'event id'.
+     54          
+     55          // Find out event id using timer id
+     56          #define EVENT_ID( timerId )            ( 0x0001 << ( ( timerId ) % NUM_CBTIMERS_PER_TASK ) )
+     57          
+     58          // Find out task id using timer id
+     59          #define TASK_ID( timerId )             ( ( ( timerId ) / NUM_CBTIMERS_PER_TASK ) + baseTaskID )
+     60          
+     61          // Find out bank task id using task id
+     62          #define BANK_TASK_ID( taskId )         ( ( baseTaskID - ( taskId ) ) * NUM_CBTIMERS )
+     63          
+     64          /*********************************************************************
+     65           * CONSTANTS
+     66           */
+     67          // Number of callback timers supported per task (limited by the number of OSAL event timers)
+     68          #define NUM_CBTIMERS_PER_TASK          15
+     69          
+     70          // Total number of callback timers
+     71          #define NUM_CBTIMERS                   ( OSAL_CBTIMER_NUM_TASKS * NUM_CBTIMERS_PER_TASK )
+     72          
+     73          /*********************************************************************
+     74           * TYPEDEFS
+     75           */
+     76          // Callback Timer structure
+     77          typedef struct
+     78          {
+     79            pfnCbTimer_t pfnCbTimer; // callback function to be called when timer expires
+     80            uint8 *pData;            // data to be passed in to callback function
+     81          } cbTimer_t;
+     82          
+     83          /*********************************************************************
+     84           * GLOBAL VARIABLES
+     85           */
+     86          // Callback Timer base task id
+
+   \                                 In  segment XDATA_I, align 1, keep-with-next
+     87          uint16 baseTaskID = TASK_NO_TASK;
+   \                     baseTaskID:
+   \   000000                DS 2
+   \   000002                REQUIRE `?<Initializer for baseTaskID>`
+   \   000002                REQUIRE __INIT_XDATA_I
+     88          
+     89          /*********************************************************************
+     90           * EXTERNAL VARIABLES
+     91           */
+     92          
+     93          /*********************************************************************
+     94           * EXTERNAL FUNCTIONS
+     95           */
+     96          
+     97          /*********************************************************************
+     98           * LOCAL VARIABLES
+     99           */
+    100          // Callback Timers table.
+    101          #if ( NUM_CBTIMERS > 0 )
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    102            cbTimer_t cbTimers[NUM_CBTIMERS];
+   \                     cbTimers:
+   \   000000                DS 60
+   \   00003C                REQUIRE __INIT_XDATA_Z
+    103          #endif
+    104          
+    105          /*********************************************************************
+    106           * LOCAL FUNCTIONS
+    107           */
+    108          
+    109          /*********************************************************************
+    110           * API FUNCTIONS
+    111           */
+    112          
+    113          /*********************************************************************
+    114           * @fn          osal_CbTimerInit
+    115           *
+    116           * @brief       Callback Timer task initialization function. This function
+    117           *              can be called more than once (OSAL_CBTIMER_NUM_TASKS times).
+    118           *
+    119           * @param       taskId - Message Timer task ID.
+    120           *
+    121           * @return      void
+    122           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    123          void osal_CbTimerInit( uint8 taskId )
+   \                     osal_CbTimerInit:
+    124          {
+   \   000000   74F7         MOV     A,#-0x9
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FE           MOV     R6,A
+    125            if ( baseTaskID == TASK_NO_TASK )
+   \   000007   90....       MOV     DPTR,#baseTaskID
+   \   00000A   E0           MOVX    A,@DPTR
+   \   00000B   F4           CPL     A
+   \   00000C   7002         JNZ     ??osal_CbTimerInit_0
+   \   00000E   A3           INC     DPTR
+   \   00000F   E0           MOVX    A,@DPTR
+   \                     ??osal_CbTimerInit_0:
+   \   000010   7013         JNZ     ??osal_CbTimerInit_1
+    126            {
+    127              // Only initialize the base task id
+    128              baseTaskID = taskId;
+   \   000012   EE           MOV     A,R6
+   \   000013   90....       MOV     DPTR,#baseTaskID
+   \   000016   F0           MOVX    @DPTR,A
+   \   000017   A3           INC     DPTR
+   \   000018   E4           CLR     A
+   \   000019   F0           MOVX    @DPTR,A
+    129          
+    130              // Initialize all timer structures
+    131              osal_memset( cbTimers, 0, sizeof( cbTimers ) );
+   \   00001A                ; Setup parameters for call to function osal_memset
+   \   00001A   7C3C         MOV     R4,#0x3c
+   \   00001C   FD           MOV     R5,A
+   \   00001D   F9           MOV     R1,A
+   \   00001E   7A..         MOV     R2,#cbTimers & 0xff
+   \   000020   7B..         MOV     R3,#(cbTimers >> 8) & 0xff
+   \   000022   12....       LCALL   ??osal_memset?relay  ; Banked call to: osal_memset
+    132            }
+    133          }
+   \                     ??osal_CbTimerInit_1:
+   \   000025   7F01         MOV     R7,#0x1
+   \   000027   02....       LJMP    ?BANKED_LEAVE_XDATA
+    134          
+    135          /*********************************************************************
+    136           * @fn          osal_CbTimerProcessEvent
+    137           *
+    138           * @brief       Callback Timer task event processing function.
+    139           *
+    140           * @param       taskId - task ID.
+    141           * @param       events - events.
+    142           *
+    143           * @return      events not processed
+    144           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    145          uint16 osal_CbTimerProcessEvent( uint8 taskId, uint16 events )
+   \                     osal_CbTimerProcessEvent:
+    146          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V4
+   \   000000                REQUIRE ?V5
+   \   000000                REQUIRE ?V6
+   \   000000                REQUIRE ?V7
+   \   000000   74F0         MOV     A,#-0x10
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 16
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V2,R1
+   \   000007   EA           MOV     A,R2
+   \   000008   FE           MOV     R6,A
+   \   000009   EB           MOV     A,R3
+   \   00000A   FF           MOV     R7,A
+    147            if ( events & SYS_EVENT_MSG )
+   \   00000B   5480         ANL     A,#0x80
+   \   00000D   6006         JZ      ??osal_CbTimerProcessEvent_0
+    148            {
+    149              // Process OSAL messages
+    150          
+    151              // return unprocessed events
+    152              return ( events ^ SYS_EVENT_MSG );
+   \   00000F   EF           MOV     A,R7
+   \   000010   6480         XRL     A,#0x80
+   \   000012   02....       LJMP    ??osal_CbTimerProcessEvent_1 & 0xFFFF
+    153            }
+    154          
+    155            if ( events )
+   \                     ??osal_CbTimerProcessEvent_0:
+   \   000015   EE           MOV     A,R6
+   \   000016   4F           ORL     A,R7
+   \   000017   7003         JNZ     $+5
+   \   000019   02....       LJMP    ??osal_CbTimerProcessEvent_2 & 0xFFFF
+    156            {
+    157              uint8 i;
+    158              uint16 event;
+    159          
+    160              // Process event timers
+    161              for ( i = 0; i < NUM_CBTIMERS_PER_TASK; i++ )
+   \   00001C   7900         MOV     R1,#0x0
+    162              {
+    163                if ( ( events >> i ) & 0x0001 )
+   \                     ??osal_CbTimerProcessEvent_3:
+   \   00001E   8E..         MOV     ?V0,R6
+   \   000020   8F..         MOV     ?V1,R7
+   \   000022   E9           MOV     A,R1
+   \   000023   78..         MOV     R0,#?V0
+   \   000025   12....       LCALL   ?US_SHR
+   \   000028   E5..         MOV     A,?V0
+   \   00002A   A2E0         MOV     C,0xE0 /* A   */.0
+   \   00002C   4003         JC      $+5
+   \   00002E   02....       LJMP    ??osal_CbTimerProcessEvent_4 & 0xFFFF
+    164                {
+    165                  cbTimer_t *pTimer = &cbTimers[BANK_TASK_ID( taskId )+i];
+   \   000031   90....       MOV     DPTR,#baseTaskID
+   \   000034   85....       MOV     ?V0,?V2
+   \   000037   E0           MOVX    A,@DPTR
+   \   000038   C3           CLR     C
+   \   000039   95..         SUBB    A,?V0
+   \   00003B   FA           MOV     R2,A
+   \   00003C   A3           INC     DPTR
+   \   00003D   E0           MOVX    A,@DPTR
+   \   00003E   9400         SUBB    A,#0x0
+   \   000040   FB           MOV     R3,A
+   \   000041   EA           MOV     A,R2
+   \   000042   75F00F       MOV     B,#0xf
+   \   000045   A4           MUL     AB
+   \   000046   FA           MOV     R2,A
+   \   000047   A8F0         MOV     R0,B
+   \   000049   75F00F       MOV     B,#0xf
+   \   00004C   EB           MOV     A,R3
+   \   00004D   A4           MUL     AB
+   \   00004E   28           ADD     A,R0
+   \   00004F   FB           MOV     R3,A
+   \   000050   EA           MOV     A,R2
+   \   000051   29           ADD     A,R1
+   \   000052   F5..         MOV     ?V0,A
+   \   000054   E4           CLR     A
+   \   000055   3B           ADDC    A,R3
+   \   000056   F5..         MOV     ?V1,A
+   \   000058   7402         MOV     A,#0x2
+   \   00005A   78..         MOV     R0,#?V0
+   \   00005C   12....       LCALL   ?S_SHL
+   \   00005F   74..         MOV     A,#cbTimers & 0xff
+   \   000061   25..         ADD     A,?V0
+   \   000063   F5..         MOV     ?V0,A
+   \   000065   74..         MOV     A,#(cbTimers >> 8) & 0xff
+   \   000067   35..         ADDC    A,?V1
+   \   000069   F5..         MOV     ?V1,A
+    166          
+    167                  // Found the first event
+    168                  event =  0x0001 << i;
+   \   00006B   75..01       MOV     ?V4,#0x1
+   \   00006E   75..00       MOV     ?V5,#0x0
+   \   000071   E9           MOV     A,R1
+   \   000072   78..         MOV     R0,#?V4
+   \   000074   12....       LCALL   ?S_SHL
+   \   000077   85....       MOV     ?V6,?V4
+   \   00007A   85....       MOV     ?V7,?V5
+    169          
+    170                  // Timer expired, call the registered callback function
+    171                  pTimer->pfnCbTimer( pTimer->pData );
+   \   00007D   E5..         MOV     A,?V0
+   \   00007F   2402         ADD     A,#0x2
+   \   000081   F5..         MOV     ?V4,A
+   \   000083   E4           CLR     A
+   \   000084   35..         ADDC    A,?V1
+   \   000086   F5..         MOV     ?V5,A
+   \   000088                ; Setup parameters for indirect call
+   \   000088   85..82       MOV     DPL,?V4
+   \   00008B   F583         MOV     DPH,A
+   \   00008D   E0           MOVX    A,@DPTR
+   \   00008E   FA           MOV     R2,A
+   \   00008F   A3           INC     DPTR
+   \   000090   E0           MOVX    A,@DPTR
+   \   000091   FB           MOV     R3,A
+   \   000092   85..82       MOV     DPL,?V0
+   \   000095   85..83       MOV     DPH,?V1
+   \   000098   E0           MOVX    A,@DPTR
+   \   000099   F8           MOV     R0,A
+   \   00009A   A3           INC     DPTR
+   \   00009B   E0           MOVX    A,@DPTR
+   \   00009C   F583         MOV     DPH,A
+   \   00009E   8882         MOV     DPL,R0
+   \   0000A0   12....       LCALL   ?CALL_IND
+    172          
+    173                  // Mark entry as free
+    174                  pTimer->pfnCbTimer = NULL;
+   \   0000A3   85..82       MOV     DPL,?V0
+   \   0000A6   85..83       MOV     DPH,?V1
+   \   0000A9   E4           CLR     A
+   \   0000AA   F0           MOVX    @DPTR,A
+   \   0000AB   A3           INC     DPTR
+   \   0000AC   F0           MOVX    @DPTR,A
+    175                  
+    176                  // Null out data pointer
+    177                  pTimer->pData = NULL;
+   \   0000AD   85..82       MOV     DPL,?V4
+   \   0000B0   85..83       MOV     DPH,?V5
+   \   0000B3   F0           MOVX    @DPTR,A
+   \   0000B4   A3           INC     DPTR
+   \   0000B5   F0           MOVX    @DPTR,A
+    178                
+    179                  // We only process one event at a time
+    180                  break;
+   \   0000B6   800A         SJMP    ??osal_CbTimerProcessEvent_5
+    181                }
+    182              }
+   \                     ??osal_CbTimerProcessEvent_4:
+   \   0000B8   09           INC     R1
+   \   0000B9   E9           MOV     A,R1
+   \   0000BA   C3           CLR     C
+   \   0000BB   940F         SUBB    A,#0xf
+   \   0000BD   5003         JNC     $+5
+   \   0000BF   02....       LJMP    ??osal_CbTimerProcessEvent_3 & 0xFFFF
+    183          
+    184              // return unprocessed events
+    185              return ( events ^ event );
+   \                     ??osal_CbTimerProcessEvent_5:
+   \   0000C2   EE           MOV     A,R6
+   \   0000C3   65..         XRL     A,?V6
+   \   0000C5   FA           MOV     R2,A
+   \   0000C6   EF           MOV     A,R7
+   \   0000C7   65..         XRL     A,?V7
+   \                     ??osal_CbTimerProcessEvent_1:
+   \   0000C9   FB           MOV     R3,A
+   \   0000CA   8004         SJMP    ??osal_CbTimerProcessEvent_6
+    186            }
+    187          
+    188            // If reach here, the events are unknown
+    189            // Discard or make more handlers
+    190            return 0;
+   \                     ??osal_CbTimerProcessEvent_2:
+   \   0000CC   7A00         MOV     R2,#0x0
+   \   0000CE   7B00         MOV     R3,#0x0
+   \                     ??osal_CbTimerProcessEvent_6:
+   \   0000D0                REQUIRE ?Subroutine0
+   \   0000D0                ; // Fall through to label ?Subroutine0
+    191          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   7F08         MOV     R7,#0x8
+   \   000002   02....       LJMP    ?BANKED_LEAVE_XDATA
+    192          
+    193          /*********************************************************************
+    194           * @fn      osal_CbTimerStart
+    195           *
+    196           * @brief   This function is called to start a callback timer to expire 
+    197           *          in n mSecs. When the timer expires, the registered callback
+    198           *          function will be called.
+    199           *
+    200           * @param   pfnCbTimer - callback function to be called when timer expires
+    201           * @param   pData - data to be passed in to callback function
+    202           * @param   timeout - in milliseconds.
+    203           * @param   pTimerId - will point to new timer Id (if not null)
+    204           *
+    205           * @return  Success, or Failure.
+    206           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    207          Status_t osal_CbTimerStart( pfnCbTimer_t pfnCbTimer, uint8 *pData,  
+   \                     osal_CbTimerStart:
+    208                                     uint16 timeout, uint8 *pTimerId )
+    209          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000                REQUIRE ?V4
+   \   000000                REQUIRE ?V6
+   \   000000                REQUIRE ?V7
+   \   000000   74F0         MOV     A,#-0x10
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 16
+   \   000005                ; Auto size: 4
+   \   000005   74FC         MOV     A,#-0x4
+   \   000007   12....       LCALL   ?ALLOC_XSTACK8
+   \   00000A   85..82       MOV     DPL,?XSP + 0
+   \   00000D   85..83       MOV     DPH,?XSP + 1
+   \   000010   EA           MOV     A,R2
+   \   000011   F0           MOVX    @DPTR,A
+   \   000012   A3           INC     DPTR
+   \   000013   EB           MOV     A,R3
+   \   000014   F0           MOVX    @DPTR,A
+   \   000015   7402         MOV     A,#0x2
+   \   000017   12....       LCALL   ?XSTACK_DISP0_8
+   \   00001A   EC           MOV     A,R4
+   \   00001B   F0           MOVX    @DPTR,A
+   \   00001C   A3           INC     DPTR
+   \   00001D   ED           MOV     A,R5
+   \   00001E   F0           MOVX    @DPTR,A
+    210            uint8 i;
+    211           
+    212            // Validate input parameters
+    213            if ( pfnCbTimer == NULL )
+   \   00001F   85..82       MOV     DPL,?XSP + 0
+   \   000022   85..83       MOV     DPH,?XSP + 1
+   \   000025   12....       LCALL   ??Subroutine3_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_2:
+   \   000028   7005         JNZ     ??osal_CbTimerStart_0
+    214            {
+    215              return ( INVALIDPARAMETER );
+   \   00002A   7902         MOV     R1,#0x2
+   \   00002C   02....       LJMP    ??osal_CbTimerStart_1 & 0xFFFF
+    216            }
+    217          
+    218            // Look for an unused timer first
+    219            for ( i = 0; i < NUM_CBTIMERS; i++ )
+   \                     ??osal_CbTimerStart_0:
+   \   00002F   75..00       MOV     ?V4,#0x0
+   \   000032   7414         MOV     A,#0x14
+   \   000034   12....       LCALL   ?XSTACK_DISP0_8
+   \   000037   E0           MOVX    A,@DPTR
+   \   000038   FE           MOV     R6,A
+   \   000039   A3           INC     DPTR
+   \   00003A   E0           MOVX    A,@DPTR
+   \   00003B   FF           MOV     R7,A
+    220            {
+    221              if ( cbTimers[i].pfnCbTimer == NULL )
+   \                     ??osal_CbTimerStart_2:
+   \   00003C   85....       MOV     ?V0,?V4
+   \   00003F   75..00       MOV     ?V1,#0x0
+   \   000042   7402         MOV     A,#0x2
+   \   000044   78..         MOV     R0,#?V0
+   \   000046   12....       LCALL   ?S_SHL
+   \   000049   74..         MOV     A,#cbTimers & 0xff
+   \   00004B   25..         ADD     A,?V0
+   \   00004D   F5..         MOV     ?V6,A
+   \   00004F   74..         MOV     A,#(cbTimers >> 8) & 0xff
+   \   000051   35..         ADDC    A,?V1
+   \   000053   F5..         MOV     ?V7,A
+   \   000055   85..82       MOV     DPL,?V6
+   \   000058   12....       LCALL   ?Subroutine1 & 0xFFFF
+   \                     ??CrossCallReturnLabel_4:
+   \   00005B   7075         JNZ     ??osal_CbTimerStart_3
+    222              {
+    223                // Start the OSAL event timer first
+    224                if ( osal_start_timerEx( TASK_ID( i ), EVENT_ID( i ), timeout ) == SUCCESS )
+   \   00005D                ; Setup parameters for call to function osal_start_timerEx
+   \   00005D   8E..         MOV     ?V0,R6
+   \   00005F   8F..         MOV     ?V1,R7
+   \   000061   E4           CLR     A
+   \   000062   F5..         MOV     ?V2,A
+   \   000064   F5..         MOV     ?V3,A
+   \   000066   78..         MOV     R0,#?V0
+   \   000068   12....       LCALL   ?PUSH_XSTACK_I_FOUR
+   \   00006B   75..01       MOV     ?V0,#0x1
+   \   00006E   75..00       MOV     ?V1,#0x0
+   \   000071   E5..         MOV     A,?V4
+   \   000073   75F00F       MOV     B,#0xf
+   \   000076   84           DIV     AB
+   \   000077   E5F0         MOV     A,B
+   \   000079   78..         MOV     R0,#?V0
+   \   00007B   12....       LCALL   ?S_SHL
+   \   00007E   AA..         MOV     R2,?V0
+   \   000080   AB..         MOV     R3,?V1
+   \   000082   90....       MOV     DPTR,#baseTaskID
+   \   000085   E0           MOVX    A,@DPTR
+   \   000086   F8           MOV     R0,A
+   \   000087   75F00F       MOV     B,#0xf
+   \   00008A   E5..         MOV     A,?V4
+   \   00008C   84           DIV     AB
+   \   00008D   28           ADD     A,R0
+   \   00008E   F9           MOV     R1,A
+   \   00008F   12....       LCALL   ??osal_start_timerEx?relay; Banked call to: osal_start_timerEx
+   \   000092   7404         MOV     A,#0x4
+   \   000094   12....       LCALL   ?DEALLOC_XSTACK8
+   \   000097   E9           MOV     A,R1
+   \   000098   7038         JNZ     ??osal_CbTimerStart_3
+    225                {
+    226                  // Set up the callback timer
+    227                  cbTimers[i].pfnCbTimer = pfnCbTimer;
+   \   00009A   85..82       MOV     DPL,?XSP + 0
+   \   00009D   85..83       MOV     DPH,?XSP + 1
+   \   0000A0   12....       LCALL   ?Subroutine2 & 0xFFFF
+   \                     ??CrossCallReturnLabel_0:
+   \   0000A3   E8           MOV     A,R0
+   \   0000A4   F0           MOVX    @DPTR,A
+   \   0000A5   A3           INC     DPTR
+   \   0000A6   E9           MOV     A,R1
+   \   0000A7   F0           MOVX    @DPTR,A
+    228                  cbTimers[i].pData = pData;
+   \   0000A8   7402         MOV     A,#0x2
+   \   0000AA   12....       LCALL   ?XSTACK_DISP0_8
+   \   0000AD   12....       LCALL   ?Subroutine2 & 0xFFFF
+   \                     ??CrossCallReturnLabel_1:
+   \   0000B0   A3           INC     DPTR
+   \   0000B1   A3           INC     DPTR
+   \   0000B2   E8           MOV     A,R0
+   \   0000B3   F0           MOVX    @DPTR,A
+   \   0000B4   A3           INC     DPTR
+   \   0000B5   E9           MOV     A,R1
+   \   0000B6   F0           MOVX    @DPTR,A
+   \   0000B7   7416         MOV     A,#0x16
+   \   0000B9   12....       LCALL   ?XSTACK_DISP0_8
+   \   0000BC   E0           MOVX    A,@DPTR
+   \   0000BD   F8           MOV     R0,A
+   \   0000BE   A3           INC     DPTR
+   \   0000BF   E0           MOVX    A,@DPTR
+   \   0000C0   F9           MOV     R1,A
+   \   0000C1   8882         MOV     DPL,R0
+   \   0000C3   8983         MOV     DPH,R1
+    229          
+    230                  if ( pTimerId != NULL )
+   \   0000C5   E582         MOV     A,DPL
+   \   0000C7   4583         ORL     A,DPH
+   \   0000C9   6003         JZ      ??osal_CbTimerStart_4
+    231                  {
+    232                    // Caller is intreseted in the timer id
+    233                    *pTimerId = i;
+   \   0000CB   E5..         MOV     A,?V4
+   \   0000CD   F0           MOVX    @DPTR,A
+    234                  }
+    235          
+    236                  return ( SUCCESS );
+   \                     ??osal_CbTimerStart_4:
+   \   0000CE   7900         MOV     R1,#0x0
+   \   0000D0   800E         SJMP    ??osal_CbTimerStart_1
+    237                }
+    238              }
+    239            }
+   \                     ??osal_CbTimerStart_3:
+   \   0000D2   05..         INC     ?V4
+   \   0000D4   E5..         MOV     A,?V4
+   \   0000D6   C3           CLR     C
+   \   0000D7   940F         SUBB    A,#0xf
+   \   0000D9   5003         JNC     $+5
+   \   0000DB   02....       LJMP    ??osal_CbTimerStart_2 & 0xFFFF
+    240          
+    241            // No timer available
+    242            return ( NO_TIMER_AVAIL );
+   \   0000DE   7908         MOV     R1,#0x8
+   \                     ??osal_CbTimerStart_1:
+   \   0000E0   7404         MOV     A,#0x4
+   \   0000E2   12....       LCALL   ?DEALLOC_XSTACK8
+   \   0000E5   02....       LJMP    ?Subroutine0 & 0xFFFF
+    243          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   F8           MOV     R0,A
+   \   000002   A3           INC     DPTR
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   F9           MOV     R1,A
+   \   000005   85..82       MOV     DPL,?V6
+   \   000008   85..83       MOV     DPH,?V7
+   \   00000B   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   F583         MOV     DPH,A
+   \   000002                REQUIRE ??Subroutine3_0
+   \   000002                ; // Fall through to label ??Subroutine3_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine3_0:
+   \   000000   E0           MOVX    A,@DPTR
+   \   000001   F8           MOV     R0,A
+   \   000002   A3           INC     DPTR
+   \   000003   E0           MOVX    A,@DPTR
+   \   000004   F9           MOV     R1,A
+   \   000005   E8           MOV     A,R0
+   \   000006   49           ORL     A,R1
+   \   000007   22           RET
+    244          
+    245          /*********************************************************************
+    246           * @fn      osal_CbTimerUpdate
+    247           *
+    248           * @brief   This function is called to update a message timer that has
+    249           *          already been started. If SUCCESS, the function will update
+    250           *          the timer's timeout value. If INVALIDPARAMETER, the timer 
+    251           *          either doesn't exit.
+    252           *
+    253           * @param   timerId - identifier of the timer that is to be updated
+    254           * @param   timeout - new timeout in milliseconds.
+    255           *
+    256           * @return  SUCCESS or INVALIDPARAMETER if timer not found
+    257           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    258          Status_t osal_CbTimerUpdate( uint8 timerId, uint16 timeout )
+   \                     osal_CbTimerUpdate:
+    259          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000                REQUIRE ?V4
+   \   000000                REQUIRE ?V5
+   \   000000   74F2         MOV     A,#-0xe
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 14
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV     A,R1
+   \   000006   FE           MOV     R6,A
+   \   000007   8A..         MOV     ?V0,R2
+   \   000009   8B..         MOV     ?V1,R3
+    260            // Look for the existing timer
+    261            if ( timerId < NUM_CBTIMERS )
+   \   00000B   C3           CLR     C
+   \   00000C   940F         SUBB    A,#0xf
+   \   00000E   506C         JNC     ??osal_CbTimerUpdate_0
+    262            {
+    263              if ( cbTimers[timerId].pfnCbTimer != NULL )
+   \   000010   8E..         MOV     ?V2,R6
+   \   000012   75..00       MOV     ?V3,#0x0
+   \   000015   7402         MOV     A,#0x2
+   \   000017   78..         MOV     R0,#?V2
+   \   000019   12....       LCALL   ?S_SHL
+   \   00001C   74..         MOV     A,#cbTimers & 0xff
+   \   00001E   25..         ADD     A,?V2
+   \   000020   F582         MOV     DPL,A
+   \   000022   74..         MOV     A,#(cbTimers >> 8) & 0xff
+   \   000024   35..         ADDC    A,?V3
+   \   000026   12....       LCALL   ?Subroutine1 & 0xFFFF
+   \                     ??CrossCallReturnLabel_5:
+   \   000029   6051         JZ      ??osal_CbTimerUpdate_0
+    264              {
+    265                // Make sure the corresponding OSAL event timer is still running
+    266                if ( osal_get_timeoutEx( TASK_ID( timerId ), EVENT_ID( timerId ) ) != 0 )
+   \   00002B   75..01       MOV     ?V2,#0x1
+   \   00002E   75..00       MOV     ?V3,#0x0
+   \   000031   EE           MOV     A,R6
+   \   000032   75F00F       MOV     B,#0xf
+   \   000035   84           DIV     AB
+   \   000036   E5F0         MOV     A,B
+   \   000038   78..         MOV     R0,#?V2
+   \   00003A   12....       LCALL   ?S_SHL
+   \   00003D   85....       MOV     ?V4,?V2
+   \   000040   85....       MOV     ?V5,?V3
+   \   000043   75F00F       MOV     B,#0xf
+   \   000046   EE           MOV     A,R6
+   \   000047   84           DIV     AB
+   \   000048   FF           MOV     R7,A
+   \   000049                ; Setup parameters for call to function osal_get_timeoutEx
+   \   000049   AA..         MOV     R2,?V4
+   \   00004B   AB..         MOV     R3,?V5
+   \   00004D   90....       MOV     DPTR,#baseTaskID
+   \   000050   E0           MOVX    A,@DPTR
+   \   000051   2F           ADD     A,R7
+   \   000052   F9           MOV     R1,A
+   \   000053   12....       LCALL   ??osal_get_timeoutEx?relay; Banked call to: osal_get_timeoutEx
+   \   000056   EA           MOV     A,R2
+   \   000057   4B           ORL     A,R3
+   \   000058   4C           ORL     A,R4
+   \   000059   4D           ORL     A,R5
+   \   00005A   6020         JZ      ??osal_CbTimerUpdate_0
+    267                {
+    268                  // Timer exists; update it
+    269                  osal_start_timerEx( TASK_ID( timerId ), EVENT_ID( timerId ), timeout );
+   \   00005C                ; Setup parameters for call to function osal_start_timerEx
+   \   00005C   E4           CLR     A
+   \   00005D   F5..         MOV     ?V2,A
+   \   00005F   F5..         MOV     ?V3,A
+   \   000061   78..         MOV     R0,#?V0
+   \   000063   12....       LCALL   ?PUSH_XSTACK_I_FOUR
+   \   000066   AA..         MOV     R2,?V4
+   \   000068   AB..         MOV     R3,?V5
+   \   00006A   90....       MOV     DPTR,#baseTaskID
+   \   00006D   E0           MOVX    A,@DPTR
+   \   00006E   2F           ADD     A,R7
+   \   00006F   F9           MOV     R1,A
+   \   000070   12....       LCALL   ??osal_start_timerEx?relay; Banked call to: osal_start_timerEx
+   \   000073   7404         MOV     A,#0x4
+   \   000075   12....       LCALL   ?DEALLOC_XSTACK8
+    270          
+    271                  return (  SUCCESS );
+   \   000078   7900         MOV     R1,#0x0
+   \   00007A   8002         SJMP    ??osal_CbTimerUpdate_1
+    272                }
+    273              }
+    274            }
+    275          
+    276            // Timer not found
+    277            return ( INVALIDPARAMETER );
+   \                     ??osal_CbTimerUpdate_0:
+   \   00007C   7902         MOV     R1,#0x2
+   \                     ??osal_CbTimerUpdate_1:
+   \   00007E   7F06         MOV     R7,#0x6
+   \   000080   02....       LJMP    ?BANKED_LEAVE_XDATA
+    278          }
+    279          
+    280          
+    281          /*********************************************************************
+    282           * @fn      osal_CbTimerStop
+    283           *
+    284           * @brief   This function is called to stop a timer that has already been
+    285           *          started. If SUCCESS, the function will cancel the timer. If 
+    286           *          INVALIDPARAMETER, the timer doesn't exit.
+    287           *
+    288           * @param   timerId - identifier of the timer that is to be stopped
+    289           *
+    290           * @return  SUCCESS or INVALIDPARAMETER if timer not found
+    291           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    292          Status_t osal_CbTimerStop( uint8 timerId )
+   \                     osal_CbTimerStop:
+    293          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000   74F4         MOV     A,#-0xc
+   \   000002   12....       LCALL   ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV     ?V0,R1
+    294            // Look for the existing timer
+    295            if ( timerId < NUM_CBTIMERS )
+   \   000007   E9           MOV     A,R1
+   \   000008   C3           CLR     C
+   \   000009   940F         SUBB    A,#0xf
+   \   00000B   505A         JNC     ??osal_CbTimerStop_0
+    296            {
+    297              if ( cbTimers[timerId].pfnCbTimer != NULL )
+   \   00000D   89..         MOV     ?V2,R1
+   \   00000F   75..00       MOV     ?V3,#0x0
+   \   000012   7402         MOV     A,#0x2
+   \   000014   78..         MOV     R0,#?V2
+   \   000016   12....       LCALL   ?S_SHL
+   \   000019   74..         MOV     A,#cbTimers & 0xff
+   \   00001B   25..         ADD     A,?V2
+   \   00001D   FE           MOV     R6,A
+   \   00001E   74..         MOV     A,#(cbTimers >> 8) & 0xff
+   \   000020   35..         ADDC    A,?V3
+   \   000022   FF           MOV     R7,A
+   \   000023   8E82         MOV     DPL,R6
+   \   000025   8F83         MOV     DPH,R7
+   \   000027   12....       LCALL   ??Subroutine3_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_3:
+   \   00002A   603B         JZ      ??osal_CbTimerStop_0
+    298              {
+    299                // Timer exists; stop the OSAL event timer first
+    300                osal_stop_timerEx( TASK_ID( timerId ), EVENT_ID( timerId ) );
+   \   00002C                ; Setup parameters for call to function osal_stop_timerEx
+   \   00002C   75..01       MOV     ?V2,#0x1
+   \   00002F   75..00       MOV     ?V3,#0x0
+   \   000032   E5..         MOV     A,?V0
+   \   000034   75F00F       MOV     B,#0xf
+   \   000037   84           DIV     AB
+   \   000038   E5F0         MOV     A,B
+   \   00003A   78..         MOV     R0,#?V2
+   \   00003C   12....       LCALL   ?S_SHL
+   \   00003F   AA..         MOV     R2,?V2
+   \   000041   AB..         MOV     R3,?V3
+   \   000043   90....       MOV     DPTR,#baseTaskID
+   \   000046   E0           MOVX    A,@DPTR
+   \   000047   F8           MOV     R0,A
+   \   000048   75F00F       MOV     B,#0xf
+   \   00004B   E5..         MOV     A,?V0
+   \   00004D   84           DIV     AB
+   \   00004E   28           ADD     A,R0
+   \   00004F   F9           MOV     R1,A
+   \   000050   12....       LCALL   ??osal_stop_timerEx?relay; Banked call to: osal_stop_timerEx
+    301          
+    302                // Mark entry as free
+    303                cbTimers[timerId].pfnCbTimer = NULL;
+   \   000053   8E82         MOV     DPL,R6
+   \   000055   8F83         MOV     DPH,R7
+   \   000057   E4           CLR     A
+   \   000058   F0           MOVX    @DPTR,A
+   \   000059   A3           INC     DPTR
+   \   00005A   F0           MOVX    @DPTR,A
+    304          
+    305                // Null out data pointer
+    306                cbTimers[timerId].pData = NULL;
+   \   00005B   8E82         MOV     DPL,R6
+   \   00005D   8F83         MOV     DPH,R7
+   \   00005F   A3           INC     DPTR
+   \   000060   A3           INC     DPTR
+   \   000061   F0           MOVX    @DPTR,A
+   \   000062   A3           INC     DPTR
+   \   000063   F0           MOVX    @DPTR,A
+    307          
+    308                return ( SUCCESS );
+   \   000064   F9           MOV     R1,A
+   \   000065   8002         SJMP    ??osal_CbTimerStop_1
+    309              }
+    310            }
+    311          
+    312            // Timer not found
+    313            return ( INVALIDPARAMETER );
+   \                     ??osal_CbTimerStop_0:
+   \   000067   7902         MOV     R1,#0x2
+   \                     ??osal_CbTimerStop_1:
+   \   000069   7F04         MOV     R7,#0x4
+   \   00006B   02....       LJMP    ?BANKED_LEAVE_XDATA
+    314          }
+
+   \                                 In  segment XDATA_ID, align 1, keep-with-next
+   \                     `?<Initializer for baseTaskID>`:
+   \   000000   FF00         DW 255
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??osal_CbTimerInit?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    osal_CbTimerInit
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??osal_CbTimerProcessEvent?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    osal_CbTimerProcessEvent
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??osal_CbTimerStart?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    osal_CbTimerStart
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??osal_CbTimerUpdate?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    osal_CbTimerUpdate
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     ??osal_CbTimerStop?relay:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    osal_CbTimerStop
+    315          
+    316          /****************************************************************************
+    317          ****************************************************************************/
+
+   Maximum stack usage in bytes:
+
+   ISTACK XSTACK Function
+   ------ ------ --------
+      0      9   osal_CbTimerInit
+        0      9   -> osal_memset
+      0     16   osal_CbTimerProcessEvent
+      1     28   osal_CbTimerStart
+        0     24   -> osal_start_timerEx
+      0     12   osal_CbTimerStop
+        0     12   -> osal_stop_timerEx
+      0     18   osal_CbTimerUpdate
+        0     14   -> osal_get_timeoutEx
+        0     18   -> osal_start_timerEx
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       2  ?<Initializer for baseTaskID>
+       8  ??Subroutine3_0
+       6  ??osal_CbTimerInit?relay
+       6  ??osal_CbTimerProcessEvent?relay
+       6  ??osal_CbTimerStart?relay
+       6  ??osal_CbTimerStop?relay
+       6  ??osal_CbTimerUpdate?relay
+       5  ?Subroutine0
+       2  ?Subroutine1
+      12  ?Subroutine2
+       2  baseTaskID
+      60  cbTimers
+      42  osal_CbTimerInit
+     208  osal_CbTimerProcessEvent
+     232  osal_CbTimerStart
+     110  osal_CbTimerStop
+     131  osal_CbTimerUpdate
+
+ 
+ 750 bytes in segment BANKED_CODE
+  30 bytes in segment BANK_RELAYS
+   2 bytes in segment XDATA_I
+   2 bytes in segment XDATA_ID
+  60 bytes in segment XDATA_Z
+ 
+ 782 bytes of CODE  memory
+  62 bytes of XDATA memory
+
+Errors: none
+Warnings: none

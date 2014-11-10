@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B6CE1D64-E4BD-4256-AA1D-BA0354ED29BC}</ProjectGuid>
+    <Keyword>MakeFileProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeBuildCommandLine>"C:\Program Files\IAR Systems\Embedded Workbench 6.5\common\bin\IarBuild.exe" "c:\Users\little-d00d\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\HostTestRelease.ewp" CC2540SPI -log all</NMakeBuildCommandLine>
+    <NMakeOutput>
+    </NMakeOutput>
+    <NMakeCleanCommandLine>"C:\Program Files\IAR Systems\Embedded Workbench 6.5\common\bin\IarBuild.exe" "c:\Users\little-d00d\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\HostTestRelease.ewp" -clean CC2540SPI -log all</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>"C:\Program Files\IAR Systems\Embedded Workbench 6.5\common\bin\IarBuild.exe" "c:\Users\little-d00d\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\HostTestRelease.ewp" -build CC2540SPI -log all</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>POWER_SAVING;GAP_BOND_MGR;GATT_DB_OFF_CHIP;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeBuildCommandLine>"C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.5\common\bin\IarBuild.exe" "c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\HostTestRelease.ewp" CC2540SPI -log all</NMakeBuildCommandLine>
+    <NMakeOutput>
+    </NMakeOutput>
+    <NMakeCleanCommandLine>"C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.5\common\bin\IarBuild.exe" "c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\HostTestRelease.ewp" -clean CC2540SPI -log all</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>"C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.5\common\bin\IarBuild.exe" "c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\HostTestRelease.ewp" -build CC2540SPI -log all</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>POWER_SAVING;GAP_BOND_MGR;GATT_DB_OFF_CHIP;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <IncludePath>C:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\..\..\Include;C:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\..\..\common\npi\npi_np;C:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\..\..\common\cc2540;C:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\..\Components\ble\host;C:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\..\Components\ble\hci;C:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\..\Components\ble\controller\include;C:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\..\Components\ble\controller\phy;C:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\..\Components\ble\include;C:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\..\Components\services\saddr;C:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\..\Components\osal\include;C:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\..\Components\hal\target\CC2540EB;C:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\..\..\..\..\Components\hal\include;C:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\..\..\Profiles\Roles;C:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\..\..\common;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Components\ble\host\gatt_uuid.c" />
+    <ClCompile Include="..\Components\hal\common\hal_assert.c" />
+    <ClCompile Include="..\Components\hal\common\hal_drivers.c" />
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_adc.c" />
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_aes.c" />
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_crc.c" />
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_dma.c" />
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_flash.c" />
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_key.c" />
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_lcd.c" />
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_led.c" />
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_sleep.c" />
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_startup.c" />
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_timer.c" />
+    <ClCompile Include="..\Components\hal\target\CC2540EB\hal_uart.c" />
+    <ClCompile Include="..\Components\hal\target\CC2540EB\_hal_uart_dma.c" />
+    <ClCompile Include="..\Components\hal\target\CC2540EB\_hal_uart_isr.c" />
+    <ClCompile Include="..\Components\hal\target\CC2540EB\_hal_uart_spi.c" />
+    <ClCompile Include="..\Components\osal\common\OSAL.c" />
+    <ClCompile Include="..\Components\osal\common\osal_bufmgr.c" />
+    <ClCompile Include="..\Components\osal\common\osal_cbtimer.c" />
+    <ClCompile Include="..\Components\osal\common\OSAL_ClockBLE.c" />
+    <ClCompile Include="..\Components\osal\common\OSAL_Memory.c" />
+    <ClCompile Include="..\Components\osal\common\OSAL_PwrMgr.c" />
+    <ClCompile Include="..\Components\osal\common\OSAL_Timers.c" />
+    <ClCompile Include="..\Projects\ble\common\npi\npi_np\npi.c" />
+    <ClCompile Include="..\Projects\ble\HostTestApp\Source\hci_ext_app.c" />
+    <ClCompile Include="..\Projects\ble\HostTestApp\Source\HostTest_Main.c" />
+    <ClCompile Include="..\Projects\ble\HostTestApp\Source\OSAL_HostTest.c" />
+    <ClCompile Include="..\Projects\ble\HostTestApp\Source\spi_interface.c" />
+    <ClCompile Include="..\Projects\ble\Profiles\Roles\broadcaster.c" />
+    <ClCompile Include="..\Projects\ble\Profiles\Roles\central.c" />
+    <ClCompile Include="..\Projects\ble\Profiles\Roles\gap.c" />
+    <ClCompile Include="..\Projects\ble\Profiles\Roles\gapbondmgr.c" />
+    <ClCompile Include="..\Projects\ble\Profiles\Roles\gapperiphbondmgr.c" />
+    <ClCompile Include="..\Projects\ble\Profiles\Roles\observer.c" />
+    <ClCompile Include="..\Projects\ble\Profiles\Roles\peripheral.c" />
+    <ClCompile Include="..\Projects\ble\Profiles\Roles\peripheralBroadcaster.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Components\ble\controller\include\ll.h" />
+    <ClInclude Include="..\Components\ble\controller\include\ll_math.h" />
+    <ClInclude Include="..\Components\ble\controller\include\ll_sleep.h" />
+    <ClInclude Include="..\Components\ble\controller\include\ll_timer2.h" />
+    <ClInclude Include="..\Components\ble\controller\include\phy.h" />
+    <ClInclude Include="..\Components\ble\controller\include\phy_image.h" />
+    <ClInclude Include="..\Components\ble\hci\hci_data.h" />
+    <ClInclude Include="..\Components\ble\hci\hci_event.h" />
+    <ClInclude Include="..\Components\ble\hci\hci_tl.h" />
+    <ClInclude Include="..\Components\ble\host\linkdb.h" />
+    <ClInclude Include="..\Components\ble\include\att.h" />
+    <ClInclude Include="..\Components\ble\include\bcomdef.h" />
+    <ClInclude Include="..\Components\ble\include\gap.h" />
+    <ClInclude Include="..\Components\ble\include\gatt.h" />
+    <ClInclude Include="..\Components\ble\include\gatt_uuid.h" />
+    <ClInclude Include="..\Components\ble\include\hci.h" />
+    <ClInclude Include="..\Components\ble\include\l2cap.h" />
+    <ClInclude Include="..\Components\ble\include\sm.h" />
+    <ClInclude Include="..\Components\hal\include\hal_adc.h" />
+    <ClInclude Include="..\Components\hal\include\hal_assert.h" />
+    <ClInclude Include="..\Components\hal\include\hal_board.h" />
+    <ClInclude Include="..\Components\hal\include\hal_defs.h" />
+    <ClInclude Include="..\Components\hal\include\hal_drivers.h" />
+    <ClInclude Include="..\Components\hal\include\hal_flash.h" />
+    <ClInclude Include="..\Components\hal\include\hal_key.h" />
+    <ClInclude Include="..\Components\hal\include\hal_lcd.h" />
+    <ClInclude Include="..\Components\hal\include\hal_led.h" />
+    <ClInclude Include="..\Components\hal\include\hal_rpc.h" />
+    <ClInclude Include="..\Components\hal\include\hal_sleep.h" />
+    <ClInclude Include="..\Components\hal\include\hal_timer.h" />
+    <ClInclude Include="..\Components\hal\include\hal_uart.h" />
+    <ClInclude Include="..\Components\hal\target\CC2540EB\hal_aes.h" />
+    <ClInclude Include="..\Components\hal\target\CC2540EB\hal_board_cfg.h" />
+    <ClInclude Include="..\Components\hal\target\CC2540EB\hal_ccm.h" />
+    <ClInclude Include="..\Components\hal\target\CC2540EB\hal_crc.h" />
+    <ClInclude Include="..\Components\hal\target\CC2540EB\hal_dma.h" />
+    <ClInclude Include="..\Components\hal\target\CC2540EB\hal_mcu.h" />
+    <ClInclude Include="..\Components\hal\target\CC2540EB\hal_types.h" />
+    <ClInclude Include="..\Components\osal\include\comdef.h" />
+    <ClInclude Include="..\Components\osal\include\OSAL.h" />
+    <ClInclude Include="..\Components\osal\include\osal_bufmgr.h" />
+    <ClInclude Include="..\Components\osal\include\osal_cbtimer.h" />
+    <ClInclude Include="..\Components\osal\include\OSAL_Clock.h" />
+    <ClInclude Include="..\Components\osal\include\OSAL_Memory.h" />
+    <ClInclude Include="..\Components\osal\include\OSAL_Nv.h" />
+    <ClInclude Include="..\Components\osal\include\OSAL_PwrMgr.h" />
+    <ClInclude Include="..\Components\osal\include\osal_snv.h" />
+    <ClInclude Include="..\Components\osal\include\OSAL_Tasks.h" />
+    <ClInclude Include="..\Components\osal\include\OSAL_Timers.h" />
+    <ClInclude Include="..\Components\osal\include\ZComDef.h" />
+    <ClInclude Include="..\Projects\ble\common\npi\npi_np\npi.h" />
+    <ClInclude Include="..\Projects\ble\HostTestApp\Source\hci_ext_app.h" />
+    <ClInclude Include="..\Projects\ble\HostTestApp\Source\spi_interface.h" />
+    <ClInclude Include="..\Projects\ble\Profiles\Roles\broadcaster.h" />
+    <ClInclude Include="..\Projects\ble\Profiles\Roles\central.h" />
+    <ClInclude Include="..\Projects\ble\Profiles\Roles\gapbondmgr.h" />
+    <ClInclude Include="..\Projects\ble\Profiles\Roles\gapperiphbondmgr.h" />
+    <ClInclude Include="..\Projects\ble\Profiles\Roles\observer.h" />
+    <ClInclude Include="..\Projects\ble\Profiles\Roles\peripheral.h" />
+    <ClInclude Include="..\Projects\ble\Profiles\Roles\peripheralBroadcaster.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,17 @@
+﻿Build started 11/8/2014 5:32:44 PM.
+     1>Project "C:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\HM-10 Firmware\HM-10 Firmware.vcxproj" on node 2 (Clean target(s)).
+     1>CoreClean:
+         "C:\Program Files (x86)\IAR Systems\Embedded Workbench 6.5\common\bin\IarBuild.exe" "c:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\Projects\ble\HostTestApp\CC2540\HostTestRelease.ewp" -clean CC2540SPI -log all
+         
+              IAR Command Line Build Utility V6.5.11.0
+              Copyright 2002-2013 IAR Systems AB.
+         
+         Deleting outputs for configuration CC2540SPI
+         Updating build tree...
+         
+         0  file(s) deleted.
+     1>Done Building Project "C:\Users\Administrator\Documents\Dropbox\Fish Brain\HM-10 Hack\HM-10 Firmware\HM-10 Firmware\HM-10 Firmware.vcxproj" (Clean target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:20.60

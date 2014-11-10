@@ -1,0 +1,11 @@
+C:\Users\Administrator\Documents\Dropbox\Fish Brain\Programming\HM-10 SDI\bin\Debug\HM-10 SDI.exe.config
+C:\Users\Administrator\Documents\Dropbox\Fish Brain\Programming\HM-10 SDI\obj\Debug\HM-10 SDI.exe
+C:\Users\Administrator\Documents\Dropbox\Fish Brain\Programming\HM-10 SDI\obj\Debug\HM-10 SDI.pdb
+C:\Users\Administrator\Documents\Dropbox\Fish Brain\Programming\HM-10 SDI\obj\Debug\OS CC2540.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Documents\Dropbox\Fish Brain\Programming\HM-10 SDI\obj\Debug\HM_10_SDI.OSCC2540.resources
+C:\Users\Administrator\Documents\Dropbox\Fish Brain\Programming\HM-10 SDI\obj\Debug\HM_10_SDI.Properties.Resources.resources
+C:\Users\Administrator\Documents\Dropbox\Fish Brain\Programming\HM-10 SDI\obj\Debug\HM_10_SDI.Viewer.resources
+C:\Users\Administrator\Documents\Dropbox\Fish Brain\Programming\HM-10 SDI\obj\Debug\OS CC2540.csproj.GenerateResource.Cache
+C:\Users\Administrator\Documents\Dropbox\Fish Brain\Programming\HM-10 SDI\bin\Debug\HM-10 SDI.exe
+C:\Users\Administrator\Documents\Dropbox\Fish Brain\Programming\HM-10 SDI\bin\Debug\HM-10 SDI.pdb
+C:\Users\Administrator\Documents\Dropbox\Fish Brain\Programming\HM-10 SDI\obj\Debug\HM_10_SDI.CodeViewer.resources
